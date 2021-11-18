@@ -1,0 +1,18 @@
+#amplify
+amplify/
+aws-exports.js
+
+# next.js
+.next
+
+# vscode
+.vscode
+
+#amplify
+amplify
+
+# dependencies
+/node_modules
+
+# Ignore by file type:
+*.md

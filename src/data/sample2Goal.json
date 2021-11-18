@@ -1,0 +1,30 @@
+{
+  "id": "root",
+  "key": "Parent",
+  "children": [
+    { "parent": null, "key": "username", "id": "1", "nodeLevel": "0", "value": "mmelson" },
+    {
+      "parent": null,
+      "key": "pool",
+      "id": "2",
+      "nodeLevel": "0",
+      "children": [
+        {
+          "parent": "pool",
+          "key": "client",
+          "id": "1001",
+          "nodeLevel": "1000",
+          "children": [
+            {
+              "parent": "client",
+              "key": "endpoint",
+              "id": "2001",
+              "nodeLevel": "2000",
+              "value": "https://cognito-idp.eu-central-1.amazonaws.com/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

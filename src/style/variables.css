@@ -1,0 +1,240 @@
+:root {
+  --accents-1: #fafafa;
+  --accents-2: #eaeaea;
+  --accents-3: #999999;
+  --accents-4: #888888;
+  --accents-5: #666666;
+  --accents-6: #444444;
+  --accents-7: #333333;
+  --accents-8: #111111;
+
+  --app-content-bg: #0d1117;
+  --app-content-text: #c9d1d9;
+  --app-content-icon: #c9d1d9;
+  --app-footer-bg: #0d1117;
+  --app-footer-text: #8b949e;
+  --app-navbar-breadcrumbs: #c9d1d9;
+
+  --border-color-primary: #30363d;
+  --border-color-secondary: #21262d;
+  --border-color-tertiary: #6e7681;
+  --border-color-overlay: #30363d;
+  --border-color-inverse: #f0f6fc;
+  --border-color-info: rgba(56, 139, 253, 0.4);
+  --border-color-danger: rgba(248, 81, 73, 0.4);
+  --border-color-success: rgba(63, 185, 80, 0.4);
+  --border-color-warning: rgba(187, 128, 9, 0.4);
+
+  --border-radius-none: 0px;
+  --border-radius-xs: 2px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 10px;
+
+  --border-width-xs: 0.25px;
+  --border-width-sm: 0.5px;
+  --border-width-md: 0.75px;
+  --border-width-lg: 1px;
+  --border-width-xl: 1.5px;
+
+  --c-btn-primary-bg: #238636;
+  --c-btn-primary-border: #2ea043;
+  --c-btn-primary-shadow: 0 0 transparent;
+  --c-btn-primary-text: #c9d1d9;
+  --c-btn-primary-inset-shadow: 0 0 transparent;
+  --c-btn-primary-hover-bg: #2ea043;
+  --c-btn-primary-hover-border: #2ea043;
+  --c-btn-primary-hover-shadow: 0 1px 0 rgba(1, 4, 9, 0.1);
+  --c-btn-primary-hover-text: #f0f6fc;
+  --c-btn-primary-focus-bg: #238636;
+  --c-btn-primary-focus-border: #238636;
+  --c-btn-primary-focus-shadow: 0 0 transparent;
+  --c-btn-primary-focus-text: #f0f6fc;
+  --c-btn-primary-disabled-bg: rgba(35, 134, 54, 0.6);
+  --c-btn-primary-disabled-border: transparent;
+  --c-btn-primary-disabled-shadow: 0 0 transparent;
+  --c-btn-primary-disabled-text: rgba(240, 246, 252, 0.5);
+
+  --c-btn-secondary-bg: #21262d;
+  --c-btn-secondary-border: #30363d;
+  --c-btn-secondary-shadow: 0 0 transparent;
+  --c-btn-secondary-text: #c9d1d9;
+  --c-btn-secondary-inset-shadow: 0 0 transparent;
+  --c-btn-secondary-bg-hover: #30363d;
+  --c-btn-secondary-border-hover: #30363d;
+  --c-btn-secondary-shadow-hover: 0 1px 0 rgba(1, 4, 9, 0.1);
+  --c-btn-secondary-text-hover: #f0f6fc;
+  --c-btn-secondary-disabled-bg: #0d1117;
+  --c-btn-secondary-disabled-border: transparent;
+  --c-btn-secondary-disabled-shadow: 0 0 transparent;
+  --c-btn-secondary-disabled-text: rgba(240, 246, 252, 0.5);
+
+  --c-btn-icon-bg: #0d1117;
+  --c-btn-icon-bg-hover: #1c2128;
+  --c-btn-icon-bg-selected: #1c2128;
+  --c-btn-icon-bg-warning: radial-gradient(
+    circle,
+    rgba(227, 179, 65, 1) 0%,
+    rgba(13, 17, 23, 1) 85%
+  );
+  --c-btn-icon-border: #484f58;
+  --c-btn-icon-border-transparent: 1px solid transparent;
+  --c-btn-icon-border-hover: #30363d;
+  --c-btn-icon-border-selected: #484f58;
+  --c-btn-icon-color: #484f58;
+  --c-btn-icon-color-hover: #c9d1d9;
+  --c-btn-icon-color-selected: #6e7681;
+
+  --c-btn-outlined-bg: #161b22;
+  --c-btn-outlined-border: #21262d;
+  --c-btn-outlined-text: #c9d1d9;
+  --c-btn-outlined-bg-hover: #161b22;
+  --c-btn-outlined-border-hover: #30363d;
+  --c-btn-outlined-text-hover: #f0f6fc;
+  --c-btn-outlined-bg-focus: #21262d;
+  --c-btn-outlined-border-focus: #21262d;
+  --c-btn-outlined-text-focus: #f0f6fc;
+  --c-btn-outlined-bg-disabled: #161b22;
+  --c-btn-outlined-border-disabled: transparent;
+  --c-btn-outlined-text-disabled: rgba(240, 246, 252, 0.5);
+
+  --c-checkbox-sm: 16px;
+  --c-checkbox-md: 18px;
+  --c-checkbox-lg: 20px;
+  --c-checkbox-icon-sm: 14px;
+  --c-checkbox-icon-md: 16px;
+  --c-checkbox-icon-lg: 18px;
+  --c-checkbox-color: #6e7681;
+  --c-checkbox-color-hover: #c9d1d9;
+  --c-checkbox-bg-color: #1c2128;
+  --c-checkbox-bg-color-hover: #161b22;
+  --c-checkbox-bg-color-disabled: #0d1117;
+  --c-checkbox-border-color: #21262d;
+  --c-checkbox-border-color-hover: #30363d;
+  --c-checkbox-border-color-focused: #6e7681;
+  --c-checkbox-inset-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2),
+    inset 0 -1px 0 rgba(16, 22, 26, 0.1);
+  --c-checkbox-checked-bg-color: #238636;
+  --c-checkbox-checked-bg-color-hover: #2ea043;
+  --c-checkbox-checked-border-color: #21262d;
+
+  --c-icon-color-primary: #c9d1d9;
+  --c-icon-color-secondary: #6e7681;
+  --c-icon-color-tertiary: #484f58;
+  --c-icon-color-info: #58a6ff;
+  --c-icon-color-danger: #f85149;
+  --c-icon-color-success: #56d364;
+  --c-icon-color-warning: #e3b341;
+  --c-icon-color-link: #58a6ff;
+  --c-icon-color-dark: #21262d;
+
+  --c-input-bg-color: #010409;
+  --c-input-bg-color-hover: #111111;
+  --c-input-bg-color-focused: #6e7681;
+  --c-input-bg-color-disabled: #0d1117;
+  --c-input-border-color: #21262d;
+  --c-input-border-color-hover: #30363d;
+  --c-input-border-color-focused: #6e7681;
+
+  --c-modal-bg-color-primary: #161b22;
+  --c-modal-bg-color-seconday: #1c2128;
+  --c-modal-bg-color-danger: #f85149;
+  --c-modal-bg-color-success: #56d364;
+  --c-modal-bg-color-warning: #e3b341;
+  --c-modal-border-color: #30363d;
+  --c-modal-divider-color: #1c2128;
+
+  --c-navbar-logo: #f0f6fc;
+  --c-navbar-bg: #161b22;
+  --c-navbar-text: #c9d1d9;
+  --c-navbar-icon: #c9d1d9;
+
+  --c-textfield-bg: #0d1117;
+  --c-textfield-text: #f0f6fc;
+  --c-textfield-icon: #c9d1d9;
+  --c-textfield-bg: #0d1117;
+  --c-textfield-border: #21262d;
+  --c-textfield-input-placeholder: #484f58;
+  --c-textfield-border-radius: 4px;
+
+  --c-selector-bg: #35363a;
+  --c-selector-text: #f0f6fc;
+  --c-selector-icon: #c9d1d9;
+  --c-selector-border: #21262d;
+  --c-selector-input-placeholder: #484f58;
+  --c-selector-border-radius: 4px;
+
+  --shadow-small: 0 0 transparent;
+  --shadow-medium: 0 3px 6px #010409;
+  --shadow-large: 0 8px 24px #010409;
+  --shadow-extra-large: 0 12px 48px #010409;
+  --shadow-highlight: 0 0 transparent;
+  --shadow-inset: 0 0 transparent;
+  --shadow-inset-medium: 0 0 2px rgba(0, 0, 0, 0.9) inset;
+
+  --space: 4px;
+  --space-2x: 8px;
+  --space-3x: 12px;
+  --space-4x: 16px;
+  --space-6x: 24px;
+  --space-8x: 32px;
+  --space-12x: 48px;
+  --space-16x: 64px;
+
+  --transition-speed-fastest: 0.2s ease;
+  --transition-speed-fast: 0.4s ease;
+  --transition-speed-average: 0.6s ease;
+  --transition-speed-slow: 0.8s ease;
+  --transition-speed-slowest: 1s ease;
+
+  --transition-delay-shortest: 0.1s;
+  --transition-delay-short: 0.2s;
+  --transition-delay-average: 0.3s;
+  --transition-delay-long: 0.4s;
+  --transition-delay-longest: 0.5s;
+
+  --text-color-primary: #c9d1d9;
+  --text-color-secondary: #8b949e;
+  --text-color-tertiary: #8b949e;
+  --text-color-placeholder: #484f58;
+  --text-color-disabled: #484f58;
+  --text-color-inverse: #0d1117;
+  --text-color-danger: #f85149;
+  --text-color-success: #56d364;
+  --text-color-warning: #e3b341;
+  --text-color-white: #f0f6fc;
+  --text-color-grey: #8193b2;
+  --text-color-link: #58a6ff;
+  --text-color-link-hover: #80c0ff;
+
+  --text-color-string: #144ddb;
+  --text-color-undefined: #888888;
+  --text-color-null: #333333;
+
+  --text-color-edit: #161b22;
+  --text-color-edit-failed: #f85149;
+  --text-color-edit-success: #56d364;
+
+  /* --text-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji; */
+  --text-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+  --text-size-xxs: 10px;
+  --text-size-xs: 12px;
+  --text-size-sm: 14px;
+  --text-size-md: 16px;
+  --text-size-lg: 18px;
+  --text-size-xl: 24px;
+
+  --text-weight-ultralight: 100;
+  --text-weight-thin: 200;
+  --text-weight-light: 300;
+  --text-weight-regular: 400;
+  --text-weight-medium: 500;
+  --text-weight-semibold: 600;
+  --text-weight-bold: 700;
+  --text-weight-heavy: 800;
+  --text-weight-black: 900;
+}

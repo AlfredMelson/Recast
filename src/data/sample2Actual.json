@@ -1,0 +1,254 @@
+[
+  { "id": "1", "name": "username" },
+  {
+    "id": "2",
+    "name": "pool",
+    "children": [
+      { "id": "3", "name": "userPoolId", "parent": "pool" },
+      { "id": "4", "name": "clientId", "parent": "pool" },
+      {
+        "id": "5",
+        "parent": "pool",
+        "name": "client",
+        "children": [
+          { "id": "6", "name": "endpoint", "parent": "client" },
+          { "id": "7", "parent": "client", "name": "fetchOptions" }
+        ]
+      },
+      { "id": "8", "name": "advancedSecurityDataCollectionFlag", "parent": "pool" },
+      {
+        "id": "9",
+        "parent": "pool",
+        "name": "storage",
+        "children": [
+          {
+            "id": "10",
+            "parent": "storage",
+            "name": "cookies",
+            "children": [
+              { "id": "11", "parent": "cookies", "name": "changeListeners" },
+              { "id": "12", "name": "HAS_DOCUMENT_COOKIE", "parent": "cookies" }
+            ]
+          },
+          {
+            "id": "13",
+            "parent": "storage",
+            "name": "store",
+            "children": [
+              {
+                "id": "14",
+                "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.clockDrift",
+                "parent": "store"
+              },
+              {
+                "id": "15",
+                "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.accessToken",
+                "parent": "store"
+              },
+              {
+                "id": "16",
+                "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.userData",
+                "parent": "store"
+              },
+              {
+                "id": "17",
+                "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.refreshToken",
+                "parent": "store"
+              },
+              { "id": "18", "name": "amplify-signin-with-hostedUI", "parent": "store" },
+              { "id": "19", "name": "nextauth.message", "parent": "store" },
+              { "id": "20", "name": "epr_ru", "parent": "store" },
+              {
+                "id": "21",
+                "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.idToken",
+                "parent": "store"
+              },
+              { "id": "22", "name": "ally-supports-cache", "parent": "store" },
+              {
+                "id": "23",
+                "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.LastAuthUser",
+                "parent": "store"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  { "id": "3", "name": "userPoolId", "parent": "pool" },
+  { "id": "4", "name": "clientId", "parent": "pool" },
+  {
+    "id": "5",
+    "parent": "pool",
+    "name": "client",
+    "children": [
+      { "id": "6", "name": "endpoint", "parent": "client" },
+      { "id": "7", "parent": "client", "name": "fetchOptions" }
+    ]
+  },
+  { "id": "6", "name": "endpoint", "parent": "client" },
+  { "id": "7", "parent": "client", "name": "fetchOptions" },
+  { "id": "8", "name": "advancedSecurityDataCollectionFlag", "parent": "pool" },
+  {
+    "id": "9",
+    "parent": "pool",
+    "name": "storage",
+    "children": [
+      {
+        "id": "10",
+        "parent": "storage",
+        "name": "cookies",
+        "children": [
+          { "id": "11", "parent": "cookies", "name": "changeListeners" },
+          { "id": "12", "name": "HAS_DOCUMENT_COOKIE", "parent": "cookies" }
+        ]
+      },
+      {
+        "id": "13",
+        "parent": "storage",
+        "name": "store",
+        "children": [
+          {
+            "id": "14",
+            "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.clockDrift",
+            "parent": "store"
+          },
+          {
+            "id": "15",
+            "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.accessToken",
+            "parent": "store"
+          },
+          {
+            "id": "16",
+            "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.userData",
+            "parent": "store"
+          },
+          {
+            "id": "17",
+            "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.refreshToken",
+            "parent": "store"
+          },
+          { "id": "18", "name": "amplify-signin-with-hostedUI", "parent": "store" },
+          { "id": "19", "name": "nextauth.message", "parent": "store" },
+          { "id": "20", "name": "epr_ru", "parent": "store" },
+          {
+            "id": "21",
+            "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.idToken",
+            "parent": "store"
+          },
+          { "id": "22", "name": "ally-supports-cache", "parent": "store" },
+          {
+            "id": "23",
+            "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.LastAuthUser",
+            "parent": "store"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "parent": "storage",
+    "name": "cookies",
+    "children": [
+      { "id": "11", "parent": "cookies", "name": "changeListeners" },
+      { "id": "12", "name": "HAS_DOCUMENT_COOKIE", "parent": "cookies" }
+    ]
+  },
+  { "id": "11", "parent": "cookies", "name": "changeListeners" },
+  { "id": "12", "name": "HAS_DOCUMENT_COOKIE", "parent": "cookies" },
+  {
+    "id": "13",
+    "parent": "storage",
+    "name": "store",
+    "children": [
+      {
+        "id": "14",
+        "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.clockDrift",
+        "parent": "store"
+      },
+      {
+        "id": "15",
+        "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.accessToken",
+        "parent": "store"
+      },
+      {
+        "id": "16",
+        "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.userData",
+        "parent": "store"
+      },
+      {
+        "id": "17",
+        "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.refreshToken",
+        "parent": "store"
+      },
+      { "id": "18", "name": "amplify-signin-with-hostedUI", "parent": "store" },
+      { "id": "19", "name": "nextauth.message", "parent": "store" },
+      { "id": "20", "name": "epr_ru", "parent": "store" },
+      {
+        "id": "21",
+        "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.idToken",
+        "parent": "store"
+      },
+      { "id": "22", "name": "ally-supports-cache", "parent": "store" },
+      {
+        "id": "23",
+        "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.LastAuthUser",
+        "parent": "store"
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.clockDrift",
+    "parent": "store"
+  },
+  {
+    "id": "15",
+    "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.accessToken",
+    "parent": "store"
+  },
+  {
+    "id": "16",
+    "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.userData",
+    "parent": "store"
+  },
+  {
+    "id": "17",
+    "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.refreshToken",
+    "parent": "store"
+  },
+  { "id": "18", "name": "amplify-signin-with-hostedUI", "parent": "store" },
+  { "id": "19", "name": "nextauth.message", "parent": "store" },
+  { "id": "20", "name": "epr_ru", "parent": "store" },
+  {
+    "id": "21",
+    "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.mmelson.idToken",
+    "parent": "store"
+  },
+  { "id": "22", "name": "ally-supports-cache", "parent": "store" },
+  {
+    "id": "23",
+    "name": "CognitoIdentityServiceProvider.7l9p4udbe580avv6tt3lfj7cs4.LastAuthUser",
+    "parent": "store"
+  },
+  { "id": "24", "name": "keyPrefix" },
+  { "id": "25", "name": "userDataKey" },
+  {
+    "id": "26",
+    "name": "attributes",
+    "children": [
+      { "id": "27", "name": "sub", "parent": "attributes" },
+      { "id": "28", "name": "email_verified", "parent": "attributes" },
+      { "id": "29", "name": "phone_number_verified", "parent": "attributes" },
+      { "id": "30", "name": "phone_number", "parent": "attributes" },
+      { "id": "31", "name": "email", "parent": "attributes" }
+    ]
+  },
+  { "id": "27", "name": "sub", "parent": "attributes" },
+  { "id": "28", "name": "email_verified", "parent": "attributes" },
+  { "id": "29", "name": "phone_number_verified", "parent": "attributes" },
+  { "id": "30", "name": "phone_number", "parent": "attributes" },
+  { "id": "31", "name": "email", "parent": "attributes" },
+  { "id": "32", "name": "preferredMFA" }
+]

@@ -1,0 +1,38 @@
+{
+  "id": "root",
+  "name": "Parent",
+  "children": [
+    { "id": "1", "name": "username" },
+    {
+      "id": "2",
+      "name": "pool",
+      "children": [
+        { "id": "3", "name": "userPoolId", "parent": "pool" },
+        { "id": "4", "name": "clientId", "parent": "pool" },
+        {
+          "id": "5",
+          "parent": "pool",
+          "name": "client",
+          "children": [
+            { "id": "6", "name": "endpoint", "parent": "client" },
+            { "id": "7", "parent": "client", "name": "fetchOptions" }
+          ]
+        }
+      ]
+    },
+    { "id": "8", "name": "keyPrefix" },
+    { "id": "9", "name": "userDataKey" },
+    {
+      "id": "10",
+      "name": "attributes",
+      "children": [
+        { "id": "11", "name": "sub", "parent": "attributes" },
+        { "id": "12", "name": "email_verified", "parent": "attributes" },
+        { "id": "13", "name": "phone_number_verified", "parent": "attributes" },
+        { "id": "14", "name": "phone_number", "parent": "attributes" },
+        { "id": "15", "name": "email", "parent": "attributes" }
+      ]
+    },
+    { "id": "16", "name": "preferredMFA" }
+  ]
+}

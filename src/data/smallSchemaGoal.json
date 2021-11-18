@@ -1,0 +1,19 @@
+{
+  "id": "root",
+  "key": "Parent",
+  "children": [
+    { "id": "1", "key": "username", "value": "mmelson", "type": "string" },
+    {
+      "key": "pool",
+      "id": "2",
+      "children": [
+        {
+          "id": "3",
+          "key": "userPoolId",
+          "value": "eu-central-1_vAFEjKU3f",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

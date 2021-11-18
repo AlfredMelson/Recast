@@ -1,0 +1,28 @@
+{
+  "id": "root",
+  "key": "Parent",
+  "children": [
+    { "parent": null, "key": "username", "nodeLevel": 1, "id": 1, "value": "mmelson" },
+    {
+      "key": "pool",
+      "id": "20",
+      "nodeLevel": 2,
+      "children": [
+        {
+          "parent": "pool",
+          "key": "userPoolId",
+          "nodeLevel": 2,
+          "id": "22",
+          "value": "eu-central-1_vAFEjKU3f"
+        },
+        {
+          "parent": "pool",
+          "key": "clientId",
+          "nodeLevel": 2,
+          "id": "23",
+          "value": "7l9p4udbe580avv6tt3lfj7cs4"
+        }
+      ]
+    }
+  ]
+}
