@@ -7,10 +7,10 @@ export function Layout() {
   return (
     <MuiThemeProviderRoot>
       <AppHeader />
+      <EditorDrawer />
       <main>
         <Outlet />
       </main>
-      <EditorDrawer />
     </MuiThemeProviderRoot>
   )
 }

@@ -21,7 +21,11 @@ export function EditorDrawer() {
   }
 
   return (
-    <Drawer anchor='bottom' open={dataDrawerOpen} onClose={toggleDrawer(false)}>
+    <Drawer
+      transitionDuration={500}
+      anchor='top'
+      open={dataDrawerOpen}
+      onClose={toggleDrawer(false)}>
       <DrawerHeader />
       <Editor />
       <MinifyDialog />
