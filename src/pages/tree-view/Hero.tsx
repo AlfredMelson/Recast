@@ -3,9 +3,10 @@ import { useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 // import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { Stack } from '@mui/material'
+import { Container, Stack } from '@mui/material'
 import { RichTreeView } from '..'
 import { TreeViewContainer } from './TreeViewContainer'
+import { Navigation } from './Navigation'
 
 export default function Hero() {
   const frame = React.useRef<null | HTMLDivElement>(null)
@@ -34,41 +35,44 @@ export default function Hero() {
     }
   }, [isMdUp])
   return (
-    <TreeViewContainer
-      left={
-        <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-          <RichTreeView />
-        </Box>
-      }
-      rightSx={{
-        p: 3,
-        minWidth: 2000,
-        '& > div': {
-          width: 360,
-          display: 'inline-flex',
-          verticalAlign: 'top',
-          '&:nth-of-type(2)': {
-            width: { xl: 400 },
+    <Container maxWidth='xl'>
+      <Navigation />
+      <TreeViewContainer
+        left={
+          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+            <RichTreeView />
+          </Box>
+        }
+        rightSx={{
+          p: 3,
+          minWidth: 2000,
+          '& > div': {
+            width: 360,
+            display: 'inline-flex',
+            verticalAlign: 'top',
+            '&:nth-of-type(2)': {
+              width: { xl: 400 },
+            },
           },
-        },
-      }}
-      rightRef={frame}
-      right={
-        <React.Fragment>
-          <div>
-            {isMdUp && (
-              <Stack spacing={4} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}>
-                {/* <Typography>isMDUp</Typography> */}
-              </Stack>
-            )}
-            {/* {isMdUp && (
+        }}
+        rightRef={frame}
+        right={
+          <React.Fragment>
+            <div>
+              {isMdUp && (
+                <Stack spacing={4} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}>
+                  {/* <Typography>isMDUp</Typography> */}
+                </Stack>
+              )}
+              {/* {isMdUp && (
               <Stack spacing={4} sx={{ ml: 4, '& > .MuiPaper-root': { maxWidth: 'none' } }}>
                 <Typography>isMDUp</Typography>
               </Stack>
             )} */}
-          </div>
-        </React.Fragment>
-      }
-    />
+            </div>
+          </React.Fragment>
+        }
+      />
+    </Container>
   )
 }

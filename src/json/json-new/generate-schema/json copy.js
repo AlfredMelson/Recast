@@ -1,6 +1,6 @@
 // https://github.com/Nijikokun/generate-schema
 // Modules
-import Type from './type-of-is'
+import Type from '../../../lib/type-of-is'
 
 // Constants
 // var DRAFT = 'http://json-schema.org/draft-04/schema#'

@@ -15,8 +15,15 @@ export function TreeViewContainer({
   rightSx?: BoxProps['sx']
 }) {
   return (
-    <Box sx={{ overflowX: 'hidden' }}>
+    <Box
+      sx={{
+        overflowX: 'hidden',
+        '&::-webkit-scrollbar': {
+          width: 0,
+        },
+      }}>
       <Container
+        maxWidth='xl'
         sx={{
           minHeight: 500,
           height: 'calc(100vh - 120px)',

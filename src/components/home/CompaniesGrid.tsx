@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid'
-import IconImage, { IconImageProps } from '../../icon/IconImage'
+import IconImage, { IconImageProps } from '../icons/IconImage'
 
 export const CORE_CUSTOMERS: Array<IconImageProps> = [
   {
@@ -94,8 +94,7 @@ export default function CompaniesGrid({ data }: { data: Array<IconImageProps> })
             justifyContent: 'center',
             alignItems: 'center',
             objectFit: 'contain',
-          }}
-        >
+          }}>
           <IconImage alt={imgProps.alt} {...imgProps} />
         </Grid>
       ))}

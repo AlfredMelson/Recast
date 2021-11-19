@@ -1,4 +1,4 @@
-import Type from './type-of-is'
+import Type from '../../../lib/type-of-is'
 
 function getPropertyType(value) {
   // console.log(

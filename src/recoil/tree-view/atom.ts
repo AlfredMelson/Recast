@@ -17,3 +17,12 @@ export const processedDataIdsAtom = atom<string[]>({
 // const [processedDataIds, setProcessedDataIds] = useRecoilState(processedDataIdsAtom)
 // const setProcessedDataIds  = useSetRecoilState(processedDataIdsAtom)
 // const processedDataIds  = useRecoilValue(processedDataIdsAtom)
+
+export const treeViewExpansionAtom = atom<string[]>({
+  key: 'treeViewExpansion',
+  default: [],
+})
+
+// const [treeViewExpansion, setTreeViewExpansion] = useRecoilState(treeViewExpansionAtom)
+// const setTreeViewExpansion  = useSetRecoilState(treeViewExpansionAtom)
+// const treeViewExpansion  = useRecoilValue(treeViewExpansionAtom)

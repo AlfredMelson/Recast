@@ -25,7 +25,7 @@ export function DrawerHeader() {
       <Container maxWidth='xl' sx={{ display: 'flex', alignItems: 'center', minHeight: 64 }}>
         <Box aria-label='Go to homepage' sx={{ lineHeight: 0, mr: 2, cursor: 'pointer' }}>
           <MuiLink onClick={() => setDataDrawerOpen(false)}>
-            <SvgJsonLogo width={32} />
+            <SvgJsonLogo width={120} />
           </MuiLink>
         </Box>
         <Box sx={{ display: { xs: 'none', md: 'initial' } }}>

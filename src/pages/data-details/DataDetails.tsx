@@ -3,7 +3,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { SxIconButton } from '../../components/icons/SxIconButton'
+import { SxIconButton } from '../../components/sx/SxIconButton'
 import { DataTypes, getTypes } from './data-types'
 
 interface DetailState {

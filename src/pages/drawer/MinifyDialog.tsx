@@ -36,7 +36,7 @@ export function MinifyDialog() {
 
   // minify json
   React.useEffect(() => {
-    async function Minify(text) {
+    async function Minify(text: string) {
       if (typeof JSON === 'undefined' || null) {
         return text
       } else {
@@ -76,7 +76,7 @@ export function MinifyDialog() {
               onClick={() => {
                 setMinifyDialog(false)
               }}>
-              <SvgJsonLogo width={32} />
+              <SvgJsonLogo width={120} />
             </MuiLink>
           </Box>
           <Typography variant='body2'>Minified</Typography>

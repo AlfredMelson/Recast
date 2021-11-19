@@ -1,23 +1,18 @@
 import { loader } from '@monaco-editor/react'
 
-export const monacoThemes = {
-  'clouds-midnight': 'Clouds Midnight',
-  'chrome-devtools': 'Chrome DevTools',
-  cobalt: 'Cobalt', // dark
-  slushPoppies: 'Slush and Poppies', // light
-  iPlastic: 'iPlastic', // light
-  blackboard: 'Blackboard', // dark
-  katzenmilch: 'Katzenmilch', // light
-}
+const monacoThemes = { cobalt: 'AD', katzenmilch: 'Katzenmilch' }
 
-export function EditorTheme(theme) {
+loader.init().then(monaco => console.log('here is the monaco isntance:', monaco))
+
+const EditorTheme = theme => {
   return new Promise<void>(res => {
-    Promise.all([loader.init(), import(`monaco-themes/themes/${monacoThemes[theme]}.json`)]).then(
+    Promise.all([loader.init(), import(`./themes/${monacoThemes[theme]}.json`)]).then(
       ([monaco, themeData]) => {
         monaco.editor.defineTheme(theme, themeData)
         res()
       }
     )
-    console.log()
   })
 }
+
+export { EditorTheme }

@@ -3,7 +3,7 @@ import { alpha } from '@mui/material/styles'
 import Popper from '@mui/material/Popper'
 import Paper from '@mui/material/Paper'
 import Fade from '@mui/material/Fade'
-import IconImage from '../../icon/IconImage'
+import IconImage from '../icons/IconImage'
 import { SubMenu } from './SubMenuStyle'
 import { getNextIndex, MENUID } from './headerFunctions'
 

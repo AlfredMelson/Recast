@@ -122,8 +122,8 @@ export default function Hero() {
     <HeroContainer
       left={
         <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-          <Typography variant='h1' sx={{ my: 2, maxWidth: 470 }}>
-            Type, recast, &amp; visualize <GradientText>JSON</GradientText>
+          <Typography variant='h1' sx={{ my: 2, maxWidth: 500 }}>
+            Visualize and recast <GradientText>JSON</GradientText>
           </Typography>
           {/* &nbsp;UI */}
           <Typography color='text.secondary' sx={{ mb: 3, maxWidth: 436 }}>

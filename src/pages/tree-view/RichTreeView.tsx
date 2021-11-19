@@ -6,12 +6,14 @@ import Collapse from '@mui/material/Collapse'
 // web.cjs is required for IE11 support
 import { useSpring, animated } from 'react-spring'
 import { TransitionProps } from '@mui/material/transitions'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import * as React from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import bracketText from '../../data/unbracketText.json'
-import { processedDataIdsAtom, processedUserDataAtom } from '../../recoil/tree-view/atom'
+import {
+  processedDataIdsAtom,
+  processedUserDataAtom,
+  treeViewExpansionAtom,
+} from '../../recoil/tree-view/atom'
 import { DestObjects, GetNestedChildren } from './TreeViewProcess'
 
 function MinusSquare(props: SvgIconProps) {
@@ -77,19 +79,11 @@ const StyledTreeItem = styled((props: TreeItemProps) => (
 
 function TreeViewComponent() {
   const processedUserData = useRecoilValue(processedUserDataAtom)
-  const processedDataIds = useRecoilValue(processedDataIdsAtom)
 
-  const [expansion, setExpansion] = React.useState<string[]>([])
+  const [treeViewExpansion, setTreeViewExpansion] = useRecoilState(treeViewExpansionAtom)
 
   const handleToggle = (_event: React.SyntheticEvent, nodeIds: string[]) => {
-    setExpansion(nodeIds)
-  }
-
-  const handleCollapse = () => {
-    setExpansion([])
-  }
-  const handleExpand = () => {
-    setExpansion(processedDataIds)
+    setTreeViewExpansion(nodeIds)
   }
 
   const renderTree = nodes => (
@@ -99,25 +93,15 @@ function TreeViewComponent() {
   )
 
   return (
-    <Box>
-      <Box sx={{ mb: 1 }}>
-        <Button onClick={handleCollapse} sx={{ minWidth: '110px' }}>
-          {expansion.length !== 0 && 'Collapse all'}
-        </Button>
-        <Button onClick={handleExpand} sx={{ minWidth: '110px' }}>
-          {'Expand all'}
-        </Button>
-      </Box>
-      <TreeView
-        defaultExpanded={['1']}
-        expanded={expansion}
-        onNodeToggle={handleToggle}
-        defaultCollapseIcon={<MinusSquare />}
-        defaultExpandIcon={<PlusSquare />}
-        defaultEndIcon={<CloseSquare />}>
-        {renderTree(processedUserData)}
-      </TreeView>
-    </Box>
+    <TreeView
+      defaultExpanded={['1']}
+      expanded={treeViewExpansion}
+      onNodeToggle={handleToggle}
+      defaultCollapseIcon={<MinusSquare />}
+      defaultExpandIcon={<PlusSquare />}
+      defaultEndIcon={<CloseSquare />}>
+      {renderTree(processedUserData)}
+    </TreeView>
   )
 }
 

@@ -1,7 +1,7 @@
-# json Visualizer & Editor
+# recast
 <!-- ![](https://github.com/alfredmelson/ts-json-visualizer/workflows/test.yml/badge.svg) -->
 
-Open source typed javascript application build on React incorporating Recoil for state management,  XState for state machines, MUI v5 for UI/UX, Monaco-editor as an IDE and other libraries. Methods, models and inspiration were derived inpart from refactoring the [ jsonrepair ](https://github.com/josdejong/jsonrepair), [ jsoneditor ](https://github.com/josdejong/jsoneditor), [ json-source-map ](https://github.com/epoberezkin/json-source-map), [ javascript-natural-sort ](https://github.com/Bill4Time/javascript-natural-sort) code bases, some of which are no longer maintained.
+Typed javascript application to recast, type, and visualize JSON that is build on React incorporating Recoil for state management,  XState for state machines, MUI v5 for UI/UX, Monaco-editor as an IDE and other libraries. Methods, models and inspiration were derived inpart from refactoring the [ jsonrepair ](https://github.com/josdejong/jsonrepair), [ jsoneditor ](https://github.com/josdejong/jsoneditor), [ json-source-map ](https://github.com/epoberezkin/json-source-map), [ javascript-natural-sort ](https://github.com/Bill4Time/javascript-natural-sort) code bases, some of which are no longer maintained.
 
 ### Libraries used in development
 

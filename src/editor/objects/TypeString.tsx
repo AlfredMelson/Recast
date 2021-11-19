@@ -1,9 +1,10 @@
 import Box from '@mui/system/Box'
 import * as React from 'react'
-import validator from 'validator'
 import Tooltip from '@mui/material/Tooltip'
 import Link from '@mui/material/Link'
 import { Typography } from '@mui/material'
+import isURL from '../../lib/validator/functions/isURL'
+// import validator from '../../lib/validator'
 
 type TypeStringTypes = {
   data: string
@@ -11,7 +12,7 @@ type TypeStringTypes = {
 
 export function TypeString({ data }: TypeStringTypes) {
   let result: React.ReactElement | string = ''
-  if (validator.isURL(data)) {
+  if (isURL(data, undefined)) {
     if (data.match(/\.(bmp|gif|jpg|jpeg|png|raw|tiff|webp)$/)) {
       result = (
         <Link href={data} target='_blank' rel='noopener noreferrer'>
@@ -28,8 +29,7 @@ export function TypeString({ data }: TypeStringTypes) {
             href={data}
             underline='none'
             target='_blank'
-            rel='noopener noreferrer'
-          >
+            rel='noopener noreferrer'>
             <Typography variant='body1'>Data Link</Typography>
           </Link>
         </Tooltip>

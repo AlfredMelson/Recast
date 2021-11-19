@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import * as React from 'react'
 import { appColorModeAtom, userPreferenceAtom } from '../../recoil'
-import { SxIconButton } from '../icons/SxIconButton'
+import { SxIconButton } from '../sx/SxIconButton'
 
 export function ThemeModeToggle() {
   const [appColorMode, setAppColorMode] = useRecoilState(appColorModeAtom)

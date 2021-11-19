@@ -1,13 +1,15 @@
 import * as React from 'react'
-import Link from '@mui/material/Link'
-import { useRecoilValue } from 'recoil'
-import { localEditorTextAtom } from '../../recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { Link as MuiLink } from '@mui/material'
+import { dataDrawerOpenAtom, localEditorTextAtom } from '../../recoil'
 import { Navigation } from './NavigationStyle'
 import { getNextIndex } from './headerFunctions'
 import { VizualizationsDropDown } from './VizualizationsDropDown'
 
 export function DrawerHeaderNavBar() {
   const localEditorText = useRecoilValue(localEditorTextAtom)
+
+  const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   const navRef = React.useRef<HTMLUListElement | null>(null)
 
@@ -39,7 +41,9 @@ export function DrawerHeaderNavBar() {
     <Navigation>
       <ul ref={navRef} onKeyDown={handleLeftRightArrow}>
         <li>
-          <Link href='/start'>Instructions</Link>
+          <MuiLink onClick={() => setDataDrawerOpen(false)} sx={{ cursor: 'pointer' }}>
+            Instructions
+          </MuiLink>
         </li>
         {localEditorText && <VizualizationsDropDown />}
       </ul>

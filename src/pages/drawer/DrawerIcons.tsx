@@ -13,27 +13,14 @@ import Stack from '@mui/material/Stack'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import saveAs from 'file-saver'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import {
-  appColorModeAtom,
-  localEditorTextAtom,
-  minifyDialogAtom,
-  monacoThemeAtom,
-  validJsonAtom,
-} from '../../recoil'
-import { EditorTheme } from '../../components/monaco-editor'
+import { localEditorTextAtom, minifyDialogAtom, validJsonAtom } from '../../recoil'
 import { GreenCircularProgress } from '../../components/action/GreenCircularProgress'
-import { SxIconButton } from '../../components/icons/SxIconButton'
+import { SxIconButton } from '../../components/sx/SxIconButton'
 
 export function DrawerIcons() {
   const resetList = useResetRecoilState(localEditorTextAtom)
-  const setMinifyDialog = useSetRecoilState(minifyDialogAtom)
-  const appColorMode = useRecoilValue(appColorModeAtom)
-  const setMonacoTheme = useSetRecoilState(monacoThemeAtom)
 
-  useEffect(() => {
-    const theme = appColorMode === 'dark' ? 'cobalt' : 'katzenmilch'
-    EditorTheme(theme).then(() => setMonacoTheme(theme))
-  }, [appColorMode, setMonacoTheme])
+  const setMinifyDialog = useSetRecoilState(minifyDialogAtom)
 
   const localEditorText = useRecoilValue(localEditorTextAtom)
 
@@ -60,6 +47,7 @@ export function DrawerIcons() {
       copyTimer.current = window.setTimeout(() => {
         setSuccessCopy(false)
       }, 4000)
+      return
     }
   }
 

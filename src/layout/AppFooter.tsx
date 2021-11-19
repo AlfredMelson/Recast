@@ -33,7 +33,7 @@ export function AppFooter() {
           },
         }}>
         <div>
-          <SvgJsonLogo width={32} />
+          <SvgJsonLogo width={160} />
           <Typography variant='body2' fontWeight='bold' sx={{ pt: 2 }}>
             This is...
           </Typography>

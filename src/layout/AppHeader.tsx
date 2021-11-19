@@ -11,7 +11,7 @@ export function AppHeader() {
       <Container maxWidth='xl' sx={{ display: 'flex', alignItems: 'center', minHeight: 64 }}>
         <Box aria-label='Go to homepage' sx={{ lineHeight: 0, mr: 2 }}>
           <Link to='/'>
-            <SvgJsonLogo width={32} />
+            <SvgJsonLogo width={120} />
           </Link>
         </Box>
         <Box sx={{ display: { xs: 'none', md: 'initial' } }}>
