@@ -15,5 +15,5 @@ import Typography from '@mui/material/Typography'
 //   return <Typography>product: {productResults}</Typography>
 // }
 export function Development() {
-  return <Typography>product:</Typography>
+  return <Typography>Development</Typography>
 }

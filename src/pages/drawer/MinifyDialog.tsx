@@ -36,13 +36,16 @@ export function MinifyDialog() {
 
   // minify json
   React.useEffect(() => {
-    async function Minify(text: string) {
+    function Minify(text: string) {
       if (typeof JSON === 'undefined' || null) {
         return text
       } else {
-        const results =
-          (await typeof text) === 'string' && JSON.stringify(JSON.parse(text), null, 0)
-        setMinifiedText(results)
+        try {
+          const results = JSON.stringify(JSON.parse(text), null, 0)
+          setMinifiedText(results)
+        } catch (error) {
+          console.log('MinifyDialog TC', error)
+        }
         return
       }
     }

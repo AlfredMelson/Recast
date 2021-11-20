@@ -110,7 +110,7 @@ export function VizualizationsDropDown() {
         placement='bottom-start'
         style={{ zIndex: 1200 }}>
         {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
+          <Fade {...TransitionProps}>
             <Paper
               variant='outlined'
               sx={{

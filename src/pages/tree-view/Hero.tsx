@@ -1,12 +1,11 @@
 import * as React from 'react'
 import { useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
-// import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Container, Stack } from '@mui/material'
-import { RichTreeView } from '..'
 import { TreeViewContainer } from './TreeViewContainer'
 import { Navigation } from './Navigation'
+import { RichTreeView } from './RichTreeView'
 
 export default function Hero() {
   const frame = React.useRef<null | HTMLDivElement>(null)

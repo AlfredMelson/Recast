@@ -1,5 +1,6 @@
 import IconButton from '@mui/material/IconButton'
 import { styled } from '@mui/system'
+import Tooltip from '@mui/material/Tooltip'
 
 export const SxIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -17,3 +18,11 @@ export const SxIconButton = styled(IconButton)(({ theme }) => ({
     cursor: 'default',
   },
 }))
+
+export function SxToolTip(tooltipTitle, transitionProps, children) {
+  return (
+    <Tooltip title={tooltipTitle} TransitionProps={transitionProps}>
+      <SxIconButton>{children}</SxIconButton>
+    </Tooltip>
+  )
+}

@@ -2,7 +2,6 @@ import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
 import Box from '@mui/material/Box'
-import Fade from '@mui/material/Fade'
 import CloseIcon from '@mui/icons-material/Close'
 import CheckIcon from '@mui/icons-material/Check'
 import DownloadIcon from '@mui/icons-material/Download'
@@ -116,8 +115,6 @@ export function MinifyIcons() {
     <Stack direction='row'>
       <Box sx={{ position: 'relative' }}>
         <Tooltip
-          arrow
-          TransitionComponent={Fade}
           title={minifiedCopy ? 'Copied' : 'Copy minified json'}
           TransitionProps={{ onExited: () => setMinifiedCopy(false) }}>
           <SxIconButton
@@ -136,10 +133,7 @@ export function MinifyIcons() {
         {loadingCopy && <GreenCircularProgress />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip
-          arrow
-          TransitionComponent={Fade}
-          title={minifiedCopy ? 'Downloaded' : 'Download minified json'}>
+        <Tooltip title={minifiedCopy ? 'Downloaded' : 'Download minified json'}>
           <SxIconButton onClick={handleDownload}>
             {!loadingDownload && !successDownload ? (
               <DownloadIcon />
@@ -152,7 +146,7 @@ export function MinifyIcons() {
         </Tooltip>
         {loadingDownload && <GreenCircularProgress />}
       </Box>
-      <Tooltip arrow TransitionComponent={Fade} title={'Close'}>
+      <Tooltip title={'Close'}>
         <SxIconButton onClick={handleClose}>
           <CloseIcon />
         </SxIconButton>

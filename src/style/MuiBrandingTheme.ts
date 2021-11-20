@@ -1,3 +1,4 @@
+import { Fade } from '@mui/material'
 import { createTheme, ThemeOptions, Theme } from '@mui/material/styles'
 
 declare module '@mui/material/styles/createPalette' {
@@ -398,11 +399,6 @@ export function muiThemedComponents(theme: Theme) {
           },
         },
       },
-      MuiTab: {
-        defaultProps: {
-          disableTouchRipple: true,
-        },
-      },
       MuiPaper: {
         styleOverrides: {
           root: {
@@ -427,6 +423,11 @@ export function muiThemedComponents(theme: Theme) {
               },
             },
           },
+        },
+      },
+      MuiTab: {
+        defaultProps: {
+          disableTouchRipple: true,
         },
       },
       MuiTableCell: {
@@ -480,6 +481,15 @@ export function muiThemedComponents(theme: Theme) {
             paddingTop: 7,
             paddingBottom: 7,
           },
+        },
+        defaultProps: {
+          arrow: true,
+          enterDelay: 400,
+          enterNextDelay: 50,
+          enterTouchDelay: 800,
+          leaveDelay: 50,
+          leaveTouchDelay: 1000,
+          TransitionComponent: Fade,
         },
       },
       MuiSwitch: {

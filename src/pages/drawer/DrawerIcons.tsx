@@ -6,7 +6,6 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
 import ClipboardJS from 'clipboard'
 import Tooltip from '@mui/material/Tooltip'
-import Fade from '@mui/material/Fade'
 import CheckIcon from '@mui/icons-material/Check'
 import { green } from '@mui/material/colors'
 import Stack from '@mui/material/Stack'
@@ -94,8 +93,6 @@ export function DrawerIcons() {
     <Stack direction='row' sx={{ visibility: validJson ? 'visible' : 'hidden' }}>
       <Box sx={{ position: 'relative' }}>
         <Tooltip
-          arrow
-          TransitionComponent={Fade}
           title={jsonCopy ? 'Copied' : 'Copy json'}
           TransitionProps={{ onExited: () => setJsonCopy(false) }}>
           <SxIconButton
@@ -113,7 +110,7 @@ export function DrawerIcons() {
         {loadingCopy && <GreenCircularProgress />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip arrow TransitionComponent={Fade} title={'Download json'}>
+        <Tooltip title={'Download json'}>
           <SxIconButton
             disabled={localEditorText.length === 0 ? true : false}
             onClick={handleDownload}>
@@ -129,7 +126,7 @@ export function DrawerIcons() {
         {loadingDownload && <GreenCircularProgress />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip arrow TransitionComponent={Fade} title={'Delete json'}>
+        <Tooltip title={'Delete json'}>
           <SxIconButton
             disabled={localEditorText.length === 0 ? true : false}
             onClick={() => {
@@ -140,7 +137,7 @@ export function DrawerIcons() {
         </Tooltip>
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip arrow TransitionComponent={Fade} title={'Minify json'}>
+        <Tooltip title={'Minify json'}>
           <SxIconButton
             disabled={localEditorText.length === 0 ? true : false}
             size='small'
