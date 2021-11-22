@@ -1,16 +1,14 @@
+import * as React from 'react'
 import { Outlet } from 'react-router-dom'
-import MuiThemeProviderRoot from '../style/MuiThemeProviderRoot'
-import { EditorDrawer } from '../pages/drawer/EditorDrawer'
+import { EditorDrawer } from '../components/drawer/EditorDrawer'
 import { AppHeader } from './AppHeader'
 
 export function Layout() {
   return (
-    <MuiThemeProviderRoot>
+    <React.Fragment>
       <AppHeader />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
       <EditorDrawer />
-    </MuiThemeProviderRoot>
+    </React.Fragment>
   )
 }

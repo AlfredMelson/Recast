@@ -4,7 +4,7 @@ export const HeaderStyle = styled('header')(({ theme }) => ({
   position: 'sticky',
   top: 0,
   transition: theme.transitions.create('top'),
-  zIndex: theme.zIndex.appBar,
+  zIndex: theme.zIndex.drawer + 1,
   backdropFilter: 'blur(15px)',
   boxShadow: `inset 0px -1px 1px ${
     theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : theme.palette.grey[100]

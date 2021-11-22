@@ -11,8 +11,8 @@ import { green } from '@mui/material/colors'
 import ClipboardJS from 'clipboard'
 import { saveAs } from 'file-saver'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogAtom } from '../../recoil'
-import { GreenCircularProgress } from '../../components/action/GreenCircularProgress'
-import { SxIconButton } from '../../components/sx/SxIconButton'
+import { GreenCircularProgress } from '../action/GreenCircularProgress'
+import { SxIconButton } from '../sx/SxIconButton'
 
 export function MinifyIcons() {
   const [minifyDialog, setMinifyDialog] = useRecoilState(minifyDialogAtom)

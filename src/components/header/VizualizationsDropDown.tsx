@@ -108,7 +108,8 @@ export function VizualizationsDropDown() {
         anchorEl={productsMenuRef.current}
         transition
         placement='bottom-start'
-        style={{ zIndex: 1200 }}>
+        // sx={{ zIndex: 1200 }}
+      >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps}>
             <Paper

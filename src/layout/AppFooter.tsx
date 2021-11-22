@@ -99,7 +99,7 @@ export function AppFooter() {
             <IconButton
               target='_blank'
               rel='noopener noreferrer'
-              href=''
+              href='https://github.com/AlfredMelson/recast'
               aria-label='github'
               title='GitHub'
               size='small'>
@@ -108,7 +108,7 @@ export function AppFooter() {
             <IconButton
               target='_blank'
               rel='noopener noreferrer'
-              href=''
+              href='https://twitter.com/vmelson'
               aria-label='twitter'
               title='Twitter'
               size='small'>

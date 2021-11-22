@@ -6,12 +6,13 @@ export const Navigation = styled('nav')(({ theme }) => ({
     margin: 0,
     listStyle: 'none',
     display: 'flex',
+    flexDirection: 'row',
   },
   '& li': {
     ...theme.typography.body2,
     fontWeight: 600,
     '& > a, & > div': {
-      display: 'inline-block',
+      display: 'block',
       color: theme.palette.text.secondary,
       textDecoration: 'none',
       padding: theme.spacing(1),

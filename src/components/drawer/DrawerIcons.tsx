@@ -13,8 +13,8 @@ import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import saveAs from 'file-saver'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { localEditorTextAtom, minifyDialogAtom, validJsonAtom } from '../../recoil'
-import { GreenCircularProgress } from '../../components/action/GreenCircularProgress'
-import { SxIconButton } from '../../components/sx/SxIconButton'
+import { GreenCircularProgress } from '../action/GreenCircularProgress'
+import { SxIconButton } from '../sx/SxIconButton'
 
 export function DrawerIcons() {
   const resetList = useResetRecoilState(localEditorTextAtom)

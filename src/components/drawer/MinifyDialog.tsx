@@ -11,7 +11,7 @@ import UpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { Link as MuiLink } from '@mui/material'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogAtom } from '../../recoil'
-import SvgJsonLogo from '../../components/icons/SvgJsonLogo'
+import SvgJsonLogo from '../icons/SvgJsonLogo'
 import { HeaderStyle } from '../../layout'
 import { MinifyIcons } from './MinifyIcons'
 

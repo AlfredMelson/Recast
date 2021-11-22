@@ -39,8 +39,10 @@ export function HeaderNavBar() {
   return (
     <Navigation>
       <ul ref={navRef} onKeyDown={handleLeftRightArrow}>
-        <li style={{ cursor: 'pointer' }}>
-          <MuiLink onClick={() => setDataDrawerOpen(true)}>Load-in JSON</MuiLink>
+        <li>
+          <MuiLink sx={{ cursor: 'pointer' }} onClick={() => setDataDrawerOpen(true)}>
+            JSON
+          </MuiLink>
         </li>
         <VizualizationsDropDown />
         <li>

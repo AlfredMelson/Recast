@@ -53,6 +53,9 @@ body {
   scroll-behavior: smooth;
 }
 
+body::-webkit-scrollbar {
+  width: 0;
+}
 /**
  * Render the `main` element consistently in IE.
  */
