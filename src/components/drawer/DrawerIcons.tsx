@@ -1,64 +1,66 @@
-import { useState, useEffect, useRef } from 'react'
+import * as React from 'react'
 import Box from '@mui/material/Box'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DownloadIcon from '@mui/icons-material/Download'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
 import ClipboardJS from 'clipboard'
-import Tooltip from '@mui/material/Tooltip'
 import CheckIcon from '@mui/icons-material/Check'
 import { green } from '@mui/material/colors'
-import Stack from '@mui/material/Stack'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import saveAs from 'file-saver'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { localEditorTextAtom, minifyDialogAtom, validJsonAtom } from '../../recoil'
+import { ButtonGroup } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { GreenCircularProgress } from '../action/GreenCircularProgress'
-import { SxIconButton } from '../sx/SxIconButton'
+import { SxToolTipIconButton } from '../sx/SxIconButton'
 
 export function DrawerIcons() {
-  const resetList = useResetRecoilState(localEditorTextAtom)
-
-  const setMinifyDialog = useSetRecoilState(minifyDialogAtom)
-
+  //retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
-
-  const validJson = useRecoilValue(validJsonAtom)
-
-  const [jsonCopy, setJsonCopy] = useState(false)
-  const [loadingCopy, setLoadingCopy] = useState(false)
-  const [successCopy, setSuccessCopy] = useState(false)
-  const copyTimer = useRef<number>()
+  //clear localStorage value
+  const resetList = useResetRecoilState(localEditorTextAtom)
+  //set dialog with minified json visability
+  const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
+  //useRef to avoid re-renders during button interactions
+  const interactionTimer = React.useRef<number>()
+  //useEffect to handle side effect proceeding button interactions
+  React.useEffect(() => {
+    return () => {
+      //cancel the timeout established by setTimeout()
+      clearTimeout(interactionTimer.current)
+    }
+  }, [])
+  //useState hooks to handle button transitions during copy
+  const [jsonCopy, setJsonCopy] = React.useState(false)
+  const [loadingCopy, setLoadingCopy] = React.useState(false)
+  const [successCopy, setSuccessCopy] = React.useState(false)
 
   const handleJsonCopy = () => {
     const clipboard = new ClipboardJS(localEditorText)
     if (!loadingCopy) {
       setSuccessCopy(false)
       setLoadingCopy(true)
-      clipboard.on('success', function (e) {
+      clipboard.on('success', function (event) {
         setJsonCopy(true)
-        e.clearSelection()
+        event.clearSelection()
       })
-      copyTimer.current = window.setTimeout(() => {
+      //set state to success
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(true)
         setLoadingCopy(false)
       }, 1000)
-      copyTimer.current = window.setTimeout(() => {
+      //restore state to pre-interaction
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(false)
       }, 4000)
       return
     }
   }
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(copyTimer.current)
-    }
-  }, [])
-
-  const [loadingDownload, setLoadingDownload] = useState(false)
-  const [successDownload, setSuccessDownload] = useState(false)
-  const downloadTimer = useRef<number>()
+  //useState hooks to handle button transitions during download interaction
+  const [loadingDownload, setLoadingDownload] = React.useState(false)
+  const [successDownload, setSuccessDownload] = React.useState(false)
 
   const handleDownload = () => {
     if (!loadingDownload) {
@@ -67,87 +69,89 @@ export function DrawerIcons() {
       const downloadJson = (text: string) => {
         try {
           const blob = new Blob([text], { type: 'application/json' + ';charset=utf-8' })
-          saveAs(blob, 'jsonNavigator.json')
+          saveAs(blob, 'recast.json')
         } catch (t) {
           this.emit('error', 'download', 'Downloading not supported on this browser.')
         }
       }
       downloadJson(localEditorText)
-      downloadTimer.current = window.setTimeout(() => {
+      //set state to success
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(true)
         setLoadingDownload(false)
       }, 1000)
-      downloadTimer.current = window.setTimeout(() => {
+      //restore state to pre-interation
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(false)
       }, 4000)
     }
   }
 
-  useEffect(() => {
-    return () => {
-      clearTimeout(downloadTimer.current)
-    }
-  }, [])
+  //set visability of user json drawer
+  const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (
-    <Stack direction='row' sx={{ visibility: validJson ? 'visible' : 'hidden' }}>
-      <Box sx={{ position: 'relative' }}>
-        <Tooltip
-          title={jsonCopy ? 'Copied' : 'Copy json'}
-          TransitionProps={{ onExited: () => setJsonCopy(false) }}>
-          <SxIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={handleJsonCopy}>
-            {!loadingCopy && !successCopy ? (
-              <ContentCopyIcon />
-            ) : !successCopy ? (
-              <ContentCopyIcon sx={{ color: 'transparent' }} />
-            ) : (
-              <CheckIcon sx={{ color: green[500] }} />
-            )}
-          </SxIconButton>
-        </Tooltip>
+    <ButtonGroup sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', pl: 1 }}>
+        <SxToolTipIconButton
+          tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}
+          disabled={localEditorText.length === 0 ? true : false}
+          onClick={handleJsonCopy}
+          transitionProps={{ onExited: () => setJsonCopy(false) }}>
+          {!loadingCopy && !successCopy ? (
+            <ContentCopyIcon />
+          ) : !successCopy ? (
+            <ContentCopyIcon sx={{ color: 'transparent' }} />
+          ) : (
+            <CheckIcon sx={{ color: green[500] }} />
+          )}
+        </SxToolTipIconButton>
         {loadingCopy && <GreenCircularProgress />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip title={'Download json'}>
-          <SxIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={handleDownload}>
-            {!loadingDownload && !successDownload ? (
-              <DownloadIcon />
-            ) : !successDownload ? (
-              <DownloadIcon sx={{ color: 'transparent' }} />
-            ) : (
-              <CheckIcon sx={{ color: green[500] }} />
-            )}
-          </SxIconButton>
-        </Tooltip>
+        <SxToolTipIconButton
+          tooltipTitle={'Download json'}
+          disabled={localEditorText.length === 0 ? true : false}
+          onClick={handleDownload}>
+          {!loadingDownload && !successDownload ? (
+            <DownloadIcon />
+          ) : !successDownload ? (
+            <DownloadIcon sx={{ color: 'transparent' }} />
+          ) : (
+            <CheckIcon sx={{ color: green[500] }} />
+          )}
+        </SxToolTipIconButton>
         {loadingDownload && <GreenCircularProgress />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip title={'Delete json'}>
-          <SxIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={() => {
-              resetList()
-            }}>
-            {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
-          </SxIconButton>
-        </Tooltip>
+        <SxToolTipIconButton
+          tooltipTitle={'Delete json'}
+          disabled={localEditorText.length === 0 ? true : false}
+          onClick={() => {
+            resetList()
+          }}>
+          {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
+        </SxToolTipIconButton>
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip title={'Minify json'}>
-          <SxIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            size='small'
-            onClick={() => {
-              setMinifyDialog(true)
-            }}>
-            <UnfoldLessIcon />
-          </SxIconButton>
-        </Tooltip>
+        <SxToolTipIconButton
+          tooltipTitle={'Minify json'}
+          disabled={localEditorText.length === 0 ? true : false}
+          onClick={() => {
+            setMinifyDialogOpen(true)
+          }}>
+          <UnfoldLessIcon />
+        </SxToolTipIconButton>
       </Box>
-    </Stack>
+      <Box sx={{ position: 'relative', pr: 1 }}>
+        <SxToolTipIconButton
+          tooltipTitle={'Close'}
+          onClick={() => {
+            setDataDrawerOpen(false)
+          }}>
+          <CloseIcon />
+        </SxToolTipIconButton>
+      </Box>
+    </ButtonGroup>
   )
 }

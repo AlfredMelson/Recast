@@ -1,20 +1,20 @@
 import Box, { BoxProps } from '@mui/material/Box'
 import Button from '@mui/material/Button'
-// import KeyboardArrowRightRounded from '@mui/icons-material/KeyboardArrowRightRounded'
 import { Link } from '@mui/material'
 import { useSetRecoilState } from 'recoil'
 import { dataDrawerOpenAtom } from '../../recoil'
 
-interface GetStartedButtonTypes {
+interface LoadInJsonButtonTypes {
   size: 'small' | 'medium' | 'large'
   variant: 'contained' | 'outlined' | 'text'
 }
 
-export default function GetStartedButton({
+export default function LoadInJsonButton({
   size,
   variant,
   ...props
-}: GetStartedButtonTypes & BoxProps) {
+}: LoadInJsonButtonTypes & BoxProps) {
+  //set visability of user json drawer
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (

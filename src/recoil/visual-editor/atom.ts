@@ -9,14 +9,14 @@ export const controlsHiddenAtom = atom<boolean>({
 // const setControlsHidden = useSetRecoilState(controlsHiddenAtom)
 // const controlsHidden  = useRecoilValue(controlsHiddenAtom)
 
-export const minifyDialogAtom = atom<boolean>({
-  key: 'minifyDialog',
+export const minifyDialogOpenAtom = atom<boolean>({
+  key: 'minifyDialogOpen',
   default: false,
 })
 
-// const [minifyDialog, setMinifyDialog] = useRecoilState(minifyDialogAtom)
-// const setMinifyDialog = useSetRecoilState(minifyDialogAtom)
-// const minifyDialog  = useRecoilValue(minifyDialogAtom)
+// const [minifyDialogOpen, setMinifyDialogOpen] = useRecoilState(minifyDialogOpenAtom)
+// const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
+// const minifyDialogOpen  = useRecoilValue(minifyDialogOpenAtom)
 
 export const minifiedTextAtom = atom<string>({
   key: 'minifiedText',

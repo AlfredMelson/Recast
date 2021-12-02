@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { SxButton } from '../../components/sx/SxButton'
+import { SxButton } from '../../components/sx/'
 import { processedDataIdsAtom, treeViewExpansionAtom } from '../../recoil/tree-view/atom'
 
 export function Navigation() {

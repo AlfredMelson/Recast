@@ -1,9 +1,8 @@
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-// import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import Stack from '@mui/material/Stack'
-import SvgJsonLogo from '../components/icons/SvgJsonLogo'
+import { SvgJsonLogo } from '../components/icons'
 import {
   DrawerHeaderNavBar,
   HeaderNavBar,
@@ -15,11 +14,13 @@ import { DrawerIcons } from '../components/drawer/DrawerIcons'
 import { HeaderStyle } from './HeaderStyle'
 
 export function AppHeader() {
+  //set visability of user json drawer
   const [dataDrawerOpen, setDataDrawerOpen] = useRecoilState(dataDrawerOpenAtom)
+
   return (
     <HeaderStyle>
       <Box sx={{ display: { xs: 'none', md: 'initial' } }}>
-        <Container disableGutters>
+        <Container disableGutters maxWidth='xl'>
           <Stack direction='row'>
             <SvgJsonLogo
               aria-label='Go to homepage'

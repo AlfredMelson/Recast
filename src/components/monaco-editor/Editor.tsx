@@ -2,14 +2,14 @@ import MonacoEditor from '@monaco-editor/react'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import * as React from 'react'
 import { debounce } from 'lodash'
-import { Box } from '@mui/system'
+import Box from '@mui/system/Box'
 import { localEditorTextAtom, monacoThemeAtom } from '../../recoil'
 
 export function Editor() {
+  //retrieve editor theme value
   const monacoTheme = useRecoilValue(monacoThemeAtom)
-
+  //retrieve localStorage value
   const [localEditorText, setLocalEditorText] = useRecoilState(localEditorTextAtom)
-
   // load from local storage
   React.useEffect(() => {
     const localStorageJson = localStorage.getItem('localJsonText')
@@ -17,7 +17,7 @@ export function Editor() {
       setLocalEditorText(localStorageJson)
     }
   }, [setLocalEditorText])
-
+  //lodash debounced() delays updating local text file for 750ms after user edit
   const onChange = debounce(
     React.useCallback(
       newValue => {
@@ -35,10 +35,6 @@ export function Editor() {
         value={localEditorText}
         language='json'
         theme={monacoTheme}
-        // onChange={revisedText => {
-        //   setLocalEditorText(revisedText)
-        //   console.log('revisedText', revisedText)
-        // }}
         onChange={onChange}
         options={{
           acceptSuggestionOnCommitCharacter: true,
@@ -64,7 +60,6 @@ export function Editor() {
           formatOnPaste: true,
           formatOnType: true,
           hideCursorInOverviewRuler: false,
-          // highlightActiveIndentGuide: true,
           links: true,
           minimap: {
             enabled: true,
@@ -80,7 +75,6 @@ export function Editor() {
           readOnly: false,
           renderControlCharacters: false,
           renderFinalNewline: true,
-          // renderIndentGuides: true,
           renderLineHighlight: 'all',
           renderWhitespace: 'none',
           revealHorizontalRightPadding: 30,

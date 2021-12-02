@@ -1,13 +1,12 @@
-import { JsonObject } from './JsonObject'
-import { JsonNumber, JsonString, JsonBool, JsonArray, JsonFunction } from '.'
-interface DataTypeState {
+import { JsonNumber, JsonString, JsonBoolean, JsonArray, JsonFunction, JsonObject } from '.'
+interface DataTypeProps {
   dataType: string | undefined
   dataValue: any
   dataKey: string | number
-  onEdit: (newValue: any, key: string | number) => void
-  onDelete: (key: number | string) => void
+  onDelete?: (key: number | string) => void
+  onEdit?: (newValue: any, key: string | number) => void
 }
-export function DataTypes({ dataType, dataValue, dataKey, onEdit, onDelete }: DataTypeState) {
+export function DataType({ dataType, dataValue, dataKey, onEdit, onDelete }: DataTypeProps) {
   const renderValue = () => {
     switch (dataType) {
       case 'number':
@@ -41,7 +40,7 @@ export function DataTypes({ dataType, dataValue, dataKey, onEdit, onDelete }: Da
           />
         )
       case 'boolean':
-        return <JsonBool value={dataValue} dataKey={dataKey} dataType={dataType} />
+        return <JsonBoolean value={dataValue} dataKey={dataKey} dataType={dataType} />
       case 'array':
         return <JsonArray value={dataValue} dataKey={dataKey} dataType={dataType} />
       case 'function':

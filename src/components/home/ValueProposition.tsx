@@ -39,13 +39,15 @@ const content = [
 
 const ValueProposition = () => {
   return (
-    <Container sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
+    <Container
+      sx={{
+        py: { xs: 4, sm: 6, md: 8 },
+      }}>
       <SectionHeadline
         overline='Developer experience'
         title={
-          <Typography variant='h2' sx={{ mt: 1, mb: { xs: 2, sm: 4 }, maxWidth: 500 }}>
-            Powerful tools to help you build <GradientText>all types</GradientText> of user
-            interfaces
+          <Typography variant='h2' sx={{ mt: 1, mb: { xs: 2, sm: 4 }, maxWidth: 380 }}>
+            Tools to assist your work with <GradientText>json</GradientText> data
           </Typography>
         }
       />

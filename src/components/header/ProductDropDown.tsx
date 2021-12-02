@@ -7,13 +7,12 @@ import IconImage from '../icons/IconImage'
 import { SubMenu } from './SubMenuStyle'
 import { getNextIndex, MENUID } from './headerFunctions'
 
-export function VizualizationsDropDown() {
+export function ProductDropDown() {
   const [subMenuOpen, setSubMenuOpen] = React.useState(false)
-
   const [subMenuIndex, setSubMenuIndex] = React.useState<number | null>(null)
-
+  //useRef to avoid re-renders during button interactions
   const navRef = React.useRef<HTMLUListElement | null>(null)
-
+  //useRef to avoid re-renders during menu interactions
   const productsMenuRef = React.useRef<HTMLDivElement | null>(null)
 
   React.useEffect(() => {
@@ -45,6 +44,7 @@ export function VizualizationsDropDown() {
       }
     }
   }
+
   function handleKeyDown(event: React.KeyboardEvent) {
     if (event.key === 'Tab' && !event.shiftKey) {
       event.preventDefault()
@@ -89,6 +89,7 @@ export function VizualizationsDropDown() {
       setSubMenuIndex(null)
     }
   }
+
   return (
     <li
       onMouseOver={() => setSubMenuOpen(true)}
@@ -96,20 +97,18 @@ export function VizualizationsDropDown() {
       onMouseOut={() => setSubMenuOpen(false)}
       onBlur={() => setSubMenuOpen(false)}>
       <div
-        tabIndex={0}
         ref={productsMenuRef}
         aria-haspopup
         aria-expanded={subMenuOpen ? 'true' : 'false'}
         onKeyDown={handleKeyDown}>
-        Vizualizations
+        Products
       </div>
       <Popper
+        style={{ zIndex: 1600 }}
         open={subMenuOpen}
         anchorEl={productsMenuRef.current}
         transition
-        placement='bottom-start'
-        // sx={{ zIndex: 1200 }}
-      >
+        placement='bottom-start'>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps}>
             <Paper
@@ -153,10 +152,10 @@ export function VizualizationsDropDown() {
                 <li>
                   <SubMenu
                     id={MENUID[1]}
-                    href='/jsjsontree'
+                    href='/apijson'
                     icon={<IconImage name='visual-b' />}
-                    name='Json Tree'
-                    description='Expand and collapse the JSON tree.'
+                    name='API Json'
+                    description='Json from an API'
                     onKeyDown={handleKeyDown}
                   />
                 </li>

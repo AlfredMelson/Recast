@@ -1,4 +1,4 @@
-import { styled, alpha } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 
 export const HeaderStyle = styled('header')(({ theme }) => ({
   position: 'sticky',
@@ -10,7 +10,5 @@ export const HeaderStyle = styled('header')(({ theme }) => ({
     theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : theme.palette.grey[100]
   }`,
   backgroundColor:
-    theme.palette.mode === 'dark'
-      ? alpha(theme.palette.primaryDark[800], 0.72)
-      : 'rgba(255,255,255,0.72)',
+    theme.palette.mode === 'dark' ? theme.palette.primaryDark[850] : 'rgba(255,255,255,0.72)',
 }))

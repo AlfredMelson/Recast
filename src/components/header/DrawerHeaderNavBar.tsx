@@ -4,13 +4,14 @@ import { Link as MuiLink } from '@mui/material'
 import { dataDrawerOpenAtom, localEditorTextAtom } from '../../recoil'
 import { Navigation } from './NavigationStyle'
 import { getNextIndex } from './headerFunctions'
-import { VizualizationsDropDown } from './VizualizationsDropDown'
+import { ProductDropDown } from './ProductDropDown'
 
 export function DrawerHeaderNavBar() {
+  //retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
-
+  //set visability of user json drawer
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
-
+  //useRef to avoid re-renders during button interactions
   const navRef = React.useRef<HTMLUListElement | null>(null)
 
   function handleLeftRightArrow(
@@ -45,7 +46,7 @@ export function DrawerHeaderNavBar() {
             Instructions
           </MuiLink>
         </li>
-        {localEditorText && <VizualizationsDropDown />}
+        {localEditorText && <ProductDropDown />}
       </ul>
     </Navigation>
   )

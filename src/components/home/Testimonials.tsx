@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography'
 import UserFeedbacks from './UserFeedbacks'
 
 const data = [
-  { title: '2.3M', metadata: 'Weekly downloads on npm' },
-  { title: '70.2k', metadata: 'Stars on GitHub' },
-  { title: '2.2k', metadata: 'Open-source contributors' },
-  { title: '14.1k', metadata: 'Followers on Twitter' },
+  { title: '0', metadata: 'Weekly downloads on npm' },
+  { title: '1', metadata: 'Stars on GitHub' },
+  { title: '1', metadata: 'Open-source contributor' },
+  { title: '99', metadata: 'Followers on Twitter' },
 ]
 
 export function MuiStats() {
@@ -50,7 +50,7 @@ const Testimonials = () => {
     rootMargin: '500px',
   })
   return (
-    <Box ref={ref} sx={{ bgcolor: 'primaryDark.700' }}>
+    <Box ref={ref} sx={{ bgcolor: '#001E3C' }}>
       <Container sx={{ py: { xs: 4, md: 8 } }}>
         <Grid container spacing={3} alignItems='center'>
           <Grid item xs={12} md={6} sx={{ zIndex: 1, minHeight: { xs: 400, sm: 307, lg: 355 } }}>

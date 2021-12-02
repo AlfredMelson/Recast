@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 import { dataDrawerOpenAtom } from '../../recoil'
 import { Navigation } from './NavigationStyle'
 import { getNextIndex } from './headerFunctions'
-import { VizualizationsDropDown } from './VizualizationsDropDown'
+import { ProductDropDown } from './ProductDropDown'
 
 export function HeaderNavBar() {
+  //set visability of user json drawer
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   const navRef = React.useRef<HTMLUListElement | null>(null)
@@ -44,7 +45,7 @@ export function HeaderNavBar() {
             JSON
           </MuiLink>
         </li>
-        <VizualizationsDropDown />
+        <ProductDropDown />
         <li>
           <Link to='/'>Instructions</Link>
         </li>

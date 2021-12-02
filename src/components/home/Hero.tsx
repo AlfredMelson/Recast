@@ -20,77 +20,7 @@ import ThemeDatePicker from '../showcase/ThemeDatePicker'
 import ThemeTabs from '../showcase/ThemeTabs'
 import ViewToggleButton from '../showcase/ViewToggleButton'
 import ThemeButton from '../showcase/ThemeButton'
-import GetStartedButton from './GetStartedButton'
-
-// function createLoading(sx: BoxProps['sx']) {
-//   return () => (
-//     <Box
-//       sx={{
-//         borderRadius: 1,
-//         bgcolor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.800' : 'grey.100'),
-//         ...sx,
-//       }}
-//     />
-//   )
-// }
-
-// const TaskCard = dynamic(() => import('../showcase/TaskCard'), {
-//   ssr: false,
-//   loading: createLoading({ width: 360, height: 280 }),
-// })
-// const PlayerCard = dynamic(() => import('../showcase/PlayerCard'), {
-//   ssr: false,
-//   loading: createLoading({ width: 360, height: 146 }),
-// })
-// const ThemeToggleButton = dynamic(() => import('../showcase/ThemeToggleButton'), {
-//   ssr: false,
-//   loading: createLoading({ width: 360, height: 48 }),
-// })
-// const ThemeSwitch = dynamic(() => import('../showcase/ThemeSwitch'), {
-//   ssr: false,
-//   loading: createLoading({ width: 108, height: 20 }),
-// })
-// const ThemeChip = dynamic(() => import('../showcase/ThemeChip'), {
-//   ssr: false,
-//   loading: createLoading({ width: 212, height: 32 }),
-// })
-// const ThemeTimeline = dynamic(() => import('../showcase/ThemeTimeline'), {
-//   ssr: false,
-//   loading: createLoading({ width: 360, height: 180 }),
-// })
-// const FolderTable = dynamic(() => import('../showcase/FolderTable'), {
-//   ssr: false,
-//   loading: createLoading({ width: 360, height: 212 }),
-// })
-
-// const ThemeDatePicker = dynamic(() => import('../showcase/ThemeDatePicker'), {
-//   ssr: false,
-//   loading: createLoading({ width: { md: 360, xl: 400 }, height: 260 }),
-// })
-// const ThemeTabs = dynamic(() => import('../showcase/ThemeTabs'), {
-//   ssr: false,
-//   loading: createLoading({ width: { md: 360, xl: 400 }, height: 48 }),
-// })
-// const ThemeSlider = dynamic(() => import('../showcase/ThemeSlider'), {
-//   ssr: false,
-//   loading: createLoading({ width: { md: 124, xl: 164 }, height: 214 }),
-// })
-// const ViewToggleButton = dynamic(() => import('../showcase/ViewToggleButton'), {
-//   ssr: false,
-//   loading: createLoading({ width: 196, height: 40 }),
-// })
-// const ThemeButton = dynamic(() => import('../showcase/ThemeButton'), {
-//   ssr: false,
-//   loading: createLoading({ width: 196, height: 154 }),
-// })
-// const ThemeAccordion = dynamic(() => import('../showcase/ThemeAccordion'), {
-//   ssr: false,
-//   loading: createLoading({ width: { md: 360, xl: 400 }, height: 171 }),
-// })
-// const NotificationCard = dynamic(() => import('../showcase/NotificationCard'), {
-//   ssr: false,
-//   loading: createLoading({ width: { md: 360, xl: 400 }, height: 146 }),
-// })
+import LoadInJsonButton from './LoadInJsonButton'
 
 export default function Hero() {
   const frame = React.useRef<null | HTMLDivElement>(null)
@@ -130,8 +60,8 @@ export default function Hero() {
             JavaScript Object Notation, a lightweight data-interchange format that is easy for
             humans to understand, for machines to parse and is programming language independent.
           </Typography>
-          <GetStartedButton
-            size='large'
+          <LoadInJsonButton
+            size='medium'
             variant='outlined'
             sx={{ justifyContent: { xs: 'center', md: 'flex-start' } }}
           />

@@ -29,7 +29,7 @@ export function Format_for_treeview(data, arr) {
  * @private
  */
 export function TreePath(pathNodes: any[]) {
-  console.log('TreePath pathNodes', pathNodes)
+  // console.log('TreePath pathNodes', pathNodes)
 
   if (pathNodes && pathNodes.length) {
     const pathObjs = []
@@ -39,7 +39,7 @@ export function TreePath(pathNodes: any[]) {
         node: node,
         children: [],
       }
-      console.log('TreePath pathObj', pathObj)
+      // console.log('TreePath pathObj', pathObj)
       if (node.childs && node.childs.length) {
         node.childs.forEach(childNode => {
           pathObj.children.push({
@@ -49,7 +49,7 @@ export function TreePath(pathNodes: any[]) {
         })
       }
       pathObjs.push(pathObj)
-      console.log('TreePath pathObjs', pathObjs)
+      // console.log('TreePath pathObjs', pathObjs)
     })
   }
 

@@ -4,7 +4,7 @@ import { green } from '@mui/material/colors'
 export function GreenCircularProgress() {
   return (
     <CircularProgress
-      size={24}
+      size={20}
       sx={{
         color: green[500],
         position: 'absolute',

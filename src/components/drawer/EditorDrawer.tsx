@@ -8,14 +8,15 @@ import { MinifyDialog } from './MinifyDialog'
 
 export function EditorDrawer() {
   const appColorMode = useRecoilValue(appColorModeAtom)
+  //set editor theme value
   const setMonacoTheme = useSetRecoilState(monacoThemeAtom)
-
   React.useEffect(() => {
     const theme = appColorMode === 'dark' ? 'cobalt' : 'katzenmilch'
     EditorTheme(theme).then(() => setMonacoTheme(theme))
   }, [appColorMode, setMonacoTheme])
-
+  //set visability of user json drawer
   const [dataDrawerOpen, setDataDrawerOpen] = useRecoilState(dataDrawerOpenAtom)
+
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
       event &&

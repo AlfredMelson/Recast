@@ -1,46 +1,32 @@
 import * as React from 'react'
-import Stack from '@mui/material/Stack'
-import Tooltip from '@mui/material/Tooltip'
 import Box from '@mui/material/Box'
 import CloseIcon from '@mui/icons-material/Close'
 import CheckIcon from '@mui/icons-material/Check'
 import DownloadIcon from '@mui/icons-material/Download'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { green } from '@mui/material/colors'
 import ClipboardJS from 'clipboard'
 import { saveAs } from 'file-saver'
-import { localEditorTextAtom, minifiedTextAtom, minifyDialogAtom } from '../../recoil'
+import { ButtonGroup } from '@mui/material'
+import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { GreenCircularProgress } from '../action/GreenCircularProgress'
-import { SxIconButton } from '../sx/SxIconButton'
+import { SxToolTipIconButton } from '../sx/SxIconButton'
 
 export function MinifyIcons() {
-  const [minifyDialog, setMinifyDialog] = useRecoilState(minifyDialogAtom)
+  //set dialog with minified json visability
+  const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
+  //retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
+  //store minified json in recoil
   const [minifiedText, setMinifiedText] = useRecoilState(minifiedTextAtom)
-
-  const handleClose = () => {
-    setMinifyDialog(false)
-  }
-
-  const descriptionElementRef = React.useRef<HTMLElement>(null)
-  React.useEffect(() => {
-    if (minifyDialog) {
-      const { current: descriptionElement } = descriptionElementRef
-      if (descriptionElement !== null) {
-        descriptionElement.focus()
-      }
-    }
-  }, [minifyDialog])
-
   // minify json
   React.useEffect(() => {
     async function Minify(text) {
       if (typeof JSON === 'undefined' || null) {
         return text
       } else {
-        const results =
-          (await typeof text) === 'string' && JSON.stringify(JSON.parse(text), null, 0)
+        const results = typeof text === 'string' && JSON.stringify(JSON.parse(text), null, 0)
         setMinifiedText(results)
         return
       }
@@ -48,12 +34,22 @@ export function MinifyIcons() {
     Minify(localEditorText)
   }, [localEditorText, setMinifiedText])
 
+  //useRef to avoid re-renders during button interactions
+  const interactionTimer = React.useRef<number>()
+  //useEffect to handle side effect proceeding button interactions
+  React.useEffect(() => {
+    return () => {
+      //cancel the timeout established by setTimeout()
+      clearTimeout(interactionTimer.current)
+    }
+  }, [])
+
+  //useState hooks to handle button transitions during copy interaction
   const [minifiedCopy, setMinifiedCopy] = React.useState(false)
   const [loadingCopy, setLoadingCopy] = React.useState(false)
   const [successCopy, setSuccessCopy] = React.useState(false)
-  const copyTimer = React.useRef<number>()
 
-  const handleClick = () => {
+  const handleMinifyCopy = () => {
     const clipboard = new ClipboardJS('#copy-minified-to-clipboard')
     if (!loadingCopy) {
       setSuccessCopy(false)
@@ -62,27 +58,23 @@ export function MinifyIcons() {
         setMinifiedCopy(true)
         e.clearSelection()
       })
-      copyTimer.current = window.setTimeout(() => {
+      //set state to success
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(true)
         setLoadingCopy(false)
       }, 1000)
-      copyTimer.current = window.setTimeout(() => {
+      //restore state to pre-interaction
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(false)
       }, 4000)
     }
   }
 
-  React.useEffect(() => {
-    return () => {
-      clearTimeout(copyTimer.current)
-    }
-  }, [])
-
+  //useState hooks to handle button transitions during download interaction
   const [loadingDownload, setLoadingDownload] = React.useState(false)
   const [successDownload, setSuccessDownload] = React.useState(false)
-  const downloadTimer = React.useRef<number>()
 
-  const handleDownload = () => {
+  const handleMinifiedDownload = () => {
     if (!loadingDownload) {
       setSuccessDownload(false)
       setLoadingDownload(true)
@@ -95,62 +87,60 @@ export function MinifyIcons() {
         }
       }
       downloadJson(minifiedText)
-      downloadTimer.current = window.setTimeout(() => {
+      //set state to success
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(true)
         setLoadingDownload(false)
       }, 1000)
-      downloadTimer.current = window.setTimeout(() => {
+      //restore state to pre-interation
+      interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(false)
       }, 4000)
     }
   }
 
-  React.useEffect(() => {
-    return () => {
-      clearTimeout(downloadTimer.current)
-    }
-  }, [])
-
   return (
-    <Stack direction='row'>
-      <Box sx={{ position: 'relative' }}>
-        <Tooltip
-          title={minifiedCopy ? 'Copied' : 'Copy minified json'}
-          TransitionProps={{ onExited: () => setMinifiedCopy(false) }}>
-          <SxIconButton
-            id='copy-minified-to-clipboard'
-            data-clipboard-target='#minified-json-data'
-            onClick={handleClick}>
-            {!loadingCopy && !successCopy ? (
-              <ContentCopyIcon />
-            ) : !successCopy ? (
-              <ContentCopyIcon sx={{ color: 'transparent' }} />
-            ) : (
-              <CheckIcon sx={{ color: green[500] }} />
-            )}
-          </SxIconButton>
-        </Tooltip>
+    <ButtonGroup>
+      <Box sx={{ position: 'relative', pl: 1 }}>
+        <SxToolTipIconButton
+          tooltipTitle={minifiedCopy ? 'Copied' : 'Copy minified json'}
+          transitionProps={{ onExited: () => setMinifiedCopy(false) }}
+          id='copy-minified-to-clipboard'
+          data-clipboard-target='#minified-json-data'
+          onClick={handleMinifyCopy}>
+          {!loadingCopy && !successCopy ? (
+            <ContentCopyIcon />
+          ) : !successCopy ? (
+            <ContentCopyIcon sx={{ color: 'transparent' }} />
+          ) : (
+            <CheckIcon sx={{ color: green[500] }} />
+          )}
+        </SxToolTipIconButton>
         {loadingCopy && <GreenCircularProgress />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <Tooltip title={minifiedCopy ? 'Downloaded' : 'Download minified json'}>
-          <SxIconButton onClick={handleDownload}>
-            {!loadingDownload && !successDownload ? (
-              <DownloadIcon />
-            ) : !successDownload ? (
-              <DownloadIcon sx={{ color: 'transparent' }} />
-            ) : (
-              <CheckIcon sx={{ color: green[500] }} />
-            )}
-          </SxIconButton>
-        </Tooltip>
+        <SxToolTipIconButton
+          tooltipTitle={minifiedCopy ? 'Downloaded' : 'Download minified json'}
+          onClick={handleMinifiedDownload}>
+          {!loadingDownload && !successDownload ? (
+            <DownloadIcon />
+          ) : !successDownload ? (
+            <DownloadIcon sx={{ color: 'transparent' }} />
+          ) : (
+            <CheckIcon sx={{ color: green[500] }} />
+          )}
+        </SxToolTipIconButton>
         {loadingDownload && <GreenCircularProgress />}
       </Box>
-      <Tooltip title={'Close'}>
-        <SxIconButton onClick={handleClose}>
+      <Box sx={{ position: 'relative', pr: 1 }}>
+        <SxToolTipIconButton
+          tooltipTitle={'Close'}
+          onClick={() => {
+            setMinifyDialogOpen(false)
+          }}>
           <CloseIcon />
-        </SxIconButton>
-      </Tooltip>
-    </Stack>
+        </SxToolTipIconButton>
+      </Box>
+    </ButtonGroup>
   )
 }

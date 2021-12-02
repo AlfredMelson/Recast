@@ -88,7 +88,8 @@ const greyDark = {
   600: '#173A5E',
   700: '#132F4C', // contrast 13.64:1
   // 800: '#001E3C',
-  800: '#141414',
+  800: '#202124',
+  850: '#141414',
   900: '#000000',
 }
 const grey = {
@@ -207,9 +208,10 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       },
     },
     shape: {
-      borderRadius: 10,
+      borderRadius: '4px',
     },
     spacing: 10,
+    spacingIcons: 2,
     typography: {
       fontFamily: 'var(--text-font-family)',
       fontWeightExtraBold: 800,
@@ -283,11 +285,6 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
 export function muiThemedComponents(theme: Theme) {
   return {
     components: {
-      MuiSvgIcon: {
-        defaultProps: {
-          fontSize: 'small',
-        },
-      },
       MuiButtonBase: {
         defaultProps: {
           disableTouchRipple: true,
@@ -357,6 +354,22 @@ export function muiThemedComponents(theme: Theme) {
           },
         ],
       },
+      MuiButtonGroup: {
+        defaultProps: {
+          variant: 'outlined',
+          TransitionComponent: Fade,
+        },
+        styleOverrides: {
+          root: {
+            backgroundColor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.primaryDark[900]
+                : theme.palette.grey[100],
+            borderRadius: '4px',
+            boxShadow: 0,
+          },
+        },
+      },
       MuiContainer: {
         styleOverrides: {
           root: {
@@ -375,6 +388,11 @@ export function muiThemedComponents(theme: Theme) {
                 ? theme.palette.primaryDark[700]
                 : theme.palette.grey[100],
           },
+        },
+      },
+      MuiIcon: {
+        defaultProps: {
+          fontSize: 'small',
         },
       },
       MuiLink: {
@@ -425,6 +443,11 @@ export function muiThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiSvgIcon: {
+        defaultProps: {
+          fontSize: 'small',
+        },
+      },
       MuiTab: {
         defaultProps: {
           disableTouchRipple: true,
@@ -445,11 +468,17 @@ export function muiThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiTextField: {
+        defaultProps: {
+          variant: 'outlined',
+        },
+      },
       MuiToggleButtonGroup: {
         styleOverrides: {
           root: {
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : '#fff',
+            border: 'none',
+            // backgroundColor:
+            //   theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : '#fff',
           },
         },
       },
@@ -478,8 +507,8 @@ export function muiThemedComponents(theme: Theme) {
       MuiTooltip: {
         styleOverrides: {
           tooltip: {
-            paddingTop: 7,
-            paddingBottom: 7,
+            paddingTop: 4,
+            paddingBottom: 4,
           },
         },
         defaultProps: {

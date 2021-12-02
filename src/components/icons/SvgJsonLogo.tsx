@@ -1,14 +1,8 @@
 import RootSvg, { RootSvgProps } from './RootSvg'
 
-export default function SvgJsonLogo(props: RootSvgProps) {
+export function SvgJsonLogo(props: RootSvgProps) {
   return (
-    <RootSvg
-      xmlns='http://www.w3.org/2000/svg'
-      // width={32}
-      // height={32}
-      viewBox='0 0 194 46'
-      fill='none'
-      {...props}>
+    <RootSvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 194 46' fill='none' {...props}>
       <path
         fillRule='evenodd'
         clipRule='evenodd'

@@ -2,7 +2,7 @@ import { loader } from '@monaco-editor/react'
 
 const monacoThemes = { cobalt: 'AD', katzenmilch: 'Katzenmilch' }
 
-loader.init().then(monaco => console.log('here is the monaco isntance:', monaco))
+// loader.init().then(monaco => console.log('here is the monaco isntance:', monaco))
 
 const EditorTheme = theme => {
   return new Promise<void>(res => {

@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import KeyboardArrowDownRounded from '@mui/icons-material/KeyboardArrowDownRounded'
 import { Button, ClickAwayListener } from '@mui/material'
-import SvgHamburgerMenu from '../icons/SvgHamburgerMenu'
+import { SvgHamburgerMenu } from '../icons'
 
 const Anchor = styled('a')<{ component?: React.ElementType; noLinkStyle?: boolean }>(
   ({ theme }) => ({

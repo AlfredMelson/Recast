@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper'
 import KeyboardArrowRightRounded from '@mui/icons-material/KeyboardArrowRightRounded'
 import GradientText from '../typography/GradientText'
 import SectionHeadline from '../typography/SectionHeadline'
-import GetStartedButton from './GetStartedButton'
+import LoadInJsonButton from './LoadInJsonButton'
 
 export default function StartToday() {
   return (
@@ -19,7 +19,7 @@ export default function StartToday() {
           }
           description='Try it for yourself, and share with us your thoughts.'
         />
-        <GetStartedButton size='medium' variant='outlined' />
+        <LoadInJsonButton size='medium' variant='outlined' />
       </Grid>
       <Grid item xs={12} sm={6} md={6} container spacing={2}>
         <Grid item xs={12} md={6}>
