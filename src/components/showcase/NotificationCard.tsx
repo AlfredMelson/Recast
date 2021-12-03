@@ -158,8 +158,7 @@ export default function NotificationCard() {
               <Typography
                 id='demo-notification-card-messenger-name'
                 color='text.secondary'
-                variant='caption'
-              >
+                variant='caption'>
                 Angela Erickson
               </Typography>
               <Typography color='text.secondary' variant='caption'>

@@ -5,7 +5,7 @@ import { Box } from '@mui/system'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { TreeView } from '@mui/lab'
-import { SxIconButtonApi } from '../../components/sx/SxIconButtonApi'
+import { SxIBApiInteraction } from '../../components/sx/SxIconButton'
 import { CloseSquare, MinusSquare, PlusSquare } from '../../components/icons'
 import { DataType, getType } from './data-types'
 
@@ -52,9 +52,9 @@ export const DataDetails: React.FC<DataDetailsProps> = ({
   return (
     <Box>
       <Stack direction='row'>
-        <SxIconButtonApi onClick={toggleJsonView}>
+        <SxIBApiInteraction onClick={toggleJsonView}>
           {col ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
-        </SxIconButtonApi>
+        </SxIBApiInteraction>
         {col ? (
           <Typography>
             {'root : {'} {col && currentData ? Object.keys(currentData).length : ''}

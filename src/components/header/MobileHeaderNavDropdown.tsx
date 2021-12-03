@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Collapse from '@mui/material/Collapse'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
 import KeyboardArrowDownRounded from '@mui/icons-material/KeyboardArrowDownRounded'
-import { Button, ClickAwayListener } from '@mui/material'
+import { styled } from '@mui/material/styles'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { SvgHamburgerMenu } from '../icons'
 
 const Anchor = styled('a')<{ component?: React.ElementType; noLinkStyle?: boolean }>(

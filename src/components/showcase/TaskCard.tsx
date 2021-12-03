@@ -88,8 +88,7 @@ export default function TaskCard() {
             display: 'flex',
             flexDirection: 'column',
             p: 2.5,
-          }}
-        >
+          }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <ScheduleRounded fontSize='inherit' />
             <Typography color='text.secondary' variant='caption' sx={{ ml: 0.5, mt: '1px' }}>
@@ -104,8 +103,7 @@ export default function TaskCard() {
                 bgcolor: '#fff',
                 borderRadius: 0.75,
                 p: '2px',
-              }}
-            >
+              }}>
               <CodeRounded color='primary' />
             </Box>
             <Typography variant='h6' component='div' sx={{ mt: 1.5 }}>

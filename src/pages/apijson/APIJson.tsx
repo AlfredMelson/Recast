@@ -8,57 +8,39 @@ import Container from '@mui/material/Container'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   apiDataAtom,
-  apiFullAtom,
-  apiSelectorAtom,
+  apiFullResponseAtom,
+  userToggledApiAtom,
   userSubmittedUrlAtom,
-} from '../../recoil/api-json/atom'
-import { SxToggle } from '../../components/sx/SxToggle'
+} from '../../recoil/api-json'
+import { DataToggle, Searchbar } from '../../components/api-json'
 import { DataDetails } from './DataDetails'
-import { Searchbar } from './SearchBar'
 import { FullDetails } from './FullDetails'
 
 export const APIJson = () => {
   const [showError, setShowError] = React.useState(false)
 
   // const userQuery = useRecoilValue(userQuerySelector)
-
-  const apiSelector = useRecoilValue(apiSelectorAtom)
-  console.log('apiSelector', apiSelector)
-
-  //resource stored as Recoil default
+  // state of user toggled api response
+  const userToggledApi = useRecoilValue(userToggledApiAtom)
+  // state when user submits user entered url
   const userSubmittedUrl = useRecoilValue(userSubmittedUrlAtom)
-  //api response stored in recoil
+  // state of response.data returned from the api call
   const [apiData, setApiData] = useRecoilState(apiDataAtom)
-  //api response stored in recoil
-  const [apiFull, setApiFull] = useRecoilState(apiFullAtom)
-  //api request
+  // state of full response returned from the api call
+  const [apiFullResponse, setApiFullResponse] = useRecoilState(apiFullResponseAtom)
+  // api request
   React.useEffect(() => {
     const apiDataFetch = async () => {
       const response = await axios.get(userSubmittedUrl)
+      // const response = await fetch(userSubmittedUrl).then(res => res.json())
       setApiData(response.data)
-      setApiFull(response)
+      setApiFullResponse(response)
     }
-    //test for url before invoking apiDataFetch
+    // test for url before invoking apiDataFetch
     if (userSubmittedUrl !== undefined) {
       apiDataFetch()
     }
-  }, [userSubmittedUrl, setApiData, setApiFull])
-
-  //update current resource
-  // const updateDataSource = async URL => {
-  //   try {
-  //     if (URL) {
-  //       const response = await axios.get(URL)
-  //       setApiData(response.data)
-  //     }
-  //   } catch (e) {
-  //     console.log(e)
-  //     setShowError(true)
-  //     setTimeout(() => {
-  //       setShowError(false)
-  //     }, 4000)
-  //   }
-  // }
+  }, [userSubmittedUrl, setApiData, setApiFullResponse])
 
   const handleClose = (_event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -66,9 +48,9 @@ export const APIJson = () => {
     }
     setShowError(false)
   }
+
   // show error message
   // const sendErrorMessage = () => {
-
   //   if (showError)
   //     return (
   //       <Snackbar
@@ -91,6 +73,7 @@ export const APIJson = () => {
   //     )
   //   return
   // }
+
   // edit a property from the object
   const EditObj = (newValue, key) => {
     const newObj = apiData
@@ -120,18 +103,16 @@ export const APIJson = () => {
             </Box>
           </Collapse>
         </Box>
-      </Container>
-      <Container maxWidth='xl'>
+
         {userSubmittedUrl !== undefined && (
           <React.Fragment>
             <Box sx={{ mb: 1 }}>
-              <SxToggle />
+              <DataToggle />
             </Box>
-
-            {apiSelector === 'data' ? (
+            {userToggledApi === 'data' ? (
               <DataDetails data={apiData} onDelete={DeleteObj} onEdit={EditObj} />
             ) : (
-              <FullDetails data={apiFull} />
+              <FullDetails data={apiFullResponse} />
             )}
           </React.Fragment>
         )}

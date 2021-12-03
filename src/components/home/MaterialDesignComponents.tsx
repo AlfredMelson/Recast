@@ -156,8 +156,7 @@ function Demo({
                 minHeight: 'initial',
                 fontWeight: 'medium',
               },
-            }}
-          >
+            }}>
             {control.values.map(value => (
               <Tab key={value} value={value} label={capitalize(value)} />
             ))}
@@ -425,8 +424,7 @@ export default function MaterialDesignComponents() {
           mb: 2,
           display: 'flex',
           justifyContent: { xs: 'flex-start', sm: 'flex-end' },
-        }}
-      >
+        }}>
         <StyledChip
           color='primary'
           label='Material Design'
@@ -452,8 +450,7 @@ export default function MaterialDesignComponents() {
               prop: 'size',
               values: ['small', 'medium', 'large'],
               defaultValue: 'medium',
-            }}
-          >
+            }}>
             <Button variant='contained' startIcon={<ShoppingCartRounded />}>
               Add to Cart
             </Button>
@@ -463,8 +460,7 @@ export default function MaterialDesignComponents() {
           <Demo
             theme={theme}
             name='Alert'
-            control={{ prop: 'variant', values: ['standard', 'filled', 'outlined'] }}
-          >
+            control={{ prop: 'variant', values: ['standard', 'filled', 'outlined'] }}>
             <Alert color='info'>Check out this alert!</Alert>
           </Demo>
         </div>
@@ -472,8 +468,7 @@ export default function MaterialDesignComponents() {
           <Demo
             theme={theme}
             name='Text Field'
-            control={{ prop: 'variant', values: ['outlined', 'standard', 'filled'] }}
-          >
+            control={{ prop: 'variant', values: ['outlined', 'standard', 'filled'] }}>
             <TextField id='material-design-textfield' label='Username' defaultValue='Ultraviolet' />
           </Demo>
         </div>
@@ -487,8 +482,7 @@ export default function MaterialDesignComponents() {
                 open={Boolean(anchor)}
                 anchorEl={anchor}
                 onClose={() => setAnchor(null)}
-                PaperProps={{ variant: 'outlined' }}
-              >
+                PaperProps={{ variant: 'outlined' }}>
                 <MenuItem>
                   <ListItemIcon>
                     <MailRounded />
@@ -520,8 +514,7 @@ export default function MaterialDesignComponents() {
                 '& .MuiTableBody-root > .MuiTableRow-root:last-of-type > .MuiTableCell-root': {
                   borderBottomWidth: 0,
                 },
-              }}
-            >
+              }}>
               <Table aria-label='demo table'>
                 <TableHead>
                   <TableRow>
@@ -550,16 +543,14 @@ export default function MaterialDesignComponents() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <Typography variant='body2' fontWeight='bold' sx={{ mb: 0.5 }}>
             Need more components?
           </Typography>
           <Typography
             variant='body2'
             color='text.secondary'
-            sx={{ mb: 0.5, maxWidth: 250, mx: 'auto' }}
-          >
+            sx={{ mb: 0.5, maxWidth: 250, mx: 'auto' }}>
             Check the documentation to see the details of every component!
           </Typography>
           <Button endIcon={<KeyboardArrowRightRounded />}>Get started</Button>

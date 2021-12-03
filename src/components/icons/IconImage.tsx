@@ -1,4 +1,4 @@
-import { useTheme, styled, Theme } from '@mui/material/styles'
+import { styled, useTheme, Theme } from '@mui/material/styles'
 import { SxProps } from '@mui/system'
 
 export type IconImageProps = {

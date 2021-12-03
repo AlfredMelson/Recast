@@ -1,10 +1,11 @@
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import { useRecoilState } from 'recoil'
-// import useMediaQuery from '@mui/material/useMediaQuery'
 import * as React from 'react'
+import Tooltip from '@mui/material/Tooltip'
 import { appColorModeAtom } from '../../recoil'
-import { SxIconButton } from '../sx/SxIconButton'
+import { SxIBColorMode } from '../sx/SxIconButton'
+// import useMediaQuery from '@mui/material/useMediaQuery'
 
 export function ThemeModeToggle() {
   const [appColorMode, setAppColorMode] = useRecoilState(appColorModeAtom)
@@ -22,8 +23,10 @@ export function ThemeModeToggle() {
   }
 
   return (
-    <SxIconButton onClick={handleChange}>
-      {appColorMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-    </SxIconButton>
+    <Tooltip title={appColorMode === 'dark' ? 'Light mode' : 'Dark mode'}>
+      <SxIBColorMode onClick={handleChange}>
+        {appColorMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </SxIBColorMode>
+    </Tooltip>
   )
 }

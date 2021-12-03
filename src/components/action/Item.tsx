@@ -82,8 +82,7 @@ export default function Item({
         display: 'flex',
         alignItems: 'center',
         ...props.sx,
-      }}
-    >
+      }}>
       <Box sx={{ mr: 2, lineHeight: 0 }}>{icon}</Box>
       <div>
         <Typography
@@ -91,8 +90,7 @@ export default function Item({
           color='text.primary'
           variant='body2'
           fontWeight='bold'
-          sx={{ display: 'block' }}
-        >
+          sx={{ display: 'block' }}>
           {title}
         </Typography>
         {description && (
@@ -101,8 +99,7 @@ export default function Item({
             color='text.secondary'
             variant='body2'
             fontWeight='regular'
-            sx={{ mt: 0.5 }}
-          >
+            sx={{ mt: 0.5 }}>
             {description}
           </Typography>
         )}

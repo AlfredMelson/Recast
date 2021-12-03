@@ -11,7 +11,8 @@ import { saveAs } from 'file-saver'
 import { ButtonGroup } from '@mui/material'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { GreenCircularProgress } from '../action/GreenCircularProgress'
-import { SxToolTipIconButton } from '../sx/SxIconButton'
+import { SxAppBarIconButton } from '../sx/SxIconButton'
+import { SxToolTip } from '../sx/SxToolTip'
 
 export function MinifyIcons() {
   //set dialog with minified json visability
@@ -101,45 +102,46 @@ export function MinifyIcons() {
 
   return (
     <ButtonGroup>
-      <Box sx={{ position: 'relative', pl: 1 }}>
-        <SxToolTipIconButton
-          tooltipTitle={minifiedCopy ? 'Copied' : 'Copy minified json'}
-          transitionProps={{ onExited: () => setMinifiedCopy(false) }}
-          id='copy-minified-to-clipboard'
-          data-clipboard-target='#minified-json-data'
-          onClick={handleMinifyCopy}>
-          {!loadingCopy && !successCopy ? (
-            <ContentCopyIcon />
-          ) : !successCopy ? (
-            <ContentCopyIcon sx={{ color: 'transparent' }} />
-          ) : (
-            <CheckIcon sx={{ color: green[500] }} />
-          )}
-        </SxToolTipIconButton>
-        {loadingCopy && <GreenCircularProgress />}
+      <Box sx={{ position: 'relative', pl: 0.5 }}>
+        <SxToolTip tooltipTitle={minifiedCopy ? 'Copied' : 'Copy minified json'}>
+          <SxAppBarIconButton
+            id='copy-minified-to-clipboard'
+            data-clipboard-target='#minified-json-data'
+            onClick={handleMinifyCopy}>
+            {!loadingCopy && !successCopy ? (
+              <ContentCopyIcon />
+            ) : !successCopy ? (
+              <ContentCopyIcon sx={{ color: 'transparent' }} />
+            ) : (
+              <CheckIcon sx={{ color: green[500] }} />
+            )}
+          </SxAppBarIconButton>
+        </SxToolTip>
+        {loadingCopy && <GreenCircularProgress size='20px' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTipIconButton
-          tooltipTitle={minifiedCopy ? 'Downloaded' : 'Download minified json'}
-          onClick={handleMinifiedDownload}>
-          {!loadingDownload && !successDownload ? (
-            <DownloadIcon />
-          ) : !successDownload ? (
-            <DownloadIcon sx={{ color: 'transparent' }} />
-          ) : (
-            <CheckIcon sx={{ color: green[500] }} />
-          )}
-        </SxToolTipIconButton>
-        {loadingDownload && <GreenCircularProgress />}
+        <SxToolTip tooltipTitle={minifiedCopy ? 'Downloaded' : 'Download minified json'}>
+          <SxAppBarIconButton onClick={handleMinifiedDownload}>
+            {!loadingDownload && !successDownload ? (
+              <DownloadIcon />
+            ) : !successDownload ? (
+              <DownloadIcon sx={{ color: 'transparent' }} />
+            ) : (
+              <CheckIcon sx={{ color: green[500] }} />
+            )}
+          </SxAppBarIconButton>
+        </SxToolTip>
+        {loadingDownload && <GreenCircularProgress size='20px' />}
       </Box>
-      <Box sx={{ position: 'relative', pr: 1 }}>
-        <SxToolTipIconButton
-          tooltipTitle={'Close'}
-          onClick={() => {
-            setMinifyDialogOpen(false)
-          }}>
-          <CloseIcon />
-        </SxToolTipIconButton>
+      <Box sx={{ position: 'relative', pr: 0.5 }}>
+        <SxToolTip tooltipTitle={'Close'}>
+          <SxAppBarIconButton
+            onClick={() => {
+              setMinifyDialogOpen(false)
+            }}>
+            <CloseIcon />
+          </SxAppBarIconButton>
+        </SxToolTip>
       </Box>
     </ButtonGroup>
   )

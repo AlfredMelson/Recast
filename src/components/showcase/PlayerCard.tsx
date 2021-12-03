@@ -108,15 +108,13 @@ export default function PlayerCard({ theme: externalTheme }: { theme?: Theme }) 
       <Fade in timeout={700}>
         <Card
           variant='outlined'
-          sx={{ p: 1, display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}
-        >
+          sx={{ p: 1, display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
           <Box
             sx={{
               display: 'flex',
               mb: { xs: 1, sm: 0 },
               justifyContent: { xs: 'center', sm: 'flex-start' },
-            }}
-          >
+            }}>
             <img
               alt='Beside Myself album cover'
               style={{ borderRadius: 5, objectFit: 'cover', width: '100%' }}
@@ -129,16 +127,14 @@ export default function PlayerCard({ theme: externalTheme }: { theme?: Theme }) 
             <Typography
               variant='body1'
               fontWeight={500}
-              sx={{ textAlign: { xs: 'center', sm: 'start' } }}
-            >
+              sx={{ textAlign: { xs: 'center', sm: 'start' } }}>
               Ultraviolet
             </Typography>
             <Typography
               component='div'
               variant='caption'
               color='text.secondary'
-              sx={{ textAlign: { xs: 'center', sm: 'start' } }}
-            >
+              sx={{ textAlign: { xs: 'center', sm: 'start' } }}>
               Basement • Beside Myself
             </Typography>
             <Box sx={{ mt: 2 }}>
@@ -148,8 +144,7 @@ export default function PlayerCard({ theme: externalTheme }: { theme?: Theme }) 
               <IconButton
                 aria-label={paused ? 'play' : 'pause'}
                 sx={{ mx: 2 }}
-                onClick={() => setPaused(val => !val)}
-              >
+                onClick={() => setPaused(val => !val)}>
                 {paused ? <PlayArrowRounded /> : <PauseRounded />}
               </IconButton>
               <IconButton aria-label='fast forward' disabled>

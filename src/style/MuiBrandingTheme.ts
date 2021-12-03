@@ -69,8 +69,8 @@ const blue = {
   200: '#A5D8FF',
   300: '#66B2FF',
   400: '#3399FF',
-  // main: '#007FFF', // contrast 3.83:1
-  main: '#262626', // contrast 3.83:1
+  // main: '#007FFF',
+  main: '#262626',
   500: '#007FFF',
   600: '#0072E5',
   700: '#0059B2',
@@ -86,23 +86,25 @@ const greyDark = {
   400: '#265D97',
   500: '#1E4976',
   600: '#173A5E',
-  700: '#132F4C', // contrast 13.64:1
+  700: '#132F4C',
   // 800: '#001E3C',
   800: '#202124',
   850: '#141414',
   900: '#000000',
 }
 const grey = {
-  50: '#F3F6F9',
-  100: '#EAEEF3',
-  200: '#E5E8EC',
-  300: '#D7DCE1',
-  400: '#BFC7CF',
-  500: '#AAB4BE',
-  600: '#7F8E9D',
-  700: '#46505A', // contrast 8.21:1
-  800: '#2F3A45', // contrast 11.58:1
-  900: '#20262D',
+  // 50: '#F3F6F9', // contrast
+  50: '#FFFFFF', // contrast
+  100: '#EAEEF3', // contrast
+  200: '#E5E8EC', // contrast
+  300: '#D7DCE1', // contrast
+  400: '#BFC7CF', // contrast
+  500: '#AAB4BE', // contrast
+  600: '#7F8E9D', // contrast
+  700: '#46505A', // contrast
+  800: '#2F3A45', // contrast
+  900: '#20262D', // contrast
+  950: '#000000', // contrast
 }
 
 export const getMetaThemeColor = (mode: 'light' | 'dark') => {
@@ -295,6 +297,12 @@ export function muiThemedComponents(theme: Theme) {
           disableElevation: true,
         },
         styleOverrides: {
+          textDecoration: 'none',
+          backgroundColor: 'transparent',
+          transition: 'all var(--transition-speed-fastest)',
+          '&:hover, &:focus': {
+            backgroundColor: 'transparent',
+          },
           sizeLarge: {
             padding: '1rem 1.25rem',
             ...theme.typography.body1,
@@ -357,6 +365,9 @@ export function muiThemedComponents(theme: Theme) {
       MuiButtonGroup: {
         defaultProps: {
           variant: 'outlined',
+          disableElevation: true,
+          disableFocusRipple: true,
+          disableRipple: true,
           TransitionComponent: Fade,
         },
         styleOverrides: {
@@ -383,16 +394,26 @@ export function muiThemedComponents(theme: Theme) {
       MuiDivider: {
         styleOverrides: {
           root: {
-            borderColor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[700]
-                : theme.palette.grey[100],
+            color: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
+            margin: theme.spacing(0.5, 1),
           },
         },
       },
       MuiIcon: {
         defaultProps: {
           fontSize: 'small',
+        },
+      },
+      MuiIconButton: {
+        styleOverrides: {
+          root: {
+            textDecoration: 'none',
+            backgroundColor: 'transparent',
+            transition: 'all var(--transition-speed-fastest)',
+            '&:hover, &:focus': {
+              backgroundColor: 'transparent',
+            },
+          },
         },
       },
       MuiLink: {
@@ -474,41 +495,48 @@ export function muiThemedComponents(theme: Theme) {
         },
       },
       MuiToggleButtonGroup: {
+        defaultProps: {
+          size: 'small',
+        },
         styleOverrides: {
           root: {
             border: 'none',
-            // backgroundColor:
-            //   theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : '#fff',
+            textDecoration: 'none',
+            backgroundColor: 'transparent',
+            '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
+              backgroundColor: 'transparent',
+            },
           },
         },
       },
       MuiToggleButton: {
         styleOverrides: {
           root: {
-            textTransform: 'none',
-            fontWeight: 600,
+            border: 'none',
+            textDecoration: 'none',
+            backgroundColor: 'transparent',
             color:
-              theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[700],
-            borderColor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[500]
-                : theme.palette.grey[200],
-            '&.Mui-selected': {
-              borderColor: `${theme.palette.primary[500]} !important`,
-              color: theme.palette.mode === 'dark' ? '#fff' : theme.palette.primary[500],
-              backgroundColor:
-                theme.palette.mode === 'dark'
-                  ? theme.palette.primary[800]
-                  : theme.palette.primary[50],
+              theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
+            '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
+              color:
+                theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
+              backgroundColor: 'transparent',
             },
           },
         },
       },
       MuiTooltip: {
         styleOverrides: {
+          tooltipArrow: {
+            backgroundColor:
+              theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[300],
+          },
           tooltip: {
             paddingTop: 4,
             paddingBottom: 4,
+            color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
+            backgroundColor:
+              theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[300],
           },
         },
         defaultProps: {

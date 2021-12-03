@@ -14,13 +14,14 @@ import { ButtonGroup } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { GreenCircularProgress } from '../action/GreenCircularProgress'
-import { SxToolTipIconButton } from '../sx/SxIconButton'
+import { SxAppBarIconButton } from '../sx/SxIconButton'
+import { SxToolTip } from '../sx/SxToolTip'
 
 export function DrawerIcons() {
   //retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
   //clear localStorage value
-  const resetList = useResetRecoilState(localEditorTextAtom)
+  const resetLocalEditorText = useResetRecoilState(localEditorTextAtom)
   //set dialog with minified json visability
   const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
   //useRef to avoid re-renders during button interactions
@@ -36,7 +37,7 @@ export function DrawerIcons() {
   const [jsonCopy, setJsonCopy] = React.useState(false)
   const [loadingCopy, setLoadingCopy] = React.useState(false)
   const [successCopy, setSuccessCopy] = React.useState(false)
-
+  // handle copy of json to clipboard
   const handleJsonCopy = () => {
     const clipboard = new ClipboardJS(localEditorText)
     if (!loadingCopy) {
@@ -91,66 +92,70 @@ export function DrawerIcons() {
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (
-    <ButtonGroup sx={{ position: 'relative' }}>
-      <Box sx={{ position: 'relative', pl: 1 }}>
-        <SxToolTipIconButton
-          tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}
-          disabled={localEditorText.length === 0 ? true : false}
-          onClick={handleJsonCopy}
-          transitionProps={{ onExited: () => setJsonCopy(false) }}>
-          {!loadingCopy && !successCopy ? (
-            <ContentCopyIcon />
-          ) : !successCopy ? (
-            <ContentCopyIcon sx={{ color: 'transparent' }} />
-          ) : (
-            <CheckIcon sx={{ color: green[500] }} />
-          )}
-        </SxToolTipIconButton>
-        {loadingCopy && <GreenCircularProgress />}
+    <ButtonGroup>
+      <Box sx={{ position: 'relative', pl: 0.5 }}>
+        <SxToolTip tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
+          <SxAppBarIconButton
+            disabled={localEditorText.length === 0 ? true : false}
+            onClick={handleJsonCopy}>
+            {!loadingCopy && !successCopy ? (
+              <ContentCopyIcon />
+            ) : !successCopy ? (
+              <ContentCopyIcon sx={{ color: 'transparent' }} />
+            ) : (
+              <CheckIcon sx={{ color: green[500] }} />
+            )}
+          </SxAppBarIconButton>
+        </SxToolTip>
+        {loadingCopy && <GreenCircularProgress size='20px' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTipIconButton
-          tooltipTitle={'Download json'}
-          disabled={localEditorText.length === 0 ? true : false}
-          onClick={handleDownload}>
-          {!loadingDownload && !successDownload ? (
-            <DownloadIcon />
-          ) : !successDownload ? (
-            <DownloadIcon sx={{ color: 'transparent' }} />
-          ) : (
-            <CheckIcon sx={{ color: green[500] }} />
-          )}
-        </SxToolTipIconButton>
-        {loadingDownload && <GreenCircularProgress />}
+        <SxToolTip tooltipTitle={'Download json'}>
+          <SxAppBarIconButton
+            disabled={localEditorText.length === 0 ? true : false}
+            onClick={handleDownload}>
+            {!loadingDownload && !successDownload ? (
+              <DownloadIcon />
+            ) : !successDownload ? (
+              <DownloadIcon sx={{ color: 'transparent' }} />
+            ) : (
+              <CheckIcon sx={{ color: green[500] }} />
+            )}
+          </SxAppBarIconButton>
+        </SxToolTip>
+        {loadingDownload && <GreenCircularProgress size='20px' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTipIconButton
-          tooltipTitle={'Delete json'}
-          disabled={localEditorText.length === 0 ? true : false}
-          onClick={() => {
-            resetList()
-          }}>
-          {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
-        </SxToolTipIconButton>
+        <SxToolTip tooltipTitle={'Delete json'}>
+          <SxAppBarIconButton
+            disabled={localEditorText.length === 0 ? true : false}
+            onClick={() => {
+              resetLocalEditorText()
+            }}>
+            {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
+          </SxAppBarIconButton>
+        </SxToolTip>
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTipIconButton
-          tooltipTitle={'Minify json'}
-          disabled={localEditorText.length === 0 ? true : false}
-          onClick={() => {
-            setMinifyDialogOpen(true)
-          }}>
-          <UnfoldLessIcon />
-        </SxToolTipIconButton>
+        <SxToolTip tooltipTitle={'Minify json'}>
+          <SxAppBarIconButton
+            disabled={localEditorText.length === 0 ? true : false}
+            onClick={() => {
+              setMinifyDialogOpen(true)
+            }}>
+            <UnfoldLessIcon />
+          </SxAppBarIconButton>
+        </SxToolTip>
       </Box>
-      <Box sx={{ position: 'relative', pr: 1 }}>
-        <SxToolTipIconButton
-          tooltipTitle={'Close'}
-          onClick={() => {
-            setDataDrawerOpen(false)
-          }}>
-          <CloseIcon />
-        </SxToolTipIconButton>
+      <Box sx={{ position: 'relative', pr: 0.5 }}>
+        <SxToolTip tooltipTitle={'Close'}>
+          <SxAppBarIconButton
+            onClick={() => {
+              setDataDrawerOpen(false)
+            }}>
+            <CloseIcon />
+          </SxAppBarIconButton>
+        </SxToolTip>
       </Box>
     </ButtonGroup>
   )

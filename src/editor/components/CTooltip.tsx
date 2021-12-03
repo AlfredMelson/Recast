@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import Divider from '@mui/material/Divider'
-import { Tooltip, tooltipClasses, TooltipProps } from '@mui/material'
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 
 const ExpandedTooltip = styled(({ ...props }: TooltipProps) => <Tooltip color='' {...props} />)(
   () => ({
@@ -10,7 +10,6 @@ const ExpandedTooltip = styled(({ ...props }: TooltipProps) => <Tooltip color=''
       backgroundColor: '#ffffff',
       color: 'rgba(0, 0, 0, 0.87)',
       maxWidth: 500,
-      // border: '1px solid #dadde9',
     },
   })
 )
@@ -34,14 +33,12 @@ export function CTooltip({ heading, body, footer, children }: CTooltipTypes) {
           <Typography variant='body1' color='inherit'>
             {body}
           </Typography>
-
           <Divider />
           <Typography variant='caption' color='inherit'>
             {footer}
           </Typography>
         </React.Fragment>
-      }
-    >
+      }>
       {children}
     </ExpandedTooltip>
   )

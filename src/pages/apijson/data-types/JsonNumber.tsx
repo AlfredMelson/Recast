@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import { purple } from '@mui/material/colors'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { SxIconButtonApi } from '../../../components/sx'
+import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
 import { DataLabel } from '.'
 
 interface JsonNumberProps {
@@ -50,15 +50,15 @@ export function JsonNumber({ value, dataKey, dataType, onEdit, onDelete }: JsonN
             defaultValue={currentValue}
             onChange={e => setCurrentValue(e.target.value)}
           />
-          <SxIconButtonApi onClick={editNumber}>
+          <SxIBApiInteraction onClick={editNumber}>
             <EditIcon />
-          </SxIconButtonApi>
-          <SxIconButtonApi onClick={deleteNumber}>
+          </SxIBApiInteraction>
+          <SxIBApiInteraction onClick={deleteNumber}>
             <DeleteIcon />
-          </SxIconButtonApi>
-          <SxIconButtonApi onClick={cancelNumberEdit}>
+          </SxIBApiInteraction>
+          <SxIBApiInteraction onClick={cancelNumberEdit}>
             <CancelIcon />
-          </SxIconButtonApi>
+          </SxIBApiInteraction>
         </Stack>
       ) : (
         <Stack direction='row' sx={{ color: purple[400] }} onClick={showEditInput}>

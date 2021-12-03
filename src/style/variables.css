@@ -182,18 +182,6 @@
   --space-12x: 48px;
   --space-16x: 64px;
 
-  --transition-speed-fastest: 0.2s ease;
-  --transition-speed-fast: 0.4s ease;
-  --transition-speed-average: 0.6s ease;
-  --transition-speed-slow: 0.8s ease;
-  --transition-speed-slowest: 1s ease;
-
-  --transition-delay-shortest: 0.1s;
-  --transition-delay-short: 0.2s;
-  --transition-delay-average: 0.3s;
-  --transition-delay-long: 0.4s;
-  --transition-delay-longest: 0.5s;
-
   --text-color-primary: #c9d1d9;
   --text-color-secondary: #8b949e;
   --text-color-tertiary: #8b949e;
@@ -237,4 +225,16 @@
   --text-weight-bold: 700;
   --text-weight-heavy: 800;
   --text-weight-black: 900;
+
+  --transition-speed-fastest: 0.2s ease-in-out;
+  --transition-speed-fast: 0.4s ease-in-out;
+  --transition-speed-average: 0.6s ease-in-out;
+  --transition-speed-slow: 0.8s ease-in-out;
+  --transition-speed-slowest: 1s ease-in-out;
+
+  --transition-delay-shortest: 0.1s;
+  --transition-delay-short: 0.2s;
+  --transition-delay-average: 0.3s;
+  --transition-delay-long: 0.4s;
+  --transition-delay-longest: 0.5s;
 }
