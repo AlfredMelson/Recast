@@ -4,8 +4,8 @@ import Typography from '@mui/material/Typography'
 import { blue } from '@mui/material/colors'
 import { useRecoilValue } from 'recoil'
 import Box from '@mui/material/Box'
-import { getType } from '../data-types'
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
+import { getType } from '../data-types/getProps'
 
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 // import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
@@ -25,7 +25,7 @@ export function DataLabel({ type }: TypeState) {
 interface TsDetailsProps {
   data?: { [key: string]: any } | undefined
 }
-export const TsDetails: React.FC<TsDetailsProps> = ({ data }: TsDetailsProps) => {
+const TsDetails: React.FC<TsDetailsProps> = ({ data }: TsDetailsProps) => {
   const [keys, setKeys] = React.useState<string[]>([])
 
   const [currentData, setCurrentData] = React.useState<TsDetailsProps['data']>({})
@@ -63,6 +63,7 @@ export const TsDetails: React.FC<TsDetailsProps> = ({ data }: TsDetailsProps) =>
     </Typography>
   )
 }
+export default TsDetails
 
 interface DataTypeProps {
   dataType: string | undefined

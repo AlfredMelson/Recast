@@ -1,13 +1,8 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { green } from '@mui/material/colors'
-import { DataLabel } from '.'
-
-interface JsonBooleanProps {
-  value: []
-  dataKey: string | number
-  dataType: string
-}
+import DataLabel from './DataLabel'
+import { JsonBooleanProps } from './getProps'
 
 export function JsonBoolean({ value, dataKey, dataType }: JsonBooleanProps) {
   return (

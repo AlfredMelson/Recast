@@ -2,13 +2,9 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { blue } from '@mui/material/colors'
-import { DataLabel } from '.'
+import DataLabel from './DataLabel'
+import { JsonUndefinedTypes } from './getProps'
 
-interface JsonUndefinedTypes {
-  value: []
-  dataKey: string | number
-  dataType: string
-}
 export function JsonUndefined({ value, dataKey, dataType }: JsonUndefinedTypes) {
   return (
     <Box sx={{ p: 1 }}>

@@ -1,13 +1,8 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { blue } from '@mui/material/colors'
-import { DataLabel } from '.'
-
-interface JsonFunctionProps {
-  value?: any
-  dataKey: string | number
-  dataType: string
-}
+import DataLabel from './DataLabel'
+import { JsonFunctionProps } from './getProps'
 
 export function JsonFunction({ dataKey, dataType }: JsonFunctionProps) {
   return (

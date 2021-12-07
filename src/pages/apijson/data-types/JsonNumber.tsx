@@ -7,15 +7,9 @@ import TextField from '@mui/material/TextField'
 import { purple } from '@mui/material/colors'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
-import { DataLabel } from '.'
+import DataLabel from './DataLabel'
+import { JsonNumberProps } from './getProps'
 
-interface JsonNumberProps {
-  value: number
-  dataKey: string | number
-  dataType: string
-  onEdit: (newVale: any, key: string | number) => void
-  onDelete: (dataKey: string | number) => void
-}
 export function JsonNumber({ value, dataKey, dataType, onEdit, onDelete }: JsonNumberProps) {
   const [currentValue, setCurrentValue] = React.useState<JsonNumberProps['value'] | any>()
   const [showInput, setShowInput] = React.useState(false)

@@ -40,10 +40,11 @@ export const SxDisabledIcon = styled(IconButton)(({ theme }) => ({
  * @return
  */
 export const SxTextfieldButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
+  color: theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800],
   backgroundColor: 'transparent',
   minWidth: theme.spacing(7),
-  // transition: 'all var(--transition-speed-fastest)',
+  transitionDuration: '600ms',
+  transitionProperty: 'color',
   '&:hover, &:focus': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
     backgroundColor: 'transparent',

@@ -7,15 +7,9 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import { green } from '@mui/material/colors'
 import { SxIconButton } from '../../../components/sx'
-import { DataLabel } from '.'
+import DataLabel from './DataLabel'
+import { JsonStringProps } from './getProps'
 
-interface JsonStringProps {
-  value: number
-  dataKey: string | number
-  dataType: string
-  onEdit: (newVale: any, key: string | number) => void
-  onDelete: (dataKey: string | number) => void
-}
 export function JsonString({ value, dataKey, dataType, onEdit, onDelete }: JsonStringProps) {
   const [currentValue, setCurrentValue] = React.useState<JsonStringProps['value'] | any>()
   const [showInput, setShowInput] = React.useState(false)

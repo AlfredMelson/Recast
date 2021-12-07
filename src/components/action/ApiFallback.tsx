@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
 import Skeleton from '@mui/material/Skeleton'
 
-export function ApiFallback() {
+export default function ApiFallback() {
   return (
     <Box sx={{ width: 300 }}>
       <Skeleton animation='wave' />

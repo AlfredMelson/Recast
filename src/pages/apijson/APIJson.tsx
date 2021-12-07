@@ -11,19 +11,21 @@ import {
   userSubmittedUrlAtom,
   apiFullResponseAtom,
   userQuerySelector,
+  apiResponseHeadersAtom,
 } from '../../recoil/api-json/atom'
-import { DataToggle, Searchbar } from '../../components/api-json'
-// import { ApiFallback } from '../../components/action/ApiFallback'
-import DownloadInfo from '../../components/action/DownloadInfo'
-import { EditRequest } from './display/EditRequest'
-import { FullRequest } from './display/FullRequest'
-import { DataRequest } from './display/DataRequest'
-import { TsDetails } from './display/TsDetails'
+import ApiFallback from '../../components/action/ApiFallback'
+import Searchbar from '../../components/api-json/SearchBar'
+import DataToggle from '../../components/api-json/DataToggle'
+import DataResponse from './display/DataResponse'
+import EditResponse from './display/EditResponse'
+import FullRequest from './display/FullRequest'
+import DataHeaders from './display/DataHeaders'
+import { TsInterface } from './display/TsInterface'
 // import Alert from '@mui/material/Alert'
 // import Collapse from '@mui/material/Collapse'
 // import Snackbar from '@mui/material/Snackbar'
 
-export const APIJson = () => {
+export default function APIJson() {
   // const [showError, setShowError] = React.useState(false)
   // state of user toggled api response
   const userToggledApi = useRecoilValue(userToggledApiAtom)
@@ -33,20 +35,20 @@ export const APIJson = () => {
   const [apiData, setApiData] = useRecoilState(apiDataAtom)
   // state of full response returned from the api call
   const [apiFullResponse, setApiFullResponse] = useRecoilState(apiFullResponseAtom)
+  // state of response.headers returned from the api call
+  const [apiResponseHeaders, setApiResponseHeaders] = useRecoilState(apiResponseHeadersAtom)
   // api request
   React.useEffect(() => {
     const apiDataFetch = async () => {
       const response = await axios.get(userSubmittedUrl)
-      console.log('AXIOS response', response)
-      // const response = await fetch(userSubmittedUrl).then(res => res.json())
-      // setApiData(response.data)
-      setApiFullResponse(response)
+      // console.log('AXIOS response', response)
+      setApiResponseHeaders(response.headers)
     }
     // test for url before invoking apiDataFetch
     if (userSubmittedUrl !== undefined) {
       apiDataFetch()
     }
-  }, [userSubmittedUrl, setApiData, setApiFullResponse])
+  }, [userSubmittedUrl, setApiData, setApiFullResponse, setApiResponseHeaders])
 
   // state of query
   const userQuery = useRecoilValue(userQuerySelector)
@@ -54,7 +56,7 @@ export const APIJson = () => {
   React.useEffect(() => {
     const apiDataFetch = async () => {
       const response = await userQuery
-      console.log('RECOIL response', response)
+      // console.log('RECOIL response', response)
       if (response !== undefined) {
         setApiData(response)
         // setApiFullResponse(response)
@@ -142,16 +144,17 @@ export const APIJson = () => {
   }
 
   return (
-    <Box sx={{ py: 1, background: '#1F2428', height: '100vh' }}>
-      <Container maxWidth='lg'>
-        <Box>
-          <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
-            https://random-data-api.com/api/users/random_user
-          </Typography>
-        </Box>
-        <Box sx={{ my: 2 }}>
-          <Searchbar />
-          {/* <Collapse in={showError}>
+    <React.Suspense fallback={<ApiFallback />}>
+      <Box sx={{ py: 1, background: '#1F2428', height: '100vh' }}>
+        <Container maxWidth='lg'>
+          <Box>
+            <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+              https://random-data-api.com/api/users/random_user
+            </Typography>
+          </Box>
+          <Box sx={{ my: 2 }}>
+            <Searchbar />
+            {/* <Collapse in={showError}>
             <Box sx={{ mt: 1, mb: 2 }}>
               <Alert
                 variant='outlined'
@@ -163,54 +166,72 @@ export const APIJson = () => {
               </Alert>
             </Box>
           </Collapse> */}
-        </Box>
+          </Box>
 
-        {/* <Box>
+          {/* <Box>
           
         </Box> */}
-        {userSubmittedUrl !== undefined && (
-          <React.Fragment>
-            <DataToggle />
-            <Box
-              sx={{
-                overflow: 'hidden',
-                flexGrow: 1,
-                '&::-webkit-scrollbar': {
-                  display: 'none',
-                },
-                '& pre': {
-                  bgcolor: 'transparent !important',
-                  position: 'relative',
-                  zIndex: 1,
+          {userSubmittedUrl !== undefined && (
+            <React.Fragment>
+              <DataToggle />
+              <Box
+                sx={{
+                  overflow: 'hidden',
+                  flexGrow: 1,
                   '&::-webkit-scrollbar': {
                     display: 'none',
                   },
-                },
-              }}>
-              <Box sx={{ position: 'relative' }}>
-                <Paper
-                  sx={{
-                    p: 3,
-                    borderRadius: '0  4px 4px 4px',
-                    background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-                    // bgcolor: theme =>
-                    //   theme.palette.mode === 'dark'
-                    //     ? theme.palette.greyDark[900]
-                    //     : theme.palette.grey[50],
-                  }}>
-                  {userToggledApi === 'data' && <DataRequest data={apiData} />}
+                  '& pre': {
+                    bgcolor: 'transparent !important',
+                    position: 'relative',
+                    zIndex: 1,
+                    '&::-webkit-scrollbar': {
+                      display: 'none',
+                    },
+                  },
+                }}>
+                <Box sx={{ position: 'relative' }}>
+                  {userToggledApi === 'data' && <DataResponse data={apiData} />}
                   {userToggledApi === 'edit' && (
-                    <EditRequest data={apiData} onDelete={DeleteObj} onEdit={EditObj} />
+                    <Paper
+                      sx={{
+                        p: 3,
+                        borderRadius: '0  4px 4px 4px',
+                        background: theme =>
+                          theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff',
+                      }}>
+                      <EditResponse data={apiData} onDelete={DeleteObj} onEdit={EditObj} />
+                    </Paper>
                   )}
-                  {userToggledApi === 'ts' && <TsDetails data={apiData} />}
-                  {userToggledApi === 'full' && <FullRequest data={apiFullResponse} />}
-                  {userToggledApi === 'ts' && <DownloadInfo appeared={true} />}
-                </Paper>
+                  {userToggledApi === 'ts' && <TsInterface data={apiData} />}
+                  {userToggledApi === 'full' && (
+                    <Paper
+                      sx={{
+                        p: 3,
+                        borderRadius: '0  4px 4px 4px',
+                        background: theme =>
+                          theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff',
+                      }}>
+                      <FullRequest data={apiFullResponse} />
+                    </Paper>
+                  )}
+                  {userToggledApi === 'headers' && (
+                    <Paper
+                      sx={{
+                        p: 3,
+                        borderRadius: '0  4px 4px 4px',
+                        background: theme =>
+                          theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff',
+                      }}>
+                      <DataHeaders data={apiResponseHeaders} />
+                    </Paper>
+                  )}
+                </Box>
               </Box>
-            </Box>
-          </React.Fragment>
-        )}
-      </Container>
-    </Box>
+            </React.Fragment>
+          )}
+        </Container>
+      </Box>
+    </React.Suspense>
   )
 }

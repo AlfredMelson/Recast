@@ -7,7 +7,7 @@ import { ToggleButton } from '@mui/material'
 import { userToggledApiAtom } from '../../recoil/api-json/atom'
 import { SvgJsonLogo } from '../icons/SvgTsLogo'
 
-export function DataToggle() {
+export default function DataToggle() {
   // state of user toggled api response
   const [userToggledApi, setUserToggledApi] = useRecoilState(userToggledApiAtom)
 
@@ -17,7 +17,6 @@ export function DataToggle() {
   ) => {
     //enforce that one button is active
     if (newResponse !== null) {
-      console.log('newResponse:', newResponse)
       setUserToggledApi(newResponse)
     }
   }
@@ -45,6 +44,29 @@ export function DataToggle() {
         }}>
         <Typography variant='body2'>Edit response</Typography>
       </Paper>
+
+      <Paper
+        component={ToggleButton}
+        value='full'
+        aria-label='full response'
+        sx={{
+          minWidth: '124px',
+          border: 'none',
+          borderRadius: '4px 4px 0 0',
+        }}>
+        <Typography variant='body2'>Full response</Typography>
+      </Paper>
+      <Paper
+        component={ToggleButton}
+        value='headers'
+        aria-label='response headers'
+        sx={{
+          minWidth: '124px',
+          border: 'none',
+          borderRadius: '4px 4px 0 0',
+        }}>
+        <Typography variant='body2'>Api Headers</Typography>
+      </Paper>
       <Paper
         component={ToggleButton}
         value='ts'
@@ -56,17 +78,6 @@ export function DataToggle() {
         }}>
         <SvgJsonLogo />
         <Typography variant='body2'> interface</Typography>
-      </Paper>
-      <Paper
-        component={ToggleButton}
-        value='full'
-        aria-label='full response'
-        sx={{
-          minWidth: '124px',
-          border: 'none',
-          borderRadius: '4px 4px 0 0',
-        }}>
-        <Typography variant='body2'>Full response</Typography>
       </Paper>
     </ToggleButtonGroup>
   )

@@ -1,9 +1,9 @@
 import Typography from '@mui/material/Typography'
 
-interface TypeState {
+interface DataLabelProps {
   type: string
 }
-export function DataLabel({ type }: TypeState) {
+export default function DataLabel({ type }: DataLabelProps) {
   return (
     <Typography variant='code' sx={{ mr: 1, color: 'gray' }}>
       {type}

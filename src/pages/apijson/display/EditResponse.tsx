@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import * as React from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Box } from '@mui/system'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
-import { DataType, getType } from '../data-types'
+import DataSort from '../data-types/DataSort'
+import { getType } from '../data-types/getProps'
 
-interface EditRequestProps {
+interface EditResponseProps {
   onEdit: (newValue: any, key: string | number) => void
   onDelete: (key: number | string) => void
   data?: { [key: string]: any } | undefined
 }
-export const EditRequest: React.FC<EditRequestProps> = ({
-  data,
-  onDelete,
-  onEdit,
-}: EditRequestProps) => {
-  const [col, setCol] = useState(false)
+export default function EditResponse({ data, onDelete, onEdit }: EditResponseProps) {
+  const [col, setCol] = React.useState(false)
 
-  const [keys, setKeys] = useState<string[]>([])
+  const [keys, setKeys] = React.useState<string[]>([])
 
-  const [currentData, setCurrentData] = useState<EditRequestProps['data']>({})
+  const [currentData, setCurrentData] = React.useState<EditResponseProps['data']>({})
 
-  useEffect(() => {
+  React.useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
     setKeys(newkeys)
     setCurrentData(data)
@@ -36,7 +33,7 @@ export const EditRequest: React.FC<EditRequestProps> = ({
   const renderData = () => {
     return keys.map(key => {
       return (
-        <DataType
+        <DataSort
           key={key}
           dataType={currentData ? getType(currentData[key]) : ''}
           dataValue={currentData ? currentData[key] : ''}

@@ -202,7 +202,7 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       },
     },
     shape: {
-      borderRadius: '4px',
+      borderRadius: 1,
     },
     spacing: 10,
     spacingIcons: 2,
@@ -275,8 +275,8 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       code: {
         display: 'block',
         fontFamily: 'var(--code-font-family)',
-        fontSize: theme.typography.pxToRem(15),
-        lineHeight: 1.55,
+        fontSize: theme.typography.pxToRem(14),
+        lineHeight: 1.7,
         letterSpacing: 0,
       },
     },

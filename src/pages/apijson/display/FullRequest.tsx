@@ -5,12 +5,12 @@ import { green, blue, red } from '@mui/material/colors'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { SxDataIconButton } from '../../../components/sx'
-import { getType } from '../data-types'
+import { getType } from '../data-types/getProps'
 
 interface FullRequestProps {
   data?: { [key: string]: any } | undefined
 }
-export const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestProps) => {
+const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestProps) => {
   const [keys, setKeys] = React.useState<string[]>([])
 
   const [currentData, setCurrentData] = React.useState<FullRequestProps['data']>({})
@@ -35,6 +35,7 @@ export const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestPro
   }
   return <div>{renderData()}</div>
 }
+export default FullRequest
 
 interface FullResponseProps {
   dataType: string | undefined

@@ -24,7 +24,7 @@ import { SxTextfieldButton } from '../sx'
 import { GreenCircularProgress } from '../action/GreenCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
 
-export function Searchbar() {
+export default function Searchbar() {
   // user entered api url stored in recoil
   const [userTypedUrl, setUserTypedUrl] = useRecoilState(userTypedUrlAtom)
   // state when user submits user entered url
@@ -87,10 +87,7 @@ export function Searchbar() {
   }
   // value of data fetch
   const apiData = useRecoilValue(apiDataAtom)
-  // console.log('apiData', apiData)
-  // console.log('userTypedUrl', userTypedUrl)
-  // https://random-data-api.com/api/users/random_user
-  //
+
   return (
     <Paper
       sx={{
@@ -123,11 +120,11 @@ export function Searchbar() {
               <Typography variant='body2'>
                 {Object.getOwnPropertyNames(apiData).length === 0 ? (
                   <FadeDelay delay={400}>
-                    <span>Call Api</span>
+                    <span>Send Request</span>
                   </FadeDelay>
                 ) : (
                   <FadeDelay delay={400}>
-                    <span>Refresh</span>
+                    <span>Refetch</span>
                   </FadeDelay>
                 )}
               </Typography>

@@ -1,12 +1,18 @@
 import { JsonNumber, JsonString, JsonBoolean, JsonArray, JsonFunction, JsonObject } from '.'
-interface DataTypeProps {
+interface DataSortProps {
   dataType: string | undefined
   dataValue: any
   dataKey: string | number
   onDelete?: (key: number | string) => void
   onEdit?: (newValue: any, key: string | number) => void
 }
-export function DataType({ dataType, dataValue, dataKey, onEdit, onDelete }: DataTypeProps) {
+export default function DataSort({
+  dataType,
+  dataValue,
+  dataKey,
+  onEdit,
+  onDelete,
+}: DataSortProps) {
   const renderValue = () => {
     switch (dataType) {
       case 'number':

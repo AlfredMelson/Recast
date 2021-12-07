@@ -3,16 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './style/global.css'
 import './style/variables.css'
 import { Layout } from './layout'
-import { DeepDive, Development, HomePage, APIJson } from './pages'
+import { DeepDive, Development, HomePage } from './pages'
 import { NoMatch } from './pages/no-match/NoMatch'
 import Hero from './pages/tree-view/Hero'
 import LoadingTest from './components/loading/LoadingTest'
+import APIJson from './pages/apijson/APIJson'
 
 // Route path='*' element={<NoMatch />} handles all unaccounted routes
 
 const App: React.FC = () => {
   return (
-    <React.Suspense fallback={<LoadingTest />}>
+    <React.Suspense fallback={<>...</>}>
       <Router>
         <Routes>
           <Route path='/' element={<Layout />}>

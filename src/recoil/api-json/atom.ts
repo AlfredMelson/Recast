@@ -22,15 +22,11 @@ export const userQuerySelector = selector({
   key: 'userQuery',
   get: async ({ get }) => {
     const userSubmittedUrl = get(userSubmittedUrlAtom)
-
-    // console.log('userSubmittedUrl', userSubmittedUrl)
-
     if (userSubmittedUrl === undefined) {
       return
     } else {
       const urlData = await fetch(userSubmittedUrl).then(response => response.json())
-
-      console.log('urlData: ', urlData)
+      // console.log('urlData: ', urlData)
       return urlData
     }
   },
@@ -113,8 +109,25 @@ export const apiFullResponseAtom = atom({
 })
 
 /**
+ * apiResponseHeadersAtom represents the state of response.headers returned from the api call
+ * @param {Record<string, unknown>}
+ * @return {Object} a writeable RecoilState object
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
+ *
+ * Hooks to manage state changes and notify components subscribing to re-render:
+ * const [apiResponseHeaders, setApiResponseHeaders] = useRecoilState(apiResponseHeadersAtom)
+ * const setApiResponseHeaders  = useSetRecoilState(apiResponseHeadersAtom)
+ * const apiResponseHeaders  = useRecoilValue(apiResponseHeadersAtom)
+ * const resetApiResponseHeaders = useResetRecoilState(apiResponseHeadersAtom)
+ */
+export const apiResponseHeadersAtom = atom({
+  key: 'apiResponseHeaders',
+  default: {},
+})
+
+/**
  * userToggledApiAtom represents the user toggled api response
- * @param {'data' |'edit' | 'full'}
+ * @param {'data' | 'edit' | 'full' | 'headers' | 'ts'}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
@@ -124,7 +137,7 @@ export const apiFullResponseAtom = atom({
  * const userToggledApi  = useRecoilValue(userToggledApiAtom)
  * const resetUserToggledApi = useResetRecoilState(userToggledApiAtom)
  */
-export const userToggledApiAtom = atom<'data' | 'edit' | 'full' | 'ts'>({
+export const userToggledApiAtom = atom<'data' | 'edit' | 'full' | 'ts' | 'headers'>({
   key: 'userToggledApi',
   default: 'data',
 })

@@ -5,15 +5,9 @@ import Typography from '@mui/material/Typography'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { SxIconButton } from '../../../components/sx'
-import { DataLabel, getType, DataType } from '.'
-
-interface JsonObjectProps {
-  value?: { [key: string]: any } | undefined
-  dataKey: string | number
-  dataType: string | undefined
-  onEdit: (newVale: any, key: string | number) => void
-  onDelete: (dataKey: string | number) => void
-}
+import DataSort from './DataSort'
+import DataLabel from './DataLabel'
+import { getType, JsonObjectProps } from './getProps'
 
 export function JsonObject({ value, dataKey, dataType, onDelete }: JsonObjectProps) {
   const [col, setCol] = React.useState(true)
@@ -39,7 +33,7 @@ export function JsonObject({ value, dataKey, dataType, onDelete }: JsonObjectPro
   const renderObject = () => {
     return keys.map((k: string, i: number) => {
       return (
-        <DataType
+        <DataSort
           key={i}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
