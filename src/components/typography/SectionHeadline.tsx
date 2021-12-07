@@ -13,7 +13,7 @@ export default function SectionHeadline({ overline, title, description }: Sectio
   const globalTheme = useTheme()
   const mode = globalTheme.palette.mode
   const overlineColor = mode === 'dark' ? 'primary.400' : 'primary.600'
-  const titleColor = mode === 'dark' ? 'grey.100' : 'primaryDark.900'
+  const titleColor = mode === 'dark' ? 'grey.100' : 'grey.900'
   const descriptionColor = mode === 'dark' ? 'grey.500' : 'grey.800'
   return (
     <React.Fragment>

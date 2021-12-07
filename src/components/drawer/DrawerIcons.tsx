@@ -18,22 +18,22 @@ import { SxAppBarIconButton } from '../sx/SxIconButton'
 import { SxToolTip } from '../sx/SxToolTip'
 
 export function DrawerIcons() {
-  //retrieve localStorage value
+  // retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
-  //clear localStorage value
+  // reset localStorage value to recoil stored default
   const resetLocalEditorText = useResetRecoilState(localEditorTextAtom)
-  //set dialog with minified json visability
+  // set dialog with minified json visability
   const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
-  //useRef to avoid re-renders during button interactions
+  // useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
-  //useEffect to handle side effect proceeding button interactions
+  // useEffect to handle side effect proceeding button interactions
   React.useEffect(() => {
     return () => {
-      //cancel the timeout established by setTimeout()
+      // cancel the timeout established by setTimeout()
       clearTimeout(interactionTimer.current)
     }
   }, [])
-  //useState hooks to handle button transitions during copy
+  // useState hooks to handle button transitions during copy
   const [jsonCopy, setJsonCopy] = React.useState(false)
   const [loadingCopy, setLoadingCopy] = React.useState(false)
   const [successCopy, setSuccessCopy] = React.useState(false)
@@ -47,19 +47,19 @@ export function DrawerIcons() {
         setJsonCopy(true)
         event.clearSelection()
       })
-      //set state to success
+      // set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(true)
         setLoadingCopy(false)
       }, 1000)
-      //restore state to pre-interaction
+      // restore state to pre-interaction
       interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(false)
       }, 4000)
       return
     }
   }
-  //useState hooks to handle button transitions during download interaction
+  // useState hooks to handle button transitions during download interaction
   const [loadingDownload, setLoadingDownload] = React.useState(false)
   const [successDownload, setSuccessDownload] = React.useState(false)
 

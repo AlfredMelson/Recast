@@ -13,6 +13,7 @@ declare module '@mui/material/styles/createPalette' {
     700: string
     800: string
     900: string
+    950: string
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -35,31 +36,23 @@ declare module '@mui/material/styles/createPalette' {
   }
 }
 
-declare module '@mui/material/styles/createTypography' {
-  interface TypographyOptions {
-    fontWeightExtraBold?: number
-    fontFamilyCode?: string
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    code: React.CSSProperties
   }
 
-  interface Typography {
-    fontWeightExtraBold: number
-    fontFamilyCode: string
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    code?: React.CSSProperties
   }
 }
 
-// TODO: enable this once types conflict is fixed
-// declare module '@mui/material/Button' {
-//   interface ButtonPropsVariantOverrides {
-//     code: true;
-//   }
-// }
-
-// Adobe Color trends
-// #F2F2F2
-// #A6A6A6
-// #595959
-// #262626
-// #0D0D0D
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    code: true
+  }
+}
 
 const theme = createTheme()
 
@@ -93,18 +86,17 @@ const greyDark = {
   900: '#000000',
 }
 const grey = {
-  // 50: '#F3F6F9', // contrast
-  50: '#FFFFFF', // contrast
-  100: '#EAEEF3', // contrast
-  200: '#E5E8EC', // contrast
-  300: '#D7DCE1', // contrast
-  400: '#BFC7CF', // contrast
-  500: '#AAB4BE', // contrast
-  600: '#7F8E9D', // contrast
-  700: '#46505A', // contrast
-  800: '#2F3A45', // contrast
-  900: '#20262D', // contrast
-  950: '#000000', // contrast
+  50: '#F3F6F9',
+  100: '#EAEEF3',
+  200: '#E5E8EC',
+  300: '#D7DCE1',
+  400: '#BFC7CF',
+  500: '#AAB4BE',
+  600: '#7F8E9D',
+  700: '#46505A',
+  800: '#2F3A45',
+  900: '#20262D',
+  950: '#000000',
 }
 
 export const getMetaThemeColor = (mode: 'light' | 'dark') => {
@@ -126,7 +118,7 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       ...(mode === 'dark' && {
         background: {
           default: greyDark[800],
-          paper: greyDark[900],
+          // paper: greyDark[900],
         },
       }),
       divider: mode === 'dark' ? greyDark[700] : grey[200],
@@ -216,7 +208,6 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
     spacingIcons: 2,
     typography: {
       fontFamily: 'var(--text-font-family)',
-      fontWeightExtraBold: 800,
       h1: {
         fontSize: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4.5rem)',
         letterSpacing: `${round(-2 / 72)}em`,
@@ -281,6 +272,13 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         letterSpacing: 0,
         fontWeight: 600,
       },
+      code: {
+        display: 'block',
+        fontFamily: 'var(--code-font-family)',
+        fontSize: theme.typography.pxToRem(15),
+        lineHeight: 1.55,
+        letterSpacing: 0,
+      },
     },
   } as ThemeOptions)
 
@@ -309,58 +307,7 @@ export function muiThemedComponents(theme: Theme) {
             lineHeight: 21 / 16,
             fontWeight: 700,
           },
-          containedPrimary: {
-            backgroundColor: theme.palette.primary[500],
-            color: '#fff',
-          },
         },
-        variants: [
-          {
-            props: { variant: 'code' },
-            style: {
-              color:
-                theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.grey[800],
-              border: '1px solid',
-              borderColor:
-                theme.palette.mode === 'dark'
-                  ? theme.palette.primaryDark[400]
-                  : theme.palette.grey[200],
-              backgroundColor:
-                theme.palette.mode === 'dark'
-                  ? theme.palette.primaryDark[700]
-                  : theme.palette.grey[50],
-              fontFamily: theme.typography.fontFamilyCode,
-              '&:hover, &.Mui-focusVisible': {
-                borderColor: theme.palette.primary.main,
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.primaryDark[500]
-                    : theme.palette.primary[50],
-                '& .MuiButton-endIcon': {
-                  color:
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.primary[300]
-                      : theme.palette.primary.main,
-                },
-              },
-              '& .MuiButton-startIcon': {
-                color: theme.palette.grey[400],
-              },
-              '& .MuiButton-endIcon': {
-                color:
-                  theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.grey[700],
-              },
-            },
-          },
-          {
-            props: { variant: 'code', size: 'large' },
-            style: {
-              ...theme.typography.body2,
-              fontFamily: theme.typography.fontFamilyCode,
-              fontWeight: theme.typography.fontWeightBold,
-            },
-          },
-        ],
       },
       MuiButtonGroup: {
         defaultProps: {
@@ -368,7 +315,6 @@ export function muiThemedComponents(theme: Theme) {
           disableElevation: true,
           disableFocusRipple: true,
           disableRipple: true,
-          TransitionComponent: Fade,
         },
         styleOverrides: {
           root: {
@@ -416,6 +362,11 @@ export function muiThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {},
+        },
+      },
       MuiLink: {
         defaultProps: {
           underline: 'none',
@@ -438,30 +389,41 @@ export function muiThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiOutlinedInput: {
+        input: {
+          '&:-webkit-autofill': {
+            webkitBoxShadow: '0 0 0 100px #1f2428 inset',
+            borderRadius: 'none',
+          },
+        },
+      },
       MuiPaper: {
+        defaultProps: {
+          elevation: 1,
+        },
         styleOverrides: {
-          root: {
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : '#fff',
-            '&[href]': {
-              textDecorationLine: 'none',
-            },
-          },
-          outlined: {
-            display: 'block',
-            borderColor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[400]
-                : theme.palette.grey[200],
-            ...(theme.palette.mode === 'dark' && {
-              backgroundColor: theme.palette.primaryDark[700],
-            }),
-            'a&, button&': {
-              '&:hover': {
-                boxShadow: '1px 1px 20px 0 rgb(90 105 120 / 20%)',
-              },
-            },
-          },
+          // root: {
+          //   backgroundColor:
+          //     theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : '#fff',
+          //   '&[href]': {
+          //     textDecorationLine: 'none',
+          //   },
+          // },
+          // outlined: {
+          //   display: 'block',
+          //   borderColor:
+          //     theme.palette.mode === 'dark'
+          //       ? theme.palette.primaryDark[400]
+          //       : theme.palette.grey[200],
+          //   ...(theme.palette.mode === 'dark' && {
+          //     backgroundColor: theme.palette.primaryDark[700],
+          //   }),
+          //   'a&, button&': {
+          //     '&:hover': {
+          //       boxShadow: '1px 1px 20px 0 rgb(90 105 120 / 20%)',
+          //     },
+          //   },
+          // },
         },
       },
       MuiSvgIcon: {
@@ -492,37 +454,35 @@ export function muiThemedComponents(theme: Theme) {
       MuiTextField: {
         defaultProps: {
           variant: 'outlined',
-        },
-      },
-      MuiToggleButtonGroup: {
-        defaultProps: {
           size: 'small',
+          fontSize: '14px',
         },
-        styleOverrides: {
-          root: {
-            border: 'none',
-            textDecoration: 'none',
-            backgroundColor: 'transparent',
-            '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
-              backgroundColor: 'transparent',
-            },
-          },
+        root: {
+          fontSize: '14px',
         },
       },
       MuiToggleButton: {
         styleOverrides: {
           root: {
+            height: '36px',
             border: 'none',
-            textDecoration: 'none',
-            backgroundColor: 'transparent',
-            color:
-              theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
-            '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
-              color:
-                theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
-              backgroundColor: 'transparent',
+
+            backgroundColor:
+              theme.palette.mode === 'dark' ? theme.palette.grey[600] : theme.palette.grey[50],
+            transitionDuration: '300ms',
+            transitionProperty: 'backgroundColor',
+            '&:hover, &:focus': {
+              backgroundColor: theme.palette.mode === 'dark' ? '#141414' : theme.palette.grey[50],
+            },
+            '&.Mui-selected, &.Mui-selected:hover': {
+              backgroundColor: theme.palette.mode === 'dark' ? '#000000' : theme.palette.grey[50],
             },
           },
+        },
+      },
+      MuiToggleButtonGroup: {
+        defaultProps: {
+          size: 'small',
         },
       },
       MuiTooltip: {

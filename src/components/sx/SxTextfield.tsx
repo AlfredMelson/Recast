@@ -1,6 +1,7 @@
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
-import { alpha, styled } from '@mui/material/styles'
+// import { alpha } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import TextField, { TextFieldProps } from '@mui/material/TextField'
 import { OutlinedInputProps } from '@mui/material/OutlinedInput'
 
@@ -20,33 +21,61 @@ export const SxTfAdornmentIcon = styled(IconButton)(({ theme }) => ({
 }))
 
 /**
- * SxTfSubmitButton manages the style of the textfield submit button
+ * SxDisabledIcon manages the style of disabled icons within search bar
+ * @param {IconButton} mui IconButton
+ * @param {theme} MuiBrandingTheme
+ * @param {styled} mui styled
+ * @return
+ */
+export const SxDisabledIcon = styled(IconButton)(({ theme }) => ({
+  color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
+  padding: theme.spacing(0.5),
+}))
+
+/**
+ * SxTextfieldButton manages the style of textfield buttons
  * @param {Button} mui Button
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return
  */
-export const SxTfSubmitButton = styled(Button)(({ theme }) => ({
+export const SxTextfieldButton = styled(Button)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
-  padding: theme.spacing(0.25),
+  backgroundColor: 'transparent',
+  minWidth: theme.spacing(7),
+  // transition: 'all var(--transition-speed-fastest)',
   '&:hover, &:focus': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
+    backgroundColor: 'transparent',
   },
 }))
 
+/**
+ * SxTextField manages the style of the api search bar
+ * @param {IconButton} mui IconButton
+ * @param {theme} MuiBrandingTheme
+ * @param {styled} mui styled
+ * @return
+ */
 export const SxTextField = styled((props: TextFieldProps) => (
-  <TextField InputProps={{ disableUnderline: true } as Partial<OutlinedInputProps>} {...props} />
+  <TextField
+    fullWidth
+    InputProps={{ disableUnderline: true } as Partial<OutlinedInputProps>}
+    {...props}
+  />
 ))(({ theme }) => ({
   '& .MuiFilledInput-root': {
+    fontSize: '14px',
     border: '1px solid #e2e2e1',
     overflow: 'hidden',
     borderRadius: 3,
-    backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
     transition: theme.transitions.create(['border-color', 'background-color', 'box-shadow']),
-    '&:hover': {},
+    '&:hover': { fontSize: '14px' },
     '&.Mui-focused': {
-      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 1px`,
-      borderColor: theme.palette.primary.main,
+      fontSize: '14px',
+      // boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 1px`,
+      // border: '1px solid',
+      // borderColor: theme.palette.primary.main,
     },
   },
 }))

@@ -1,12 +1,39 @@
 :root {
-  --accents-1: #fafafa;
-  --accents-2: #eaeaea;
-  --accents-3: #999999;
-  --accents-4: #888888;
-  --accents-5: #666666;
-  --accents-6: #444444;
-  --accents-7: #333333;
-  --accents-8: #111111;
+  --swatch-grey-50: #f3f6f9;
+  --swatch-grey-100: #eaeef3;
+  --swatch-grey-200: #e5e8ec;
+  --swatch-grey-300: #d7dce1;
+  --swatch-grey-400: #bfc7cf;
+  --swatch-grey-500: #aab4be;
+  --swatch-grey-600: #7f8e9d;
+  --swatch-grey-700: #46505a;
+  --swatch-grey-800: #202124;
+  --swatch-grey-900: #141414;
+  --swatch-grey-950: #000000;
+
+  --swatch-blue-50: #e2edf8;
+  --swatch-blue-100: #cee0f3;
+  --swatch-blue-200: #91b9e3;
+  --swatch-blue-300: #5090d3;
+  --swatch-blue-400: #3178c6;
+  --swatch-blue-500: #265d97;
+  --swatch-blue-600: #1e4976;
+  --swatch-blue-700: #173a5e;
+  --swatch-blue-800: #132f4c;
+  --swatch-blue-900: #001e3c;
+  --swatch-blue-950: #0a1929;
+
+  --swatch-warning-50: #fff9eb;
+  --swatch-warning-100: #fff4db;
+  --swatch-warning-200: #ffedc2;
+  --swatch-warning-300: #ffe4a3;
+  --swatch-warning-400: #ffd980;
+  --swatch-warning-500: #fcc419;
+  --swatch-warning-600: #fab005;
+  --swatch-warning-main: #f1a204;
+  --swatch-warning-700: #f1a204;
+  --swatch-warning-800: #db9a00;
+  --swatch-warning-900: #8f6400;
 
   --app-content-bg: #0d1117;
   --app-content-text: #c9d1d9;
@@ -208,6 +235,8 @@
     Apple Color Emoji, Segoe UI Emoji; */
   --text-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+  --code-font-family: 'Fira Code', monospace;
 
   --text-size-xxs: 10px;
   --text-size-xs: 12px;

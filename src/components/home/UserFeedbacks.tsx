@@ -142,17 +142,16 @@ export default function UserFeedbacks() {
                 p: '4px',
                 ml: index !== 0 ? '2px' : 0,
                 '&:focus': {
-                  boxShadow: theme => `0px 0px 0px 2px ${theme.palette.primaryDark[400]}`,
+                  boxShadow: theme => `0px 0px 0px 2px ${theme.palette.grey[400]}`,
                 },
-              }}
-            >
+              }}>
               <Box
                 sx={{
                   height: '100%',
                   borderRadius: 1,
-                  bgcolor: 'primaryDark.500',
+                  bgcolor: 'grey.500',
                   ...(index === slideIndex && {
-                    bgcolor: 'primaryDark.300',
+                    bgcolor: 'grey.300',
                   }),
                 }}
               />

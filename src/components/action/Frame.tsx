@@ -8,9 +8,9 @@ const FrameDemo = React.forwardRef<HTMLDivElement, BoxProps>(function FrameDemo(
       {...props}
       sx={{
         position: 'relative',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.700' : 'grey.100'),
+        bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100'),
         border: '1px solid',
-        borderColor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200'),
+        borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.600' : 'grey.200'),
         ...props.sx,
       }}
     />
@@ -25,9 +25,9 @@ const FrameInfo = React.forwardRef<HTMLDivElement, BoxProps>(function FrameInfo(
       sx={{
         color: '#fff',
         p: 2,
-        bgcolor: 'primaryDark.800',
+        bgcolor: 'grey.800',
         border: '1px solid',
-        borderColor: 'primaryDark.700',
+        borderColor: 'grey.700',
         ...props.sx,
       }}
     />

@@ -38,8 +38,8 @@ export function JsonNumber({ value, dataKey, dataType, onEdit, onDelete }: JsonN
   }
   return (
     <Stack direction='row' sx={{ ml: 6 }}>
-      <Typography variant='body1' sx={{ mr: 1 }}>
-        {`"${dataKey}" :`}
+      <Typography variant='code' sx={{ mr: 1 }}>
+        {`"${dataKey}": `}
       </Typography>
       <DataLabel type={dataType} />
       {showInput ? (
@@ -62,7 +62,7 @@ export function JsonNumber({ value, dataKey, dataType, onEdit, onDelete }: JsonN
         </Stack>
       ) : (
         <Stack direction='row' sx={{ color: purple[400] }} onClick={showEditInput}>
-          <Typography variant='body1'>{currentValue}</Typography>
+          <Typography variant='code'>{currentValue}</Typography>
         </Stack>
       )}
     </Stack>

@@ -23,8 +23,7 @@ export default function ShowcaseContainer({
         flexDirection: 'column',
         height: '100%',
         ...sx,
-      }}
-    >
+      }}>
       <Paper
         variant='outlined'
         sx={{
@@ -34,13 +33,12 @@ export default function ShowcaseContainer({
           justifyContent: 'center',
           alignItems: 'center',
           p: 2,
-          bgcolor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.700' : 'grey.100'),
-          borderColor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.300'),
+          bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100'),
+          borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.600' : 'grey.300'),
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
           ...previewSx,
-        }}
-      >
+        }}>
         {preview}
       </Paper>
       <Box
@@ -53,14 +51,12 @@ export default function ShowcaseContainer({
           minHeight: 200,
           borderWidth: '0 1px 1px 1px',
           borderStyle: 'solid',
-          borderColor: theme =>
-            theme.palette.mode === 'dark' ? 'primaryDark.700' : 'primaryDark.900',
-          bgcolor: 'primaryDark.800',
+          borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'grey.900'),
+          bgcolor: 'grey.800',
           borderBottomLeftRadius: 10,
           borderBottomRightRadius: 10,
           ...codeSx,
-        }}
-      >
+        }}>
         <NoSsr>{code}</NoSsr>
       </Box>
     </Box>

@@ -13,11 +13,11 @@ export function JsonUndefined({ value, dataKey, dataType }: JsonUndefinedTypes) 
   return (
     <Box sx={{ p: 1 }}>
       <Stack direction='row'>
-        <Typography variant='body1' sx={{ mr: 1 }}>
-          {`"${dataKey}" :`}
+        <Typography variant='code' sx={{ mr: 1 }}>
+          {`"${dataKey}": `}
         </Typography>
         <DataLabel type={dataType} />
-        <Typography variant='body1' sx={{ color: blue[400] }}>{`"${value}"`}</Typography>
+        <Typography variant='code' sx={{ color: blue[400] }}>{`"${value}"`}</Typography>
       </Stack>
     </Box>
   )

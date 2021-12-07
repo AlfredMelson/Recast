@@ -24,7 +24,7 @@ export const SubMenu = React.forwardRef<HTMLAnchorElement, SubMenuTypes>(functio
         alignItems: 'center',
         py: 2,
         '&:hover, &:focus': {
-          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.700' : 'grey.50'),
+          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'grey.50'),
           outline: 'none',
           '@media (hover: none)': {
             backgroundColor: 'initial',

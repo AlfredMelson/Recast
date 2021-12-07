@@ -3,16 +3,45 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { green, blue, red } from '@mui/material/colors'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { SxDataIconButton } from '../../../components/sx'
-import { getType } from '.'
+import { getType } from '../data-types'
 
-interface FullDataTypeProps {
+interface FullRequestProps {
+  data?: { [key: string]: any } | undefined
+}
+export const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestProps) => {
+  const [keys, setKeys] = React.useState<string[]>([])
+
+  const [currentData, setCurrentData] = React.useState<FullRequestProps['data']>({})
+
+  React.useEffect(() => {
+    const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
+    setKeys(newkeys)
+    setCurrentData(data)
+  }, [data])
+
+  const renderData = () => {
+    return keys.map(key => {
+      return (
+        <FullResponse
+          key={key}
+          dataType={currentData && getType(currentData[key])}
+          dataValue={currentData && currentData[key]}
+          dataKey={key}
+        />
+      )
+    })
+  }
+  return <div>{renderData()}</div>
+}
+
+interface FullResponseProps {
   dataType: string | undefined
   dataValue: any
   dataKey: string | number
 }
-export function FullDataType({ dataType, dataValue, dataKey }: FullDataTypeProps) {
+function FullResponse({ dataType, dataValue, dataKey }: FullResponseProps) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
@@ -48,7 +77,7 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
   const renderArrayContent = () => {
     return value.map((v: any, i: number) => {
       const type: string = getType(v)
-      return <FullDataType key={i} dataValue={v} dataType={type} dataKey={i} />
+      return <FullResponse key={i} dataValue={v} dataType={type} dataKey={i} />
     })
   }
 
@@ -57,9 +86,9 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
       return (
         <Stack direction='row'>
           <SxDataIconButton onClick={toggleArray}>
-            <KeyboardArrowUpIcon />
+            <KeyboardArrowRightIcon />
           </SxDataIconButton>
-          <Typography variant='body1' sx={{ color: blue[500] }}>
+          <Typography variant='code' sx={{ color: blue[500] }}>
             {dataKey}
             <span style={{ color: '#ffffff' }}>&nbsp;&#58;&nbsp;&nbsp;{`[ ${value.length} ]`}</span>
           </Typography>
@@ -71,10 +100,10 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
         <SxDataIconButton onClick={toggleArray}>
           <KeyboardArrowDownIcon />
         </SxDataIconButton>
-        <Typography variant='body1' sx={{ color: blue[500] }}>
+        <Typography variant='code' sx={{ color: blue[500] }}>
           {dataKey}
         </Typography>
-        <Typography variant='body1'>{renderArrayContent()}</Typography>
+        <Typography variant='code'>{renderArrayContent()}</Typography>
       </Stack>
     )
   }
@@ -93,16 +122,14 @@ interface JsonBooleanProps {
 
 export function JsonBoolean({ value, dataKey }: JsonBooleanProps) {
   return (
-    <Typography variant='body1' sx={{ color: blue[400] }}>
+    <Typography variant='code' sx={{ color: blue[400] }}>
       {dataKey}
-      <span style={{ color: '#ffffff' }}>
-        &nbsp;&#58;&nbsp;&nbsp;
-        {value === true ? (
-          <span style={{ color: green[400] }}>{`${value}`}</span>
-        ) : (
-          <span style={{ color: red[400] }}>{`${value}`}</span>
-        )}
-      </span>
+      <span style={{ color: '#ffffff' }}>&#58;&nbsp;</span>
+      {value === true ? (
+        <span style={{ color: green[400] }}>{`${value}`}</span>
+      ) : (
+        <span style={{ color: red[400] }}>{`${value}`}</span>
+      )}
     </Typography>
   )
 }
@@ -114,10 +141,10 @@ interface JsonFunctionProps {
 
 export function JsonFunction({ dataKey }: JsonFunctionProps) {
   return (
-    <Typography variant='body1' sx={{ color: blue[500], ml: '25px' }}>
+    <Typography variant='code' sx={{ color: blue[500], ml: '25px' }}>
       {dataKey}
       <span style={{ color: '#ffffff' }}>
-        &nbsp;&#58;&nbsp;&nbsp; {'['}&nbsp;&#402;&nbsp;{']'}
+        &#58;&nbsp; {'['}&nbsp;&#402;&nbsp;{']'}
       </span>
     </Typography>
   )
@@ -130,12 +157,10 @@ interface JsonNumberProps {
 
 function JsonNumber({ value, dataKey }: JsonNumberProps) {
   return (
-    <Typography variant='body1' sx={{ color: blue[500], ml: '25px' }}>
+    <Typography variant='code' sx={{ color: blue[500], ml: '25px' }}>
       {dataKey}
-      <span style={{ color: '#ffffff' }}>
-        &nbsp;&#58;&nbsp;&nbsp;
-        <span style={{ color: '#9980FF' }}>{`${value}`}</span>
-      </span>
+      <span style={{ color: '#ffffff' }}>&#58;&nbsp;</span>
+      <span style={{ color: '#9980FF' }}>{`${value}`}</span>
     </Typography>
   )
 }
@@ -157,7 +182,7 @@ export function JsonObject({ value, dataKey }: JsonObjectProps) {
   const renderObject = () => {
     return keys.map((k: string, i: number) => {
       return (
-        <FullDataType
+        <FullResponse
           key={i}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
@@ -174,11 +199,11 @@ export function JsonObject({ value, dataKey }: JsonObjectProps) {
             <SxDataIconButton onClick={toggleObj}>
               <KeyboardArrowDownIcon />
             </SxDataIconButton>
-            <Typography variant='body1' sx={{ color: blue[500] }}>
+            <Typography variant='code' sx={{ color: blue[500] }}>
               {dataKey}
             </Typography>
           </Stack>
-          <Typography variant='body1' sx={{ ml: '25px' }}>
+          <Typography variant='code' sx={{ ml: '25px' }}>
             {renderObject()}
           </Typography>
         </>
@@ -186,11 +211,19 @@ export function JsonObject({ value, dataKey }: JsonObjectProps) {
     return (
       <Stack direction='row'>
         <SxDataIconButton onClick={toggleObj}>
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowRightIcon />
         </SxDataIconButton>
-        <Typography variant='body1' sx={{ color: blue[500] }}>
+        <Typography variant='code' sx={{ color: blue[500] }}>
           {dataKey}
-          <span style={{ color: '#ffffff' }}>&nbsp;&#58;&nbsp;&nbsp;{`{ ${keys.length} }`}</span>
+          {keys.length === 0 ? (
+            ''
+          ) : (
+            <>
+              <span style={{ color: '#ffffff' }}>&#58;&nbsp;{`{ ${keys.length}`}</span>
+              <span style={{ color: '#ffffff' }}>&nbsp;{keys.length === 1 ? 'item' : 'items'}</span>
+              <span style={{ color: '#ffffff' }}>&nbsp;{'}'}</span>
+            </>
+          )}
         </Typography>
       </Stack>
     )
@@ -207,12 +240,10 @@ interface JsonStringProps {
 }
 function JsonString({ value, dataKey }: JsonStringProps) {
   return (
-    <Typography variant='body1' sx={{ color: blue[400], ml: '25px' }}>
+    <Typography variant='code' sx={{ color: blue[400], ml: '25px' }}>
       {dataKey}
-      <span style={{ color: '#ffffff' }}>
-        &nbsp;&#58;&nbsp;&nbsp;
-        <span style={{ color: green[400] }}>{`"${value}"`}</span>
-      </span>
+      <span style={{ color: '#ffffff' }}>&#58;&nbsp;</span>
+      <span style={{ color: green[400] }}>{`"${value}"`}</span>
     </Typography>
   )
 }

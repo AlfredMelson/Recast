@@ -203,18 +203,15 @@ export function buildTheme(theme: Theme): ThemeOptions {
     palette: {
       ...theme.palette,
       primary: {
-        ...theme.palette.primaryDark,
-        main:
-          theme.palette.mode === 'dark'
-            ? theme.palette.primaryDark[500]
-            : theme.palette.primaryDark[800],
+        ...theme.palette.grey,
+        main: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[800],
       },
       grey: theme.palette.grey,
       info: {
-        main: theme.palette.primaryDark[600],
+        main: theme.palette.grey[600],
       },
       background: {
-        paper: theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : '#fff',
+        paper: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#fff',
       },
     },
     shape: {
@@ -242,9 +239,7 @@ export function buildTheme(theme: Theme): ThemeOptions {
         styleOverrides: {
           text: {
             color:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[100]
-                : theme.palette.primaryDark[700],
+              theme.palette.mode === 'dark' ? theme.palette.grey[100] : theme.palette.grey[700],
           },
           sizeMedium: {
             padding: theme.spacing(1, 2),
@@ -277,7 +272,7 @@ export function buildTheme(theme: Theme): ThemeOptions {
               color:
                 theme.palette.mode === 'dark'
                   ? theme.palette.primary[500]
-                  : theme.palette.primaryDark[800],
+                  : theme.palette.grey[800],
             },
           },
           filled: {
@@ -290,10 +285,10 @@ export function buildTheme(theme: Theme): ThemeOptions {
             fontWeight: 600,
           },
           standardInfo: {
-            backgroundColor: theme.palette.primaryDark[100],
-            color: theme.palette.primaryDark[600],
+            backgroundColor: theme.palette.grey[100],
+            color: theme.palette.grey[600],
             '& .MuiAlert-icon': {
-              color: theme.palette.primaryDark[600],
+              color: theme.palette.grey[600],
             },
           },
           icon: {
@@ -316,32 +311,27 @@ export function buildTheme(theme: Theme): ThemeOptions {
               borderColor:
                 theme.palette.mode === 'dark'
                   ? theme.palette.primary[500]
-                  : theme.palette.primaryDark[800],
+                  : theme.palette.grey[800],
             },
             '& .MuiOutlinedInput-input': {
-              backgroundColor:
-                theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : '#fff',
+              backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#fff',
               borderRadius: theme.spacing(1),
               borderColor:
-                theme.palette.mode === 'dark'
-                  ? theme.palette.primaryDark[400]
-                  : theme.palette.grey[300],
+                theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.grey[300],
             },
             '& .MuiInputBase-input': {
               fontWeight: 600,
             },
             '& .MuiFilledInput-root': {
-              backgroundColor:
-                theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : '#fff',
+              backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#fff',
               '&:after': {
                 borderColor:
                   theme.palette.mode === 'dark'
                     ? theme.palette.primary[500]
-                    : theme.palette.primaryDark[800],
+                    : theme.palette.grey[800],
               },
               '&:hover': {
-                backgroundColor:
-                  theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : '#fff',
+                backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#fff',
               },
             },
             '& .MuiInputLabel-filled.Mui-focused': {
@@ -353,7 +343,7 @@ export function buildTheme(theme: Theme): ThemeOptions {
                 borderColor:
                   theme.palette.mode === 'dark'
                     ? theme.palette.primary[500]
-                    : theme.palette.primaryDark[800],
+                    : theme.palette.grey[800],
               },
             },
             '& .MuiInputLabel-root.Mui-focused': {
@@ -369,9 +359,7 @@ export function buildTheme(theme: Theme): ThemeOptions {
         styleOverrides: {
           root: {
             borderColor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[400]
-                : theme.palette.divider,
+              theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.divider,
           },
         },
       }),
@@ -398,7 +386,7 @@ export function buildTheme(theme: Theme): ThemeOptions {
               color:
                 theme.palette.mode === 'dark'
                   ? theme.palette.primary[500]
-                  : theme.palette.primaryDark[400],
+                  : theme.palette.grey[400],
             },
           },
         },

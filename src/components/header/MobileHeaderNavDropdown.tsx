@@ -26,7 +26,7 @@ const Anchor = styled('a')<{ component?: React.ElementType; noLinkStyle?: boolea
     transition: theme.transitions.create('background'),
     '&:hover, &:focus': {
       backgroundColor:
-        theme.palette.mode === 'dark' ? theme.palette.primaryDark[700] : theme.palette.grey[100],
+        theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[100],
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: 'transparent',
@@ -138,7 +138,7 @@ export function MobileHeaderNavDropdown() {
                     sx={{
                       borderLeft: '1px solid',
                       borderColor: theme =>
-                        theme.palette.mode === 'dark' ? 'primaryDark.700' : 'grey.100',
+                        theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100',
                       pl: 1,
                       pb: 1,
                       ml: 1,

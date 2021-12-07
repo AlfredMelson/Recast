@@ -38,7 +38,7 @@ export function TreeViewContainer({
             id='hero-container-right-area'
             aria-hidden='true'
             sx={{
-              // bgcolor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.900' : 'grey.50'),
+              // bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'grey.50'),
               // minWidth: '50vw',
               // minHeight: 500,
               // height: 'calc(100vh - 120px)',

@@ -23,8 +23,7 @@ export function MuiStats() {
               p: 1,
               pl: 2,
               borderLeft: '4px solid',
-              borderColor: theme =>
-                theme.palette.mode === 'dark' ? 'primaryDark.600' : 'primary.100',
+              borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.600' : 'primary.100'),
             }}>
             <Typography
               component='div'

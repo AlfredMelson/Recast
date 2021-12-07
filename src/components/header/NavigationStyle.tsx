@@ -20,7 +20,7 @@ export const Navigation = styled('nav')(({ theme }) => ({
       '&:hover, &:focus': {
         color: theme.palette.text.primary,
         backgroundColor:
-          theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : theme.palette.grey[50],
+          theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'initial',

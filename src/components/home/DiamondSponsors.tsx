@@ -61,8 +61,7 @@ export default function DiamondSponsors() {
               theme.palette.mode === 'dark'
                 ? theme.palette.primary[400]
                 : theme.palette.primary[500],
-          }}
-        >
+          }}>
           Diamond
         </Typography>
       </Box>
@@ -81,10 +80,8 @@ export default function DiamondSponsors() {
               alignItems: 'center',
               height: '100%',
               borderStyle: 'dashed',
-              borderColor: theme =>
-                theme.palette.mode === 'dark' ? 'primaryDark.400' : 'grey.300',
-            }}
-          >
+              borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.400' : 'grey.300'),
+            }}>
             <IconButton
               aria-label='Become MUI sponsor'
               component='a'
@@ -92,8 +89,7 @@ export default function DiamondSponsors() {
               target='_blank'
               rel='noopener noreferrer'
               color='primary'
-              sx={{ mr: 2, border: '1px solid', borderColor: 'divider' }}
-            >
+              sx={{ mr: 2, border: '1px solid', borderColor: 'divider' }}>
               <AddRounded />
             </IconButton>
             <Box>

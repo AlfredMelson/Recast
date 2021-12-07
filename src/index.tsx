@@ -4,13 +4,13 @@ import { RecoilRoot } from 'recoil'
 import App from './app'
 import MuiThemeProviderRoot from './style/MuiThemeProviderRoot'
 
-//construct root element
+// create entry point using unique id from Document
 const rootElement = document.getElementById('app')
-//test for root element before invoking ReactDOM.createRoot
+// test for root element prior to invoking ReactDOM.createRoot
 if (!rootElement) throw new Error('Failed to find the root element')
-//construct root
+// create root
 const root = ReactDOM.createRoot(rootElement)
-
+// initial render
 root.render(
   <React.StrictMode>
     <RecoilRoot>

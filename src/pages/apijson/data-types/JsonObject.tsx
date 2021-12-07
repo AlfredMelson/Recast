@@ -58,8 +58,8 @@ export function JsonObject({ value, dataKey, dataType, onDelete }: JsonObjectPro
             <SxIconButton onClick={toggleObj}>
               <KeyboardArrowDownIcon />
             </SxIconButton>
-            <Typography variant='body1' sx={{ mr: 1 }}>
-              {`"${dataKey}" :`}
+            <Typography variant='code' sx={{ mr: 1 }}>
+              {`"${dataKey}": `}
             </Typography>
             <SxIconButton
               onClick={() => {
@@ -86,8 +86,8 @@ export function JsonObject({ value, dataKey, dataType, onDelete }: JsonObjectPro
         <SxIconButton onClick={toggleObj}>
           <KeyboardArrowUpIcon />
         </SxIconButton>
-        <Typography variant='body1' sx={{ mr: 1 }}>
-          {`"${dataKey}" :`}
+        <Typography variant='code' sx={{ mr: 1 }}>
+          {`"${dataKey}": `}
         </Typography>
         <Stack direction='row' sx={{ pl: 1 }}>
           <DataLabel type={dataType ? dataType : ''} />
@@ -97,7 +97,6 @@ export function JsonObject({ value, dataKey, dataType, onDelete }: JsonObjectPro
     )
   }
   const toggleObj = () => {
-    // setCurrentValue(currentValue);
     setCol(!col)
   }
   return renderObjContent()

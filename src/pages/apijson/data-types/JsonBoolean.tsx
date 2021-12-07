@@ -12,11 +12,11 @@ interface JsonBooleanProps {
 export function JsonBoolean({ value, dataKey, dataType }: JsonBooleanProps) {
   return (
     <Stack direction='row'>
-      <Typography variant='body1' sx={{ mr: 1 }}>
-        {`"${dataKey}" :`}
+      <Typography variant='code' sx={{ mr: 1 }}>
+        {`"${dataKey}": `}
       </Typography>
       <DataLabel type={dataType} />
-      <Typography variant='body1' sx={{ color: green[400] }}>{`"${value}"`}</Typography>
+      <Typography variant='code' sx={{ color: green[400] }}>{`"${value}"`}</Typography>
     </Stack>
   )
 }

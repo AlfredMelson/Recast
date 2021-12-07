@@ -19,10 +19,10 @@ export default (function More(props: ButtonBaseProps) {
         border: '2px dashed',
         transitionProperty: 'all',
         transitionDuration: '150ms',
-        borderColor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.500' : 'grey.200'),
+        borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.500' : 'grey.200'),
         '&:hover, &:focus': {
           borderColor: 'primary.main',
-          bgcolor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.700' : 'primary.50'),
+          bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'primary.50'),
           '@media (hover: none)': {
             bgcolor: 'transparent',
           },

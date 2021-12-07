@@ -6,20 +6,6 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 import GradientText from '../typography/GradientText'
 import { HeroContainer } from '../../layout'
-import TaskCard from '../showcase/TaskCard'
-import PlayerCard from '../showcase/PlayerCard'
-import ThemeToggleButton from '../showcase/ThemeToggleButton'
-import ThemeSwitch from '../showcase/ThemeSwitch'
-import ThemeChip from '../showcase/ThemeChip'
-import NotificationCard from '../showcase/NotificationCard'
-import ThemeAccordion from '../showcase/ThemeAccordion'
-import ThemeTimeline from '../showcase/ThemeTimeline'
-import FolderTable from '../showcase/FolderTable'
-import ThemeSlider from '../showcase/ThemeSlider'
-import ThemeDatePicker from '../showcase/ThemeDatePicker'
-import ThemeTabs from '../showcase/ThemeTabs'
-import ViewToggleButton from '../showcase/ViewToggleButton'
-import ThemeButton from '../showcase/ThemeButton'
 import LoadInJsonButton from './LoadInJsonButton'
 
 export default function Hero() {
@@ -89,35 +75,7 @@ export default function Hero() {
         <React.Fragment>
           <div>
             {isMdUp && (
-              <Stack spacing={4} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}>
-                <TaskCard />
-                <PlayerCard />
-                <ThemeToggleButton />
-                <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                  <ThemeSwitch />
-                  <Box sx={{ width: 40 }} />
-                  <ThemeChip />
-                </Box>
-                <ThemeTimeline />
-                <FolderTable />
-              </Stack>
-            )}
-            {isMdUp && (
-              <Stack spacing={4} sx={{ ml: 4, '& > .MuiPaper-root': { maxWidth: 'none' } }}>
-                <ThemeDatePicker />
-                <ThemeTabs />
-                <Box sx={{ display: 'flex' }}>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <ThemeSlider />
-                  </Box>
-                  <Stack spacing={2} sx={{ ml: 4 }}>
-                    <ViewToggleButton />
-                    <ThemeButton />
-                  </Stack>
-                </Box>
-                <ThemeAccordion />
-                <NotificationCard />
-              </Stack>
+              <Stack spacing={4} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}></Stack>
             )}
           </div>
         </React.Fragment>

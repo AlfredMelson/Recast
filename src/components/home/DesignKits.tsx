@@ -37,7 +37,7 @@ const Image = styled('img')(({ theme }) => ({
 //   '&:hover, &:focus': {
 //     boxShadow:
 //       theme.palette.mode === 'dark'
-//         ? `0 6px 20px 0 ${alpha(theme.palette.primaryDark[100], 0.5)}`
+//         ? `0 6px 20px 0 ${alpha(theme.palette.grey[100], 0.5)}`
 //         : '0 6px 20px 0 rgba(0,0,0,0.2)',
 //   },
 // }))
@@ -72,9 +72,7 @@ const DesignToolLogo = React.forwardRef<
       sx={{
         boxShadow: theme =>
           `0px 3.57436px 44.6795px ${
-            theme.palette.mode === 'dark'
-              ? theme.palette.primaryDark[900]
-              : 'rgba(90, 105, 120, 0.36)'
+            theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'rgba(90, 105, 120, 0.36)'
           }`,
         // eslint-disable-next-line react/prop-types
         ...props.sx,
@@ -210,7 +208,7 @@ export default function DesignKits() {
           position: 'absolute',
           width: '100%',
           height: '100%',
-          bgcolor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.900' : 'grey.50'),
+          bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'grey.50'),
           opacity: 0.6,
           zIndex: 1,
         }}
@@ -225,21 +223,17 @@ export default function DesignKits() {
           height: '100%',
           background: theme =>
             `linear-gradient(to bottom, ${
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[900]
-                : theme.palette.grey[50]
+              theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50]
             } 0%, ${
               theme.palette.mode === 'dark'
-                ? alpha(theme.palette.primaryDark[900], 0)
+                ? alpha(theme.palette.grey[900], 0)
                 : 'rgba(255,255,255,0)' // transparent does not work in Safari & Mobile device
             } 30%, ${
               theme.palette.mode === 'dark'
-                ? alpha(theme.palette.primaryDark[900], 0)
+                ? alpha(theme.palette.grey[900], 0)
                 : 'rgba(255,255,255,0)' // transparent does not work in Safari & Mobile device
             } 70%, ${
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[900]
-                : theme.palette.grey[50]
+              theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50]
             } 100%)`,
           zIndex: 2,
         }}
@@ -254,12 +248,10 @@ export default function DesignKits() {
           height: '100%',
           background: theme =>
             `linear-gradient(to right, ${
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[900]
-                : theme.palette.grey[50]
+              theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50]
             }, ${
               theme.palette.mode === 'dark'
-                ? alpha(theme.palette.primaryDark[900], 0)
+                ? alpha(theme.palette.grey[900], 0)
                 : 'rgba(255,255,255,0)' // transparent does not work in Safari & Mobile device
             })`,
           zIndex: 2,

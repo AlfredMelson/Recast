@@ -4,26 +4,24 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Box } from '@mui/system'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { TreeView } from '@mui/lab'
-import { SxIBApiInteraction } from '../../components/sx/SxIconButton'
-import { CloseSquare, MinusSquare, PlusSquare } from '../../components/icons'
-import { DataType, getType } from './data-types'
+import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
+import { DataType, getType } from '../data-types'
 
-interface DataDetailsProps {
+interface EditRequestProps {
   onEdit: (newValue: any, key: string | number) => void
   onDelete: (key: number | string) => void
   data?: { [key: string]: any } | undefined
 }
-export const DataDetails: React.FC<DataDetailsProps> = ({
+export const EditRequest: React.FC<EditRequestProps> = ({
   data,
   onDelete,
   onEdit,
-}: DataDetailsProps) => {
+}: EditRequestProps) => {
   const [col, setCol] = useState(false)
 
   const [keys, setKeys] = useState<string[]>([])
 
-  const [currentData, setCurrentData] = useState<DataDetailsProps['data']>({})
+  const [currentData, setCurrentData] = useState<EditRequestProps['data']>({})
 
   useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
@@ -56,27 +54,20 @@ export const DataDetails: React.FC<DataDetailsProps> = ({
           {col ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
         </SxIBApiInteraction>
         {col ? (
-          <Typography>
-            {'root : {'} {col && currentData ? Object.keys(currentData).length : ''}
+          <Typography variant='code'>
+            {'data : {'} {col && currentData ? Object.keys(currentData).length : ''}
             {Object.keys(currentData).length === 1 ? 'item' : 'items'}&nbsp;{'}'}
           </Typography>
         ) : (
-          <Typography>{'root : {'}</Typography>
+          <Typography variant='code'>{'data : {'}</Typography>
         )}
       </Stack>
       {!col && (
         <Box>
-          {/* <Typography>{renderData()}</Typography> */}
-          <TreeView
-            // defaultExpanded={['1']}
-            // expanded={treeViewExpansion}
-            // onNodeToggle={handleToggle}
-            defaultCollapseIcon={<MinusSquare />}
-            defaultExpandIcon={<PlusSquare />}
-            defaultEndIcon={<CloseSquare />}>
-            {renderData()}
-          </TreeView>
-          <Typography sx={{ ml: 9 }}>{'}'}</Typography>
+          {renderData()}
+          <Typography variant='code' sx={{ ml: 9 }}>
+            {'}'}
+          </Typography>
         </Box>
       )}
     </Box>

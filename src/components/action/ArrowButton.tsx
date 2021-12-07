@@ -18,9 +18,9 @@ export default function ArrowButton({
       sx={{
         color: theme => (theme.palette.mode === 'dark' ? '#fff' : 'primary.main'),
         border: '1px solid',
-        borderColor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.300' : 'grey.200'),
+        borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.200'),
         '&:hover': {
-          borderColor: theme => (theme.palette.mode === 'dark' ? 'primaryDark.200' : 'grey.300'),
+          borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.200' : 'grey.300'),
         },
         '&.Mui-disabled': {
           opacity: 0.5,

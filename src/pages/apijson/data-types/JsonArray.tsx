@@ -61,12 +61,12 @@ export function JsonArray({ value, dataKey, dataType }: JsonArrayProps) {
           <SxIconButton onClick={toggleArray}>
             <KeyboardArrowUpIcon />
           </SxIconButton>
-          <Typography variant='body1' sx={{ mr: 1 }}>
-            {`"${dataKey}" :`}
+          <Typography variant='code' sx={{ mr: 1 }}>
+            {`"${dataKey}": `}
           </Typography>
           <DataLabel type={dataType} />
           <Typography
-            variant='body1'
+            variant='code'
             sx={{ color: '#ffffff' }}>{`[ ${currentValue.length} ]`}</Typography>
         </Stack>
       )
@@ -76,16 +76,16 @@ export function JsonArray({ value, dataKey, dataType }: JsonArrayProps) {
         <SxIconButton onClick={toggleArray}>
           <KeyboardArrowDownIcon />
         </SxIconButton>
-        <Typography variant='body1' sx={{ mr: 1 }}>
-          {`"${dataKey}" :`}
+        <Typography variant='code' sx={{ mr: 1 }}>
+          {`"${dataKey}": `}
         </Typography>
         <DataLabel type={dataType} />
         <Stack direction='row'>
-          <Typography variant='body1' sx={{ color: '#ffffff' }}>
+          <Typography variant='code' sx={{ color: '#ffffff' }}>
             {'['}
           </Typography>
-          <Typography variant='body1'>{renderArrayContent()}</Typography>
-          <Typography variant='body1' sx={{ color: '#ffffff' }}>
+          <Typography variant='code'>{renderArrayContent()}</Typography>
+          <Typography variant='code' sx={{ color: '#ffffff' }}>
             {']'}
           </Typography>
         </Stack>

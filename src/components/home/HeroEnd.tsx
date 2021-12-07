@@ -18,7 +18,7 @@ const HeroEnd = () => {
       sx={{
         background: theme =>
           theme.palette.mode === 'dark'
-            ? `linear-gradient(0deg, ${theme.palette.primaryDark[800]} 0%, #001E3C 100%)`
+            ? `linear-gradient(0deg, ${theme.palette.grey[800]} 0%, #001E3C 100%)`
             : `linear-gradient(180deg, ${theme.palette.grey[50]} 0%, #FFFFFF 100%)`,
       }}>
       <Container sx={{ py: { xs: 4, sm: 6, md: 8 } }}>

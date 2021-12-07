@@ -1,20 +1,28 @@
+import * as React from 'react'
 import {
   useRecoilRefresher_UNSTABLE,
   useRecoilState,
+  useRecoilValue,
   useResetRecoilState,
   useSetRecoilState,
 } from 'recoil'
-import ClearIcon from '@mui/icons-material/Clear'
-import InputAdornment from '@mui/material/InputAdornment'
-import RefreshIcon from '@mui/icons-material/Refresh'
-import * as React from 'react'
-import { Box } from '@mui/material'
+// import InputAdornment from '@mui/material/InputAdornment'
+import Box from '@mui/material/Box'
 import CheckIcon from '@mui/icons-material/Check'
+import Paper from '@mui/material/Paper'
 import { green } from '@mui/material/colors'
-import { userSubmittedUrlAtom, userTypedUrlAtom, userQuerySelector } from '../../recoil/api-json'
-import { SxTfAdornmentIcon, SxTfSubmitButton, SxTextField } from '../sx'
+import Typography from '@mui/material/Typography'
+import InputBase from '@mui/material/InputBase'
+import {
+  userSubmittedUrlAtom,
+  userTypedUrlAtom,
+  userQuerySelector,
+  apiDataAtom,
+  apiFullResponseAtom,
+} from '../../recoil/api-json/atom'
+import { SxTextfieldButton } from '../sx'
 import { GreenCircularProgress } from '../action/GreenCircularProgress'
-import { SxToolTip } from '../sx/SxToolTip'
+import FadeDelay from '../animation/FadeDelay'
 
 export function Searchbar() {
   // user entered api url stored in recoil
@@ -25,15 +33,24 @@ export function Searchbar() {
   const handleTextFieldChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserTypedUrl(event.target.value)
   }
-  // reset textfield value to stored default recoil
+  // reset textfield value to recoil stored default
   const resetUserTypedUrl = useResetRecoilState(userTypedUrlAtom)
+  // reset textfield value to recoil stored default
+  const resetUserSubmittedUrl = useResetRecoilState(userSubmittedUrlAtom)
+  // reset response.data value to recoil stored default
+  const resetApiData = useResetRecoilState(apiDataAtom)
+  // reset full response value to recoil stored default
+  const resetApiFullResponse = useResetRecoilState(apiFullResponseAtom)
   //user requested url reset
   const handleReset = () => {
     resetUserTypedUrl()
+    resetUserSubmittedUrl()
+    resetApiData()
+    resetApiFullResponse()
   }
-  // useRef to avoid re-renders during button interactions
+  // useRef to avoid re-renders during button handler
   const interactionTimer = React.useRef<number>()
-  // useEffect to handle side effect proceeding button interactions
+  // useEffect to handle side effect proceeding button handler
   React.useEffect(() => {
     return () => {
       // cancel the timeout established by setTimeout()
@@ -42,27 +59,6 @@ export function Searchbar() {
   }, [])
   // return a callback to clear cache
   const refresh = useRecoilRefresher_UNSTABLE(userQuerySelector)
-  // useState hooks to handle refresh button icon transitions
-  const [refreshRequest, setRefreshRequest] = React.useState(false)
-  const [successfulRefresh, setSuccessfulRefresh] = React.useState(false)
-  // handle refresh of user requested data from url
-  const handleRefreshRequest = () => {
-    if (!refreshRequest) {
-      setSuccessfulRefresh(false)
-      setRefreshRequest(true)
-      //set state to success
-      interactionTimer.current = window.setTimeout(() => {
-        setSuccessfulRefresh(true)
-        setRefreshRequest(false)
-        refresh()
-      }, 1000)
-      //restore state to pre-interaction
-      interactionTimer.current = window.setTimeout(() => {
-        setSuccessfulRefresh(false)
-      }, 4000)
-      return
-    }
-  }
   // useState hooks to handle submit button transitions
   const [submitting, setSubmitting] = React.useState(false)
   const [successSubmit, setSuccessfulSubmit] = React.useState(false)
@@ -71,70 +67,77 @@ export function Searchbar() {
     if (!submitting) {
       setSuccessfulSubmit(false)
       setSubmitting(true)
-      //set state to success
+      // set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessfulSubmit(true)
         setSubmitting(false)
-        setUserSubmittedUrl(userTypedUrl)
+        // switch between initial call and refresh
+        if (Object.getOwnPropertyNames(apiData).length === 0) {
+          setUserSubmittedUrl(userTypedUrl)
+        } else {
+          refresh()
+        }
       }, 1000)
       //restore state to pre-interaction
       interactionTimer.current = window.setTimeout(() => {
         setSuccessfulSubmit(false)
-      }, 4000)
+      }, 3000)
       return
     }
   }
-
+  // value of data fetch
+  const apiData = useRecoilValue(apiDataAtom)
+  // console.log('apiData', apiData)
+  // console.log('userTypedUrl', userTypedUrl)
+  // https://random-data-api.com/api/users/random_user
+  //
   return (
-    <SxTextField
-      autoFocus
-      fullWidth
-      label='API URL'
-      onChange={handleTextFieldChanges}
-      value={userTypedUrl}
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position='start'>
-            <SxToolTip tooltipTitle={'Clear URL'}>
-              <SxTfAdornmentIcon disabled={userTypedUrl === undefined} onClick={handleReset}>
-                <ClearIcon />
-              </SxTfAdornmentIcon>
-            </SxToolTip>
-            <Box sx={{ position: 'relative' }}>
-              <SxToolTip tooltipTitle={'Refresh'}>
-                <SxTfAdornmentIcon
-                  disabled={userTypedUrl === undefined}
-                  onClick={handleRefreshRequest}>
-                  {!refreshRequest && !successfulRefresh ? (
-                    <RefreshIcon />
-                  ) : !successfulRefresh ? (
-                    <RefreshIcon sx={{ color: 'transparent' }} />
-                  ) : (
-                    <CheckIcon sx={{ color: green[500] }} />
-                  )}
-                </SxTfAdornmentIcon>
-              </SxToolTip>
-              {refreshRequest && <GreenCircularProgress size='16px' />}
-            </Box>
-          </InputAdornment>
-        ),
-        endAdornment: (
-          <InputAdornment position='end'>
-            <Box sx={{ position: 'relative' }}>
-              <SxTfSubmitButton
-                aria-label='toggle password visibility'
-                disabled={userTypedUrl === undefined}
-                onClick={handleSubmitUrl}
-                variant='text'>
-                {!submitting && !successSubmit
-                  ? 'Submit'
-                  : successSubmit && <CheckIcon sx={{ color: green[500] }} />}
-              </SxTfSubmitButton>
-              {submitting && <GreenCircularProgress size='20px' />}
-            </Box>
-          </InputAdornment>
-        ),
-      }}
-    />
+    <Paper
+      sx={{
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        width: 700,
+        background: '#0D0D0D',
+      }}>
+      <InputBase
+        autoFocus
+        sx={{ ml: 1, flex: 1, fontSize: '14px', minHeight: '32px' }}
+        placeholder='Enter API url'
+        onChange={handleTextFieldChanges}
+      />
+      {Object.getOwnPropertyNames(apiData).length !== 0 && (
+        <FadeDelay delay={1000}>
+          <SxTextfieldButton aria-label='clear url' onClick={handleReset}>
+            <Typography variant='body2'>Clear</Typography>
+          </SxTextfieldButton>
+        </FadeDelay>
+      )}
+      <Box sx={{ position: 'relative' }}>
+        <FadeDelay delay={400}>
+          <SxTextfieldButton
+            aria-label='toggle password visibility'
+            disabled={userTypedUrl === undefined}
+            onClick={handleSubmitUrl}>
+            {!submitting && !successSubmit ? (
+              <Typography variant='body2'>
+                {Object.getOwnPropertyNames(apiData).length === 0 ? (
+                  <FadeDelay delay={400}>
+                    <span>Call Api</span>
+                  </FadeDelay>
+                ) : (
+                  <FadeDelay delay={400}>
+                    <span>Refresh</span>
+                  </FadeDelay>
+                )}
+              </Typography>
+            ) : (
+              successSubmit && <CheckIcon sx={{ color: green[500] }} />
+            )}
+          </SxTextfieldButton>
+        </FadeDelay>
+        {submitting && <GreenCircularProgress size='16px' />}
+      </Box>
+    </Paper>
   )
 }

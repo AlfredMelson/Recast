@@ -8,15 +8,15 @@ export default function Section({
   const map = {
     white: {
       light: 'common.white',
-      dark: 'primaryDark.800',
+      dark: 'grey.800',
     },
     comfort: {
       light: 'grey.50',
-      dark: 'primaryDark.900',
+      dark: 'grey.900',
     },
     dim: {
-      light: 'primaryDark.700',
-      dark: 'primaryDark.700',
+      light: 'grey.700',
+      dark: 'grey.700',
     },
   }
   return (
@@ -27,7 +27,7 @@ export default function Section({
           ? {
               background: theme =>
                 theme.palette.mode === 'dark'
-                  ? `linear-gradient(180deg, ${theme.palette.primaryDark[900]} 0%, #001E3C 100%)`
+                  ? `linear-gradient(180deg, ${theme.palette.grey[900]} 0%, #001E3C 100%)`
                   : `linear-gradient(180deg, ${theme.palette.grey[50]} 0%, #FFFFFF 100%)`,
             }
           : {

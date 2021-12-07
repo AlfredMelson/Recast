@@ -5,7 +5,7 @@ interface TypeState {
 }
 export function DataLabel({ type }: TypeState) {
   return (
-    <Typography variant='body1' sx={{ mr: 1, color: 'gray', fontStyle: 'italic' }}>
+    <Typography variant='code' sx={{ mr: 1, color: 'gray' }}>
       {type}
     </Typography>
   )

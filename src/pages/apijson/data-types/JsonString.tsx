@@ -39,8 +39,8 @@ export function JsonString({ value, dataKey, dataType, onEdit, onDelete }: JsonS
 
   return (
     <Stack direction='row' sx={{ ml: 6 }}>
-      <Typography variant='body1' sx={{ mr: 1 }}>
-        {`"${dataKey}" :`}
+      <Typography variant='code' sx={{ mr: 1 }}>
+        {`"${dataKey}": `}
       </Typography>
       <DataLabel type={dataType} />
       {showInput ? (
@@ -63,7 +63,7 @@ export function JsonString({ value, dataKey, dataType, onEdit, onDelete }: JsonS
         </Stack>
       ) : (
         <Stack direction='row' sx={{ color: green[400] }} onClick={showEditInput}>
-          <Typography variant='body1'>{`"${currentValue}"`}</Typography>
+          <Typography variant='code'>{`"${currentValue}"`}</Typography>
         </Stack>
       )}
     </Stack>
