@@ -74,9 +74,6 @@ export const SxTextField = styled((props: TextFieldProps) => (
     '&:hover': { fontSize: '14px' },
     '&.Mui-focused': {
       fontSize: '14px',
-      // boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 1px`,
-      // border: '1px solid',
-      // borderColor: theme.palette.primary.main,
     },
   },
 }))

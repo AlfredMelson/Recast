@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { useRecoilState } from 'recoil'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
 import { ToggleButton } from '@mui/material'
 import { userToggledApiAtom } from '../../recoil/api-json/atom'
-import { SvgJsonLogo } from '../icons/SvgTsLogo'
+import { SvgTsLogo } from '../icons/SvgTsLogo'
+import { SxPrimaryToggleButtonGroup } from '../sx/SxToggleButtonGroup'
 
 export default function DataToggle() {
   // state of user toggled api response
@@ -22,7 +22,7 @@ export default function DataToggle() {
   }
 
   return (
-    <ToggleButtonGroup value={userToggledApi} exclusive onChange={handleDataToggle}>
+    <SxPrimaryToggleButtonGroup value={userToggledApi} exclusive onChange={handleDataToggle}>
       <Paper
         component={ToggleButton}
         value='data'
@@ -76,9 +76,9 @@ export default function DataToggle() {
           border: 'none',
           borderRadius: '4px 4px 0 0',
         }}>
-        <SvgJsonLogo />
+        <SvgTsLogo />
         <Typography variant='body2'> interface</Typography>
       </Paper>
-    </ToggleButtonGroup>
+    </SxPrimaryToggleButtonGroup>
   )
 }

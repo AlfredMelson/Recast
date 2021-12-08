@@ -1,16 +1,17 @@
 import CircularProgress from '@mui/material/CircularProgress'
-import { green } from '@mui/material/colors'
+import { blue, green } from '@mui/material/colors'
 
-interface GreenCircularProgressProps {
+interface SxCircularProgressProps {
   size: '16px' | '20px'
+  color: 'blue' | 'green'
 }
 
-export function GreenCircularProgress({ size }: GreenCircularProgressProps) {
+export function SxCircularProgress({ size, color }: SxCircularProgressProps) {
   return (
     <CircularProgress
       size={size}
       sx={{
-        color: green[500],
+        color: color === 'green' ? green[500] : blue[500],
         position: 'absolute',
         top: '50%',
         left: '50%',

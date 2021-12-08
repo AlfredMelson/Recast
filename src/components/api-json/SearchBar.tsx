@@ -21,7 +21,7 @@ import {
   apiFullResponseAtom,
 } from '../../recoil/api-json/atom'
 import { SxTextfieldButton } from '../sx'
-import { GreenCircularProgress } from '../action/GreenCircularProgress'
+import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
 
 export default function Searchbar() {
@@ -133,7 +133,7 @@ export default function Searchbar() {
             )}
           </SxTextfieldButton>
         </FadeDelay>
-        {submitting && <GreenCircularProgress size='16px' />}
+        {submitting && <SxCircularProgress size='16px' color='green' />}
       </Box>
     </Paper>
   )

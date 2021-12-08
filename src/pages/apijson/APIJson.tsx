@@ -25,7 +25,7 @@ import { TsInterface } from './display/TsInterface'
 // import Collapse from '@mui/material/Collapse'
 // import Snackbar from '@mui/material/Snackbar'
 
-export default function APIJson() {
+export function APIJson() {
   // const [showError, setShowError] = React.useState(false)
   // state of user toggled api response
   const userToggledApi = useRecoilValue(userToggledApiAtom)

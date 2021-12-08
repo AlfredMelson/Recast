@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil'
 import { userToggledApiAtom } from '../../recoil/api-json/atom'
 import RootSvg, { RootSvgProps } from './RootSvg'
 
-export function SvgJsonLogo(props: RootSvgProps) {
+export function SvgTsLogo(props: RootSvgProps) {
   const userToggledApi = useRecoilValue(userToggledApiAtom)
 
   return (

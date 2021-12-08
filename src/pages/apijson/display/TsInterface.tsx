@@ -2,12 +2,10 @@ import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { blue } from '@mui/material/colors'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { AnimatePresence, motion } from 'framer-motion'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
-import { SxDataIconButton } from '../../../components/sx'
+import { useRecoilValue } from 'recoil'
 import DownloadInfo from '../../../components/action/DownloadInfo'
 import {
   getType,
@@ -19,11 +17,12 @@ import {
   JsonObjectProps,
   JsonStringProps,
 } from '../data-types/getProps'
+import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 
-interface DataLabelProps {
+interface TypeLabelProps {
   type: string
 }
-export function DataLabel({ type }: DataLabelProps) {
+export function TypeLabel({ type }: TypeLabelProps) {
   return (
     <Typography variant='code' sx={{ color: blue[500] }}>
       {type}
@@ -58,6 +57,16 @@ export const TsInterface: React.FC<TsInterfaceProps> = ({ data }: TsInterfacePro
       )
     })
   }
+
+  // state when user submits user entered url
+  const apiUrl = useRecoilValue(userSubmittedUrlAtom)
+  // split and pop to isolate interface name
+  const lastSegment = apiUrl.split('/').pop()
+  // remove underscore and uppercase following character
+  const formLastSegment = lastSegment.replace(/(^|_)./g, s => s.slice(-1).toUpperCase())
+  // substring and landIndexOf to verify last segment
+  // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
+
   return (
     <AnimatePresence>
       <Paper
@@ -68,8 +77,12 @@ export const TsInterface: React.FC<TsInterfaceProps> = ({ data }: TsInterfacePro
           borderRadius: '0  4px 4px 4px',
           background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
         }}>
-        {renderData()}
-        <DownloadInfo appeared={true} />
+        <Typography variant='code'>
+          {`interface ${formLastSegment}Props {`}
+          <Box sx={{ ml: 3 }}>{renderData()}</Box>
+          {'}'}
+        </Typography>
+        <DownloadInfo appeared={true} title={`${formLastSegment}Props`} />
       </Paper>
     </AnimatePresence>
   )
@@ -123,7 +136,7 @@ function DataSort({ i, dataKey, dataType, dataValue }: DataSortProps) {
 }
 
 function JsonArray({ value, dataKey }: JsonArrayProps) {
-  const [col, setCol] = React.useState(false)
+  // const [col, setCol] = React.useState(false)
 
   const renderArrayContent = () => {
     return value.map((v: any, i: number) => {
@@ -133,34 +146,13 @@ function JsonArray({ value, dataKey }: JsonArrayProps) {
   }
 
   const renderContent = () => {
-    if (col) {
-      return (
-        <Stack direction='row'>
-          <SxDataIconButton onClick={toggleArray}>
-            <KeyboardArrowRightIcon />
-          </SxDataIconButton>
-          <Typography variant='body1'>
-            {dataKey}
-            <span style={{ color: '#ffffff' }}>&nbsp;&#58;&nbsp;&nbsp;{`[ ${value.length} ]`}</span>
-          </Typography>
-        </Stack>
-      )
-    }
     return (
       <Stack direction='row' alignItems='flex-start'>
-        <SxDataIconButton onClick={toggleArray}>
-          <KeyboardArrowDownIcon />
-        </SxDataIconButton>
         <Typography variant='body1'>{dataKey}</Typography>
         {renderArrayContent()}
       </Stack>
     )
   }
-
-  const toggleArray = () => {
-    setCol(!col)
-  }
-
   return renderContent()
 }
 
@@ -168,7 +160,7 @@ function JsonBoolean({ dataKey, dataType }: JsonBooleanProps) {
   return (
     <Stack direction='row'>
       <Typography variant='code'>{dataKey}&#58;&nbsp;</Typography>
-      <DataLabel type={dataType} />
+      <TypeLabel type={dataType} />
     </Stack>
   )
 }
@@ -177,7 +169,7 @@ function JsonFunction({ dataKey, dataType }: JsonFunctionProps) {
   return (
     <Stack direction='row'>
       <Typography variant='code'>{dataKey}&#58;&nbsp;</Typography>
-      <DataLabel type={dataType} />
+      <TypeLabel type={dataType} />
     </Stack>
   )
 }
@@ -186,13 +178,12 @@ function JsonNumber({ dataKey, dataType }: JsonNumberProps) {
   return (
     <Stack direction='row'>
       <Typography variant='code'>{dataKey}&#58;&nbsp;</Typography>
-      <DataLabel type={dataType} />
+      <TypeLabel type={dataType} />
     </Stack>
   )
 }
 
 function JsonObject({ value, dataKey }: JsonObjectProps) {
-  const [col, setCol] = React.useState(true)
   const [keys, setKeys] = React.useState<string[]>([])
   const [currentValue, setCurrentValue] = React.useState<JsonObjectProps['value']>({})
   React.useEffect(() => {
@@ -214,40 +205,12 @@ function JsonObject({ value, dataKey }: JsonObjectProps) {
     })
   }
   const renderObjContent = () => {
-    if (col)
-      return (
-        <React.Fragment>
-          <Stack direction='row' sx={{ ml: '-16px' }}>
-            <SxDataIconButton onClick={toggleObj}>
-              <KeyboardArrowDownIcon />
-            </SxDataIconButton>
-            <Typography variant='body1'>{dataKey}</Typography>
-          </Stack>
-          <Box sx={{ ml: '32px' }}>{renderObject()}</Box>
-        </React.Fragment>
-      )
     return (
-      <Stack direction='row' sx={{ ml: '-16px' }}>
-        <SxDataIconButton onClick={toggleObj}>
-          <KeyboardArrowRightIcon />
-        </SxDataIconButton>
-        <Typography variant='body1'>
-          {dataKey}
-          {keys.length === 0 ? (
-            ''
-          ) : (
-            <>
-              <span style={{ color: '#ffffff' }}>&nbsp;&#58;&nbsp;&nbsp;{`{ ${keys.length}`}</span>
-              <span style={{ color: '#ffffff' }}>&nbsp;{keys.length === 1 ? 'item' : 'items'}</span>
-              <span style={{ color: '#ffffff' }}>&nbsp;{'}'}</span>
-            </>
-          )}
-        </Typography>
-      </Stack>
+      <React.Fragment>
+        <Typography variant='body1'>{dataKey}</Typography>
+        <Box sx={{ ml: 3 }}>{renderObject()}</Box>
+      </React.Fragment>
     )
-  }
-  const toggleObj = () => {
-    setCol(!col)
   }
   return renderObjContent()
 }
@@ -256,7 +219,7 @@ function JsonString({ dataKey, dataType }: JsonStringProps) {
   return (
     <Stack direction='row'>
       <Typography variant='code'>{dataKey}&#58;&nbsp;</Typography>
-      <DataLabel type={dataType} />
+      <TypeLabel type={dataType} />
     </Stack>
   )
 }

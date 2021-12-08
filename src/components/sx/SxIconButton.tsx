@@ -47,6 +47,23 @@ export const SxAppBarIconButton = styled(IconButton)(({ theme }) => ({
   },
 }))
 
+/**
+ * SxTxInterfaceIconButton manages the style of the interactive app bar icons
+ * @param {IconButton} mui IconButton
+ * @param {theme} MuiBrandingTheme
+ * @param {styled} mui styled
+ * @return icon color mode style for light and dark mode
+ */
+export const SxTxInterfaceIconButton = styled(IconButton)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  padding: theme.spacing(1),
+  backgroundColor: 'primaryDark.500',
+  '&:hover, &.Mui-focused': {
+    backgroundColor: 'primaryDark.600',
+    color: '#007FFF',
+  },
+}))
+
 export const SxIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(1),

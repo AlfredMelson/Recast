@@ -2,28 +2,24 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DownloadIcon from '@mui/icons-material/Download'
-import DeleteIcon from '@mui/icons-material/Delete'
-import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import ClipboardJS from 'clipboard'
 import CheckIcon from '@mui/icons-material/Check'
-import { green } from '@mui/material/colors'
-import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
+import { blue } from '@mui/material/colors'
 import saveAs from 'file-saver'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import CloseIcon from '@mui/icons-material/Close'
-import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
-import { SxCircularProgress } from '../action/SxCircularProgress'
-import { SxAppBarIconButton } from '../sx/SxIconButton'
+import { localEditorTextAtom } from '../../recoil'
+import { SxTxInterfaceIconButton } from '../sx/SxIconButton'
 import { SxToolTip } from '../sx/SxToolTip'
-import { SxPrimaryToggleButtonGroup } from '../sx/SxToggleButtonGroup'
+import { SxCircularProgress } from '../action/SxCircularProgress'
+import { SxTIButtonGroup } from '../sx/SxButtonGroup'
 
-export function DrawerIcons() {
+export function TsInterfaceIcons() {
   // retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
+  //
   // reset localStorage value to recoil stored default
-  const resetLocalEditorText = useResetRecoilState(localEditorTextAtom)
-  // set dialog with minified json visability
-  const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
+  // const resetLocalEditorText = useResetRecoilState(localEditorTextAtom)
+  //
   // useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
   // useEffect to handle side effect proceeding button interactions
@@ -88,75 +84,36 @@ export function DrawerIcons() {
     }
   }
 
-  //set visability of user json drawer
-  const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
-
   return (
-    <SxPrimaryToggleButtonGroup>
-      <Box sx={{ position: 'relative', pl: 0.5 }}>
-        <SxToolTip tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
-          <SxAppBarIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={handleJsonCopy}>
+    <SxTIButtonGroup>
+      <Box sx={{ position: 'relative', pr: 0.5 }}>
+        <SxToolTip tooltipTitle={jsonCopy ? 'Copied' : 'Copy interface'}>
+          <SxTxInterfaceIconButton onClick={handleJsonCopy}>
             {!loadingCopy && !successCopy ? (
               <ContentCopyIcon />
             ) : !successCopy ? (
               <ContentCopyIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: green[500] }} />
+              <CheckIcon sx={{ color: blue[500] }} />
             )}
-          </SxAppBarIconButton>
+          </SxTxInterfaceIconButton>
         </SxToolTip>
-        {loadingCopy && <SxCircularProgress size='20px' color='green' />}
+        {loadingCopy && <SxCircularProgress size='20px' color='blue' />}
       </Box>
-      <Box sx={{ position: 'relative' }}>
-        <SxToolTip tooltipTitle={'Download json'}>
-          <SxAppBarIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={handleDownload}>
+      <Box sx={{ position: 'relative', pl: 0.5 }}>
+        <SxToolTip tooltipTitle={'Download interface'}>
+          <SxTxInterfaceIconButton onClick={handleDownload}>
             {!loadingDownload && !successDownload ? (
               <DownloadIcon />
             ) : !successDownload ? (
               <DownloadIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: green[500] }} />
+              <CheckIcon sx={{ color: blue[500] }} />
             )}
-          </SxAppBarIconButton>
+          </SxTxInterfaceIconButton>
         </SxToolTip>
-        {loadingDownload && <SxCircularProgress size='20px' color='green' />}
+        {loadingDownload && <SxCircularProgress size='20px' color='blue' />}
       </Box>
-      <Box sx={{ position: 'relative' }}>
-        <SxToolTip tooltipTitle={'Delete json'}>
-          <SxAppBarIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={() => {
-              resetLocalEditorText()
-            }}>
-            {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
-          </SxAppBarIconButton>
-        </SxToolTip>
-      </Box>
-      <Box sx={{ position: 'relative' }}>
-        <SxToolTip tooltipTitle={'Minify json'}>
-          <SxAppBarIconButton
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={() => {
-              setMinifyDialogOpen(true)
-            }}>
-            <UnfoldLessIcon />
-          </SxAppBarIconButton>
-        </SxToolTip>
-      </Box>
-      <Box sx={{ position: 'relative', pr: 0.5 }}>
-        <SxToolTip tooltipTitle={'Close'}>
-          <SxAppBarIconButton
-            onClick={() => {
-              setDataDrawerOpen(false)
-            }}>
-            <CloseIcon />
-          </SxAppBarIconButton>
-        </SxToolTip>
-      </Box>
-    </SxPrimaryToggleButtonGroup>
+    </SxTIButtonGroup>
   )
 }

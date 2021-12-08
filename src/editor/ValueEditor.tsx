@@ -142,8 +142,7 @@ export function ValueEditor({ path, defaultValue, onCancel, onUpdate }: ValueEdi
               color: 'var(--text-color-null)',
               fontWeight: 'var(--text-weight-bold)',
               fontStyle: 'italic',
-            }}
-          >
+            }}>
             null
           </Typography>
         </Box>

@@ -316,15 +316,13 @@ export function muiThemedComponents(theme: Theme) {
           disableFocusRipple: true,
           disableRipple: true,
         },
-        styleOverrides: {
-          root: {
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[900]
-                : theme.palette.grey[100],
-            borderRadius: '4px',
-            boxShadow: 0,
-          },
+        root: {
+          background:
+            theme.palette.mode === 'dark'
+              ? theme.palette.primaryDark[900]
+              : theme.palette.grey[100],
+          borderRadius: '4px',
+          boxShadow: 0,
         },
       },
       MuiContainer: {
@@ -466,7 +464,6 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             height: '36px',
             border: 'none',
-
             backgroundColor:
               theme.palette.mode === 'dark' ? theme.palette.grey[600] : theme.palette.grey[50],
             transitionDuration: '300ms',
@@ -483,6 +480,14 @@ export function muiThemedComponents(theme: Theme) {
       MuiToggleButtonGroup: {
         defaultProps: {
           size: 'small',
+        },
+        root: {
+          background:
+            theme.palette.mode === 'dark'
+              ? theme.palette.primaryDark[900]
+              : theme.palette.grey[100],
+          borderRadius: '4px',
+          boxShadow: 0,
         },
       },
       MuiTooltip: {

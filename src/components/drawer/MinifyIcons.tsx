@@ -8,11 +8,11 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { green } from '@mui/material/colors'
 import ClipboardJS from 'clipboard'
 import { saveAs } from 'file-saver'
-import { ButtonGroup } from '@mui/material'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
-import { GreenCircularProgress } from '../action/GreenCircularProgress'
+import { SxCircularProgress } from '../action/SxCircularProgress'
 import { SxAppBarIconButton } from '../sx/SxIconButton'
 import { SxToolTip } from '../sx/SxToolTip'
+import { SxPrimaryToggleButtonGroup } from '../sx/SxToggleButtonGroup'
 
 export function MinifyIcons() {
   //set dialog with minified json visability
@@ -101,7 +101,7 @@ export function MinifyIcons() {
   }
 
   return (
-    <ButtonGroup>
+    <SxPrimaryToggleButtonGroup>
       <Box sx={{ position: 'relative', pl: 0.5 }}>
         <SxToolTip tooltipTitle={minifiedCopy ? 'Copied' : 'Copy minified json'}>
           <SxAppBarIconButton
@@ -117,7 +117,7 @@ export function MinifyIcons() {
             )}
           </SxAppBarIconButton>
         </SxToolTip>
-        {loadingCopy && <GreenCircularProgress size='20px' />}
+        {loadingCopy && <SxCircularProgress size='20px' color='green' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
         <SxToolTip tooltipTitle={minifiedCopy ? 'Downloaded' : 'Download minified json'}>
@@ -131,7 +131,7 @@ export function MinifyIcons() {
             )}
           </SxAppBarIconButton>
         </SxToolTip>
-        {loadingDownload && <GreenCircularProgress size='20px' />}
+        {loadingDownload && <SxCircularProgress size='20px' color='green' />}
       </Box>
       <Box sx={{ position: 'relative', pr: 0.5 }}>
         <SxToolTip tooltipTitle={'Close'}>
@@ -143,6 +143,6 @@ export function MinifyIcons() {
           </SxAppBarIconButton>
         </SxToolTip>
       </Box>
-    </ButtonGroup>
+    </SxPrimaryToggleButtonGroup>
   )
 }
