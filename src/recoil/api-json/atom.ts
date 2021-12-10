@@ -1,10 +1,11 @@
 import { atom, selector } from 'recoil'
 
 /**
- * userQuerySelector represents ...
+ * @name userQuerySelector
+ * @description state representing ...
  * @param {}
- * @return {}
- * @bug selector value onjects will freeze in development mode when bugs are detected
+ * @type {}
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
  * selector(options)
  * Selectors represent a function, or derived state in Recoil. You can think of them as similar to an "idempotent" or "pure function" without side-effects that always returns the same value for a given set of dependency values. If only a get function is provided, the selector is read-only and returns a RecoilValueReadOnly object. If a set is also provided, it returns a writeable RecoilState object.
@@ -41,8 +42,10 @@ export const userQuerySelector = selector({
 })
 
 /**
- * userTypedUrlAtom represents the state of the user entered API URL.
+ * @name userTypedUrlAtom
+ * @description state representing the user entered API URL
  * @param {String | undefined}
+ * @type {String}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
@@ -58,6 +61,13 @@ export const userTypedUrlAtom = atom<string | undefined>({
 })
 
 /**
+ * @name userSubmittedUrlAtom
+ * @description state representing the textfield when user submits
+ * @param {String | undefined}
+ * @type {String}
+ * @return {Object} a writeable RecoilState object
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
+ *
  * userSubmittedUrlAtom represents the state of the textfield when user submits.
  * @param {String | undefined}
  * @return {Object} a writeable RecoilState object
@@ -75,8 +85,10 @@ export const userSubmittedUrlAtom = atom<string | undefined>({
 })
 
 /**
- * apiDataAtom represents the state of 'response.data' returned from the api call
+ * @name apiDataAtom
+ * @description state representing response.data returned from the fetch api call
  * @param {Record<string, unknown>}
+ * @type {Object}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
@@ -92,8 +104,10 @@ export const apiDataAtom = atom<Record<string, unknown>>({
 })
 
 /**
- * apiFullResponseAtom represents the state of full response returned from the api call
+ * @name apiFullResponseAtom
+ * @description state representing the full response returned from Axios api call
  * @param {Record<string, unknown>}
+ * @type {Object}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
@@ -109,8 +123,10 @@ export const apiFullResponseAtom = atom({
 })
 
 /**
- * apiResponseHeadersAtom represents the state of response.headers returned from the api call
+ * @name apiResponseHeadersAtom
+ * @description state representing response.headers returned from the api call
  * @param {Record<string, unknown>}
+ * @type {Object}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
@@ -126,8 +142,10 @@ export const apiResponseHeadersAtom = atom({
 })
 
 /**
- * userToggledApiAtom represents the user toggled api response
- * @param {'data' | 'edit' | 'full' | 'headers' | 'ts'}
+ * @name userToggledApiAtom
+ * @description state representing the user toggled api response
+ * @param {UserToggledApiAtomOptions}
+ * @type {String}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
@@ -137,7 +155,9 @@ export const apiResponseHeadersAtom = atom({
  * const userToggledApi  = useRecoilValue(userToggledApiAtom)
  * const resetUserToggledApi = useResetRecoilState(userToggledApiAtom)
  */
-export const userToggledApiAtom = atom<'data' | 'edit' | 'full' | 'ts' | 'headers'>({
+export type UserToggledApiAtomOptions = 'data' | 'edit' | 'full' | 'ts' | 'headers' | 'dtype'
+
+export const userToggledApiAtom = atom<UserToggledApiAtomOptions>({
   key: 'userToggledApi',
   default: 'data',
 })

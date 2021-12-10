@@ -10,7 +10,7 @@ export const SxButton = styled(Button)(({ theme }) => ({
   textDecoration: 'none',
   padding: theme.spacing(1),
   borderRadius: theme.shape.borderRadius,
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: '#007FFF',
     backgroundColor: 'transparent',
   },

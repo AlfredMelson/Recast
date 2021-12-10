@@ -11,7 +11,7 @@ import { styled } from '@mui/material'
 export const SxIBColorMode = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
   padding: theme.spacing(1),
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
   },
 }))
@@ -27,7 +27,9 @@ export const SxIBApiInteraction = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
   margin: theme.spacing(0, 1),
   padding: theme.spacing(0, 0.4),
-  '&:hover, &:focus': {
+  transitionProperty: 'color',
+  msTransitionDuration: 'var(--transition-speed-fastest)',
+  '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
   },
 }))
@@ -42,7 +44,7 @@ export const SxIBApiInteraction = styled(IconButton)(({ theme }) => ({
 export const SxAppBarIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(1),
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: '#007FFF',
   },
 }))
@@ -67,7 +69,7 @@ export const SxTxInterfaceIconButton = styled(IconButton)(({ theme }) => ({
 export const SxIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(1),
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: '#007FFF',
   },
   '& > div': {
@@ -78,7 +80,7 @@ export const SxIconButton = styled(IconButton)(({ theme }) => ({
 export const SxDataIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(0.25),
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: '#007FFF',
   },
 }))

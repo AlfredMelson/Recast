@@ -17,7 +17,7 @@ export const Navigation = styled('nav')(({ theme }) => ({
       textDecoration: 'none',
       padding: theme.spacing(1),
       borderRadius: theme.shape.borderRadius,
-      '&:hover, &:focus': {
+      '&:hover, & .Mui-focused': {
         color: theme.palette.text.primary,
         backgroundColor:
           theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],

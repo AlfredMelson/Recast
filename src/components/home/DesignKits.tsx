@@ -34,7 +34,7 @@ const Image = styled('img')(({ theme }) => ({
 //   position: 'relative',
 //   transition: '0.3s',
 //   borderRadius: '50%',
-//   '&:hover, &:focus': {
+//   '&:hover, & .Mui-focused': {
 //     boxShadow:
 //       theme.palette.mode === 'dark'
 //         ? `0 6px 20px 0 ${alpha(theme.palette.grey[100], 0.5)}`

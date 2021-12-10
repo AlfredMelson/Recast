@@ -7,11 +7,11 @@ import TextField from '@mui/material/TextField'
 import { purple } from '@mui/material/colors'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
-import DataLabel from './DataLabel'
-import { JsonNumberProps } from './getProps'
+import ApiDataTypeLabel from './ApiDataTypeLabel'
+import { ApiNumberAlias } from './typeAliases'
 
-export function JsonNumber({ value, dataKey, dataType, onEdit, onDelete }: JsonNumberProps) {
-  const [currentValue, setCurrentValue] = React.useState<JsonNumberProps['value'] | any>()
+export function ApiNumber({ value, dataKey, dataType, onEdit, onDelete }: ApiNumberAlias) {
+  const [currentValue, setCurrentValue] = React.useState<ApiNumberAlias['value'] | any>()
   const [showInput, setShowInput] = React.useState(false)
   React.useEffect(() => {
     setCurrentValue(value)
@@ -31,11 +31,9 @@ export function JsonNumber({ value, dataKey, dataType, onEdit, onDelete }: JsonN
     setShowInput(false)
   }
   return (
-    <Stack direction='row' sx={{ ml: 6 }}>
-      <Typography variant='code' sx={{ mr: 1 }}>
-        {`"${dataKey}": `}
-      </Typography>
-      <DataLabel type={dataType} />
+    <Stack direction='row' sx={{ ml: 4.8 }}>
+      <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
+      <ApiDataTypeLabel type={dataType} variant='edit' />
       {showInput ? (
         <Stack direction='row'>
           <TextField

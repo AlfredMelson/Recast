@@ -24,7 +24,7 @@ const Anchor = styled('a')<{ component?: React.ElementType; noLinkStyle?: boolea
     padding: theme.spacing(1),
     borderRadius: theme.spacing(1),
     transition: theme.transitions.create('background'),
-    '&:hover, &:focus': {
+    '&:hover, & .Mui-focused': {
       backgroundColor:
         theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[100],
       // Reset on touch devices, it doesn't add specificity

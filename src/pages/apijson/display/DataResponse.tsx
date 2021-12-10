@@ -1,29 +1,30 @@
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { green, blue, red } from '@mui/material/colors'
+import { green, blue, red, grey } from '@mui/material/colors'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Box, Paper } from '@mui/material'
+import { motion } from 'framer-motion'
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
 import { SxDataIconButton } from '../../../components/sx'
 import {
-  DataSortProps,
+  ApiDataSortAlias,
   getType,
-  JsonArrayProps,
-  JsonBooleanProps,
-  JsonFunctionProps,
-  JsonNumberProps,
-  JsonObjectProps,
-  JsonStringProps,
-} from '../data-types/getProps'
+  ApiArrayAlias,
+  ApiBooleanAlias,
+  ApiFunctionAlias,
+  ApiNumberAlias,
+  ApiObjectAlias,
+  ApiStringAlias,
+} from '../data-types/typeAliases'
 
-interface DataResponseProps {
+type DataResponseAlias = {
   data?: { [key: string]: any } | undefined
 }
-export default function DataResponse({ data }: DataResponseProps) {
+export default function DataResponse({ data }: DataResponseAlias) {
   const [keys, setKeys] = React.useState<string[]>([])
-  const [currentData, setCurrentData] = React.useState<DataResponseProps['data']>({})
+  const [currentData, setCurrentData] = React.useState<DataResponseAlias['data']>({})
 
   React.useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
@@ -34,7 +35,7 @@ export default function DataResponse({ data }: DataResponseProps) {
   const renderData = () => {
     return keys.map((key, i) => {
       return (
-        <DataSort
+        <ApiDataSort
           key={i}
           i={i}
           dataType={currentData && getType(currentData[key])}
@@ -46,22 +47,20 @@ export default function DataResponse({ data }: DataResponseProps) {
   }
 
   return (
-    <AnimatePresence>
-      <Paper
-        sx={{
-          pt: 3,
-          pl: 5,
-          pb: 4,
-          borderRadius: '0  4px 4px 4px',
-          background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-        }}>
-        {renderData()}
-      </Paper>
-    </AnimatePresence>
+    <Paper
+      sx={{
+        pt: 3,
+        pl: 5,
+        pb: 4,
+        borderRadius: '0  4px 4px 4px',
+        background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
+      }}>
+      {renderData()}
+    </Paper>
   )
 }
 
-function DataSort({ i, dataType, dataValue, dataKey }: DataSortProps) {
+function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
@@ -82,25 +81,9 @@ function DataSort({ i, dataType, dataValue, dataKey }: DataSortProps) {
   }
   return (
     <motion.div
-      variants={{
-        hidden: i => ({
-          opacity: 0,
-          y: -4 * i,
-        }),
-        visible: i => ({
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: i * 0.1,
-            duration: 0.4,
-          },
-        }),
-        removed: {
-          opacity: 0,
-        },
-      }}
-      initial='hidden'
-      animate='visible'
+      initial={{ opacity: 0, translateX: 4 }}
+      animate={{ opacity: 1, translateX: 0 }}
+      transition={{ duration: 0.3, delay: i * 0.02 }}
       exit='removed'
       custom={i}>
       {renderValue()}
@@ -108,13 +91,13 @@ function DataSort({ i, dataType, dataValue, dataKey }: DataSortProps) {
   )
 }
 
-export function JsonArray({ value, dataKey }: JsonArrayProps) {
+export function JsonArray({ value, dataKey }: ApiArrayAlias) {
   const [col, setCol] = React.useState(false)
 
   const renderArrayContent = () => {
     return value.map((v: any, i: number) => {
       const type: string = getType(v)
-      return <DataSort key={i} i={i} dataValue={v} dataType={type} dataKey={i} />
+      return <ApiDataSort key={i} i={i} dataValue={v} dataType={type} dataKey={i} />
     })
   }
 
@@ -126,8 +109,14 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
             <KeyboardArrowRightIcon />
           </SxDataIconButton>
           <Typography variant='code'>
-            {dataKey}
-            <span style={{ color: '#ffffff' }}>&#58;&nbsp;{`[ ${value.length} ]`}</span>
+            <Box>
+              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              <span style={{ color: grey[500] }}>
+                &#47;&#47;&nbsp;
+                {col && value ? Object.keys(value).length : ''}&nbsp;
+                {Object.keys(value).length === 1 ? 'item' : 'items'}
+              </span>
+            </Box>
           </Typography>
         </Stack>
       )
@@ -150,22 +139,20 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
   return renderContent()
 }
 
-export function JsonBoolean({ value, dataKey }: JsonBooleanProps) {
+export function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[400] }}>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: '#ffffff' }}>
-        {value ? (
-          <span style={{ color: green[400] }}>{`${value}`}</span>
-        ) : (
-          <span style={{ color: red[400] }}>{`${value}`}</span>
-        )}
-      </span>
+      {value ? (
+        <span style={{ color: green[400] }}>{`${value}`}</span>
+      ) : (
+        <span style={{ color: red[400] }}>{`${value}`}</span>
+      )}
     </Typography>
   )
 }
 
-export function JsonFunction({ dataKey }: JsonFunctionProps) {
+export function JsonFunction({ dataKey }: ApiFunctionAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[500] }}>
       {`"${dataKey}"`}&#58;&nbsp;
@@ -176,7 +163,7 @@ export function JsonFunction({ dataKey }: JsonFunctionProps) {
   )
 }
 
-function JsonNumber({ value, dataKey }: JsonNumberProps) {
+function JsonNumber({ value, dataKey }: ApiNumberAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
@@ -185,10 +172,10 @@ function JsonNumber({ value, dataKey }: JsonNumberProps) {
   )
 }
 
-function JsonObject({ value, dataKey }: JsonObjectProps) {
+function JsonObject({ value, dataKey }: ApiObjectAlias) {
   const [col, setCol] = React.useState(true)
   const [keys, setKeys] = React.useState<string[]>([])
-  const [currentValue, setCurrentValue] = React.useState<JsonObjectProps['value']>({})
+  const [currentValue, setCurrentValue] = React.useState<ApiObjectAlias['value']>({})
   React.useEffect(() => {
     setCurrentValue(value)
     setKeys(Object.keys(value ? value : ''))
@@ -197,7 +184,7 @@ function JsonObject({ value, dataKey }: JsonObjectProps) {
   const renderObject = () => {
     return keys.map((k: string, i: number) => {
       return (
-        <DataSort
+        <ApiDataSort
           key={i}
           i={i}
           dataType={currentValue ? getType(currentValue[k]) : ''}
@@ -226,15 +213,17 @@ function JsonObject({ value, dataKey }: JsonObjectProps) {
           <KeyboardArrowRightIcon />
         </SxDataIconButton>
         <Typography variant='code'>
-          {dataKey}
           {keys.length === 0 ? (
             ''
           ) : (
-            <>
-              <span style={{ color: '#ffffff' }}>&#58;&nbsp;{`{ ${keys.length}`}</span>
-              <span style={{ color: '#ffffff' }}>&nbsp;{keys.length === 1 ? 'item' : 'items'}</span>
-              <span style={{ color: '#ffffff' }}>&nbsp;{'}'}</span>
-            </>
+            <Box>
+              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              <span style={{ color: grey[500] }}>
+                &#47;&#47;&nbsp;
+                {keys.length}&nbsp;
+                {keys.length === 1 ? 'item' : 'items'}
+              </span>
+            </Box>
           )}
         </Typography>
       </Stack>
@@ -246,7 +235,7 @@ function JsonObject({ value, dataKey }: JsonObjectProps) {
   return renderObjContent()
 }
 
-function JsonString({ value, dataKey }: JsonStringProps) {
+function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}

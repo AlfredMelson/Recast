@@ -1,19 +1,31 @@
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { green, blue, red } from '@mui/material/colors'
+import { green, blue, red, grey } from '@mui/material/colors'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { motion } from 'framer-motion'
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
 import { SxDataIconButton } from '../../../components/sx'
-import { getType } from '../data-types/getProps'
+import {
+  ApiArrayAlias,
+  ApiBooleanAlias,
+  ApiDataSortAlias,
+  ApiFunctionAlias,
+  ApiNumberAlias,
+  ApiObjectAlias,
+  ApiStringAlias,
+  getType,
+} from '../data-types/typeAliases'
 
-interface FullRequestProps {
+type FullResponseAlias = {
   data?: { [key: string]: any } | undefined
 }
-const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestProps) => {
+const FullResponse: React.FC<FullResponseAlias> = ({ data }: FullResponseAlias) => {
   const [keys, setKeys] = React.useState<string[]>([])
 
-  const [currentData, setCurrentData] = React.useState<FullRequestProps['data']>({})
+  const [currentData, setCurrentData] = React.useState<FullResponseAlias['data']>({})
 
   React.useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
@@ -24,7 +36,7 @@ const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestProps) => 
   const renderData = () => {
     return keys.map(key => {
       return (
-        <FullResponse
+        <ApiDataSort
           key={key}
           dataType={currentData && getType(currentData[key])}
           dataValue={currentData && currentData[key]}
@@ -33,16 +45,22 @@ const FullRequest: React.FC<FullRequestProps> = ({ data }: FullRequestProps) => 
       )
     })
   }
-  return <div>{renderData()}</div>
+  return (
+    <Paper
+      sx={{
+        pt: 3,
+        pl: 5,
+        pb: 4,
+        borderRadius: '0  4px 4px 4px',
+        background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
+      }}>
+      {renderData()}
+    </Paper>
+  )
 }
-export default FullRequest
+export default FullResponse
 
-interface FullResponseProps {
-  dataType: string | undefined
-  dataValue: any
-  dataKey: string | number
-}
-function FullResponse({ dataType, dataValue, dataKey }: FullResponseProps) {
+function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
@@ -61,24 +79,25 @@ function FullResponse({ dataType, dataValue, dataKey }: FullResponseProps) {
         return null
     }
   }
-  return renderValue()
+  return (
+    <motion.div
+      initial={{ opacity: 0, translateX: 4 }}
+      animate={{ opacity: 1, translateX: 0 }}
+      transition={{ duration: 0.3, delay: i * 0.02 }}
+      exit='removed'
+      custom={i}>
+      {renderValue()}
+    </motion.div>
+  )
 }
 
-type ValueProp = {
-  [index: number]: any
-}
-interface JsonArrayProps {
-  value: Array<ValueProp>
-  dataKey: number | string
-}
-
-export function JsonArray({ value, dataKey }: JsonArrayProps) {
+function JsonArray({ value, dataKey }: ApiArrayAlias) {
   const [col, setCol] = React.useState(false)
 
   const renderArrayContent = () => {
     return value.map((v: any, i: number) => {
       const type: string = getType(v)
-      return <FullResponse key={i} dataValue={v} dataType={type} dataKey={i} />
+      return <ApiDataSort key={i} dataValue={v} dataType={type} dataKey={i} />
     })
   }
 
@@ -89,9 +108,15 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
           <SxDataIconButton onClick={toggleArray}>
             <KeyboardArrowRightIcon />
           </SxDataIconButton>
-          <Typography variant='code' sx={{ color: blue[500] }}>
-            {dataKey}
-            <span style={{ color: '#ffffff' }}>&nbsp;&#58;&nbsp;&nbsp;{`[ ${value.length} ]`}</span>
+          <Typography variant='code'>
+            <Box>
+              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              <span style={{ color: grey[500] }}>
+                &#47;&#47;&nbsp;
+                {col && value ? Object.keys(value).length : ''}&nbsp;
+                {Object.keys(value).length === 1 ? 'item' : 'items'}
+              </span>
+            </Box>
           </Typography>
         </Stack>
       )
@@ -104,7 +129,7 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
         <Typography variant='code' sx={{ color: blue[500] }}>
           {dataKey}
         </Typography>
-        <Typography variant='code'>{renderArrayContent()}</Typography>
+        {renderArrayContent()}
       </Stack>
     )
   }
@@ -116,17 +141,11 @@ export function JsonArray({ value, dataKey }: JsonArrayProps) {
   return renderContent()
 }
 
-interface JsonBooleanProps {
-  value: true | false
-  dataKey: string | number
-}
-
-export function JsonBoolean({ value, dataKey }: JsonBooleanProps) {
+function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[400] }}>
-      {dataKey}
-      <span style={{ color: '#ffffff' }}>&#58;&nbsp;</span>
-      {value === true ? (
+      {`"${dataKey}"`}&#58;&nbsp;
+      {value ? (
         <span style={{ color: green[400] }}>{`${value}`}</span>
       ) : (
         <span style={{ color: red[400] }}>{`${value}`}</span>
@@ -135,46 +154,30 @@ export function JsonBoolean({ value, dataKey }: JsonBooleanProps) {
   )
 }
 
-interface JsonFunctionProps {
-  dataKey: string | number
-  value?: any
-}
-
-export function JsonFunction({ dataKey }: JsonFunctionProps) {
+function JsonFunction({ dataKey }: ApiFunctionAlias) {
   return (
-    <Typography variant='code' sx={{ color: blue[500], ml: '25px' }}>
-      {dataKey}
+    <Typography variant='code' sx={{ color: blue[500] }}>
+      {`"${dataKey}"`}&#58;&nbsp;
       <span style={{ color: '#ffffff' }}>
-        &#58;&nbsp; {'['}&nbsp;&#402;&nbsp;{']'}
+        {'['}&nbsp;&#402;&nbsp;{']'}
       </span>
     </Typography>
   )
 }
 
-interface JsonNumberProps {
-  value: number
-  dataKey: string | number
-}
-
-function JsonNumber({ value, dataKey }: JsonNumberProps) {
+function JsonNumber({ value, dataKey }: ApiNumberAlias) {
   return (
-    <Typography variant='code' sx={{ color: blue[500], ml: '25px' }}>
-      {dataKey}
-      <span style={{ color: '#ffffff' }}>&#58;&nbsp;</span>
+    <Typography variant='code' sx={{ color: blue[500] }}>
+      {`"${dataKey}"`}&#58;&nbsp;
       <span style={{ color: '#9980FF' }}>{`${value}`}</span>
     </Typography>
   )
 }
 
-interface JsonObjectProps {
-  value?: { [key: string]: any } | undefined
-  dataKey: string | number
-}
-
-export function JsonObject({ value, dataKey }: JsonObjectProps) {
+function JsonObject({ value, dataKey }: ApiObjectAlias) {
   const [col, setCol] = React.useState(true)
   const [keys, setKeys] = React.useState<string[]>([])
-  const [currentValue, setCurrentValue] = React.useState<JsonObjectProps['value']>({})
+  const [currentValue, setCurrentValue] = React.useState<ApiObjectAlias['value']>({})
   React.useEffect(() => {
     setCurrentValue(value)
     setKeys(Object.keys(value ? value : ''))
@@ -183,8 +186,9 @@ export function JsonObject({ value, dataKey }: JsonObjectProps) {
   const renderObject = () => {
     return keys.map((k: string, i: number) => {
       return (
-        <FullResponse
+        <ApiDataSort
           key={i}
+          i={i}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}
@@ -195,35 +199,33 @@ export function JsonObject({ value, dataKey }: JsonObjectProps) {
   const renderObjContent = () => {
     if (col)
       return (
-        <>
-          <Stack direction='row'>
+        <React.Fragment>
+          <Stack direction='row' sx={{ ml: '-16px' }}>
             <SxDataIconButton onClick={toggleObj}>
               <KeyboardArrowDownIcon />
             </SxDataIconButton>
-            <Typography variant='code' sx={{ color: blue[500] }}>
-              {dataKey}
-            </Typography>
+            <Typography variant='code'>{dataKey}</Typography>
           </Stack>
-          <Typography variant='code' sx={{ ml: '25px' }}>
-            {renderObject()}
-          </Typography>
-        </>
+          <Box sx={{ ml: '32px' }}>{renderObject()}</Box>
+        </React.Fragment>
       )
     return (
-      <Stack direction='row'>
+      <Stack direction='row' sx={{ ml: '-16px' }}>
         <SxDataIconButton onClick={toggleObj}>
           <KeyboardArrowRightIcon />
         </SxDataIconButton>
         <Typography variant='code' sx={{ color: blue[500] }}>
-          {dataKey}
           {keys.length === 0 ? (
             ''
           ) : (
-            <>
-              <span style={{ color: '#ffffff' }}>&#58;&nbsp;{`{ ${keys.length}`}</span>
-              <span style={{ color: '#ffffff' }}>&nbsp;{keys.length === 1 ? 'item' : 'items'}</span>
-              <span style={{ color: '#ffffff' }}>&nbsp;{'}'}</span>
-            </>
+            <Box>
+              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              <span style={{ color: grey[500] }}>
+                &#47;&#47;&nbsp;
+                {keys.length}&nbsp;
+                {keys.length === 1 ? 'item' : 'items'}
+              </span>
+            </Box>
           )}
         </Typography>
       </Stack>
@@ -235,16 +237,14 @@ export function JsonObject({ value, dataKey }: JsonObjectProps) {
   return renderObjContent()
 }
 
-interface JsonStringProps {
-  value: number
-  dataKey: string | number
-}
-function JsonString({ value, dataKey }: JsonStringProps) {
+function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
-    <Typography variant='code' sx={{ color: blue[400], ml: '25px' }}>
-      {dataKey}
-      <span style={{ color: '#ffffff' }}>&#58;&nbsp;</span>
-      <span style={{ color: green[400] }}>{`"${value}"`}</span>
+    <Typography variant='code'>
+      {`"${dataKey}"`}
+      <span style={{ color: '#ffffff' }}>
+        &#58;&nbsp;
+        <span style={{ color: green[400] }}>{`"${value}"`}</span>
+      </span>
     </Typography>
   )
 }

@@ -1,19 +1,20 @@
 import * as React from 'react'
-import { alpha } from '@mui/material/styles'
+// import { alpha } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import { TsInterfaceIcons } from '../api-json/TsInterfaceIcons'
+import { blue } from '@mui/material/colors'
+import { TsInterfaceIcons } from './TsInterfaceIcons'
 
 export default function DownloadInfo({
   appeared,
-  title,
   content,
+  title,
   ...props
-}: { appeared: boolean; content?: React.ReactElement } & BoxProps) {
-  const [hidden, setHidden] = React.useState(true)
+}: { appeared: boolean; content?: React.ReactElement; title: string } & BoxProps) {
+  const [hidden, setHidden] = React.useState(false)
   const defaultContent = (
     <Box sx={{ pt: 9 }}>
       <Typography fontWeight='bold' color='grey.300' variant='body2'>
@@ -30,23 +31,21 @@ export default function DownloadInfo({
   return (
     <Box
       {...props}
-      sx={{
+      style={{
         position: 'absolute',
+        top: 0,
         bottom: 0,
+        right: 0,
+        padding: '8px 16px 16px 16px',
         transform: hidden || !appeared ? 'translateX(100%)' : 'translateX(0)',
         transition: '0.3s',
-        top: 0,
-        right: 0,
-        px: 2,
-        pt: 1,
-        pb: 2,
-        bgcolor: ({ palette }) => alpha(palette.primaryDark[700], 0.5),
+        backgroundColor: blue[700],
+        // bgcolor: ({ palette }) => alpha(palette.primaryDark[700], 0.5),
         backdropFilter: 'blur(8px)',
         zIndex: 1,
         borderLeft: '1px solid',
         borderColor: 'divider',
-        borderRadius: '0 4px 4px 0',
-        ...props.sx,
+        borderRadius: '0 0 4px 0',
       }}>
       <IconButton
         aria-label={hidden ? 'show' : 'hide'}

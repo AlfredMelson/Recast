@@ -15,7 +15,7 @@ import { OutlinedInputProps } from '@mui/material/OutlinedInput'
 export const SxTfAdornmentIcon = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
   padding: theme.spacing(0.5),
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
   },
 }))
@@ -45,7 +45,7 @@ export const SxTextfieldButton = styled(Button)(({ theme }) => ({
   minWidth: theme.spacing(7),
   transitionDuration: '600ms',
   transitionProperty: 'color',
-  '&:hover, &:focus': {
+  '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
     backgroundColor: 'transparent',
   },

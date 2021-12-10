@@ -20,7 +20,7 @@ export default (function More(props: ButtonBaseProps) {
         transitionProperty: 'all',
         transitionDuration: '150ms',
         borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.500' : 'grey.200'),
-        '&:hover, &:focus': {
+        '&:hover, & .Mui-focused': {
           borderColor: 'primary.main',
           bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'primary.50'),
           '@media (hover: none)': {

@@ -4,14 +4,14 @@ import Typography from '@mui/material/Typography'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { SxIconButton } from '../../../components/sx'
-import DataSort from './DataSort'
-import DataLabel from './DataLabel'
-import { getType, JsonArrayProps } from './getProps'
+import ApiDataSort from './ApiDataSort'
+import ApiDataTypeLabel from './ApiDataTypeLabel'
+import { getType, ApiArrayAlias } from './typeAliases'
 
-export function JsonArray({ value, dataKey, dataType }: JsonArrayProps) {
+export function ApiArray({ value, dataKey, dataType }: ApiArrayAlias) {
   const [col, setCol] = React.useState(false)
 
-  const [currentValue, setCurrentValue] = React.useState<JsonArrayProps['value']>([])
+  const [currentValue, setCurrentValue] = React.useState<ApiArrayAlias['value']>([])
 
   React.useEffect(() => {
     setCurrentValue(value)
@@ -33,8 +33,9 @@ export function JsonArray({ value, dataKey, dataType }: JsonArrayProps) {
     return currentValue.map((v: any, i: number) => {
       const type: string = getType(v)
       return (
-        <DataSort
+        <ApiDataSort
           key={i}
+          i={i}
           dataValue={v}
           dataType={type}
           dataKey={i}
@@ -52,10 +53,8 @@ export function JsonArray({ value, dataKey, dataType }: JsonArrayProps) {
           <SxIconButton onClick={toggleArray}>
             <KeyboardArrowUpIcon />
           </SxIconButton>
-          <Typography variant='code' sx={{ mr: 1 }}>
-            {`"${dataKey}": `}
-          </Typography>
-          <DataLabel type={dataType} />
+          <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
+          <ApiDataTypeLabel type={dataType} variant='edit' />
           <Typography
             variant='code'
             sx={{ color: '#ffffff' }}>{`[ ${currentValue.length} ]`}</Typography>
@@ -67,10 +66,8 @@ export function JsonArray({ value, dataKey, dataType }: JsonArrayProps) {
         <SxIconButton onClick={toggleArray}>
           <KeyboardArrowDownIcon />
         </SxIconButton>
-        <Typography variant='code' sx={{ mr: 1 }}>
-          {`"${dataKey}": `}
-        </Typography>
-        <DataLabel type={dataType} />
+        <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
+        <ApiDataTypeLabel type={dataType} variant='edit' />
         <Stack direction='row'>
           <Typography variant='code' sx={{ color: '#ffffff' }}>
             {'['}

@@ -1,8 +1,8 @@
 export function getType(
   value: string | undefined
 ):
-  | 'string'
   | 'number'
+  | 'string'
   | 'bigint'
   | 'boolean'
   | 'symbol'
@@ -14,53 +14,50 @@ export function getType(
   return typeof value
 }
 
-export interface DataSortProps {
-  i: number
+export type ApiDataSortAlias = {
   dataType: string | undefined
   dataKey: string | number
   dataValue?: any
+  i?: number
+  onDelete?: (key: number | string) => void
+  onEdit?: (newValue: any, key: string | number) => void
 }
 
-type ValueProp = {
+type ApiValueProp = {
   [index: number]: any
 }
-export interface JsonArrayProps {
+
+export type ApiArrayAlias = {
   dataKey: number | string
-  value?: Array<ValueProp>
+  i?: number
+  value?: Array<ApiValueProp>
   dataType?: string
   onEdit?: (newvalue: any, key: string | number) => void
   onDelete?: (dataKey: string | number) => void
 }
 
-export interface JsonBooleanProps {
+export type ApiObjectAlias = {
   dataKey: string | number
-  value?: []
-  dataType?: string
-}
-
-export interface JsonFunctionProps {
-  dataKey: string | number
-  dataType?: string
-  value?: any
-}
-
-export interface JsonNumberProps {
-  dataKey: string | number
-  value?: number
-  dataType?: string
-  onEdit?: (newVale: any, key: string | number) => void
-  onDelete?: (dataKey: string | number) => void
-}
-
-export interface JsonObjectProps {
-  dataKey: string | number
+  i?: number
   value?: { [key: string]: any } | undefined
   dataType?: string | undefined
   onEdit?: (newVale: any, key: string | number) => void
   onDelete?: (dataKey: string | number) => void
 }
 
-export interface JsonStringProps {
+export type ApiBooleanAlias = {
+  dataKey: string | number
+  value?: []
+  dataType?: string
+}
+
+export type ApiFunctionAlias = {
+  dataKey: string | number
+  dataType?: string
+  value?: any
+}
+
+export type ApiNumberAlias = {
   dataKey: string | number
   value?: number
   dataType?: string
@@ -68,7 +65,15 @@ export interface JsonStringProps {
   onDelete?: (dataKey: string | number) => void
 }
 
-export interface JsonUndefinedTypes {
+export type ApiStringAlias = {
+  dataKey: string | number
+  value?: number
+  dataType?: string
+  onEdit?: (newVale: any, key: string | number) => void
+  onDelete?: (dataKey: string | number) => void
+}
+
+export type ApiUndefinedAlias = {
   dataKey: string | number
   dataType: string
   value?: []

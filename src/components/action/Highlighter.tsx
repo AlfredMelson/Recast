@@ -37,7 +37,7 @@ export default function Highlighter({
           color: theme => (theme.palette.mode === 'dark' ? 'primary.400' : 'primary.500'),
         }),
         ...(!selected && {
-          '&:hover, &:focus': {
+          '&:hover, & .Mui-focused': {
             bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.800' : 'grey.100'),
             '@media (hover: none)': {
               bgcolor: 'transparent',

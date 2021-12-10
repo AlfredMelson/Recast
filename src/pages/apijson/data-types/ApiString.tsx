@@ -7,11 +7,11 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import { green } from '@mui/material/colors'
 import { SxIconButton } from '../../../components/sx'
-import DataLabel from './DataLabel'
-import { JsonStringProps } from './getProps'
+import ApiDataTypeLabel from './ApiDataTypeLabel'
+import { ApiStringAlias } from './typeAliases'
 
-export function JsonString({ value, dataKey, dataType, onEdit, onDelete }: JsonStringProps) {
-  const [currentValue, setCurrentValue] = React.useState<JsonStringProps['value'] | any>()
+export function ApiString({ value, dataKey, dataType, onEdit, onDelete }: ApiStringAlias) {
+  const [currentValue, setCurrentValue] = React.useState<ApiStringAlias['value'] | any>()
   const [showInput, setShowInput] = React.useState(false)
   React.useEffect(() => {
     setCurrentValue(value)
@@ -32,11 +32,9 @@ export function JsonString({ value, dataKey, dataType, onEdit, onDelete }: JsonS
   }
 
   return (
-    <Stack direction='row' sx={{ ml: 6 }}>
-      <Typography variant='code' sx={{ mr: 1 }}>
-        {`"${dataKey}": `}
-      </Typography>
-      <DataLabel type={dataType} />
+    <Stack direction='row' sx={{ ml: 4.8 }}>
+      <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
+      <ApiDataTypeLabel type={dataType} variant='edit' />
       {showInput ? (
         <Stack direction='row'>
           <TextField

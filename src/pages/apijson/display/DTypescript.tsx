@@ -19,13 +19,13 @@ import {
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
 
-type TsInterfaceAlias = {
+type DTypescriptAlias = {
   data?: { [key: string]: any } | undefined
 }
-export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAlias) => {
+export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAlias) => {
   const [keys, setKeys] = React.useState<string[]>([])
 
-  const [currentData, setCurrentData] = React.useState<TsInterfaceAlias['data']>({})
+  const [currentData, setCurrentData] = React.useState<DTypescriptAlias['data']>({})
 
   React.useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
@@ -48,19 +48,16 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
   }
 
   // state when user submits user entered url
-  const apiUrl = useRecoilValue(userSubmittedUrlAtom)
-  // split and pop to isolate interface name
-  const lastSegment = apiUrl.split('/').pop()
+  const userSubmittedUrl = useRecoilValue(userSubmittedUrlAtom)
+  // split and pop to isolate d.ts file name
+  const lastSegment = userSubmittedUrl.split('/').pop()
   // remove underscore and uppercase following character
-  const formLastSegment = lastSegment.replace(/(^|_)./g, s => s.slice(-1).toUpperCase())
+  // const formLastSegment = lastSegment.replace(/(^|_)./g, s => s.slice(-1))
   // substring and landIndexOf to verify last segment
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <motion.div
-      // initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ ease: 'easeOut', duration: 2 }}>
+    <motion.div animate={{ y: 0, opacity: 1 }} transition={{ ease: 'easeOut', duration: 2 }}>
       <Paper
         sx={{
           pt: 3,
@@ -70,11 +67,11 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
           background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
         }}>
         <Typography variant='code'>
-          {`declare module namespace {`}
+          {`declare const ${lastSegment}: {`}
           <Box sx={{ ml: 3 }}>{renderData()}</Box>
-          {'}'}
+          {'};'}
         </Typography>
-        <DownloadInfo appeared={true} title={`${formLastSegment}Props`} />
+        <DownloadInfo appeared={true} title={lastSegment} />
       </Paper>
     </motion.div>
   )
@@ -112,8 +109,6 @@ function ApiDataSort({ i, dataKey, dataType, dataValue }: ApiDataSortAlias) {
 }
 
 function JsonArray({ value, dataKey }: ApiArrayAlias) {
-  // const [col, setCol] = React.useState(false)
-
   const renderArrayContent = () => {
     return value.map((v: any, i: number) => {
       const type: string = getType(v)
@@ -181,15 +176,11 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     })
   }
   const renderObjContent = () => {
-    // {typeof dataKey === }
-    // const str: string = dataKey
-    // const upperCaseDataKey = str.charAt(0).toUpperCase() + str.slice(1)
-    console.log('dataKey', dataKey)
     return (
       <Typography variant='code'>
-        {'export interface `${dataKey}` {'}
+        {`${dataKey}: {`}
         <Box sx={{ ml: 3 }}>{renderObject()}</Box>
-        {'}'}
+        {'};'}
       </Typography>
     )
   }

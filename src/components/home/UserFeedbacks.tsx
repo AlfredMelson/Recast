@@ -141,7 +141,7 @@ export default function UserFeedbacks() {
                 borderRadius: '50%',
                 p: '4px',
                 ml: index !== 0 ? '2px' : 0,
-                '&:focus': {
+                '& .Mui-focused': {
                   boxShadow: theme => `0px 0px 0px 2px ${theme.palette.grey[400]}`,
                 },
               }}>

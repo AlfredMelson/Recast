@@ -3,8 +3,8 @@ import { useRecoilState } from 'recoil'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
 import { ToggleButton } from '@mui/material'
-import { userToggledApiAtom } from '../../recoil/api-json/atom'
-import { SvgTsLogo } from '../icons/SvgTsLogo'
+import { userToggledApiAtom, UserToggledApiAtomOptions } from '../../recoil/api-json/atom'
+import { SvgTsLogoTs } from '../icons/SvgTsLogoTs'
 import { SxPrimaryToggleButtonGroup } from '../sx/SxToggleButtonGroup'
 
 export default function DataToggle() {
@@ -13,7 +13,7 @@ export default function DataToggle() {
 
   const handleDataToggle = (
     _event: React.MouseEvent<HTMLElement>,
-    newResponse: 'data' | 'edit' | 'full' | 'ts'
+    newResponse: UserToggledApiAtomOptions
   ) => {
     //enforce that one button is active
     if (newResponse !== null) {
@@ -76,7 +76,7 @@ export default function DataToggle() {
           border: 'none',
           borderRadius: '4px 4px 0 0',
         }}>
-        <SvgTsLogo />
+        <SvgTsLogoTs />
         <Typography variant='body2'> interface</Typography>
       </Paper>
     </SxPrimaryToggleButtonGroup>

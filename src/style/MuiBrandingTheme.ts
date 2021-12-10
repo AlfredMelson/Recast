@@ -298,7 +298,7 @@ export function muiThemedComponents(theme: Theme) {
           textDecoration: 'none',
           backgroundColor: 'transparent',
           transition: 'all var(--transition-speed-fastest)',
-          '&:hover, &:focus': {
+          '&:hover, & .Mui-focused': {
             backgroundColor: 'transparent',
           },
           sizeLarge: {
@@ -354,7 +354,7 @@ export function muiThemedComponents(theme: Theme) {
             textDecoration: 'none',
             backgroundColor: 'transparent',
             transition: 'all var(--transition-speed-fastest)',
-            '&:hover, &:focus': {
+            '&:hover, & .Mui-focused': {
               backgroundColor: 'transparent',
             },
           },
@@ -468,7 +468,7 @@ export function muiThemedComponents(theme: Theme) {
               theme.palette.mode === 'dark' ? theme.palette.grey[600] : theme.palette.grey[50],
             transitionDuration: '300ms',
             transitionProperty: 'backgroundColor',
-            '&:hover, &:focus': {
+            '&:hover, & .Mui-focused': {
               backgroundColor: theme.palette.mode === 'dark' ? '#141414' : theme.palette.grey[50],
             },
             '&.Mui-selected, &.Mui-selected:hover': {
