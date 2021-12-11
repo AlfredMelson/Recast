@@ -2,7 +2,6 @@ import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
-import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import { useRecoilValue } from 'recoil'
 import DownloadInfo from '../../../components/api-json/DownloadInfo'
@@ -18,6 +17,8 @@ import {
 } from '../data-types/typeAliases'
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
+import { SxPaper } from '../../../components/sx/SxPaper'
+import { FrMotionPaper } from '../../../components/animation/FrMotion'
 
 type DTypescriptAlias = {
   data?: { [key: string]: any } | undefined
@@ -52,28 +53,21 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
   // split and pop to isolate d.ts file name
   const lastSegment = userSubmittedUrl.split('/').pop()
   // remove underscore and uppercase following character
-  // const formLastSegment = lastSegment.replace(/(^|_)./g, s => s.slice(-1))
+  const cleanLastSegment = lastSegment.replace(/(^|_)./g, s => s.slice(-1))
   // substring and landIndexOf to verify last segment
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <motion.div animate={{ y: 0, opacity: 1 }} transition={{ ease: 'easeOut', duration: 2 }}>
-      <Paper
-        sx={{
-          pt: 3,
-          pl: 5,
-          pb: 4,
-          borderRadius: '0  4px 4px 4px',
-          background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-        }}>
+    <FrMotionPaper>
+      <SxPaper>
         <Typography variant='code'>
-          {`declare const ${lastSegment}: {`}
+          declare module namespace&nbsp;&#123;
           <Box sx={{ ml: 3 }}>{renderData()}</Box>
-          {'};'}
+          &#125;
         </Typography>
-        <DownloadInfo appeared={true} title={lastSegment} />
-      </Paper>
-    </motion.div>
+        <DownloadInfo appeared={true} title={cleanLastSegment} />
+      </SxPaper>
+    </FrMotionPaper>
   )
 }
 

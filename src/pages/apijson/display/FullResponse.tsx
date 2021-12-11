@@ -6,7 +6,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { motion } from 'framer-motion'
 import Box from '@mui/material/Box'
-import Paper from '@mui/material/Paper'
 import { SxDataIconButton } from '../../../components/sx'
 import {
   ApiArrayAlias,
@@ -18,6 +17,8 @@ import {
   ApiStringAlias,
   getType,
 } from '../data-types/typeAliases'
+import { FrMotionPaper } from '../../../components/animation/FrMotion'
+import { SxPaper } from '../../../components/sx/SxPaper'
 
 type FullResponseAlias = {
   data?: { [key: string]: any } | undefined
@@ -46,16 +47,9 @@ const FullResponse: React.FC<FullResponseAlias> = ({ data }: FullResponseAlias) 
     })
   }
   return (
-    <Paper
-      sx={{
-        pt: 3,
-        pl: 5,
-        pb: 4,
-        borderRadius: '0  4px 4px 4px',
-        background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-      }}>
-      {renderData()}
-    </Paper>
+    <FrMotionPaper>
+      <SxPaper>{renderData()}</SxPaper>
+    </FrMotionPaper>
   )
 }
 export default FullResponse

@@ -6,7 +6,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { motion } from 'framer-motion'
 import Box from '@mui/material/Box'
-import Paper from '@mui/material/Paper'
 import { SxDataIconButton } from '../../../components/sx'
 import {
   ApiDataSortAlias,
@@ -18,6 +17,8 @@ import {
   ApiObjectAlias,
   ApiStringAlias,
 } from '../data-types/typeAliases'
+import { SxPaper } from '../../../components/sx/SxPaper'
+import { FrMotionPaper } from '../../../components/animation/FrMotion'
 
 type DataResponseAlias = {
   data?: { [key: string]: any } | undefined
@@ -47,16 +48,9 @@ export default function DataResponse({ data }: DataResponseAlias) {
   }
 
   return (
-    <Paper
-      sx={{
-        pt: 3,
-        pl: 5,
-        pb: 4,
-        borderRadius: '0  4px 4px 4px',
-        background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-      }}>
-      {renderData()}
-    </Paper>
+    <FrMotionPaper>
+      <SxPaper>{renderData()}</SxPaper>
+    </FrMotionPaper>
   )
 }
 
@@ -92,7 +86,7 @@ function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
 }
 
 export function JsonArray({ value, dataKey }: ApiArrayAlias) {
-  const [col, setCol] = React.useState(false)
+  const [childView, setChildView] = React.useState(true)
 
   const renderArrayContent = () => {
     return value.map((v: any, i: number) => {
@@ -102,18 +96,21 @@ export function JsonArray({ value, dataKey }: ApiArrayAlias) {
   }
 
   const renderContent = () => {
-    if (col) {
+    if (childView) {
       return (
         <Stack direction='row'>
-          <SxDataIconButton onClick={toggleArray}>
+          <SxDataIconButton
+            onClick={() => {
+              setChildView(!childView)
+            }}>
             <KeyboardArrowRightIcon />
           </SxDataIconButton>
           <Typography variant='code'>
             <Box>
-              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              {dataKey}&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
               <span style={{ color: grey[500] }}>
                 &#47;&#47;&nbsp;
-                {col && value ? Object.keys(value).length : ''}&nbsp;
+                {childView && value ? Object.keys(value).length : ''}&nbsp;
                 {Object.keys(value).length === 1 ? 'item' : 'items'}
               </span>
             </Box>
@@ -121,9 +118,13 @@ export function JsonArray({ value, dataKey }: ApiArrayAlias) {
         </Stack>
       )
     }
+
     return (
       <Stack direction='row' alignItems='flex-start'>
-        <SxDataIconButton onClick={toggleArray}>
+        <SxDataIconButton
+          onClick={() => {
+            setChildView(!childView)
+          }}>
           <KeyboardArrowDownIcon />
         </SxDataIconButton>
         <Typography variant='code'>{dataKey}</Typography>
@@ -132,22 +133,14 @@ export function JsonArray({ value, dataKey }: ApiArrayAlias) {
     )
   }
 
-  const toggleArray = () => {
-    setCol(!col)
-  }
-
   return renderContent()
 }
 
 export function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[400] }}>
-      {`"${dataKey}"`}&#58;&nbsp;
-      {value ? (
-        <span style={{ color: green[400] }}>{`${value}`}</span>
-      ) : (
-        <span style={{ color: red[400] }}>{`${value}`}</span>
-      )}
+      &#34;{dataKey}&#34;&#58;&nbsp;
+      <span style={{ color: value ? green[400] : red[400] }}>{value}</span>
     </Typography>
   )
 }
@@ -155,10 +148,8 @@ export function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
 export function JsonFunction({ dataKey }: ApiFunctionAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[500] }}>
-      {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: '#ffffff' }}>
-        {'['}&nbsp;&#402;&nbsp;{']'}
-      </span>
+      &#34;{dataKey}&#34;&#58;&nbsp;
+      <span style={{ color: '#ffffff' }}>&#91;&nbsp;&#402;&nbsp;&#93;</span>
     </Typography>
   )
 }
@@ -166,14 +157,14 @@ export function JsonFunction({ dataKey }: ApiFunctionAlias) {
 function JsonNumber({ value, dataKey }: ApiNumberAlias) {
   return (
     <Typography variant='code'>
-      {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: '#9980FF' }}>{`${value}`}</span>
+      &#34;{dataKey}&#34;&#58;&nbsp;
+      <span style={{ color: '#9980FF' }}>{value}</span>
     </Typography>
   )
 }
 
 function JsonObject({ value, dataKey }: ApiObjectAlias) {
-  const [col, setCol] = React.useState(true)
+  const [childView, setChildView] = React.useState(true)
   const [keys, setKeys] = React.useState<string[]>([])
   const [currentValue, setCurrentValue] = React.useState<ApiObjectAlias['value']>({})
   React.useEffect(() => {
@@ -195,11 +186,14 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     })
   }
   const renderObjContent = () => {
-    if (col)
+    if (childView)
       return (
         <React.Fragment>
           <Stack direction='row' sx={{ ml: '-16px' }}>
-            <SxDataIconButton onClick={toggleObj}>
+            <SxDataIconButton
+              onClick={() => {
+                setChildView(!childView)
+              }}>
               <KeyboardArrowDownIcon />
             </SxDataIconButton>
             <Typography variant='code'>{dataKey}</Typography>
@@ -209,28 +203,27 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
       )
     return (
       <Stack direction='row' sx={{ ml: '-16px' }}>
-        <SxDataIconButton onClick={toggleObj}>
+        <SxDataIconButton
+          onClick={() => {
+            setChildView(!childView)
+          }}>
           <KeyboardArrowRightIcon />
         </SxDataIconButton>
         <Typography variant='code'>
           {keys.length === 0 ? (
             ''
           ) : (
-            <Box>
-              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+            <React.Fragment>
+              {dataKey}&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
               <span style={{ color: grey[500] }}>
-                &#47;&#47;&nbsp;
-                {keys.length}&nbsp;
+                &#47;&#47;&nbsp;{keys.length}&nbsp;
                 {keys.length === 1 ? 'item' : 'items'}
               </span>
-            </Box>
+            </React.Fragment>
           )}
         </Typography>
       </Stack>
     )
-  }
-  const toggleObj = () => {
-    setCol(!col)
   }
   return renderObjContent()
 }
@@ -238,11 +231,8 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
 function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
     <Typography variant='code'>
-      {`"${dataKey}"`}
-      <span style={{ color: '#ffffff' }}>
-        &#58;&nbsp;
-        <span style={{ color: green[400] }}>{`"${value}"`}</span>
-      </span>
+      &#34;{dataKey}&#34;&#58;&nbsp;
+      <span style={{ color: green[400] }}>&#34;{value}&#34;</span>
     </Typography>
   )
 }

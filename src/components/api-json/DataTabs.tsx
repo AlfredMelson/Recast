@@ -19,13 +19,13 @@ import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
 import { SxTabs, SxTab } from '../sx/SxTab'
 import { DTypescript } from '../../pages/apijson/display/DTypescript'
 
-interface TabPanelProps {
+type TabPanelAlias = {
   index: number
   value: number
   children?: React.ReactNode
 }
 
-function TabPanel({ children, value, index, ...other }: TabPanelProps) {
+function TabPanel({ children, value, index, ...other }: TabPanelAlias) {
   return (
     <div
       role='tabpanel'
@@ -48,7 +48,6 @@ function a11yProps(index: number) {
 export default function DataTabs() {
   // state when user submits user entered url
   const userSubmittedUrl = useRecoilValue(userSubmittedUrlAtom)
-
   // state of user toggled api response
   const setUserToggledApi = useSetRecoilState(userToggledApiAtom)
   // state of response.data returned from the api call
@@ -78,7 +77,7 @@ export default function DataTabs() {
   // const lastSegment = userSubmittedUrl !== undefined && userSubmittedUrl.split('/').pop()
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <SxTabs
           // disabled={userSubmittedUrl === undefined}

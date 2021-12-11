@@ -108,13 +108,14 @@ export function APIJson() {
   // }
 
   return (
-    <Box sx={{ py: 1, background: '#1F2428', height: '100vh' }}>
-      <Container maxWidth='lg'>
-        <Box>
-          <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
-            https://random-data-api.com/api/users/random_user
-          </Typography>
-        </Box>
+    <Box
+      sx={{
+        pt: 1,
+      }}>
+      <Container maxWidth='lg' sx={{}}>
+        <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+          https://random-data-api.com/api/users/random_user
+        </Typography>
         <Box sx={{ my: 2 }}>
           <Searchbar />
           {/* <Collapse in={showError}>

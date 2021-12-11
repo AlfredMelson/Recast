@@ -1,3 +1,4 @@
+import { grey } from '@mui/material/colors'
 import { styled } from '@mui/material/styles'
 
 export const HeaderStyle = styled('header')(({ theme }) => ({
@@ -5,10 +6,8 @@ export const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
   transition: theme.transitions.create('top'),
   zIndex: theme.zIndex.drawer + 1,
-  backdropFilter: 'blur(15px)',
   boxShadow: `inset 0px -1px 1px ${
-    theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[100]
+    theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[500]
   }`,
-  backgroundColor:
-    theme.palette.mode === 'dark' ? theme.palette.grey[850] : 'rgba(255,255,255,0.72)',
+  backgroundColor: theme.palette.mode === 'dark' ? '#0D0D0D' : grey[100],
 }))

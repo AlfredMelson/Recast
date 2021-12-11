@@ -55,9 +55,9 @@ export function ApiArray({ value, dataKey, dataType }: ApiArrayAlias) {
           </SxIconButton>
           <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
           <ApiDataTypeLabel type={dataType} variant='edit' />
-          <Typography
-            variant='code'
-            sx={{ color: '#ffffff' }}>{`[ ${currentValue.length} ]`}</Typography>
+          <Typography variant='code' sx={{ color: '#ffffff' }}>
+            &#91;&nbsp;{currentValue.length}&nbsp;&#93;
+          </Typography>
         </Stack>
       )
     }
@@ -70,11 +70,11 @@ export function ApiArray({ value, dataKey, dataType }: ApiArrayAlias) {
         <ApiDataTypeLabel type={dataType} variant='edit' />
         <Stack direction='row'>
           <Typography variant='code' sx={{ color: '#ffffff' }}>
-            {'['}
+            &#91;
           </Typography>
-          <Typography variant='code'>{renderArrayContent()}</Typography>
+          {renderArrayContent()}
           <Typography variant='code' sx={{ color: '#ffffff' }}>
-            {']'}
+            &#93;
           </Typography>
         </Stack>
       </Stack>

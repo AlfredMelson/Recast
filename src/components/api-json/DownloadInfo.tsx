@@ -41,7 +41,7 @@ export default function DownloadInfo({
         transition: '0.3s',
         backgroundColor: blue[700],
         // bgcolor: ({ palette }) => alpha(palette.primaryDark[700], 0.5),
-        backdropFilter: 'blur(8px)',
+        // backdropFilter: 'blur(8px)',
         zIndex: 1,
         borderLeft: '1px solid',
         borderColor: 'divider',

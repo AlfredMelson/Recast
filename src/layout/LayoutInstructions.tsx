@@ -4,15 +4,10 @@ import { Outlet } from 'react-router-dom'
 import { EditorDrawer } from '../components/drawer/EditorDrawer'
 import { AppHeader } from './AppHeader'
 
-export function Layout() {
+export function LayoutInstructions() {
   return (
     <React.Fragment>
-      <Box
-        sx={{
-          height: '100vh',
-          overflowY: 'hidden',
-          bgcolor: theme => (theme.palette.mode === 'dark' ? '#1F2428' : '#FFFFFF'),
-        }}>
+      <Box sx={{ height: '100vh', overflowY: 'hidden' }}>
         <AppHeader />
         <Outlet />
         <EditorDrawer />

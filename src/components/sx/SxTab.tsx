@@ -1,7 +1,7 @@
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import { styled } from '@mui/material'
-import { blue } from '@mui/material/colors'
+import { blue, grey } from '@mui/material/colors'
 import * as React from 'react'
 
 /**
@@ -28,9 +28,9 @@ export const SxTabs = styled((props: SxTabsAlias) => (
 ))(({ theme }) => ({
   maxHeight: '40px',
   borderRadius: '4px 4px 0 0',
-  background: '#000000',
+  background: theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff',
   '& .MuiTabs-indicator': {
-    background: theme.palette.mode === 'dark' ? blue[900] : theme.palette.grey[100],
+    background: theme.palette.mode === 'dark' ? blue[900] : blue[400],
   },
 }))
 
@@ -65,18 +65,22 @@ export const SxTab = styled(
   )
 )(({ theme }) => ({
   textTransform: 'none',
-  fontWeight: theme.typography.fontWeightRegular,
+  fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
   fontSize: theme.typography.pxToRem(14),
   minWidth: '130px',
   maxHeight: '40px',
+  minHeight: '50px',
   paddingLeft: theme.spacing(1),
   paddingRight: theme.spacing(1),
   paddingBottom: theme.spacing(0),
   paddingTop: theme.spacing(0),
-  color: 'rgba(255, 255, 255, 0.7)',
-
+  color: theme.palette.mode === 'dark' ? grey[400] : grey[700],
+  '&:hover, &.Mui-selected': {
+    color: theme.palette.mode === 'dark' ? grey[50] : '#000000',
+  },
   '&.Mui-selected': {
-    color: '#fff',
+    color: theme.palette.mode === 'dark' ? grey[50] : '#000000',
+    fontWeight: theme.palette.mode === 'dark' ? 600 : 600,
   },
   '& .Mui-focusVisible': {
     backgroundColor: 'rgba(100, 95, 228, 0.32)',

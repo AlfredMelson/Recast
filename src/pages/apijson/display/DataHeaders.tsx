@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import { green } from '@mui/material/colors'
 import { motion } from 'framer-motion'
-import Paper from '@mui/material/Paper'
 import {
   ApiDataSortAlias,
   getType,
@@ -15,6 +14,8 @@ import {
   ApiObjectAlias,
   ApiStringAlias,
 } from '../data-types/typeAliases'
+import { SxPaper } from '../../../components/sx/SxPaper'
+import { FrMotionPaper } from '../../../components/animation/FrMotion'
 
 type DataHeadersAlias = {
   data?: { [key: string]: any } | undefined
@@ -45,18 +46,9 @@ export default function DataHeaders({ data }: DataHeadersAlias) {
   }
 
   return (
-    <motion.div animate={{ y: 0, opacity: 1 }} transition={{ ease: 'easeOut', duration: 2 }}>
-      <Paper
-        sx={{
-          pt: 3,
-          pl: 5,
-          pb: 4,
-          borderRadius: '0  4px 4px 4px',
-          background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-        }}>
-        {renderData()}
-      </Paper>
-    </motion.div>
+    <FrMotionPaper>
+      <SxPaper>{renderData()}</SxPaper>
+    </FrMotionPaper>
   )
 }
 

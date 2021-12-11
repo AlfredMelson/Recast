@@ -2,11 +2,12 @@ import * as React from 'react'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import Paper from '@mui/material/Paper'
 import { grey } from '@mui/material/colors'
 import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
 import ApiDataSort from '../data-types/ApiDataSort'
 import { getType } from '../data-types/typeAliases'
+import { FrMotionPaper } from '../../../components/animation/FrMotion'
+import { SxPaper } from '../../../components/sx/SxPaper'
 
 type EditResponseAlias = {
   onEdit: (newValue: any, key: string | number) => void
@@ -92,15 +93,8 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
   }
 
   return (
-    <Paper
-      sx={{
-        pt: 3,
-        pl: 3,
-        pb: 4,
-        borderRadius: '0  4px 4px 4px',
-        background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-      }}>
-      {renderEditResponseContent()}
-    </Paper>
+    <FrMotionPaper>
+      <SxPaper paddingLeft={3}>{renderEditResponseContent()}</SxPaper>
+    </FrMotionPaper>
   )
 }

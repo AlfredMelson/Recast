@@ -2,7 +2,6 @@ import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
-import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import { useRecoilValue } from 'recoil'
 import DownloadInfo from '../../../components/api-json/DownloadInfo'
@@ -18,6 +17,8 @@ import {
 } from '../data-types/typeAliases'
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
+import { FrMotionPaper } from '../../../components/animation/FrMotion'
+import { SxPaper } from '../../../components/sx/SxPaper'
 
 type TsInterfaceAlias = {
   data?: { [key: string]: any } | undefined
@@ -57,26 +58,16 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <motion.div
-      // initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ ease: 'easeOut', duration: 2 }}>
-      <Paper
-        sx={{
-          pt: 3,
-          pl: 5,
-          pb: 4,
-          borderRadius: '0  4px 4px 4px',
-          background: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff'),
-        }}>
+    <FrMotionPaper>
+      <SxPaper>
         <Typography variant='code'>
           {`declare module namespace {`}
           <Box sx={{ ml: 3 }}>{renderData()}</Box>
           {'}'}
         </Typography>
         <DownloadInfo appeared={true} title={`${formLastSegment}Props`} />
-      </Paper>
-    </motion.div>
+      </SxPaper>
+    </FrMotionPaper>
   )
 }
 
