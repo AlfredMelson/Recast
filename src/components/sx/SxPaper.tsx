@@ -36,7 +36,7 @@ type SxPaperAlias = {
 
 export const SxPaper = ({ children, paddingLeft }: SxPaperAlias) => {
   return (
-    <SxPaperStyle sx={{ paddingLeft: theme => theme.spacing(paddingLeft) }}>
+    <SxPaperStyle sx={{ paddingLeft: theme => theme.spacing(paddingLeft), position: 'relative' }}>
       {children}
     </SxPaperStyle>
   )

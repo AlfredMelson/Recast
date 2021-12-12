@@ -8,7 +8,6 @@ import {
   apiResponseHeadersAtom,
   userSubmittedUrlAtom,
   userToggledApiAtom,
-  // UserToggledApiAtomOptions,
 } from '../../recoil/api-json/atom'
 import DataResponse from '../../pages/apijson/display/DataResponse'
 import EditResponse from '../../pages/apijson/display/EditResponse'
@@ -78,75 +77,67 @@ export default function DataTabs() {
 
   return (
     <Box>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <SxTabs
-          // disabled={userSubmittedUrl === undefined}
-          aria-label='api data tabs'
-          onChange={handleDataTabs}
-          value={value}>
-          <SxTab
-            label='Data response'
-            disabled={userSubmittedUrl === undefined}
-            {...a11yProps(0)}
-            onClick={() => setUserToggledApi('data')}
-          />
-          <SxTab
-            label='Edit response'
-            disabled={userSubmittedUrl === undefined}
-            {...a11yProps(1)}
-            onClick={() => setUserToggledApi('edit')}
-          />
-          <SxTab
-            label='Full response'
-            disabled={userSubmittedUrl === undefined}
-            {...a11yProps(2)}
-            onClick={() => setUserToggledApi('full')}
-          />
-          <SxTab
-            label='Api Headers'
-            disabled={userSubmittedUrl === undefined}
-            {...a11yProps(3)}
-            onClick={() => setUserToggledApi('headers')}
-          />
-          <SxTab
-            icon={<SvgTsLogoTs />}
-            iconPosition='start'
-            label=' interface'
-            disabled={userSubmittedUrl === undefined}
-            {...a11yProps(4)}
-            onClick={() => setUserToggledApi('ts')}
-          />
-          <SxTab
-            icon={<SvgTsLogoDtype />}
-            iconPosition='start'
-            label=' * .d.ts'
-            disabled={userSubmittedUrl === undefined}
-            {...a11yProps(5)}
-            onClick={() => setUserToggledApi('dtype')}
-          />
-        </SxTabs>
-      </Box>
       {userSubmittedUrl !== undefined && (
-        <Box sx={{ position: 'relative' }}>
-          <TabPanel value={value} index={0}>
-            <DataResponse data={apiData} />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <EditResponse data={apiData} onDelete={DeleteObj} onEdit={EditObj} />
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <FullResponse data={apiFullResponse} />
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            <DataHeaders data={apiResponseHeaders} />
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            <TsInterface data={apiData} />
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            <DTypescript data={apiData} />
-          </TabPanel>
-        </Box>
+        <React.Fragment>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <SxTabs aria-label='api data tabs' onChange={handleDataTabs} value={value}>
+              <SxTab
+                label='Data response'
+                {...a11yProps(0)}
+                onClick={() => setUserToggledApi('data')}
+              />
+              <SxTab
+                label='Edit response'
+                {...a11yProps(1)}
+                onClick={() => setUserToggledApi('edit')}
+              />
+              <SxTab
+                label='Full response'
+                {...a11yProps(2)}
+                onClick={() => setUserToggledApi('full')}
+              />
+              <SxTab
+                label='Api Headers'
+                {...a11yProps(3)}
+                onClick={() => setUserToggledApi('headers')}
+              />
+              <SxTab
+                icon={<SvgTsLogoTs />}
+                iconPosition='start'
+                label=' interface'
+                {...a11yProps(4)}
+                onClick={() => setUserToggledApi('ts')}
+              />
+              <SxTab
+                icon={<SvgTsLogoDtype />}
+                iconPosition='start'
+                label=' * .d.ts'
+                {...a11yProps(5)}
+                onClick={() => setUserToggledApi('dtype')}
+              />
+            </SxTabs>
+          </Box>
+          <Box sx={{ position: 'relative' }}>
+            <TabPanel value={value} index={0}>
+              <DataResponse data={apiData} />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <EditResponse data={apiData} onDelete={DeleteObj} onEdit={EditObj} />
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <FullResponse data={apiFullResponse} />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              <DataHeaders data={apiResponseHeaders} />
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+              <TsInterface data={apiData} />
+            </TabPanel>
+            <TabPanel value={value} index={5}>
+              <DTypescript data={apiData} />
+            </TabPanel>
+          </Box>
+        </React.Fragment>
       )}
     </Box>
   )

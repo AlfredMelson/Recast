@@ -91,11 +91,13 @@ export default function Searchbar() {
   return (
     <Paper
       sx={{
-        p: '2px 4px',
+        height: '50px',
+        width: 700,
+        p: '0 0 0 8px',
+        background: '#0D0D0D',
+        borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',
-        width: 700,
-        background: '#0D0D0D',
       }}>
       <InputBase
         autoFocus
@@ -120,7 +122,7 @@ export default function Searchbar() {
               <Typography variant='body2'>
                 {Object.getOwnPropertyNames(apiData).length === 0 ? (
                   <FadeDelay delay={400}>
-                    <span>Send Request</span>
+                    <span>Fetch</span>
                   </FadeDelay>
                 ) : (
                   <FadeDelay delay={400}>

@@ -68,7 +68,7 @@ export const SxTab = styled(
   fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
   fontSize: theme.typography.pxToRem(14),
   minWidth: '130px',
-  maxHeight: '40px',
+  height: '50px',
   minHeight: '50px',
   paddingLeft: theme.spacing(1),
   paddingRight: theme.spacing(1),
@@ -80,7 +80,6 @@ export const SxTab = styled(
   },
   '&.Mui-selected': {
     color: theme.palette.mode === 'dark' ? grey[50] : '#000000',
-    fontWeight: theme.palette.mode === 'dark' ? 600 : 600,
   },
   '& .Mui-focusVisible': {
     backgroundColor: 'rgba(100, 95, 228, 0.32)',

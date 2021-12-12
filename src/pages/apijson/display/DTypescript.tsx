@@ -19,6 +19,7 @@ import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
 import { SxPaper } from '../../../components/sx/SxPaper'
 import { FrMotionPaper } from '../../../components/animation/FrMotion'
+import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 
 type DTypescriptAlias = {
   data?: { [key: string]: any } | undefined
@@ -65,7 +66,22 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
           <Box sx={{ ml: 3 }}>{renderData()}</Box>
           &#125;
         </Typography>
-        <DownloadInfo appeared={true} title={cleanLastSegment} />
+        <DownloadInfo
+          appeared={true}
+          content={
+            <React.Fragment>
+              <Typography fontWeight='bold' color='grey.300' variant='body2'>
+                {cleanLastSegment}
+              </Typography>
+              <Typography color='grey.600' variant='body2'>
+                * .d.ts
+              </Typography>
+              <Box sx={{ my: 1, textAlign: 'center' }}>
+                <TsInterfaceIcons />
+              </Box>
+            </React.Fragment>
+          }
+        />
       </SxPaper>
     </FrMotionPaper>
   )

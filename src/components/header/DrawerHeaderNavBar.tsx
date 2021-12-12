@@ -7,11 +7,11 @@ import { getNextIndex } from './headerFunctions'
 import { ProductDropDown } from './ProductDropDown'
 
 export function DrawerHeaderNavBar() {
-  //retrieve localStorage value
+  // retrieve localStorage value
   const localEditorText = useRecoilValue(localEditorTextAtom)
-  //set visability of user json drawer
+  // visability of drawer containing user json
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
-  //useRef to avoid re-renders during button interactions
+  // useRef to avoid re-renders during button interactions
   const navRef = React.useRef<HTMLUListElement | null>(null)
 
   function handleLeftRightArrow(

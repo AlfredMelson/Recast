@@ -76,19 +76,19 @@ export function DrawerIcons() {
         }
       }
       downloadJson(localEditorText)
-      //set state to success
+      // set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(true)
         setLoadingDownload(false)
       }, 1000)
-      //restore state to pre-interation
+      // restore state to pre-interation
       interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(false)
       }, 4000)
     }
   }
 
-  //set visability of user json drawer
+  // visability of drawer containing user json
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (

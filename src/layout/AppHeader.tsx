@@ -14,7 +14,7 @@ import { DrawerIcons } from '../components/drawer/DrawerIcons'
 import { HeaderStyle } from './HeaderStyle'
 
 export function AppHeader() {
-  //set visability of user json drawer
+  // visability of drawer containing user json
   const [dataDrawerOpen, setDataDrawerOpen] = useRecoilState(dataDrawerOpenAtom)
 
   return (

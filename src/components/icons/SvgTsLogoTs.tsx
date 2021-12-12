@@ -1,3 +1,4 @@
+import { grey } from '@mui/material/colors'
 import { useRecoilValue } from 'recoil'
 import { userToggledApiAtom } from '../../recoil/api-json/atom'
 import RootSvg, { RootSvgProps } from './RootSvg'
@@ -11,7 +12,12 @@ export function SvgTsLogoTs(props: RootSvgProps) {
       fill='none'
       height='18'
       viewBox='0 0 128 128'
-      sx={{ mr: 1 }}
+      sx={{
+        mr: 1,
+        '&:hover ': {
+          fill: theme => (theme.palette.mode === 'dark' ? grey[800] : '#000000'),
+        },
+      }}
       {...props}>
       <rect
         // fill color of shape
