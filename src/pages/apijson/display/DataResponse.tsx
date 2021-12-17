@@ -34,11 +34,11 @@ export default function DataResponse({ data }: DataResponseAlias) {
   }, [data])
 
   const renderData = () => {
-    return keys.map((key, i) => {
+    return keys.map((key: string, id: number) => {
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          id={id}
+          key={id}
           dataType={currentData && getType(currentData[key])}
           dataValue={currentData && currentData[key]}
           dataKey={key}
@@ -54,21 +54,21 @@ export default function DataResponse({ data }: DataResponseAlias) {
   )
 }
 
-function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
+function ApiDataSort({ id, dataType, dataValue, dataKey }: ApiDataSortAlias) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
-        return <JsonArray value={dataValue} dataKey={dataKey} />
+        return <JsonArray id={id} key={id} value={dataValue} dataKey={dataKey} />
       case 'boolean':
-        return <JsonBoolean key={i} value={dataValue} dataKey={dataKey} />
+        return <JsonBoolean id={id} key={id} value={dataValue} dataKey={dataKey} />
       case 'function':
-        return <JsonFunction key={i} value={dataValue} dataKey={dataKey} />
+        return <JsonFunction id={id} key={id} value={dataValue} dataKey={dataKey} />
       case 'number':
-        return <JsonNumber key={i} value={dataValue} dataKey={dataKey} />
+        return <JsonNumber id={id} key={id} value={dataValue} dataKey={dataKey} />
       case 'object':
-        return <JsonObject key={i} value={dataValue} dataKey={dataKey} />
+        return <JsonObject id={id} key={id} value={dataValue} dataKey={dataKey} />
       case 'string':
-        return <JsonString key={i} value={dataValue} dataKey={dataKey} />
+        return <JsonString id={id} key={id} value={dataValue} dataKey={dataKey} />
       default:
         return null
     }
@@ -77,9 +77,9 @@ function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
     <motion.div
       initial={{ opacity: 0, translateX: 4 }}
       animate={{ opacity: 1, translateX: 0 }}
-      transition={{ duration: 0.3, delay: i * 0.02 }}
+      transition={{ duration: 0.3, delay: id * 0.02 }}
       exit='removed'
-      custom={i}>
+      custom={id}>
       {renderValue()}
     </motion.div>
   )
@@ -89,9 +89,9 @@ export function JsonArray({ value, dataKey }: ApiArrayAlias) {
   const [childView, setChildView] = React.useState(true)
 
   const renderArrayContent = () => {
-    return value.map((v: any, i: number) => {
+    return value.map((v: any, id: number) => {
       const type: string = getType(v)
-      return <ApiDataSort key={i} i={i} dataValue={v} dataType={type} dataKey={i} />
+      return <ApiDataSort id={id} key={id} dataValue={v} dataType={type} dataKey={id} />
     })
   }
 
@@ -173,11 +173,11 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
   }, [value])
 
   const renderObject = () => {
-    return keys.map((k: string, i: number) => {
+    return keys.map((k: string, id: number) => {
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          id={id}
+          key={id}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}

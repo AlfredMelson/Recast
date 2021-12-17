@@ -25,8 +25,8 @@ export const SxIBColorMode = styled(IconButton)(({ theme }) => ({
  */
 export const SxIBApiInteraction = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
-  margin: theme.spacing(0, 1),
-  padding: theme.spacing(0, 0.4),
+  margin: theme.spacing(0, 0.5),
+  padding: theme.spacing(0),
   transitionProperty: 'color',
   msTransitionDuration: 'var(--transition-speed-fastest)',
   '&:hover, & .Mui-focused': {

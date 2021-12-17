@@ -36,11 +36,11 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
   }, [data])
 
   const renderData = () => {
-    return keys.map((key, i) => {
+    return keys.map((key: string, id: number) => {
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          key={id}
+          id={id}
           dataType={currentData && getType(currentData[key])}
           dataValue={currentData && currentData[key]}
           dataKey={key}
@@ -88,21 +88,33 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
   )
 }
 
-function ApiDataSort({ i, dataKey, dataType, dataValue }: ApiDataSortAlias) {
+function ApiDataSort({ id, dataKey, dataType, dataValue }: ApiDataSortAlias) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
-        return <JsonArray key={i} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        return (
+          <JsonArray id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        )
       case 'boolean':
-        return <JsonBoolean key={i} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        return (
+          <JsonBoolean id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        )
       case 'function':
-        return <JsonFunction key={i} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        return (
+          <JsonFunction id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        )
       case 'number':
-        return <JsonNumber key={i} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        return (
+          <JsonNumber id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        )
       case 'object':
-        return <JsonObject key={i} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        return (
+          <JsonObject id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        )
       case 'string':
-        return <JsonString key={i} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        return (
+          <JsonString id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+        )
       default:
         return null
     }
@@ -111,21 +123,19 @@ function ApiDataSort({ i, dataKey, dataType, dataValue }: ApiDataSortAlias) {
     <motion.div
       initial={{ opacity: 0, translateX: 4 }}
       animate={{ opacity: 1, translateX: 0 }}
-      transition={{ duration: 0.3, delay: i * 0.02 }}
+      transition={{ duration: 0.3, delay: id * 0.02 }}
       exit='removed'
-      custom={i}>
+      custom={id}>
       {renderValue()}
     </motion.div>
   )
 }
 
 function JsonArray({ value, dataKey }: ApiArrayAlias) {
-  // const [col, setCol] = React.useState(false)
-
   const renderArrayContent = () => {
-    return value.map((v: any, i: number) => {
+    return value.map((v: any, id: number) => {
       const type: string = getType(v)
-      return <ApiDataSort key={i} i={i} dataType={type} dataKey={i} />
+      return <ApiDataSort key={id} id={id} dataType={type} dataKey={id} />
     })
   }
 
@@ -176,11 +186,11 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
   }, [value])
 
   const renderObject = () => {
-    return keys.map((k: string, i: number) => {
+    return keys.map((k: string, id: number) => {
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          key={id}
+          id={id}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}
@@ -195,9 +205,9 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     console.log('dataKey', dataKey)
     return (
       <Typography variant='code'>
-        {'export interface `${dataKey}` {'}
+        export interface&nbsp;{dataKey}&nbsp;&#123;
         <Box sx={{ ml: 3 }}>{renderObject()}</Box>
-        {'}'}
+        &#125;
       </Typography>
     )
   }

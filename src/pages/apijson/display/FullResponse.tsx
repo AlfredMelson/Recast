@@ -35,10 +35,11 @@ const FullResponse: React.FC<FullResponseAlias> = ({ data }: FullResponseAlias) 
   }, [data])
 
   const renderData = () => {
-    return keys.map(key => {
+    return keys.map((key: string, id: number) => {
       return (
         <ApiDataSort
-          key={key}
+          key={id}
+          id={id}
           dataType={currentData && getType(currentData[key])}
           dataValue={currentData && currentData[key]}
           dataKey={key}
@@ -54,21 +55,21 @@ const FullResponse: React.FC<FullResponseAlias> = ({ data }: FullResponseAlias) 
 }
 export default FullResponse
 
-function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
+function ApiDataSort({ id, dataType, dataValue, dataKey }: ApiDataSortAlias) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
-        return <JsonArray value={dataValue} dataKey={dataKey} />
+        return <JsonArray key={id} id={id} value={dataValue} dataKey={dataKey} />
       case 'boolean':
-        return <JsonBoolean value={dataValue} dataKey={dataKey} />
+        return <JsonBoolean key={id} id={id} value={dataValue} dataKey={dataKey} />
       case 'function':
-        return <JsonFunction value={dataValue} dataKey={dataKey} />
+        return <JsonFunction key={id} id={id} value={dataValue} dataKey={dataKey} />
       case 'number':
-        return <JsonNumber value={dataValue} dataKey={dataKey} />
+        return <JsonNumber key={id} id={id} value={dataValue} dataKey={dataKey} />
       case 'object':
-        return <JsonObject value={dataValue} dataKey={dataKey} />
+        return <JsonObject key={id} id={id} value={dataValue} dataKey={dataKey} />
       case 'string':
-        return <JsonString value={dataValue} dataKey={dataKey} />
+        return <JsonString key={id} id={id} value={dataValue} dataKey={dataKey} />
       default:
         return null
     }
@@ -77,9 +78,9 @@ function ApiDataSort({ i, dataType, dataValue, dataKey }: ApiDataSortAlias) {
     <motion.div
       initial={{ opacity: 0, translateX: 4 }}
       animate={{ opacity: 1, translateX: 0 }}
-      transition={{ duration: 0.3, delay: i * 0.02 }}
+      transition={{ duration: 0.3, delay: id * 0.02 }}
       exit='removed'
-      custom={i}>
+      custom={id}>
       {renderValue()}
     </motion.div>
   )
@@ -89,9 +90,9 @@ function JsonArray({ value, dataKey }: ApiArrayAlias) {
   const [col, setCol] = React.useState(false)
 
   const renderArrayContent = () => {
-    return value.map((v: any, i: number) => {
+    return value.map((v: any, id: number) => {
       const type: string = getType(v)
-      return <ApiDataSort key={i} dataValue={v} dataType={type} dataKey={i} />
+      return <ApiDataSort key={id} id={id} dataValue={v} dataType={type} dataKey={id} />
     })
   }
 
@@ -104,7 +105,7 @@ function JsonArray({ value, dataKey }: ApiArrayAlias) {
           </SxDataIconButton>
           <Typography variant='code'>
             <Box>
-              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              {dataKey}&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
               <span style={{ color: grey[500] }}>
                 &#47;&#47;&nbsp;
                 {col && value ? Object.keys(value).length : ''}&nbsp;
@@ -138,7 +139,7 @@ function JsonArray({ value, dataKey }: ApiArrayAlias) {
 function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[400] }}>
-      {`"${dataKey}"`}&#58;&nbsp;
+      &#34;{dataKey}&#34;&#58;&nbsp;
       {value ? (
         <span style={{ color: green[400] }}>{`${value}`}</span>
       ) : (
@@ -151,10 +152,8 @@ function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
 function JsonFunction({ dataKey }: ApiFunctionAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[500] }}>
-      {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: '#ffffff' }}>
-        {'['}&nbsp;&#402;&nbsp;{']'}
-      </span>
+      &#34;{dataKey}&#34;&#58;&nbsp;
+      <span style={{ color: '#ffffff' }}>&#91;&nbsp;&#402;&nbsp;&#93;</span>
     </Typography>
   )
 }
@@ -162,7 +161,7 @@ function JsonFunction({ dataKey }: ApiFunctionAlias) {
 function JsonNumber({ value, dataKey }: ApiNumberAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[500] }}>
-      {`"${dataKey}"`}&#58;&nbsp;
+      &#34;{dataKey}&#34;&#58;&nbsp;
       <span style={{ color: '#9980FF' }}>{`${value}`}</span>
     </Typography>
   )
@@ -178,11 +177,11 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
   }, [value])
 
   const renderObject = () => {
-    return keys.map((k: string, i: number) => {
+    return keys.map((k: string, id: number) => {
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          key={id}
+          id={id}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}
@@ -213,7 +212,7 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
             ''
           ) : (
             <Box>
-              {`${dataKey}: {`}&#46;&#46;&#46;{'}'}&nbsp;
+              {dataKey}&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
               <span style={{ color: grey[500] }}>
                 &#47;&#47;&nbsp;
                 {keys.length}&nbsp;
@@ -234,11 +233,8 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
 function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
     <Typography variant='code'>
-      {`"${dataKey}"`}
-      <span style={{ color: '#ffffff' }}>
-        &#58;&nbsp;
-        <span style={{ color: green[400] }}>{`"${value}"`}</span>
-      </span>
+      &#34;{dataKey}&#34;&#58;&nbsp;
+      <span style={{ color: green[400] }}>&#34;{value}&#34;</span>
     </Typography>
   )
 }

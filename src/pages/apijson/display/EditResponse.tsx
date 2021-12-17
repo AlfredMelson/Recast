@@ -3,11 +3,31 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { grey } from '@mui/material/colors'
+import { atom, useSetRecoilState } from 'recoil'
 import { SxIBApiInteraction } from '../../../components/sx/SxIconButton'
 import ApiDataSort from '../data-types/ApiDataSort'
 import { getType } from '../data-types/typeAliases'
 import { FrMotionPaper } from '../../../components/animation/FrMotion'
 import { SxPaper } from '../../../components/sx/SxPaper'
+
+/**
+ * @name selectedElementAtom
+ * @description state representing the selected element
+ * @param {String | Number | Null}
+ * @type {Object}
+ * @return {Object} a writeable RecoilState object
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
+ *
+ * Hooks to manage state changes and notify components subscribing to re-render:
+ * const [selectedElement, setSelectedElement] = useRecoilState(selectedElementAtom)
+ * const setSelectedElement = useSetRecoilState(selectedElementAtom)
+ * const selectedElement = useRecoilValue(selectedElementAtom)
+ * const resetSelectedElement = useResetRecoilState(selectedElementAtom)
+ */
+export const selectedElementAtom = atom<string | number | null>({
+  key: 'selectedElement',
+  default: null,
+})
 
 type EditResponseAlias = {
   onEdit: (newValue: any, key: string | number) => void
@@ -15,7 +35,8 @@ type EditResponseAlias = {
   data?: { [key: string]: any } | undefined
 }
 export default function EditResponse({ data, onDelete, onEdit }: EditResponseAlias) {
-  const [col, setCol] = React.useState(true)
+  // state of data reveal toggle
+  const [reveal, setReveal] = React.useState(true)
 
   const [keys, setKeys] = React.useState<string[]>([])
 
@@ -23,15 +44,18 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
 
   React.useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
+    console.log('newkeys', newkeys)
     setKeys(newkeys)
     setCurrentData(data)
   }, [data])
 
   const renderData = () => {
-    return keys.map(key => {
+    return keys.map((key, id) => {
+      console.log('key', key)
       return (
         <ApiDataSort
           key={key}
+          id={id}
           dataType={currentData ? getType(currentData[key]) : ''}
           dataValue={currentData ? currentData[key] : ''}
           dataKey={key}
@@ -45,9 +69,10 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
   function IconToggle() {
     return (
       <SxIBApiInteraction
-        onClick={() => setCol(!col)}
+        onClick={() => setReveal(!reveal)}
         sx={{
-          transform: col ? 'rotate(90deg)' : 'rotate(0deg)',
+          transform: reveal ? 'rotate(90deg)' : 'rotate(0deg)',
+          mr: 1,
         }}>
         <KeyboardArrowRightIcon />
       </SxIBApiInteraction>
@@ -55,7 +80,7 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
   }
 
   const renderEditResponseContent = () => {
-    if (col)
+    if (reveal)
       return (
         <React.Fragment>
           <Stack direction='row'>
@@ -92,9 +117,17 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
     )
   }
 
+  const setSelectedElement = useSetRecoilState(selectedElementAtom)
+
   return (
     <FrMotionPaper>
-      <SxPaper paddingLeft={3}>{renderEditResponseContent()}</SxPaper>
+      <SxPaper
+        onClick={() => {
+          setSelectedElement(null)
+        }}
+        sx={{ pl: 3 }}>
+        {renderEditResponseContent()}
+      </SxPaper>
     </FrMotionPaper>
   )
 }

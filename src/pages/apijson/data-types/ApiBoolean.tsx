@@ -5,6 +5,8 @@ import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { ApiBooleanAlias } from './typeAliases'
 
 export function ApiBoolean({ value, dataKey, dataType }: ApiBooleanAlias) {
+  // // state representing the selected element
+  // const [selectedElement, setSelectedElement] = useRecoilState(selectedElementAtom)
   return (
     <Stack direction='row'>
       <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>

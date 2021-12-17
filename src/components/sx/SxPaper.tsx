@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import { styled } from '@mui/material'
+import { styled, SxProps } from '@mui/material'
 import * as React from 'react'
 
 /**
@@ -31,12 +31,13 @@ const SxPaperStyle = styled(Paper)(({ theme }) => ({
  */
 type SxPaperAlias = {
   children: React.ReactNode
-  paddingLeft?: number
+  sx?: SxProps
+  onClick?: React.MouseEventHandler
 }
 
-export const SxPaper = ({ children, paddingLeft }: SxPaperAlias) => {
+export const SxPaper = ({ children, onClick, ...props }: SxPaperAlias) => {
   return (
-    <SxPaperStyle sx={{ paddingLeft: theme => theme.spacing(paddingLeft), position: 'relative' }}>
+    <SxPaperStyle onClick={onClick} {...props}>
       {children}
     </SxPaperStyle>
   )

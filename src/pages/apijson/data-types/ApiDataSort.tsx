@@ -3,7 +3,7 @@ import { ApiDataSortAlias } from './typeAliases'
 import { ApiNumber, ApiString, ApiBoolean, ApiArray, ApiFunction, ApiObject } from '.'
 
 export default function ApiDataSort({
-  i,
+  id,
   dataType,
   dataValue,
   dataKey,
@@ -15,7 +15,8 @@ export default function ApiDataSort({
       case 'number':
         return (
           <ApiNumber
-            key={i}
+            id={id}
+            key={id}
             value={dataValue}
             dataKey={dataKey}
             dataType={dataType}
@@ -26,7 +27,8 @@ export default function ApiDataSort({
       case 'string':
         return (
           <ApiString
-            key={i}
+            id={id}
+            key={id}
             value={dataValue}
             dataKey={dataKey}
             dataType={dataType}
@@ -37,7 +39,8 @@ export default function ApiDataSort({
       case 'object':
         return (
           <ApiObject
-            key={i}
+            id={id}
+            key={id}
             value={dataValue}
             dataKey={dataKey}
             dataType={dataType}
@@ -46,11 +49,15 @@ export default function ApiDataSort({
           />
         )
       case 'boolean':
-        return <ApiBoolean key={i} value={dataValue} dataKey={dataKey} dataType={dataType} />
+        return (
+          <ApiBoolean id={id} key={id} value={dataValue} dataKey={dataKey} dataType={dataType} />
+        )
       case 'array':
-        return <ApiArray value={dataValue} dataKey={dataKey} dataType={dataType} />
+        return <ApiArray id={id} key={id} value={dataValue} dataKey={dataKey} dataType={dataType} />
       case 'function':
-        return <ApiFunction key={i} value={dataValue} dataKey={dataKey} dataType={dataType} />
+        return (
+          <ApiFunction id={id} key={id} value={dataValue} dataKey={dataKey} dataType={dataType} />
+        )
       default:
         return null
     }
@@ -59,9 +66,9 @@ export default function ApiDataSort({
     <motion.div
       initial={{ opacity: 0, translateX: 4 }}
       animate={{ opacity: 1, translateX: 0 }}
-      transition={{ duration: 0.3, delay: i * 0.02 }}
+      transition={{ duration: 0.3, delay: id * 0.02 }}
       exit='removed'
-      custom={i}>
+      custom={id}>
       {renderValue()}
     </motion.div>
   )

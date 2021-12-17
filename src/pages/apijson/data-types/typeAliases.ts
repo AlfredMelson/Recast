@@ -1,24 +1,24 @@
 export function getType(
   value: string | undefined
 ):
-  | 'number'
-  | 'string'
+  | 'array'
   | 'bigint'
   | 'boolean'
-  | 'symbol'
-  | 'undefined'
-  | 'object'
   | 'function'
-  | 'array' {
+  | 'number'
+  | 'object'
+  | 'string'
+  | 'symbol'
+  | 'undefined' {
   if (Array.isArray(value)) return 'array'
   return typeof value
 }
 
 export type ApiDataSortAlias = {
+  id: number
   dataType: string | undefined
   dataKey: string | number
   dataValue?: any
-  i?: number
   onDelete?: (key: number | string) => void
   onEdit?: (newValue: any, key: string | number) => void
 }
@@ -28,8 +28,8 @@ type ApiValueProp = {
 }
 
 export type ApiArrayAlias = {
+  id: number
   dataKey: number | string
-  i?: number
   value?: Array<ApiValueProp>
   dataType?: string
   onEdit?: (newvalue: any, key: string | number) => void
@@ -37,8 +37,8 @@ export type ApiArrayAlias = {
 }
 
 export type ApiObjectAlias = {
+  id: number
   dataKey: string | number
-  i?: number
   value?: { [key: string]: any } | undefined
   dataType?: string | undefined
   onEdit?: (newVale: any, key: string | number) => void
@@ -46,18 +46,21 @@ export type ApiObjectAlias = {
 }
 
 export type ApiBooleanAlias = {
+  id: number
   dataKey: string | number
   value?: []
   dataType?: string
 }
 
 export type ApiFunctionAlias = {
+  id: number
   dataKey: string | number
   dataType?: string
   value?: any
 }
 
 export type ApiNumberAlias = {
+  id: number
   dataKey: string | number
   value?: number
   dataType?: string
@@ -66,6 +69,7 @@ export type ApiNumberAlias = {
 }
 
 export type ApiStringAlias = {
+  id: number
   dataKey: string | number
   value?: number
   dataType?: string
@@ -74,6 +78,7 @@ export type ApiStringAlias = {
 }
 
 export type ApiUndefinedAlias = {
+  id: number
   dataKey: string | number
   dataType: string
   value?: []

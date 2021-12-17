@@ -66,7 +66,7 @@ export const SxTab = styled(
 )(({ theme }) => ({
   textTransform: 'none',
   fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-  fontSize: theme.typography.pxToRem(14),
+  fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
   minWidth: '130px',
   height: '50px',
   minHeight: '50px',

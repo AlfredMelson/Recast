@@ -30,15 +30,15 @@ export function ApiArray({ value, dataKey, dataType }: ApiArrayAlias) {
   }
 
   const renderArrayContent = () => {
-    return currentValue.map((v: any, i: number) => {
+    return currentValue.map((v: any, id: number) => {
       const type: string = getType(v)
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          id={id}
+          key={id}
+          dataKey={id}
           dataValue={v}
           dataType={type}
-          dataKey={i}
           onEdit={editOneFromArray}
           onDelete={deleteOneFromArray}
         />

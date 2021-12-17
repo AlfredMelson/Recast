@@ -1,11 +1,11 @@
 import * as React from 'react'
-import DeleteIcon from '@mui/icons-material/Delete'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { grey } from '@mui/material/colors'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { Box } from '@mui/system'
 import { SxIBApiInteraction } from '../../../components/sx'
+import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
 import ApiDataSort from './ApiDataSort'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { getType, ApiObjectAlias } from './typeAliases'
@@ -36,11 +36,11 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
   }
 
   const renderObject = () => {
-    return keys.map((k: string, i: number) => {
+    return keys.map((k: string, id: number) => {
       return (
         <ApiDataSort
-          key={i}
-          i={i}
+          id={id}
+          key={id}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}
@@ -57,6 +57,7 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
         onClick={() => setCol(!col)}
         sx={{
           transform: col ? 'rotate(90deg)' : 'rotate(0deg)',
+          mr: 1,
         }}>
         <KeyboardArrowRightIcon />
       </SxIBApiInteraction>
@@ -75,7 +76,7 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
               onClick={() => {
                 onDelete(dataKey)
               }}>
-              <DeleteIcon fontSize='small' />
+              <ApiDeleteIcon />
             </SxIBApiInteraction>
             &nbsp;&#123;
           </Stack>

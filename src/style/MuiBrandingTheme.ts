@@ -256,18 +256,18 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         fontWeight: 500,
       },
       body1: {
-        fontSize: theme.typography.pxToRem(16),
+        fontSize: 'clamp(1.09rem, 1rem + 0.47vw, 1.33rem)',
         lineHeight: 24 / 16,
         letterSpacing: 0,
       },
       body2: {
-        fontSize: theme.typography.pxToRem(14),
+        fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
         lineHeight: 21 / 14,
         letterSpacing: 0,
       },
       caption: {
         display: 'inline-block',
-        fontSize: theme.typography.pxToRem(12),
+        fontSize: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
         lineHeight: 18 / 12,
         letterSpacing: 0,
         fontWeight: 600,
@@ -275,7 +275,7 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       code: {
         display: 'block',
         fontFamily: 'var(--code-font-family)',
-        fontSize: theme.typography.pxToRem(14),
+        fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
         lineHeight: 1.7,
         letterSpacing: 0,
       },

@@ -101,13 +101,18 @@ export default function Searchbar() {
       }}>
       <InputBase
         autoFocus
-        sx={{ ml: 1, flex: 1, fontSize: '14px', minHeight: '32px' }}
+        sx={{
+          ml: 1,
+          flex: 1,
+          fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
+          minHeight: '32px',
+        }}
         placeholder='Enter API url'
         onChange={handleTextFieldChanges}
       />
       {Object.getOwnPropertyNames(apiData).length !== 0 && (
         <FadeDelay delay={1000}>
-          <SxTextfieldButton aria-label='clear url' onClick={handleReset}>
+          <SxTextfieldButton aria-label='clear url' onClick={handleReset} sx={{ mr: 0.5 }}>
             <Typography variant='body2'>Clear</Typography>
           </SxTextfieldButton>
         </FadeDelay>
@@ -117,7 +122,8 @@ export default function Searchbar() {
           <SxTextfieldButton
             aria-label='toggle password visibility'
             disabled={userTypedUrl === undefined}
-            onClick={handleSubmitUrl}>
+            onClick={handleSubmitUrl}
+            sx={{ mr: 1 }}>
             {!submitting && !successSubmit ? (
               <Typography variant='body2'>
                 {Object.getOwnPropertyNames(apiData).length === 0 ? (

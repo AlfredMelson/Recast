@@ -238,12 +238,14 @@
 
   --code-font-family: 'Fira Code', monospace;
 
-  --text-size-xxs: 10px;
-  --text-size-xs: 12px;
-  --text-size-sm: 14px;
-  --text-size-md: 16px;
-  --text-size-lg: 18px;
-  --text-size-xl: 24px;
+  --text-size-300: clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem);
+  --text-size-400: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+  --text-size-500: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  --text-size-600: clamp(1.37rem, 1.21rem + 0.8vw, 1.78rem);
+  --text-size-700: clamp(1.71rem, 1.45rem + 1.29vw, 2.37rem);
+  --text-size-800: clamp(2.14rem, 1.74rem + 1.99vw, 3.16rem);
+  --text-size-900: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
+  --text-size-1000: clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem);
 
   --text-weight-ultralight: 100;
   --text-weight-thin: 200;

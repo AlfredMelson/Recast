@@ -7,11 +7,11 @@ import * as React from 'react'
  * @param {motion} framer-motion motion
  * @return styled API Tab Panel background motion
  */
-type SxPaperMotionAlias = {
+type FrMotionPaperAlias = {
   children: React.ReactNode
 }
 
-export const FrMotionPaper = ({ children }: SxPaperMotionAlias) => {
+export const FrMotionPaper = ({ children }: FrMotionPaperAlias) => {
   return (
     <motion.div animate={{ y: 0, opacity: 1 }} transition={{ ease: 'easeOut', duration: 2 }}>
       {children}

@@ -2,7 +2,7 @@ import Button from '@mui/material/Button'
 import { styled } from '@mui/material'
 
 export const SxButton = styled(Button)(({ theme }) => ({
-  fontSize: '14px',
+  fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
   lineHeight: '21px',
   fontWeight: 600,
   minWidth: '110px',

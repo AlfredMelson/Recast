@@ -27,7 +27,6 @@ export function KeyEditor({
   onCancel,
   onUpdate,
   validateKeyName,
-  sx,
 }: KeyEditorProps) {
   const dispatch = useDispatch()
   const [isValid, setValid] = React.useState(true)
@@ -106,7 +105,7 @@ export function KeyEditor({
   )
 
   return (
-    <Stack direction='row' spacing={2} sx={{ sx }}>
+    <Stack direction='row' spacing={2}>
       <Tooltip title='Approve' placement='top'>
         <Button
           size='small'
