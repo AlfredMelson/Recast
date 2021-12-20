@@ -14,8 +14,14 @@ export function getType(
   return typeof value
 }
 
+export type EditResponseAlias = {
+  onEdit: (newValue: any, key: string | number) => void
+  onDelete: (key: number | string) => void
+  data?: { [key: string]: any } | undefined
+}
+
 export type ApiDataSortAlias = {
-  id: number
+  index: number
   dataType: string | undefined
   dataKey: string | number
   dataValue?: any
@@ -28,7 +34,7 @@ type ApiValueProp = {
 }
 
 export type ApiArrayAlias = {
-  id: number
+  index: number
   dataKey: number | string
   value?: Array<ApiValueProp>
   dataType?: string
@@ -37,7 +43,7 @@ export type ApiArrayAlias = {
 }
 
 export type ApiObjectAlias = {
-  id: number
+  index: number
   dataKey: string | number
   value?: { [key: string]: any } | undefined
   dataType?: string | undefined
@@ -46,21 +52,21 @@ export type ApiObjectAlias = {
 }
 
 export type ApiBooleanAlias = {
-  id: number
+  index: number
   dataKey: string | number
   value?: []
   dataType?: string
 }
 
 export type ApiFunctionAlias = {
-  id: number
+  index: number
   dataKey: string | number
   dataType?: string
   value?: any
 }
 
 export type ApiNumberAlias = {
-  id: number
+  index: number
   dataKey: string | number
   value?: number
   dataType?: string
@@ -69,7 +75,7 @@ export type ApiNumberAlias = {
 }
 
 export type ApiStringAlias = {
-  id: number
+  index: number
   dataKey: string | number
   value?: number
   dataType?: string
@@ -78,7 +84,7 @@ export type ApiStringAlias = {
 }
 
 export type ApiUndefinedAlias = {
-  id: number
+  index: number
   dataKey: string | number
   dataType: string
   value?: []

@@ -43,7 +43,7 @@ export const SxTextfieldButton = styled(Button)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800],
   backgroundColor: 'transparent',
   minWidth: theme.spacing(7),
-  transitionDuration: '600ms',
+  transitionDuration: '150ms',
   transitionProperty: 'color',
   '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],

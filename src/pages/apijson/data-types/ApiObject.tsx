@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import { grey } from '@mui/material/colors'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { Box } from '@mui/system'
-import { SxIBApiInteraction } from '../../../components/sx'
+import { SxApiIconButton } from '../../../components/sx'
 import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
 import ApiDataSort from './ApiDataSort'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
@@ -36,11 +36,11 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
   }
 
   const renderObject = () => {
-    return keys.map((k: string, id: number) => {
+    return keys.map((k: string, index: number) => {
       return (
         <ApiDataSort
-          id={id}
-          key={id}
+          index={index}
+          key={index}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}
@@ -53,14 +53,14 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
 
   function IconToggle() {
     return (
-      <SxIBApiInteraction
+      <SxApiIconButton
         onClick={() => setCol(!col)}
         sx={{
           transform: col ? 'rotate(90deg)' : 'rotate(0deg)',
           mr: 1,
         }}>
         <KeyboardArrowRightIcon />
-      </SxIBApiInteraction>
+      </SxApiIconButton>
     )
   }
 
@@ -72,12 +72,12 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
             <IconToggle />
             <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
             <ApiDataTypeLabel type={dataType ? dataType : ''} variant='edit' />
-            <SxIBApiInteraction
+            <SxApiIconButton
               onClick={() => {
                 onDelete(dataKey)
               }}>
               <ApiDeleteIcon />
-            </SxIBApiInteraction>
+            </SxApiIconButton>
             &nbsp;&#123;
           </Stack>
           <Box sx={{ pl: 3 }}>{renderObject()}</Box>
@@ -115,9 +115,9 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
 
 {
   /* <Stack direction='row'>
-          <SxIBApiInteraction onClick={toggleObj}>
+          <SxApiIconButton onClick={toggleObj}>
             <KeyboardArrowRightIcon />
-          </SxIBApiInteraction>
+          </SxApiIconButton>
           <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
           <Stack direction='row'>
             <ApiDataTypeLabel type={dataType ? dataType : ''} variant='edit' />

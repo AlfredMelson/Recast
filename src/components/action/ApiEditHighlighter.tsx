@@ -14,13 +14,13 @@ export default function ApiEditHighlighter({
         transitionProperty: 'all',
         transitionDuration: '150ms',
         ...(selected && {
-          pt: 1,
-          mpb: 1,
+          pt: 0.5,
+          pb: 1,
           bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : '#ffffff'),
           color: theme => (theme.palette.mode === 'dark' ? 'primary.400' : 'primary.500'),
         }),
         ...(!selected && {
-          '&:hover, & .Mui-focused': {
+          '&:hover': {
             bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : 'grey.100'),
             '@media (hover: none)': {
               bgcolor: 'transparent',

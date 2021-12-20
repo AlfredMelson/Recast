@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import _ from 'lodash'
+import { useLocation } from 'react-router-dom'
 import {
   apiDataAtom,
   apiFullResponseAtom,
@@ -15,7 +16,8 @@ import FullResponse from '../../pages/apijson/display/FullResponse'
 import DataHeaders from '../../pages/apijson/display/DataHeaders'
 import { TsInterface } from '../../pages/apijson/display/TsInterface'
 import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
-import { SxTabs, SxTab } from '../sx/SxTab'
+import { SxTab } from '../sx/SxTab'
+import { SxTabs } from '../sx/SxTabs'
 import { DTypescript } from '../../pages/apijson/display/DTypescript'
 
 type TabPanelAlias = {
@@ -44,7 +46,7 @@ function a11yProps(index: number) {
   }
 }
 
-export default function DataTabs() {
+export default function ApiTabs() {
   // state when user submits user entered url
   const userSubmittedUrl = useRecoilValue(userSubmittedUrlAtom)
   // state of user toggled api response
@@ -75,12 +77,19 @@ export default function DataTabs() {
   // split and pop to isolate d.ts file name
   // const lastSegment = userSubmittedUrl !== undefined && userSubmittedUrl.split('/').pop()
 
+  // AnimatePresense
+  const local = useLocation()
+
   return (
     <Box>
       {userSubmittedUrl !== undefined && (
         <React.Fragment>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <SxTabs aria-label='api data tabs' onChange={handleDataTabs} value={value}>
+            <SxTabs
+              key={local.pathname}
+              aria-label='api data tabs'
+              onChange={handleDataTabs}
+              value={value}>
               <SxTab
                 label='Data response'
                 {...a11yProps(0)}
@@ -117,7 +126,7 @@ export default function DataTabs() {
               />
             </SxTabs>
           </Box>
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: 'relative', overflow: 'hidden' }}>
             <TabPanel value={value} index={0}>
               <DataResponse data={apiData} />
             </TabPanel>

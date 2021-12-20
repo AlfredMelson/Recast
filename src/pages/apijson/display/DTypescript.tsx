@@ -18,7 +18,7 @@ import {
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
 import { SxPaper } from '../../../components/sx/SxPaper'
-import { FrMotionPaper } from '../../../components/animation/FrMotion'
+import { FrFadeAnimation } from '../../../components/fr/FrFadeAnimation'
 import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 
 type DTypescriptAlias = {
@@ -36,11 +36,11 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
   }, [data])
 
   const renderData = () => {
-    return keys.map((key: string, id: number) => {
+    return keys.map((key: string, index: number) => {
       return (
         <ApiDataSort
-          id={id}
-          key={id}
+          index={index}
+          key={index}
           dataType={currentData && getType(currentData[key])}
           dataValue={currentData && currentData[key]}
           dataKey={key}
@@ -59,7 +59,7 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <FrMotionPaper>
+    <FrFadeAnimation>
       <SxPaper>
         <Typography variant='code'>
           declare module namespace&nbsp;&#123;
@@ -83,36 +83,72 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
           }
         />
       </SxPaper>
-    </FrMotionPaper>
+    </FrFadeAnimation>
   )
 }
 
-function ApiDataSort({ id, dataKey, dataType, dataValue }: ApiDataSortAlias) {
+function ApiDataSort({ index, dataKey, dataType, dataValue }: ApiDataSortAlias) {
   const renderValue = () => {
     switch (dataType) {
       case 'array':
         return (
-          <JsonArray id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+          <JsonArray
+            index={index}
+            key={index}
+            dataKey={dataKey}
+            dataType={dataType}
+            value={dataValue}
+          />
         )
       case 'boolean':
         return (
-          <JsonBoolean id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+          <JsonBoolean
+            index={index}
+            key={index}
+            dataKey={dataKey}
+            dataType={dataType}
+            value={dataValue}
+          />
         )
       case 'function':
         return (
-          <JsonFunction id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+          <JsonFunction
+            index={index}
+            key={index}
+            dataKey={dataKey}
+            dataType={dataType}
+            value={dataValue}
+          />
         )
       case 'number':
         return (
-          <JsonNumber id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+          <JsonNumber
+            index={index}
+            key={index}
+            dataKey={dataKey}
+            dataType={dataType}
+            value={dataValue}
+          />
         )
       case 'object':
         return (
-          <JsonObject id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+          <JsonObject
+            index={index}
+            key={index}
+            dataKey={dataKey}
+            dataType={dataType}
+            value={dataValue}
+          />
         )
       case 'string':
         return (
-          <JsonString id={id} key={id} dataKey={dataKey} dataType={dataType} value={dataValue} />
+          <JsonString
+            index={index}
+            key={index}
+            dataKey={dataKey}
+            dataType={dataType}
+            value={dataValue}
+          />
         )
       default:
         return null
@@ -122,9 +158,9 @@ function ApiDataSort({ id, dataKey, dataType, dataValue }: ApiDataSortAlias) {
     <motion.div
       initial={{ opacity: 0, translateX: 4 }}
       animate={{ opacity: 1, translateX: 0 }}
-      transition={{ duration: 0.3, delay: id * 0.02 }}
+      transition={{ duration: 0.3, delay: index * 0.02 }}
       exit='removed'
-      custom={id}>
+      custom={index}>
       {renderValue()}
     </motion.div>
   )
@@ -132,9 +168,9 @@ function ApiDataSort({ id, dataKey, dataType, dataValue }: ApiDataSortAlias) {
 
 function JsonArray({ value, dataKey }: ApiArrayAlias) {
   const renderArrayContent = () => {
-    return value.map((v: any, id: number) => {
+    return value.map((v: any, index: number) => {
       const type: string = getType(v)
-      return <ApiDataSort id={id} key={id} dataType={type} dataKey={id} />
+      return <ApiDataSort index={index} key={index} dataType={type} dataKey={index} />
     })
   }
 
@@ -185,11 +221,11 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
   }, [value])
 
   const renderObject = () => {
-    return keys.map((k: string, id: number) => {
+    return keys.map((k: string, index: number) => {
       return (
         <ApiDataSort
-          id={id}
-          key={id}
+          index={index}
+          key={index}
           dataType={currentValue ? getType(currentValue[k]) : ''}
           dataValue={currentValue ? currentValue[k] : ''}
           dataKey={k}

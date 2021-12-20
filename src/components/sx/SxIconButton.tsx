@@ -1,4 +1,4 @@
-import IconButton from '@mui/material/IconButton'
+import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import { styled } from '@mui/material'
 
 /**
@@ -17,19 +17,48 @@ export const SxIBColorMode = styled(IconButton)(({ theme }) => ({
 }))
 
 /**
- * SxIBApiInteraction manages the style of the interactive icons within API Json
+ * SxApiIconButton manages the style of the interactive icons within API Json
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return icon color mode style for light and dark mode
  */
-export const SxIBApiInteraction = styled(IconButton)(({ theme }) => ({
+
+export const SxApiIconButton = styled((props: IconButtonProps) => <IconButton {...props} />)(
+  ({ theme }) => ({
+    color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
+    margin: theme.spacing(0, 0.5),
+    padding: theme.spacing(0),
+    transitionProperty: 'color',
+    transitionDuration: '150ms',
+    '&:hover, & .Mui-focused': {
+      color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
+    },
+  })
+)
+
+/**
+ * SxApiEditIconButton manages the style of the edit icons within API Json
+ * @param {IconButton} mui IconButton
+ * @param {theme} MuiBrandingTheme
+ * @param {styled} mui styled
+ * @userActionPseudoClasses {hover}	:hover, {active}	:active, {focus}	:focus
+ * {focus visible}	:focus-visible, {focus within}	:focus-within
+ * @globalClassNames {active}	.Mui-active, {checked}	.Mui-checked, {completed}	.Mui-completed
+ * {disabled}	.Mui-disabled, {expanded}	.Mui-expanded, {focus visible}	.Mui-focusVisible
+ * {focused}	.Mui-focused. {required}	.Mui-required, {selected}	.Mui-selected
+ * @return style for edit icon button
+ */
+
+export const SxApiEditIconButton = styled(IconButton)(({ theme }) => ({
+  '.Mui-disabled': {
+    color: theme.palette.mode === 'dark' ? '#000000' : theme.palette.grey[900],
+  },
   color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
-  margin: theme.spacing(0, 0.5),
-  padding: theme.spacing(0),
+  padding: theme.spacing(0.5),
   transitionProperty: 'color',
-  msTransitionDuration: 'var(--transition-speed-fastest)',
-  '&:hover, & .Mui-focused': {
+  transitionDuration: '150ms',
+  '&:hover, .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
   },
 }))

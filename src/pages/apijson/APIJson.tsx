@@ -12,7 +12,8 @@ import {
   apiResponseHeadersAtom,
 } from '../../recoil/api-json/atom'
 import Searchbar from '../../components/api-json/SearchBar'
-import DataTabs from '../../components/api-json/DataTabs'
+import ApiTabs from '../../components/api-json/ApiTabs'
+// import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
 // import Alert from '@mui/material/Alert'
 // import Collapse from '@mui/material/Collapse'
@@ -58,6 +59,8 @@ export function APIJson() {
       apiDataFetch()
     }
   }, [setApiData, userQuery])
+  // state representing the selected element
+  // const setSelectedElement = useSetRecoilState(selectedElementAtom)
 
   //update current resource
   // const updateDataSource = async URL => {
@@ -112,10 +115,20 @@ export function APIJson() {
       sx={{
         pt: 1,
       }}>
-      <Container maxWidth='lg' sx={{}}>
+      <Container
+        maxWidth='lg'
+        // onClick={(): void => {
+        //   setSelectedElement(null)
+        // }}
+      >
         <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
           https://random-data-api.com/api/users/random_user
         </Typography>
+        <br />
+        <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+          https://random-data-api.com/api/stripe/random_stripe
+        </Typography>
+
         <Box sx={{ my: 2 }}>
           <Searchbar />
           {/* <Collapse in={showError}>
@@ -131,7 +144,7 @@ export function APIJson() {
             </Box>
           </Collapse> */}
         </Box>
-        <DataTabs />
+        <ApiTabs />
       </Container>
     </Box>
   )

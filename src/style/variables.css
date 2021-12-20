@@ -257,11 +257,11 @@
   --text-weight-heavy: 800;
   --text-weight-black: 900;
 
-  --transition-speed-fastest: 0.2s ease-in-out;
-  --transition-speed-fast: 0.4s ease-in-out;
-  --transition-speed-average: 0.6s ease-in-out;
-  --transition-speed-slow: 0.8s ease-in-out;
-  --transition-speed-slowest: 1s ease-in-out;
+  --transition-duration-fastest: 200ms ease-in-out;
+  --transition-duration-fast: 400ms ease-in-out;
+  --transition-duration-average: 600ms ease-in-out;
+  --transition-duration-slow: 800ms ease-in-out;
+  --transition-duration-slowest: 1000ms ease-in-out;
 
   --transition-delay-shortest: 0.1s;
   --transition-delay-short: 0.2s;
