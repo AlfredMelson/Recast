@@ -1,6 +1,6 @@
 {
-  "short_name": "JSON Visualizer",
-  "name": "Typed JSON Visualizer",
+  "short_name": "recast",
+  "name": "recast JSON Visualizer",
   "icons": [
     {
       "src": "favicon.ico",
