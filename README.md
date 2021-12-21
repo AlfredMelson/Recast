@@ -1,7 +1,7 @@
 # recast
 <!-- ![](https://github.com/alfredmelson/ts-json-visualizer/workflows/test.yml/badge.svg) -->
 
-Typed JavaScript application to recast, type, and visualize JSON that is built on React incorporating Recoil for state management,  XState for state machines, MUI v5 for UI/UX, Monaco-editor as an IDE and other libraries. Methods, models, and inspiration were derived in part from refactoring the [ jsonrepair ](https://github.com/josdejong/jsonrepair), [ jsoneditor ](https://github.com/josdejong/jsoneditor), [ json-source-map ](https://github.com/epoberezkin/json-source-map), [ javascript-natural-sort ](https://github.com/Bill4Time/javascript-natural-sort) code bases, some of which are no longer maintained.
+Typed JavaScript application to recast, type, and visualize JSON that is built on React incorporating Recoil for state management, MUI v5 for UI/UX, Monaco-editor as an IDE and other libraries. Methods, models, and inspiration were derived in part from refactoring [ jsonrepair ](https://github.com/josdejong/jsonrepair), [ jsoneditor ](https://github.com/josdejong/jsoneditor), [ json-source-map ](https://github.com/epoberezkin/json-source-map), [ javascript-natural-sort ](https://github.com/Bill4Time/javascript-natural-sort) code bases, some of which are no longer maintained.
 
 ### Libraries used in development
 
@@ -26,11 +26,9 @@ Copyright (c) 2021 - 2026 Alfred Melson & Licensed under the [MIT License](./LIC
 ## ToDo
 
 ### issues and features to be implemented 
-(updated 18 Oct 2021)
+(updated 18 Dec 2021)
 
-- [ ] Show level of depth.
-- [ ] Timestamp translation.
-- [ ] bug: Height of &lt;textarea&gt; is not enough in except Chrome.
+- [ ] keyboard navigation.
 - [ ] Insert version number.
 
 ### for version 2.0.0

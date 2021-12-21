@@ -1,9 +1,8 @@
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import bracketText from '../../data/bracketText.json'
-import { parsePath } from '../../json/json-new/ParsePath'
+import { parsePath } from './ParsePath'
 import { GetChildPaths } from './GetChildPaths'
-// import jsonrepair from 'jsonrepair'
 
 export function DeepDive() {
   const [pathSelected, setPathSelected] = React.useState('')
@@ -33,9 +32,6 @@ export function DeepDive() {
       setPathLength(result.length)
     }
   }, [pathSelected])
-
-  // const repaired = jsonrepair(bracketText)
-  // console.log('repaired: ', repaired)
 
   return (
     <pre>
