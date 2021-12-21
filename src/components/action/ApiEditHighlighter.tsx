@@ -12,21 +12,21 @@ export default function ApiEditHighlighter({
     <Stack
       sx={{
         transitionProperty: 'all',
-        transitionDuration: '150ms',
+        transitionDuration: '250ms',
         ...(selected && {
-          pt: 0.5,
-          pb: 1,
-          bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : '#ffffff'),
-          color: theme => (theme.palette.mode === 'dark' ? 'primary.400' : 'primary.500'),
+          paddingBottom: '10px',
+          // borderRadius: '4px',
+          // bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : '#ffffff'),
         }),
-        ...(!selected && {
-          '&:hover': {
-            bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : 'grey.100'),
-            '@media (hover: none)': {
-              bgcolor: 'transparent',
-            },
-          },
-        }),
+        ...(!selected &&
+          {
+            // '&:hover': {
+            //   bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : 'grey.100'),
+            //   '@media (hover: none)': {
+            //     bgcolor: 'transparent',
+            //   },
+            // },
+          }),
         ...props.sx,
       }}
       {...props}

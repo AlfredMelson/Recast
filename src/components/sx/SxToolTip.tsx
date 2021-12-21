@@ -1,12 +1,12 @@
 import Tooltip from '@mui/material/Tooltip'
 
-interface SxToolTipProps {
+type SxToolTipAlias = {
   children: React.ReactElement
   tooltipTitle?: string
   disabled?: boolean
 }
 
-export function SxToolTip({ tooltipTitle, children, disabled }: SxToolTipProps) {
+export function SxToolTip({ tooltipTitle, children, disabled }: SxToolTipAlias) {
   return (
     <Tooltip
       title={tooltipTitle}

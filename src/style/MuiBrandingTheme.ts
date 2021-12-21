@@ -154,10 +154,10 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         500: '#21CC66',
         600: '#1DB45A',
         ...(mode === 'dark' && {
-          main: '#1DB45A', // contrast 6.17:1 (greyDark.800)
+          main: '#1DB45A',
         }),
         ...(mode === 'light' && {
-          main: '#1AA251', // contrast 3.31:1
+          main: '#1AA251',
         }),
         700: '#1AA251',
         800: '#178D46',
@@ -195,7 +195,6 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         400: '#FFD980',
         500: '#FCC419',
         600: '#FAB005',
-        main: '#F1A204', // does not pass constrast ratio
         700: '#F1A204',
         800: '#DB9A00',
         900: '#8F6400',
@@ -285,28 +284,15 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
 export function muiThemedComponents(theme: Theme) {
   return {
     components: {
-      MuiButtonBase: {
-        defaultProps: {
-          disableTouchRipple: true,
-        },
-      },
       MuiButton: {
         defaultProps: {
           disableElevation: true,
         },
-        styleOverrides: {
-          textDecoration: 'none',
-          backgroundColor: 'transparent',
-          transition: 'all var(--transition-duration-fastest)',
-          '&:hover, & .Mui-focused': {
-            backgroundColor: 'transparent',
-          },
-          sizeLarge: {
-            padding: '1rem 1.25rem',
-            ...theme.typography.body1,
-            lineHeight: 21 / 16,
-            fontWeight: 700,
-          },
+        styleOverrides: {},
+      },
+      MuiButtonBase: {
+        defaultProps: {
+          disableTouchRipple: true,
         },
       },
       MuiButtonGroup: {
@@ -353,7 +339,6 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             textDecoration: 'none',
             backgroundColor: 'transparent',
-            transition: 'all var(--transition-duration-fastest)',
             '&:hover, & .Mui-focused': {
               backgroundColor: 'transparent',
             },
@@ -406,30 +391,7 @@ export function muiThemedComponents(theme: Theme) {
         defaultProps: {
           elevation: 1,
         },
-        styleOverrides: {
-          // root: {
-          //   backgroundColor:
-          //     theme.palette.mode === 'dark' ? theme.palette.primaryDark[900] : '#fff',
-          //   '&[href]': {
-          //     textDecorationLine: 'none',
-          //   },
-          // },
-          // outlined: {
-          //   display: 'block',
-          //   borderColor:
-          //     theme.palette.mode === 'dark'
-          //       ? theme.palette.primaryDark[400]
-          //       : theme.palette.grey[200],
-          //   ...(theme.palette.mode === 'dark' && {
-          //     backgroundColor: theme.palette.primaryDark[700],
-          //   }),
-          //   'a&, button&': {
-          //     '&:hover': {
-          //       boxShadow: '1px 1px 20px 0 rgb(90 105 120 / 20%)',
-          //     },
-          //   },
-          // },
-        },
+        styleOverrides: {},
       },
       MuiSvgIcon: {
         defaultProps: {
@@ -466,24 +428,6 @@ export function muiThemedComponents(theme: Theme) {
           fontSize: '14px',
         },
       },
-      MuiToggleButton: {
-        styleOverrides: {
-          root: {
-            height: '36px',
-            border: 'none',
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.grey[600] : theme.palette.grey[50],
-            transitionProperty: 'backgroundColor',
-            transitionDuration: '150ms',
-            '&:hover, & .Mui-focused': {
-              backgroundColor: theme.palette.mode === 'dark' ? '#141414' : theme.palette.grey[50],
-            },
-            '&.Mui-selected, &.Mui-selected:hover': {
-              backgroundColor: theme.palette.mode === 'dark' ? '#000000' : theme.palette.grey[50],
-            },
-          },
-        },
-      },
       MuiToggleButtonGroup: {
         defaultProps: {
           size: 'small',
@@ -498,6 +442,15 @@ export function muiThemedComponents(theme: Theme) {
         },
       },
       MuiTooltip: {
+        defaultProps: {
+          arrow: true,
+          enterDelay: 400,
+          enterNextDelay: 50,
+          enterTouchDelay: 800,
+          leaveDelay: 50,
+          leaveTouchDelay: 1000,
+          TransitionComponent: Fade,
+        },
         styleOverrides: {
           tooltipArrow: {
             backgroundColor:
@@ -510,15 +463,6 @@ export function muiThemedComponents(theme: Theme) {
             backgroundColor:
               theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[300],
           },
-        },
-        defaultProps: {
-          arrow: true,
-          enterDelay: 400,
-          enterNextDelay: 50,
-          enterTouchDelay: 800,
-          leaveDelay: 50,
-          leaveTouchDelay: 1000,
-          TransitionComponent: Fade,
         },
       },
       MuiSwitch: {

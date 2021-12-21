@@ -161,3 +161,67 @@ export const userToggledApiAtom = atom<UserToggledApiAtomOptions>({
   key: 'userToggledApi',
   default: 'data',
 })
+
+/**
+ * @name selectedElementAtom
+ * @description state representing the selected element
+ * @param {Number | Null}
+ * @type {Object}
+ * @return {Object} a writeable RecoilState object
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
+ *
+ * Hooks to manage state changes and notify components subscribing to re-render:
+ * const [selectedElement, setSelectedElement] = useRecoilState(selectedElementAtom)
+ * const setSelectedElement = useSetRecoilState(selectedElementAtom)
+ * const selectedElement = useRecoilValue(selectedElementAtom)
+ * const resetSelectedElement = useResetRecoilState(selectedElementAtom)
+ */
+export const selectedElementAtom = atom<number | null>({
+  key: 'selectedElement',
+  default: null,
+})
+
+/**
+ * @name elementStateAtom
+ * @description state representing an array of element ids
+ * @param {String[]}
+ * @type {Object}
+ * @return {Object} a writeable RecoilState object
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
+ *
+ * Hooks to manage state changes and notify components subscribing to re-render:
+ * const [elementState, setElementState] = useRecoilState(elementStateAtom)
+ * const setElementState = useSetRecoilState(elementStateAtom)
+ * const elementState = useRecoilValue(elementStateAtom)
+ * const resetElementState = useResetRecoilState(elementStateAtom)
+ */
+export const elementStateAtom = atom<string[]>({
+  key: 'elementState',
+  default: [],
+})
+
+/**
+ * @name selectedElementProperties
+ * @description state representing an array of element ids
+ * @param {String[]}
+ * @type {Object}
+ * @return {Object} a writeable RecoilState object
+ * @bug Objects stored in atoms will freeze in development mode when bugs are detected
+ *
+ * Hooks to manage state changes and notify components subscribing to re-render:
+ * const [elementState, setElementState] = useRecoilState(selectedElementProperties)
+ * const setElementState = useSetRecoilState(selectedElementProperties)
+ * const elementState = useRecoilValue(selectedElementProperties)
+ * const resetElementState = useResetRecoilState(selectedElementProperties)
+ */
+export const selectedElementProperties = selector({
+  key: 'selectedElementProperties',
+  get: ({ get }) => {
+    const selectedElementId = get(selectedElementAtom)
+    // caseA: without a selected element there aren't any properties
+    if (selectedElementId == null) return
+
+    // caseB: else
+    // return get(elementState(selectedElementId))
+  },
+})

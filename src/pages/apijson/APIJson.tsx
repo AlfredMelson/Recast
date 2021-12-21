@@ -13,6 +13,7 @@ import {
 } from '../../recoil/api-json/atom'
 import Searchbar from '../../components/api-json/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
+import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
 // import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
 // import Alert from '@mui/material/Alert'
@@ -128,7 +129,8 @@ export function APIJson() {
         <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
           https://random-data-api.com/api/stripe/random_stripe
         </Typography>
-
+        <br />
+        <ApiUrlSelector />
         <Box sx={{ my: 2 }}>
           <Searchbar />
           {/* <Collapse in={showError}>

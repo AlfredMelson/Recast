@@ -2,8 +2,7 @@ import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { green, purple } from '@mui/material/colors'
-import Input from '@mui/material/Input'
+import { green, grey, purple } from '@mui/material/colors'
 import { useRecoilState } from 'recoil'
 import { ButtonGroup } from '@mui/material'
 import { SxApiEditIconButton } from '../../../components/sx/SxIconButton'
@@ -11,7 +10,9 @@ import ApiEditHighlighter from '../../../components/action/ApiEditHighlighter'
 import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
 import { ApiCloseIcon } from '../../../components/icons/ApiCloseIcon'
 import { ApiApplyIcon } from '../../../components/icons/ApiApplyIcon'
-import { selectedElementAtom } from '../display/EditResponse'
+import { selectedElementAtom } from '../../../recoil/api-json/atom'
+import SxEditApiInput from '../../../components/sx/SxInput'
+import { SxApiItemButton } from '../../../components/sx'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { ApiNumberAlias } from './typeAliases'
 
@@ -47,12 +48,13 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
           <Stack direction='row' justifyContent='center' alignItems='flex-end'>
             <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
-            <Input
-              autoFocus
-              defaultValue={currentValue}
+            <SxEditApiInput
+              currentValue={currentValue}
+              dataKey={dataKey}
               onChange={event => {
                 setCurrentValue(event.target.value)
               }}
+              onEdit={onEdit}
             />
             <ButtonGroup variant='text'>
               <SxApiEditIconButton onClick={handleNumberEdit}>
@@ -63,7 +65,7 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
                         ? theme.palette.grey[200]
                         : theme.palette.grey[900],
                     mr: 0.5,
-                    '&:hover ': {
+                    '&:hover': {
                       color: theme => (theme.palette.mode === 'dark' ? green[500] : green[600]),
                     },
                   }}
@@ -78,13 +80,19 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
             </ButtonGroup>
           </Stack>
         ) : (
-          <Stack direction='row' onClick={() => setSelectedElement(index)}>
-            <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
+          <SxApiItemButton onClick={() => setSelectedElement(index)}>
+            <Typography
+              sx={{
+                color: theme => (theme.palette.mode === 'dark' ? grey[50] : '#000000'),
+              }}
+              variant='code'>
+              &#34;{dataKey}&#34;&#58;&nbsp;
+            </Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
             <Typography variant='code' sx={{ color: purple[400] }}>
               {currentValue}
             </Typography>
-          </Stack>
+          </SxApiItemButton>
         )}
       </ApiEditHighlighter>
     </Box>

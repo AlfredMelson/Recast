@@ -1,41 +1,40 @@
-import * as React from 'react'
 import Box, { BoxProps } from '@mui/material/Box'
-import IconButton from '@mui/material/IconButton'
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import Add from '@mui/icons-material/Add'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
+import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
-import { selectedElementAtom } from '../../pages/apijson/display/EditResponse'
+import { alpha, IconButton } from '@mui/material'
+import { selectedElementAtom } from '../../recoil/api-json/atom'
 
-export default function AsideEditInfo({ appeared, ...props }: { appeared: boolean } & BoxProps) {
-  const [hidden, setHidden] = React.useState(false)
-
+export default function AsideEditInfo({ ...props }: BoxProps) {
   const selectedElement = useRecoilValue(selectedElementAtom)
 
-  const basicCard = () => {
+  const selectedElementCard = () => {
     return (
-      <Card sx={{ minWidth: 275 }}>
-        <CardContent>
-          <Typography variant='h6' component='div' gutterBottom>
-            Selected element
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-            id: {selectedElement}
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-            dataType:
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-            dataValue:
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary'>
-            dataKey:
-          </Typography>
-        </CardContent>
+      <Card sx={{ minWidth: 275, borderRadius: '4px' }}>
+        <CardActionArea>
+          <CardContent>
+            <Typography variant='h6' component='div' gutterBottom>
+              Selected element
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+              id: {selectedElement}
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+              dataType:
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+              dataValue:
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} color='text.secondary'>
+              dataKey:
+            </Typography>
+          </CardContent>
+        </CardActionArea>
         <CardActions>
           <Button size='small'>Learn More</Button>
         </CardActions>
@@ -49,14 +48,17 @@ export default function AsideEditInfo({ appeared, ...props }: { appeared: boolea
       sx={{
         position: 'absolute',
         bottom: 0,
-        transform: hidden || !appeared ? 'translateX(100%)' : 'translateX(0)',
-        transition: '0.3s',
+        transform: selectedElement === null ? 'translateX(100%)' : 'translateX(0)',
+        transition: '0.5s',
+        transitionDelay: '0.5s',
         top: 0,
         right: 0,
         px: 2,
         pt: 1,
         pb: 2,
-        bgcolor: ({ palette }) => palette.primaryDark[700],
+        // bgcolor: ({ palette }) => palette.primaryDark[700],
+        bgcolor: ({ palette }) => alpha(palette.primaryDark[700], 0.5),
+        backdropFilter: 'blur(8px)',
         minWidth: '200px',
         zIndex: 1,
         borderLeft: '1px solid',
@@ -70,25 +72,41 @@ export default function AsideEditInfo({ appeared, ...props }: { appeared: boolea
           top: 0,
         }}>
         <IconButton
-          aria-label={hidden ? 'show' : 'hide'}
-          onClick={() => setHidden(bool => !bool)}
+          // aria-label={hidden ? 'show' : 'hide'}
+          // onClick={() => setHidden(bool => !bool)}
           sx={{
             position: 'sticky',
             zIndex: 2,
             transition: '0.3s',
             left: 10,
-            top: 30,
-            transform: hidden || !appeared ? 'translateX(-74px)' : 'translateX(20%)',
-            opacity: appeared ? 1 : 0,
+            top: 0,
+            mb: 2,
             bgcolor: 'primaryDark.500',
             '&:hover, &.Mui-focused': {
               bgcolor: 'primaryDark.600',
             },
           }}>
-          {hidden ? <KeyboardArrowLeftIcon /> : <KeyboardArrowRightIcon />}
+          <Add />
         </IconButton>
 
-        <Box sx={{ pt: 9 }}>{basicCard()}</Box>
+        {selectedElementCard()}
+        <IconButton
+          // aria-label={hidden ? 'show' : 'hide'}
+          // onClick={() => setHidden(bool => !bool)}
+          sx={{
+            position: 'sticky',
+            zIndex: 2,
+            transition: '0.3s',
+            left: 10,
+            top: 0,
+            mt: 2,
+            bgcolor: 'primaryDark.500',
+            '&:hover, &.Mui-focused': {
+              bgcolor: 'primaryDark.600',
+            },
+          }}>
+          <Add />
+        </IconButton>
       </Box>
     </Box>
   )

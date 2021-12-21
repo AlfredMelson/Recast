@@ -1,17 +1,18 @@
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { green } from '@mui/material/colors'
+import { green, grey } from '@mui/material/colors'
 import { useRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
-import Input from '@mui/material/Input'
 import { ButtonGroup } from '@mui/material'
-import { selectedElementAtom } from '../display/EditResponse'
 import { SxApiEditIconButton } from '../../../components/sx/SxIconButton'
 import ApiEditHighlighter from '../../../components/action/ApiEditHighlighter'
 import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
 import { ApiCloseIcon } from '../../../components/icons/ApiCloseIcon'
 import { ApiApplyIcon } from '../../../components/icons/ApiApplyIcon'
+import { selectedElementAtom } from '../../../recoil/api-json/atom'
+import SxEditApiInput from '../../../components/sx/SxInput'
+import { SxApiItemButton } from '../../../components/sx'
 import { ApiStringAlias } from './typeAliases'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 
@@ -45,12 +46,14 @@ export function ApiString({ index, value, dataKey, dataType, onEdit, onDelete }:
           <Stack direction='row' justifyContent='center' alignItems='flex-end'>
             <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
-            <Input
-              autoFocus
-              defaultValue={currentValue}
+            <SxEditApiInput
+              currentValue={currentValue}
+              dataKey={dataKey}
               onChange={event => {
                 setCurrentValue(event.target.value)
               }}
+              onEdit={onEdit}
+              quotes={true}
             />
             <ButtonGroup variant='text'>
               <SxApiEditIconButton disabled={true} onClick={() => handleStringEdit(index)}>
@@ -76,13 +79,19 @@ export function ApiString({ index, value, dataKey, dataType, onEdit, onDelete }:
             </ButtonGroup>
           </Stack>
         ) : (
-          <Stack direction='row' onClick={() => setSelectedElement(index)}>
-            <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
+          <SxApiItemButton onClick={() => setSelectedElement(index)}>
+            <Typography
+              sx={{
+                color: theme => (theme.palette.mode === 'dark' ? grey[50] : '#000000'),
+              }}
+              variant='code'>
+              &#34;{dataKey}&#34;&#58;&nbsp;
+            </Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
             <Typography variant='code' sx={{ color: green[400] }}>
               &#34;{currentValue}&#34;
             </Typography>
-          </Stack>
+          </SxApiItemButton>
         )}
       </ApiEditHighlighter>
     </Box>

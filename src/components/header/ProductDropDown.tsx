@@ -4,8 +4,8 @@ import Popper from '@mui/material/Popper'
 import Paper from '@mui/material/Paper'
 import Fade from '@mui/material/Fade'
 import IconImage from '../icons/IconImage'
+import { getNextIndex, MENUID } from '../action/KeyboardFunctions'
 import { SubMenu } from './SubMenuStyle'
-import { getNextIndex, MENUID } from './headerFunctions'
 
 export function ProductDropDown() {
   const [subMenuOpen, setSubMenuOpen] = React.useState(false)
@@ -114,14 +114,15 @@ export function ProductDropDown() {
             <Paper
               variant='outlined'
               sx={{
+                borderRadius: '4px',
                 minWidth: 498,
                 overflow: 'hidden',
-                borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.400' : 'grey.200'),
+                borderColor: theme => (theme.palette.mode === 'dark' ? '#000000' : 'grey.200'),
                 bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'background.paper'),
                 boxShadow: theme =>
                   `0px 4px 20px ${
                     theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.background.paper, 0.72)
+                      ? alpha(theme.palette.background.paper, 1)
                       : 'rgba(170, 180, 190, 0.3)'
                   }`,
                 '& ul': {
