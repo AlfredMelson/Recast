@@ -21,18 +21,14 @@ export const Navigation = styled('nav')(({ theme }) => ({
     listStyle: 'none',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   '& li': {
     ...theme.typography.body2,
     '& > a, & > div': {
-      display: 'block',
       textDecoration: 'none',
       textTransform: 'none',
       fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
       color: theme.palette.mode === 'dark' ? grey[400] : grey[700],
-      minWidth: '100px',
       '&:hover, & .Mui-focused, & .Mui-selected': {
         color: theme.palette.mode === 'dark' ? grey[50] : '#000000',
         '@media (hover: none)': {

@@ -15,10 +15,10 @@ export function NavBarLinks() {
       <ul>
         <li>
           <MuiLink sx={{ cursor: 'pointer' }} onClick={() => setDataDrawerOpen(true)}>
-            JSON
+            Load-in JSON
           </MuiLink>
         </li>
-        <li>
+        <li style={{ margin: '0 40px' }}>
           <DropDownMenu />
         </li>
         <li>
