@@ -72,9 +72,11 @@ export function ProviderApi() {
   const setSelectedApi = useSetRecoilState(selectedApiAtom)
   const [providerUrl, setProviderUrl] = React.useState('')
 
+  const baseUrl = 'https://random-data-api.com/api/'
+
   const handleChange = (event: SelectChangeEvent) => {
     setProviderUrl(event.target.value as string)
-    setSelectedApi(`https://random-data-api.com/api/${event.target.value}`)
+    setSelectedApi(`${baseUrl}${event.target.value}`)
   }
 
   const data = [
@@ -120,7 +122,11 @@ export function ProviderApi() {
     <Box sx={{ minWidth: 160 }}>
       {apiProvider !== null && (
         <FormControl sx={{ minWidth: 160, my: 1 }}>
-          <Select id='demo-simple-select' value={providerUrl} onChange={handleChange}>
+          <Select
+            id='demo-simple-select'
+            value={providerUrl}
+            onChange={handleChange}
+            sx={{ '& .Mui-Paper': { maxHeight: '240px' } }}>
             {data.map(({ index, name, url }) => (
               <MenuItem key={index} dense value={url}>
                 {name}
