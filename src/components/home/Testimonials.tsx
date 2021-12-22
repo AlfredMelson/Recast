@@ -49,7 +49,7 @@ const Testimonials = () => {
     rootMargin: '500px',
   })
   return (
-    <Box ref={ref} sx={{ bgcolor: '#001E3C' }}>
+    <Box ref={ref}>
       <Container sx={{ py: { xs: 4, md: 8 } }}>
         <Grid container spacing={3} alignItems='center'>
           <Grid item xs={12} md={6} sx={{ zIndex: 1, minHeight: { xs: 400, sm: 307, lg: 355 } }}>

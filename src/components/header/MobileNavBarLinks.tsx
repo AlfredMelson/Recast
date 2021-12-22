@@ -45,17 +45,17 @@ const PRODUCTS = [
   {
     name: 'Treeview',
     description: 'Expand and collapse the JSON tree.',
-    href: '/richtreeview',
+    href: '/tree-view',
   },
   {
     name: 'Json Tree',
     description: 'Expand and collapse the JSON tree.',
-    href: '/jsjsontree',
+    href: '/api-json',
   },
   {
     name: 'Deep Dive',
     description: 'Expand and collapse the JSON tree.',
-    href: '/deepdive',
+    href: '/deep-dive',
   },
   {
     name: 'Development',
@@ -64,7 +64,7 @@ const PRODUCTS = [
   },
 ]
 
-export function MobileHeaderNavDropdown() {
+export function MobileNavBarLinks() {
   const [open, setOpen] = React.useState(false)
   const [productsOpen, setProductsOpen] = React.useState(true)
   const svgMenuRef = React.useRef<HTMLButtonElement | null>(null)

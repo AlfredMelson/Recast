@@ -12,6 +12,7 @@ export function Layout() {
       sx={{
         height: '100vh',
         overflowY: location.pathname === '/' ? 'visible' : 'hidden',
+        overflowX: 'hidden',
         bgcolor: theme => (theme.palette.mode === 'dark' ? '#1F2428' : '#FFFFFF'),
       }}>
       <AppHeader />

@@ -3,9 +3,9 @@ import { useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
 import { dataDrawerOpenAtom } from '../../recoil'
 import { Navigation } from '../mui/Navigation.style'
-import { ProductDropDown } from './ProductDropDown'
+import { DropDownMenu } from './DropDownMenu'
 
-export function HeaderNavBar() {
+export function NavBarLinks() {
   // set visability of user json drawer
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
@@ -19,7 +19,7 @@ export function HeaderNavBar() {
           </MuiLink>
         </li>
         <li>
-          <ProductDropDown />
+          <DropDownMenu />
         </li>
         <li>
           <Link to='/'>Instructions</Link>

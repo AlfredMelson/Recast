@@ -5,9 +5,9 @@ import Paper from '@mui/material/Paper'
 import Fade from '@mui/material/Fade'
 import IconImage from '../icons/IconImage'
 import { getNextIndex, MENUID } from '../action/KeyboardFunctions'
-import { SubMenu } from './SubMenuStyle'
+import { SubMenu } from '../mui/SubMenu.style'
 
-export function ProductDropDown() {
+export function DropDownMenu() {
   const [subMenuOpen, setSubMenuOpen] = React.useState(false)
   const [subMenuIndex, setSubMenuIndex] = React.useState<number | null>(null)
   //useRef to avoid re-renders during button interactions

@@ -39,41 +39,43 @@ const content = [
 
 const ValueProposition = () => {
   return (
-    <Container
-      sx={{
-        py: { xs: 4, sm: 6, md: 8 },
-      }}>
-      <SectionHeadline
-        overline='Developer experience'
-        title={
-          <Typography variant='h2' sx={{ mt: 1, mb: { xs: 2, sm: 4 }, maxWidth: 380 }}>
-            Tools to assist your work with <GradientText>json</GradientText> data
-          </Typography>
-        }
-      />
-      <Grid container spacing={2}>
-        {content.map(({ icon, title, description }) => (
-          <Grid key={title} item xs={12} sm={6} md={3}>
-            <Paper variant='outlined' sx={{ p: 2, height: '100%' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                {icon}
-                <Typography
-                  fontWeight='bold'
-                  component='h3'
-                  color='text.primary'
-                  variant='body2'
-                  sx={{ ml: 1 }}>
-                  {title}
+    <Box sx={{ bgcolor: '#001E3C' }}>
+      <Container
+        sx={{
+          py: { xs: 4, sm: 6, md: 8 },
+        }}>
+        <SectionHeadline
+          overline='Developer experience'
+          title={
+            <Typography variant='h2' sx={{ mt: 1, mb: { xs: 2, sm: 4 }, maxWidth: 380 }}>
+              Tools to assist your work with <GradientText>json</GradientText> data
+            </Typography>
+          }
+        />
+        <Grid container spacing={2}>
+          {content.map(({ icon, title, description }) => (
+            <Grid key={title} item xs={12} sm={6} md={3}>
+              <Paper variant='outlined' sx={{ p: 2, height: '100%' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                  {icon}
+                  <Typography
+                    fontWeight='bold'
+                    component='h3'
+                    color='text.primary'
+                    variant='body2'
+                    sx={{ ml: 1 }}>
+                    {title}
+                  </Typography>
+                </Box>
+                <Typography variant='body2' color='text.secondary'>
+                  {description}
                 </Typography>
-              </Box>
-              <Typography variant='body2' color='text.secondary'>
-                {description}
-              </Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   )
 }
 
