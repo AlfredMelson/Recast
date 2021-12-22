@@ -2,7 +2,7 @@ import { alpha, styled } from '@mui/material/styles'
 import TreeItem, { TreeItemProps, treeItemClasses } from '@mui/lab/TreeItem'
 import { TransitionComponent } from '../animation/TransitionComponent'
 
-export const SxTreeItem = styled((props: TreeItemProps) => (
+export const TreeItemSx = styled((props: TreeItemProps) => (
   <TreeItem {...props} TransitionComponent={TransitionComponent} />
 ))(({ theme }) => ({
   [`& .${treeItemClasses.iconContainer}`]: {

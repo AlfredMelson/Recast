@@ -38,7 +38,6 @@
     "date-fns": "^2.27.0",
     "file-saver": "^2.0.5",
     "framer-motion": "4.1.17",
-    "jsonrepair": "^2.2.1",
     "lodash": "^4.17.21",
     "react": "^18.0.0-rc.0-next-f2a59df48-20211208",
     "react-dom": "^18.0.0-rc.0-next-f2a59df48-20211208",

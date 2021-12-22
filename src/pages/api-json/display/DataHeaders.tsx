@@ -14,8 +14,8 @@ import {
   ApiObjectAlias,
   ApiStringAlias,
 } from '../data-types/typeAliases'
-import { SxPaper } from '../../../components/sx/SxPaper'
-import { FrFadeAnimation } from '../../../components/fr/FrFadeAnimation'
+import { PaperSx } from '../../../components/mui/Paper.style'
+import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 
 type DataHeadersAlias = {
   data?: { [key: string]: any } | undefined
@@ -46,9 +46,9 @@ export default function DataHeaders({ data }: DataHeadersAlias) {
   }
 
   return (
-    <FrFadeAnimation>
-      <SxPaper>{renderData()}</SxPaper>
-    </FrFadeAnimation>
+    <FadeAnimation>
+      <PaperSx>{renderData()}</PaperSx>
+    </FadeAnimation>
   )
 }
 

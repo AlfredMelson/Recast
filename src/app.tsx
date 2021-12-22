@@ -20,7 +20,7 @@ const App: React.FC = () => {
             <Route path='richtreeview' element={<Hero />} />
             <Route path='deepdive' element={<DeepDive />} />
             <Route path='development' element={<Development />} />
-            <Route path='apijson' element={<APIJson />} />
+            <Route path='api-json' element={<APIJson />} />
             <Route path='loading' element={<LoadingTest />} />
             <Route path='*' element={<NoMatch />} />
           </Route>

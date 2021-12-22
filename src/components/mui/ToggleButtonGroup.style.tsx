@@ -2,14 +2,14 @@ import ToggleButtonGroup, { ToggleButtonGroupProps } from '@mui/material/ToggleB
 import { styled } from '@mui/material'
 
 /**
- * @name SxPrimaryToggleButtonGroup
+ * @name ToggleButtonGroupSx
  * @description styles main ToggleButtonGroup
  * @param {ToggleButtonGroup, ToggleButtonGroupProps} mui ButtonGroup
  * @param {styled} mui styled
  * @param {theme} MuiBrandingTheme
  * @return styled ButtonGroup
  */
-export const SxPrimaryToggleButtonGroup = styled((props: ToggleButtonGroupProps) => (
+export const ToggleButtonGroupSx = styled((props: ToggleButtonGroupProps) => (
   <ToggleButtonGroup {...props} />
 ))(({ theme }) => ({
   '& .MuiToggleButtonGroup-root': {

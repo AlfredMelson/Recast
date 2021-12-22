@@ -4,7 +4,7 @@ import { blue } from '@mui/material/colors'
 import * as React from 'react'
 
 /**
- * @name SxTabs
+ * @name TabsSx
  * @description styles API Tabs
  * @param {Tabs} mui Tabs
  * @param {styled} mui styled
@@ -12,13 +12,13 @@ import * as React from 'react'
  * @return styled Tabs
  */
 
-type SxTabsAlias = {
+type TabsSxAlias = {
   value?: number
   onChange?: (event: React.SyntheticEvent, newValue: number) => void
   children?: React.ReactNode
 }
 
-export const SxTabs = styled((props: SxTabsAlias) => (
+export const TabsSx = styled((props: TabsSxAlias) => (
   <Tabs
     allowScrollButtonsMobile
     selectionFollowsFocus

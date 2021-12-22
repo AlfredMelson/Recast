@@ -1,6 +1,6 @@
 export * from './HeaderNavBar'
 export * from './MobileHeaderNavDropdown'
 export * from './ThemeModeToggle'
-export * from './NavigationStyle'
+export * from '../mui/Navigation.style'
 export * from './SubMenuStyle'
 export * from './DrawerHeaderNavBar'

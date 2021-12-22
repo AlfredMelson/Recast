@@ -8,10 +8,10 @@ import CheckIcon from '@mui/icons-material/Check'
 import { blue } from '@mui/material/colors'
 import saveAs from 'file-saver'
 import { localEditorTextAtom } from '../../recoil'
-import { SxTxInterfaceIconButton } from '../sx/SxIconButton'
-import { SxToolTip } from '../sx/SxToolTip'
+import { IconButtonSxTsInterface } from '../mui/IconButton.style'
+import { ToolTipSx } from '../mui/ToolTip.style'
 import { SxCircularProgress } from '../action/SxCircularProgress'
-import { SxTIButtonGroup } from '../sx/SxButtonGroup'
+import { ButtonGroupSxTsInterface } from '../mui/ButtonGroup.style'
 
 export function TsInterfaceIcons() {
   // retrieve localStorage value
@@ -85,10 +85,10 @@ export function TsInterfaceIcons() {
   }
 
   return (
-    <SxTIButtonGroup>
+    <ButtonGroupSxTsInterface>
       <Box sx={{ position: 'relative', pr: 0.5 }}>
-        <SxToolTip tooltipTitle={jsonCopy ? 'Copied' : 'Copy interface'}>
-          <SxTxInterfaceIconButton onClick={handleJsonCopy}>
+        <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy interface'}>
+          <IconButtonSxTsInterface onClick={handleJsonCopy}>
             {!loadingCopy && !successCopy ? (
               <ContentCopyIcon />
             ) : !successCopy ? (
@@ -96,13 +96,13 @@ export function TsInterfaceIcons() {
             ) : (
               <CheckIcon sx={{ color: blue[500] }} />
             )}
-          </SxTxInterfaceIconButton>
-        </SxToolTip>
+          </IconButtonSxTsInterface>
+        </ToolTipSx>
         {loadingCopy && <SxCircularProgress size='20px' color='blue' />}
       </Box>
       <Box sx={{ position: 'relative', pl: 0.5 }}>
-        <SxToolTip tooltipTitle={'Download interface'}>
-          <SxTxInterfaceIconButton onClick={handleDownload}>
+        <ToolTipSx tooltipTitle={'Download interface'}>
+          <IconButtonSxTsInterface onClick={handleDownload}>
             {!loadingDownload && !successDownload ? (
               <DownloadIcon />
             ) : !successDownload ? (
@@ -110,10 +110,10 @@ export function TsInterfaceIcons() {
             ) : (
               <CheckIcon sx={{ color: blue[500] }} />
             )}
-          </SxTxInterfaceIconButton>
-        </SxToolTip>
+          </IconButtonSxTsInterface>
+        </ToolTipSx>
         {loadingDownload && <SxCircularProgress size='20px' color='blue' />}
       </Box>
-    </SxTIButtonGroup>
+    </ButtonGroupSxTsInterface>
   )
 }

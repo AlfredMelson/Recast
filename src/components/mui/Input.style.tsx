@@ -7,8 +7,8 @@ import { keyCodeAtom } from '../../recoil'
 import { selectedElementAtom } from '../../recoil/api-json/atom'
 
 /**
- * @name SxInput
- * @description styles API Tab Panel background motion
+ * @name InputSxEditApi
+ * @description
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
@@ -20,22 +20,7 @@ import { selectedElementAtom } from '../../recoil/api-json/atom'
  * @return style for edit icon button
  */
 
-// const SxInput = styled((props: InputProps) => <InputBase autoFocus margin='dense' {...props} />)(
-//   ({ theme }) => ({
-//     '.Mui-disabled': {
-//       color: theme.palette.mode === 'dark' ? '#000000' : theme.palette.grey[900],
-//     },
-//     color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
-//     padding: theme.spacing(0.5, 0, 0, 0),
-//     transitionProperty: 'color',
-//     transitionDuration: '150ms',
-//     '&:hover, .Mui-focused': {
-//       color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
-//     },
-//   })
-// )
-
-type SxEditApiInputAlias = {
+type InputSxEditApiAlias = {
   currentValue: any
   dataKey: any
   onEdit: any
@@ -44,13 +29,13 @@ type SxEditApiInputAlias = {
   // onChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
 }
 
-const SxEditApiInput = ({
+const InputSxEditApi = ({
   currentValue,
   dataKey,
   onEdit,
   onChange,
   quotes,
-}: SxEditApiInputAlias) => {
+}: InputSxEditApiAlias) => {
   const setSelectedElement = useSetRecoilState(selectedElementAtom)
 
   // Keyboard interaction
@@ -97,4 +82,4 @@ const SxEditApiInput = ({
     />
   )
 }
-export default SxEditApiInput
+export default InputSxEditApi

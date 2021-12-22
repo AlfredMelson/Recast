@@ -10,15 +10,15 @@ import {
   userSubmittedUrlAtom,
   userToggledApiAtom,
 } from '../../recoil/api-json/atom'
-import DataResponse from '../../pages/apijson/display/DataResponse'
-import EditResponse from '../../pages/apijson/display/EditResponse'
-import FullResponse from '../../pages/apijson/display/FullResponse'
-import DataHeaders from '../../pages/apijson/display/DataHeaders'
-import { TsInterface } from '../../pages/apijson/display/TsInterface'
+import DataResponse from '../../pages/api-json/display/DataResponse'
+import EditResponse from '../../pages/api-json/display/EditResponse'
+import FullResponse from '../../pages/api-json/display/FullResponse'
+import DataHeaders from '../../pages/api-json/display/DataHeaders'
+import { TsInterface } from '../../pages/api-json/display/TsInterface'
 import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
-import { SxTab } from '../sx/SxTab'
-import { SxTabs } from '../sx/SxTabs'
-import { DTypescript } from '../../pages/apijson/display/DTypescript'
+import { TabSx } from '../mui/Tab.style'
+import { TabsSx } from '../mui/Tabs.style'
+import { DTypescript } from '../../pages/api-json/display/DTypescript'
 
 type TabPanelAlias = {
   index: number
@@ -85,46 +85,46 @@ export default function ApiTabs() {
       {userSubmittedUrl !== undefined && (
         <React.Fragment>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <SxTabs
+            <TabsSx
               key={local.pathname}
               aria-label='api data tabs'
               onChange={handleDataTabs}
               value={value}>
-              <SxTab
+              <TabSx
                 label='Data response'
                 {...a11yProps(0)}
                 onClick={() => setUserToggledApi('data')}
               />
-              <SxTab
+              <TabSx
                 label='Edit response'
                 {...a11yProps(1)}
                 onClick={() => setUserToggledApi('edit')}
               />
-              <SxTab
+              <TabSx
                 label='Full response'
                 {...a11yProps(2)}
                 onClick={() => setUserToggledApi('full')}
               />
-              <SxTab
+              <TabSx
                 label='Api Headers'
                 {...a11yProps(3)}
                 onClick={() => setUserToggledApi('headers')}
               />
-              <SxTab
+              <TabSx
                 icon={<SvgTsLogoTs />}
                 iconPosition='start'
                 label=' interface'
                 {...a11yProps(4)}
                 onClick={() => setUserToggledApi('ts')}
               />
-              <SxTab
+              <TabSx
                 icon={<SvgTsLogoDtype />}
                 iconPosition='start'
                 label=' * .d.ts'
                 {...a11yProps(5)}
                 onClick={() => setUserToggledApi('dtype')}
               />
-            </SxTabs>
+            </TabsSx>
           </Box>
           <Box sx={{ position: 'relative', overflow: 'hidden' }}>
             <TabPanel value={value} index={0}>

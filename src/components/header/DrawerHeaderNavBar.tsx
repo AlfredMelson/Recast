@@ -1,7 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { Link as MuiLink } from '@mui/material'
 import { dataDrawerOpenAtom, localEditorTextAtom } from '../../recoil'
-import { Navigation } from './NavigationStyle'
+import { Navigation } from '../mui/Navigation.style'
 import { ProductDropDown } from './ProductDropDown'
 // import { getNextIndex } from './headerFunctions'
 // import handleLeftRightArrow from '../action/KeyboardLeftRightArrow'
@@ -15,7 +15,7 @@ export function DrawerHeaderNavBar() {
   // const navRef = React.useRef<HTMLUListElement | null>(null)
 
   return (
-    <Navigation>
+    <Navigation aria-label='Main'>
       {/* <ul ref={navRef} onKeyDown={handleLeftRightArrow}> */}
       <ul>
         <li>

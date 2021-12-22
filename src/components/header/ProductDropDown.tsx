@@ -150,7 +150,7 @@ export function ProductDropDown() {
                 <li>
                   <SubMenu
                     id={MENUID[1]}
-                    href='/apijson'
+                    href='/api-json'
                     icon={<IconImage name='visual-b' />}
                     name='API Json'
                     description='Json from an API'

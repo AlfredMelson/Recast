@@ -13,9 +13,9 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import CloseIcon from '@mui/icons-material/Close'
 import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
-import { SxAppBarIconButton } from '../sx/SxIconButton'
-import { SxToolTip } from '../sx/SxToolTip'
-import { SxPrimaryToggleButtonGroup } from '../sx/SxToggleButtonGroup'
+import { IconButtonSxAppBar } from '../mui/IconButton.style'
+import { ToolTipSx } from '../mui/ToolTip.style'
+import { ToggleButtonGroupSx } from '../mui/ToggleButtonGroup.style'
 
 export function DrawerIcons() {
   // retrieve localStorage value
@@ -92,10 +92,10 @@ export function DrawerIcons() {
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (
-    <SxPrimaryToggleButtonGroup>
+    <ToggleButtonGroupSx>
       <Box sx={{ position: 'relative', pl: 0.5 }}>
-        <SxToolTip tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
-          <SxAppBarIconButton
+        <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
+          <IconButtonSxAppBar
             disabled={localEditorText.length === 0 ? true : false}
             onClick={handleJsonCopy}>
             {!loadingCopy && !successCopy ? (
@@ -105,13 +105,13 @@ export function DrawerIcons() {
             ) : (
               <CheckIcon sx={{ color: green[500] }} />
             )}
-          </SxAppBarIconButton>
-        </SxToolTip>
+          </IconButtonSxAppBar>
+        </ToolTipSx>
         {loadingCopy && <SxCircularProgress size='20px' color='green' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTip tooltipTitle={'Download json'}>
-          <SxAppBarIconButton
+        <ToolTipSx tooltipTitle={'Download json'}>
+          <IconButtonSxAppBar
             disabled={localEditorText.length === 0 ? true : false}
             onClick={handleDownload}>
             {!loadingDownload && !successDownload ? (
@@ -121,42 +121,42 @@ export function DrawerIcons() {
             ) : (
               <CheckIcon sx={{ color: green[500] }} />
             )}
-          </SxAppBarIconButton>
-        </SxToolTip>
+          </IconButtonSxAppBar>
+        </ToolTipSx>
         {loadingDownload && <SxCircularProgress size='20px' color='green' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTip tooltipTitle={'Delete json'}>
-          <SxAppBarIconButton
+        <ToolTipSx tooltipTitle={'Delete json'}>
+          <IconButtonSxAppBar
             disabled={localEditorText.length === 0 ? true : false}
             onClick={() => {
               resetLocalEditorText()
             }}>
             {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
-          </SxAppBarIconButton>
-        </SxToolTip>
+          </IconButtonSxAppBar>
+        </ToolTipSx>
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <SxToolTip tooltipTitle={'Minify json'}>
-          <SxAppBarIconButton
+        <ToolTipSx tooltipTitle={'Minify json'}>
+          <IconButtonSxAppBar
             disabled={localEditorText.length === 0 ? true : false}
             onClick={() => {
               setMinifyDialogOpen(true)
             }}>
             <UnfoldLessIcon />
-          </SxAppBarIconButton>
-        </SxToolTip>
+          </IconButtonSxAppBar>
+        </ToolTipSx>
       </Box>
       <Box sx={{ position: 'relative', pr: 0.5 }}>
-        <SxToolTip tooltipTitle={'Close'}>
-          <SxAppBarIconButton
+        <ToolTipSx tooltipTitle={'Close'}>
+          <IconButtonSxAppBar
             onClick={() => {
               setDataDrawerOpen(false)
             }}>
             <CloseIcon />
-          </SxAppBarIconButton>
-        </SxToolTip>
+          </IconButtonSxAppBar>
+        </ToolTipSx>
       </Box>
-    </SxPrimaryToggleButtonGroup>
+    </ToggleButtonGroupSx>
   )
 }

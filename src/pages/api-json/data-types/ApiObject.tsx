@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import { grey } from '@mui/material/colors'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { Box } from '@mui/system'
-import { SxApiIconButton } from '../../../components/sx'
+import { IconButtonSxApiIcons } from '../../../components/mui'
 import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
 import ApiDataSort from './ApiDataSort'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
@@ -53,14 +53,14 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
 
   function IconToggle() {
     return (
-      <SxApiIconButton
+      <IconButtonSxApiIcons
         onClick={() => setCol(!col)}
         sx={{
           transform: col ? 'rotate(90deg)' : 'rotate(0deg)',
           mr: 1,
         }}>
         <KeyboardArrowRightIcon />
-      </SxApiIconButton>
+      </IconButtonSxApiIcons>
     )
   }
 
@@ -72,12 +72,12 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
             <IconToggle />
             <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
             <ApiDataTypeLabel type={dataType ? dataType : ''} variant='edit' />
-            <SxApiIconButton
+            <IconButtonSxApiIcons
               onClick={() => {
                 onDelete(dataKey)
               }}>
               <ApiDeleteIcon />
-            </SxApiIconButton>
+            </IconButtonSxApiIcons>
             &nbsp;&#123;
           </Stack>
           <Box sx={{ pl: 3 }}>{renderObject()}</Box>
@@ -115,9 +115,9 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
 
 {
   /* <Stack direction='row'>
-          <SxApiIconButton onClick={toggleObj}>
+          <IconButtonSxApiIcons onClick={toggleObj}>
             <KeyboardArrowRightIcon />
-          </SxApiIconButton>
+          </IconButtonSxApiIcons>
           <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
           <Stack direction='row'>
             <ApiDataTypeLabel type={dataType ? dataType : ''} variant='edit' />

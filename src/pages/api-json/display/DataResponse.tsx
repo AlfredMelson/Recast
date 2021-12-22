@@ -6,7 +6,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { motion } from 'framer-motion'
 import Box from '@mui/material/Box'
-import { SxDataIconButton } from '../../../components/sx'
+import { IconButtonSxDataIcon } from '../../../components/mui'
 import {
   ApiDataSortAlias,
   getType,
@@ -17,8 +17,8 @@ import {
   ApiObjectAlias,
   ApiStringAlias,
 } from '../data-types/typeAliases'
-import { SxPaper } from '../../../components/sx/SxPaper'
-import { FrFadeAnimation } from '../../../components/fr/FrFadeAnimation'
+import { PaperSx } from '../../../components/mui/Paper.style'
+import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 
 type DataResponseAlias = {
   data?: { [key: string]: any } | undefined
@@ -48,9 +48,9 @@ export default function DataResponse({ data }: DataResponseAlias) {
   }
 
   return (
-    <FrFadeAnimation>
-      <SxPaper>{renderData()}</SxPaper>
-    </FrFadeAnimation>
+    <FadeAnimation>
+      <PaperSx>{renderData()}</PaperSx>
+    </FadeAnimation>
   )
 }
 
@@ -99,12 +99,12 @@ export function JsonArray({ value, dataKey }: ApiArrayAlias) {
     if (childView) {
       return (
         <Stack direction='row'>
-          <SxDataIconButton
+          <IconButtonSxDataIcon
             onClick={() => {
               setChildView(!childView)
             }}>
             <KeyboardArrowRightIcon />
-          </SxDataIconButton>
+          </IconButtonSxDataIcon>
           <Typography variant='code'>
             <Box>
               {dataKey}&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
@@ -121,12 +121,12 @@ export function JsonArray({ value, dataKey }: ApiArrayAlias) {
 
     return (
       <Stack direction='row' alignItems='flex-start'>
-        <SxDataIconButton
+        <IconButtonSxDataIcon
           onClick={() => {
             setChildView(!childView)
           }}>
           <KeyboardArrowDownIcon />
-        </SxDataIconButton>
+        </IconButtonSxDataIcon>
         <Typography variant='code'>{dataKey}</Typography>
         {renderArrayContent()}
       </Stack>
@@ -190,12 +190,12 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
       return (
         <React.Fragment>
           <Stack direction='row' sx={{ ml: '-16px' }}>
-            <SxDataIconButton
+            <IconButtonSxDataIcon
               onClick={() => {
                 setChildView(!childView)
               }}>
               <KeyboardArrowDownIcon />
-            </SxDataIconButton>
+            </IconButtonSxDataIcon>
             <Typography variant='code'>{dataKey}</Typography>
           </Stack>
           <Box sx={{ ml: '32px' }}>{renderObject()}</Box>
@@ -203,12 +203,12 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
       )
     return (
       <Stack direction='row' sx={{ ml: '-16px' }}>
-        <SxDataIconButton
+        <IconButtonSxDataIcon
           onClick={() => {
             setChildView(!childView)
           }}>
           <KeyboardArrowRightIcon />
-        </SxDataIconButton>
+        </IconButtonSxDataIcon>
         <Typography variant='code'>
           {keys.length === 0 ? (
             ''

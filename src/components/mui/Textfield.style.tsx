@@ -6,13 +6,14 @@ import TextField, { TextFieldProps } from '@mui/material/TextField'
 import { OutlinedInputProps } from '@mui/material/OutlinedInput'
 
 /**
- * SxTfAdornmentIcon manages the style of the interactive icons within search bar
+ * @name TextfieldfAdornmentIconSx
+ * @description manages the style of the interactive icons within search bar
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return
  */
-export const SxTfAdornmentIcon = styled(IconButton)(({ theme }) => ({
+export const TextfieldfAdornmentIconSx = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
   padding: theme.spacing(0.5),
   '&:hover, & .Mui-focused': {
@@ -21,25 +22,15 @@ export const SxTfAdornmentIcon = styled(IconButton)(({ theme }) => ({
 }))
 
 /**
- * SxDisabledIcon manages the style of disabled icons within search bar
- * @param {IconButton} mui IconButton
- * @param {theme} MuiBrandingTheme
- * @param {styled} mui styled
- * @return
- */
-export const SxDisabledIcon = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
-  padding: theme.spacing(0.5),
-}))
-
-/**
- * SxTextfieldButton manages the style of textfield buttons
+ * @name TextFieldButtonSx
+ * @description manages the style of textfield buttons
  * @param {Button} mui Button
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return
  */
-export const SxTextfieldButton = styled(Button)(({ theme }) => ({
+
+export const TextFieldButtonSx = styled(Button)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800],
   backgroundColor: 'transparent',
   minWidth: theme.spacing(7),
@@ -52,13 +43,15 @@ export const SxTextfieldButton = styled(Button)(({ theme }) => ({
 }))
 
 /**
- * SxTextField manages the style of the api search bar
+ * @name TextFieldSx
+ * @description manages the style of the api search bar
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return
  */
-export const SxTextField = styled((props: TextFieldProps) => (
+
+export const TextFieldSx = styled((props: TextFieldProps) => (
   <TextField
     fullWidth
     InputProps={{ disableUnderline: true } as Partial<OutlinedInputProps>}

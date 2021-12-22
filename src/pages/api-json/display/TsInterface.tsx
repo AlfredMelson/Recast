@@ -17,8 +17,8 @@ import {
 } from '../data-types/typeAliases'
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
-import { FrFadeAnimation } from '../../../components/fr/FrFadeAnimation'
-import { SxPaper } from '../../../components/sx/SxPaper'
+import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
+import { PaperSx } from '../../../components/mui/Paper.style'
 import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 
 type TsInterfaceAlias = {
@@ -59,8 +59,8 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <FrFadeAnimation>
-      <SxPaper>
+    <FadeAnimation>
+      <PaperSx>
         <Typography variant='code'>
           {`declare module namespace {`}
           <Box sx={{ ml: 3 }}>{renderData()}</Box>
@@ -83,8 +83,8 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
             </React.Fragment>
           }
         />
-      </SxPaper>
-    </FrFadeAnimation>
+      </PaperSx>
+    </FadeAnimation>
   )
 }
 

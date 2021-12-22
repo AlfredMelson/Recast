@@ -3,14 +3,14 @@ import { styled, SxProps } from '@mui/material'
 import * as React from 'react'
 
 /**
- * @name SxPaperStyle
+ * @name PaperSxStyle
  * @description styles API Tab Panel
  * @param {Tabs} mui Tabs
  * @param {styled} mui styled
  * @param {theme} MuiBrandingTheme
  * @return styled API Tab Panel
  */
-const SxPaperStyle = styled(Paper)(({ theme }) => ({
+const PaperSxStyle = styled(Paper)(({ theme }) => ({
   borderRadius: '0 0 4px 4px',
   paddingTop: theme.spacing(3),
   paddingLeft: theme.spacing(5),
@@ -22,23 +22,23 @@ const SxPaperStyle = styled(Paper)(({ theme }) => ({
 }))
 
 /**
- * @name SxPaper
+ * @name PaperSx
  * @description styles API Tab Panel background motion
  * @param {motion} framer-motion motion
  * @param {children} React.ReactNode
  * @param {paddingLeft} mui theme.spacing()
  * @return styled API Tab Panel background motion
  */
-type SxPaperAlias = {
+type PaperSxAlias = {
   children: React.ReactNode
   sx?: SxProps
   onClick?: React.MouseEventHandler
 }
 
-export const SxPaper = ({ children, onClick, ...props }: SxPaperAlias) => {
+export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
   return (
-    <SxPaperStyle onClick={onClick} {...props}>
+    <PaperSxStyle onClick={onClick} {...props}>
       {children}
-    </SxPaperStyle>
+    </PaperSxStyle>
   )
 }

@@ -2,7 +2,7 @@ import { Link as MuiLink } from '@mui/material'
 import { useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
 import { dataDrawerOpenAtom } from '../../recoil'
-import { Navigation } from './NavigationStyle'
+import { Navigation } from '../mui/Navigation.style'
 import { ProductDropDown } from './ProductDropDown'
 
 export function HeaderNavBar() {
@@ -10,7 +10,7 @@ export function HeaderNavBar() {
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (
-    <Navigation>
+    <Navigation aria-label='Main'>
       {/* <ul ref={navRef} onKeyDown={handleLeftRightArrow}> */}
       <ul>
         <li>

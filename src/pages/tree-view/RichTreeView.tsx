@@ -8,7 +8,7 @@ import {
   treeViewExpansionAtom,
 } from '../../recoil/tree-view/atom'
 import { CloseSquare, MinusSquare, PlusSquare } from '../../components/icons'
-import { SxTreeItem } from '../../components/sx/SxTreeItem'
+import { TreeItemSx } from '../../components/mui/TreeItem.style'
 import { DestObjects, GetNestedChildren } from './TreeViewProcess'
 
 function TreeViewComponent() {
@@ -21,9 +21,9 @@ function TreeViewComponent() {
   }
 
   const renderTree = nodes => (
-    <SxTreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+    <TreeItemSx key={nodes.id} nodeId={nodes.id} label={nodes.name}>
       {Array.isArray(nodes.children) ? nodes.children.map(node => renderTree(node)) : null}
-    </SxTreeItem>
+    </TreeItemSx>
   )
 
   return (

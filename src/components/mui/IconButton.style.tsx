@@ -2,13 +2,14 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import { styled } from '@mui/material'
 
 /**
- * SxIBColorMode manages the style of the app color mode icon button
+ * @name IconButtonSxColorMode
+ * @description manage the style of the app color mode icon button
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return icon color mode style for light and dark mode
  */
-export const SxIBColorMode = styled(IconButton)(({ theme }) => ({
+export const IconButtonSxColorMode = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
   padding: theme.spacing(1),
   '&:hover, & .Mui-focused': {
@@ -17,14 +18,15 @@ export const SxIBColorMode = styled(IconButton)(({ theme }) => ({
 }))
 
 /**
- * SxApiIconButton manages the style of the interactive icons within API Json
+ * @name IconButtonSxApiIcons
+ * @description manage the style of the interactive icons within API Json
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return icon color mode style for light and dark mode
  */
 
-export const SxApiIconButton = styled((props: IconButtonProps) => <IconButton {...props} />)(
+export const IconButtonSxApiIcons = styled((props: IconButtonProps) => <IconButton {...props} />)(
   ({ theme }) => ({
     color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
     margin: theme.spacing(0, 0.5),
@@ -38,7 +40,8 @@ export const SxApiIconButton = styled((props: IconButtonProps) => <IconButton {.
 )
 
 /**
- * SxApiEditIconButton manages the style of the edit icons within API Json
+ * @name IconButtonSxApiEdit
+ * @description manage the style of the edit icons within API Json
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
@@ -50,7 +53,7 @@ export const SxApiIconButton = styled((props: IconButtonProps) => <IconButton {.
  * @return style for edit icon button
  */
 
-export const SxApiEditIconButton = styled(IconButton)(({ theme }) => ({
+export const IconButtonSxApiEdit = styled(IconButton)(({ theme }) => ({
   '.Mui-disabled': {
     color: theme.palette.mode === 'dark' ? '#000000' : theme.palette.grey[900],
   },
@@ -64,13 +67,14 @@ export const SxApiEditIconButton = styled(IconButton)(({ theme }) => ({
 }))
 
 /**
- * SxAppBarIconButton manages the style of the interactive app bar icons
+ * @name IconButtonSxAppBar
+ * @description manage the style of the interactive app bar icons
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return icon color mode style for light and dark mode
  */
-export const SxAppBarIconButton = styled(IconButton)(({ theme }) => ({
+export const IconButtonSxAppBar = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(1),
   '&:hover, & .Mui-focused': {
@@ -79,13 +83,14 @@ export const SxAppBarIconButton = styled(IconButton)(({ theme }) => ({
 }))
 
 /**
- * SxTxInterfaceIconButton manages the style of the interactive app bar icons
+ * @name IconButtonSxTsInterface
+ * @description manage the style of the interactive app bar icons
  * @param {IconButton} mui IconButton
  * @param {theme} MuiBrandingTheme
  * @param {styled} mui styled
  * @return icon color mode style for light and dark mode
  */
-export const SxTxInterfaceIconButton = styled(IconButton)(({ theme }) => ({
+export const IconButtonSxTsInterface = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(1),
   backgroundColor: 'primaryDark.500',
@@ -95,7 +100,15 @@ export const SxTxInterfaceIconButton = styled(IconButton)(({ theme }) => ({
   },
 }))
 
-export const SxIconButton = styled(IconButton)(({ theme }) => ({
+/**
+ * @name IconButtonSx
+ * @description manage
+ * @param {IconButton} mui IconButton
+ * @param {theme} MuiBrandingTheme
+ * @param {styled} mui styled
+ * @return icon color mode style for light and dark mode
+ */
+export const IconButtonSx = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(1),
   '&:hover, & .Mui-focused': {
@@ -106,7 +119,15 @@ export const SxIconButton = styled(IconButton)(({ theme }) => ({
   },
 }))
 
-export const SxDataIconButton = styled(IconButton)(({ theme }) => ({
+/**
+ * @name IconButtonSxDataIcon
+ * @description manage
+ * @param {IconButton} mui IconButton
+ * @param {theme} MuiBrandingTheme
+ * @param {styled} mui styled
+ * @return icon color mode style for light and dark mode
+ */
+export const IconButtonSxDataIcon = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(0.25),
   '&:hover, & .Mui-focused': {

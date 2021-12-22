@@ -6,19 +6,19 @@ import * as React from 'react'
  * @typescript (Y)
  * @testing ()
  *
- * @name FrFadeAnimation
+ * @name FadeAnimation
  * @description styles mounting & unmonuting with fade animation
  * @param {AnimatePresence} framer-motion AnimatePresence
  * @param {motion} framer-motion motion
  * @return
  */
 
-type FrFadeAnimationAlias = {
+type FadeAnimationAlias = {
   children: React.ReactNode
   enabled?: boolean
 }
 
-export const FrFadeAnimation = ({ children, enabled = true }: FrFadeAnimationAlias) => {
+export const FadeAnimation = ({ children, enabled = true }: FadeAnimationAlias) => {
   const animations = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },

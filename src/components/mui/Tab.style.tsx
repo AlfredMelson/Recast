@@ -4,15 +4,16 @@ import { grey } from '@mui/material/colors'
 import * as React from 'react'
 
 /**
- * @name SxTab
+ * @name TabSx
  * @description styles API Tab
  * @param {Tab} mui Tab
  * @param {styled} mui styled
  * @param {theme} MuiBrandingTheme
- * @alias SxTabAlias
+ * @alias TabSxAlias
  * @return styled Tab
  */
-type SxTabAlias = {
+
+type TabSxAlias = {
   label: string
   disabled?: any
   icon?: JSX.Element
@@ -20,8 +21,8 @@ type SxTabAlias = {
   onClick?: React.MouseEventHandler
 }
 
-export const SxTab = styled(
-  ({ label, disabled, onClick, icon, iconPosition, ...props }: SxTabAlias) => (
+export const TabSx = styled(
+  ({ label, disabled, onClick, icon, iconPosition, ...props }: TabSxAlias) => (
     <Tab
       label={label}
       disabled={disabled}
@@ -33,9 +34,9 @@ export const SxTab = styled(
     />
   )
 )(({ theme }) => ({
+  ...theme.typography.body2,
   textTransform: 'none',
   fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-  fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
   minWidth: '130px',
   height: '50px',
   minHeight: '50px',

@@ -20,7 +20,7 @@ import {
   apiDataAtom,
   apiFullResponseAtom,
 } from '../../recoil/api-json/atom'
-import { SxTextfieldButton } from '../sx'
+import { TextFieldButtonSx } from '../mui'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
 
@@ -112,14 +112,14 @@ export default function Searchbar() {
       />
       {Object.getOwnPropertyNames(apiData).length !== 0 && (
         <FadeDelay delay={1000}>
-          <SxTextfieldButton aria-label='clear url' onClick={handleReset} sx={{ mr: 0.5 }}>
+          <TextFieldButtonSx aria-label='clear url' onClick={handleReset} sx={{ mr: 0.5 }}>
             <Typography variant='body2'>Clear</Typography>
-          </SxTextfieldButton>
+          </TextFieldButtonSx>
         </FadeDelay>
       )}
       <Box sx={{ position: 'relative' }}>
         <FadeDelay delay={400}>
-          <SxTextfieldButton
+          <TextFieldButtonSx
             aria-label='toggle password visibility'
             disabled={userTypedUrl === undefined}
             onClick={handleSubmitUrl}
@@ -139,7 +139,7 @@ export default function Searchbar() {
             ) : (
               successSubmit && <CheckIcon sx={{ color: green[500] }} />
             )}
-          </SxTextfieldButton>
+          </TextFieldButtonSx>
         </FadeDelay>
         {submitting && <SxCircularProgress size='16px' color='green' />}
       </Box>

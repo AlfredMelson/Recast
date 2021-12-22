@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import { SxIconButton } from '../../../components/sx'
+import { IconButtonSx } from '../../../components/mui'
 import ApiDataSort from './ApiDataSort'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { getType, ApiArrayAlias } from './typeAliases'
@@ -50,9 +50,9 @@ export function ApiArray({ value, dataKey, dataType }: ApiArrayAlias) {
     if (col) {
       return (
         <Stack direction='row'>
-          <SxIconButton onClick={toggleArray}>
+          <IconButtonSx onClick={toggleArray}>
             <KeyboardArrowUpIcon />
-          </SxIconButton>
+          </IconButtonSx>
           <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
           <ApiDataTypeLabel type={dataType} variant='edit' />
           <Typography variant='code' sx={{ color: '#ffffff' }}>
@@ -63,9 +63,9 @@ export function ApiArray({ value, dataKey, dataType }: ApiArrayAlias) {
     }
     return (
       <Stack direction='row'>
-        <SxIconButton onClick={toggleArray}>
+        <IconButtonSx onClick={toggleArray}>
           <KeyboardArrowDownIcon />
-        </SxIconButton>
+        </IconButtonSx>
         <Typography variant='code'>&#34;{dataKey}&#34;&#58;&nbsp;</Typography>
         <ApiDataTypeLabel type={dataType} variant='edit' />
         <Stack direction='row'>

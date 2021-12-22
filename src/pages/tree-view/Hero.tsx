@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Container, Stack } from '@mui/material'
 import { TreeViewContainer } from './TreeViewContainer'
-import { Navigation } from './Navigation'
+import { CollapseDataToggle } from './CollapseDataToggle'
 import { RichTreeView } from './RichTreeView'
 
 export default function Hero() {
@@ -35,7 +35,7 @@ export default function Hero() {
   }, [isMdUp])
   return (
     <Container maxWidth='xl'>
-      <Navigation />
+      <CollapseDataToggle />
       <TreeViewContainer
         left={
           <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>

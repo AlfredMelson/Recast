@@ -3,16 +3,16 @@ import { styled } from '@mui/material'
 
 /**
  * @REVIEW
- * @name SxButton
+ * @name ButtonSxDataToggle
  * @description
  * @param {Button} mui Button
  * @param {styled} mui styled
  * @return
  */
-export const SxButton = styled(Button)(({ theme }) => ({
-  fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
-  lineHeight: '21px',
-  fontWeight: 600,
+export const ButtonSxDataToggle = styled(Button)(({ theme }) => ({
+  ...theme.typography.body2,
+  textTransform: 'none',
+  fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
   minWidth: '110px',
   color: theme.palette.text.secondary,
   textDecoration: 'none',
@@ -28,13 +28,13 @@ export const SxButton = styled(Button)(({ theme }) => ({
 }))
 
 /**
- * @name SxApiItemButton
+ * @name ButtonSxApiItem
  * @description styles api item button container
  * @param {Button} mui Button
  * @param {styled} mui styled
  * @return
  */
-export const SxApiItemButton = styled((props: ButtonProps) => <Button size='small' {...props} />)(
+export const ButtonSxApiItem = styled((props: ButtonProps) => <Button size='small' {...props} />)(
   () => ({
     '&.MuiButton-root': {
       paddingLeft: 0,

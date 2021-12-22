@@ -4,11 +4,11 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { grey } from '@mui/material/colors'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { SxApiIconButton } from '../../../components/sx/SxIconButton'
+import { IconButtonSxApiIcons } from '../../../components/mui/IconButton.style'
 import ApiDataSort, { currentDataAtom } from '../data-types/ApiDataSort'
 import { EditResponseAlias, getType } from '../data-types/typeAliases'
-import { FrFadeAnimation } from '../../../components/fr/FrFadeAnimation'
-import { SxPaper } from '../../../components/sx/SxPaper'
+import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
+import { PaperSx } from '../../../components/mui/Paper.style'
 import AsideEditInfo from '../../../components/api-json/AsideEditInfo'
 import { elementStateAtom, selectedElementProperties } from '../../../recoil/api-json/atom'
 
@@ -52,14 +52,14 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
 
   function IconToggle() {
     return (
-      <SxApiIconButton
+      <IconButtonSxApiIcons
         onClick={(): void => setReveal(!reveal)}
         sx={{
           transform: reveal ? 'rotate(90deg)' : 'rotate(0deg)',
           mr: 1,
         }}>
         <KeyboardArrowRightIcon />
-      </SxApiIconButton>
+      </IconButtonSxApiIcons>
     )
   }
 
@@ -102,11 +102,11 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
   }
 
   return (
-    <FrFadeAnimation>
-      <SxPaper sx={{ pl: 3, pr: 7 }}>
+    <FadeAnimation>
+      <PaperSx sx={{ pl: 3, pr: 7 }}>
         {renderEditResponseContent()}
         <AsideEditInfo />
-      </SxPaper>
-    </FrFadeAnimation>
+      </PaperSx>
+    </FadeAnimation>
   )
 }
