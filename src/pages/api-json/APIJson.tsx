@@ -122,15 +122,14 @@ export function APIJson() {
         //   setSelectedElement(null)
         // }}
       >
-        <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
-          https://random-data-api.com/api/users/random_user
+        <Typography variant='body2' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+          Select API from dropdown
         </Typography>
-        <br />
-        <Typography variant='caption' sx={{ color: 'lightgrey', fontWeight: 300 }}>
-          https://random-data-api.com/api/stripe/random_stripe
-        </Typography>
-        <br />
+
         <ApiUrlSelector />
+        <Typography variant='body2' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+          or Enter API
+        </Typography>
         <Box sx={{ my: 2 }}>
           <Searchbar />
           {/* <Collapse in={showError}>

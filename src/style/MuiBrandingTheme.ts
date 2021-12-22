@@ -393,6 +393,11 @@ export function muiThemedComponents(theme: Theme) {
         },
         styleOverrides: {},
       },
+      MuiSelect: {
+        defaultProps: {
+          variant: 'standard',
+        },
+      },
       MuiSvgIcon: {
         defaultProps: {
           fontSize: 'small',

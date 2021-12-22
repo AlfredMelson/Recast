@@ -23,6 +23,7 @@ import {
 import { TextFieldButtonSx } from '../mui'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
+import { selectedApiAtom, selectedApiProviderAtom } from './ApiUrlSelector'
 
 export default function Searchbar() {
   // user entered api url stored in recoil
@@ -41,12 +42,16 @@ export default function Searchbar() {
   const resetApiData = useResetRecoilState(apiDataAtom)
   // reset full response value to recoil stored default
   const resetApiFullResponse = useResetRecoilState(apiFullResponseAtom)
-  //user requested url reset
+
+  const resetApiProvider = useResetRecoilState(selectedApiProviderAtom)
+  // user requested url reset
+
   const handleReset = () => {
     resetUserTypedUrl()
     resetUserSubmittedUrl()
     resetApiData()
     resetApiFullResponse()
+    resetApiProvider()
   }
   // useRef to avoid re-renders during button handler
   const interactionTimer = React.useRef<number>()
@@ -88,6 +93,8 @@ export default function Searchbar() {
   // value of data fetch
   const apiData = useRecoilValue(apiDataAtom)
 
+  const selectedApi = useRecoilValue(selectedApiAtom)
+
   return (
     <Paper
       sx={{
@@ -107,7 +114,8 @@ export default function Searchbar() {
           fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
           minHeight: '32px',
         }}
-        placeholder='Enter API url'
+        placeholder={selectedApi !== null ? selectedApi : 'Enter API url'}
+        value={selectedApi !== null && selectedApi}
         onChange={handleTextFieldChanges}
       />
       {Object.getOwnPropertyNames(apiData).length !== 0 && (
