@@ -140,8 +140,8 @@ export function ProductDropDown() {
                 <li>
                   <SubMenu
                     id={MENUID[0]}
-                    href='/richtreeview'
-                    icon={<IconImage name='visual-a' />}
+                    href='/tree-view'
+                    icon={<IconImage name='visual-b' />}
                     name='Treeview'
                     description='Expand and collapse the JSON tree.'
                     onKeyDown={handleKeyDown}
@@ -160,8 +160,8 @@ export function ProductDropDown() {
                 <li>
                   <SubMenu
                     id={MENUID[2]}
-                    href='/deepdive'
-                    icon={<IconImage name='visual-c' />}
+                    href='/deep-dive'
+                    icon={<IconImage name='visual-b' />}
                     name='Deep Dive'
                     description='Expand and collapse the JSON tree.'
                     onKeyDown={handleKeyDown}
@@ -171,7 +171,7 @@ export function ProductDropDown() {
                   <SubMenu
                     id={MENUID[3]}
                     href='/development'
-                    icon={<IconImage name='visual-d' />}
+                    icon={<IconImage name='visual-b' />}
                     name='Development'
                     description='Expand and collapse the JSON tree.'
                     onKeyDown={handleKeyDown}

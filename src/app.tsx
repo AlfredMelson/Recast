@@ -17,8 +17,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path='richtreeview' element={<Hero />} />
-            <Route path='deepdive' element={<DeepDive />} />
+            <Route path='tree-view' element={<Hero />} />
+            <Route path='deep-dive' element={<DeepDive />} />
             <Route path='development' element={<Development />} />
             <Route path='api-json' element={<APIJson />} />
             <Route path='loading' element={<LoadingTest />} />
