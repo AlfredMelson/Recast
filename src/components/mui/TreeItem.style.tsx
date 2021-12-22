@@ -10,6 +10,9 @@ export const TreeItemSx = styled((props: TreeItemProps) => (
       opacity: 0.3,
     },
   },
+  [`& .${treeItemClasses.label}`]: {
+    ...theme.typography.body2,
+  },
   [`& .${treeItemClasses.group}`]: {
     marginLeft: 15,
     paddingLeft: 18,

@@ -42,3 +42,45 @@ export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
     </PaperSxStyle>
   )
 }
+
+/**
+ * @name PaperSxTreeviewStyle
+ * @description styles Treeview
+ * @param {Tabs} mui Tabs
+ * @param {styled} mui styled
+ * @param {theme} MuiBrandingTheme
+ * @return styled Treeview
+ */
+const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
+  borderRadius: '4px',
+  paddingTop: theme.spacing(3),
+  paddingLeft: theme.spacing(5),
+  paddingBottom: theme.spacing(4),
+  background: theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff',
+  maxHeight: '86vh',
+  width: '100%',
+  overflowX: 'hidden',
+  overflowY: 'scroll',
+}))
+
+/**
+ * @name PaperSxTreeview
+ * @description styles API Tab Panel background motion
+ * @param {motion} framer-motion motion
+ * @param {children} React.ReactNode
+ * @param {paddingLeft} mui theme.spacing()
+ * @return styled API Tab Panel background motion
+ */
+type PaperSxTreeviewAlias = {
+  children: React.ReactNode
+  sx?: SxProps
+  onClick?: React.MouseEventHandler
+}
+
+export const PaperSxTreeview = ({ children, onClick, ...props }: PaperSxTreeviewAlias) => {
+  return (
+    <PaperSxTreeviewStyle onClick={onClick} {...props}>
+      {children}
+    </PaperSxTreeviewStyle>
+  )
+}

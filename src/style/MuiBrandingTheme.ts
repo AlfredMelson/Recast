@@ -468,6 +468,13 @@ export function muiThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiTreeItem: {
+        styleOverrides: {
+          label: {
+            fontSize: theme.typography.body2,
+          },
+        },
+      },
       MuiSwitch: {
         styleOverrides: {
           root: {

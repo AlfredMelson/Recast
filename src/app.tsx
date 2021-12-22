@@ -5,7 +5,7 @@ import './style/variables.css'
 import { Layout } from './layout'
 import { APIJson, DeepDive, Development, HomePage } from './pages'
 import { NoMatch } from './pages/no-match/NoMatch'
-import Hero from './pages/tree-view/Hero'
+import TreeviewHero from './pages/tree-view/TreeviewHero'
 import LoadingTest from './components/loading/LoadingTest'
 
 // Route path='*' element={<NoMatch />} handles all unaccounted routes
@@ -17,7 +17,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path='tree-view' element={<Hero />} />
+            <Route path='tree-view' element={<TreeviewHero />} />
             <Route path='deep-dive' element={<DeepDive />} />
             <Route path='development' element={<Development />} />
             <Route path='api-json' element={<APIJson />} />

@@ -5,9 +5,9 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { Container, Stack } from '@mui/material'
 import { TreeViewContainer } from './TreeViewContainer'
 import { CollapseDataToggle } from './CollapseDataToggle'
-import { RichTreeView } from './RichTreeView'
+import { JsonTreeView } from './JsonTreeView'
 
-export default function Hero() {
+export default function TreeviewHero() {
   const frame = React.useRef<null | HTMLDivElement>(null)
   const globalTheme = useTheme()
   const isMdUp = useMediaQuery(globalTheme.breakpoints.up('md'))
@@ -39,7 +39,7 @@ export default function Hero() {
       <TreeViewContainer
         left={
           <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-            <RichTreeView />
+            <JsonTreeView />
           </Box>
         }
         rightSx={{

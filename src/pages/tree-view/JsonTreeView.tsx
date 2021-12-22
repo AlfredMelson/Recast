@@ -9,7 +9,9 @@ import {
 } from '../../recoil/tree-view/atom'
 import { CloseSquare, MinusSquare, PlusSquare } from '../../components/icons'
 import { TreeItemSx } from '../../components/mui/TreeItem.style'
-import { DestObjects, GetNestedChildren } from './TreeViewProcess'
+import { FadeAnimation } from '../../components/framer-motion/Fade.animation'
+import { PaperSxTreeview } from '../../components/mui'
+import { DestObjects, GetNestedChildren } from './treeViewProcess'
 
 function TreeViewComponent() {
   const processedUserData = useRecoilValue(processedUserDataAtom)
@@ -21,25 +23,29 @@ function TreeViewComponent() {
   }
 
   const renderTree = nodes => (
-    <TreeItemSx key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+    <TreeItemSx key={nodes.id} nodeId={nodes.id} label={nodes.name} sx={{ fontSize: '12px' }}>
       {Array.isArray(nodes.children) ? nodes.children.map(node => renderTree(node)) : null}
     </TreeItemSx>
   )
 
   return (
-    <TreeView
-      defaultExpanded={['1']}
-      expanded={treeViewExpansion}
-      onNodeToggle={handleToggle}
-      defaultCollapseIcon={<MinusSquare />}
-      defaultExpandIcon={<PlusSquare />}
-      defaultEndIcon={<CloseSquare />}>
-      {renderTree(processedUserData)}
-    </TreeView>
+    <FadeAnimation>
+      <PaperSxTreeview>
+        <TreeView
+          defaultExpanded={['1']}
+          expanded={treeViewExpansion}
+          onNodeToggle={handleToggle}
+          defaultCollapseIcon={<MinusSquare />}
+          defaultExpandIcon={<PlusSquare />}
+          defaultEndIcon={<CloseSquare />}>
+          {renderTree(processedUserData)}
+        </TreeView>
+      </PaperSxTreeview>
+    </FadeAnimation>
   )
 }
 
-export function RichTreeView() {
+export function JsonTreeView() {
   const setProcessedUserData = useSetRecoilState(processedUserDataAtom)
   const setProcessedDataIds = useSetRecoilState(processedDataIdsAtom)
 

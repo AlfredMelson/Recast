@@ -1,5 +1,5 @@
 export * from './home-page/HomePage'
 export * from './deep-dive/DeepDive'
-export * from './tree-view/RichTreeView'
+export * from './tree-view/JsonTreeView'
 export * from './development/Development'
 export * from './api-json/APIJson'
