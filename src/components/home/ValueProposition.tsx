@@ -55,7 +55,7 @@ const ValueProposition = () => {
         <Grid container spacing={2}>
           {content.map(({ icon, title, description }) => (
             <Grid key={title} item xs={12} sm={6} md={3}>
-              <Paper variant='outlined' sx={{ p: 2, height: '100%' }}>
+              <Paper variant='outlined' sx={{ p: 2, height: '100%', borderRadius: '4px' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                   {icon}
                   <Typography

@@ -8,7 +8,7 @@
     "editor",
     "recast",
     "viewer",
-    "formatter",
+    "format",
     "typescript"
   ],
   "keywords": [
@@ -31,7 +31,7 @@
     "@emotion/styled": "^11.6.0",
     "@monaco-editor/react": "^4.3.1",
     "@mui/icons-material": "^5.2.5",
-    "@mui/lab": "5.0.0-alpha.59",
+    "@mui/lab": "5.0.0-alpha.61",
     "@mui/material": "^5.2.5",
     "axios": "^0.24.0",
     "clipboard": "^2.0.8",
