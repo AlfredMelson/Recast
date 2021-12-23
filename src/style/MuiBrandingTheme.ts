@@ -7,12 +7,16 @@ declare module '@mui/material/styles/createPalette' {
     200: string
     300: string
     400: string
+    main?: string
     500: string
     600: string
     700: string
     800: string
     900: string
     950: string
+    A100?: string
+    A200?: string
+    A400?: string
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -54,48 +58,80 @@ declare module '@mui/material/Typography' {
 }
 
 const theme = createTheme()
+// const blue = {
+//   50: '#F0F7FF',
+//   100: '#C2E0FF',
+//   200: '#A5D8FF',
+//   300: '#66B2FF',
+//   400: '#3399FF',
+//   main: '#262626',
+//   500: '#007FFF',
+//   600: '#0072E5',
+//   700: '#0059B2',
+//   800: '#004C99',
+//   900: '#003A75',
+// }
+// const grey = {
+//   50: '#F3F6F9',
+//   100: '#EAEEF3',
+//   200: '#E5E8EC',
+//   300: '#D7DCE1',
+//   400: '#BFC7CF',
+//   500: '#AAB4BE',
+//   600: '#7F8E9D',
+//   700: '#46505A',
+//   800: '#2F3A45',
+//   900: '#20262D',
+//   950: '#000000',
+// }
 
 const blue = {
-  50: '#F0F7FF',
-  100: '#C2E0FF',
-  200: '#A5D8FF',
-  300: '#66B2FF',
-  400: '#3399FF',
-  // main: '#007FFF',
+  50: '#e3f2fd',
+  100: '#bbdefb',
+  200: '#90caf9',
+  300: '#64b5f6',
+  400: '#42a5f5',
   main: '#262626',
-  500: '#007FFF',
-  600: '#0072E5',
-  700: '#0059B2',
-  800: '#004C99',
-  900: '#003A75',
+  500: '#2196f3',
+  600: '#1e88e5',
+  700: '#1976d2',
+  800: '#1565c0',
+  900: '#0d47a1',
+  A100: '#82b1ff',
+  A200: '#448aff',
+  A400: '#2979ff',
 }
 const greyDark = {
   50: '#E2EDF8',
   100: '#CEE0F3',
   200: '#91B9E3',
   300: '#5090D3',
-  main: '#5090D3',
   400: '#265D97',
+  main: '#5090D3',
   500: '#1E4976',
   600: '#173A5E',
   700: '#132F4C',
-  // 800: '#001E3C',
   800: '#202124',
   850: '#141414',
   900: '#000000',
 }
+
 const grey = {
-  50: '#F3F6F9',
-  100: '#EAEEF3',
-  200: '#E5E8EC',
-  300: '#D7DCE1',
-  400: '#BFC7CF',
-  500: '#AAB4BE',
-  600: '#7F8E9D',
-  700: '#46505A',
-  800: '#2F3A45',
-  900: '#20262D',
-  950: '#000000',
+  50: '#fafafa',
+  100: '#f5f5f5',
+  200: '#eeeeee',
+  300: '#e0e0e0',
+  400: '#bdbdbd',
+  main: '#AAB4BE',
+  500: '#9e9e9e',
+  600: '#757575',
+  700: '#616161',
+  800: '#424242',
+  900: '#212121',
+  950: '#121212',
+  A100: '#f5f5f5',
+  A200: '#eeeeee',
+  A400: '#bdbdbd',
 }
 
 export const getMetaThemeColor = (mode: 'light' | 'dark') => {
@@ -116,10 +152,11 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
     palette: {
       ...(mode === 'dark' && {
         background: {
-          default: greyDark[800],
+          default: grey[950],
           // paper: greyDark[900],
         },
       }),
+      mode,
       divider: mode === 'dark' ? greyDark[700] : grey[200],
       error: {
         50: '#FFF0F1',
@@ -134,9 +171,6 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         800: '#94000D',
         900: '#570007',
       },
-      grey,
-      mode,
-
       primary: {
         ...blue,
         ...(mode === 'dark' && {

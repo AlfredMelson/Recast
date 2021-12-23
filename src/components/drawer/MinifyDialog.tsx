@@ -8,7 +8,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { Link as MuiLink } from '@mui/material'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SvgJsonLogo } from '../icons'
-import { HeaderStyle } from '../../layout'
+import { HeaderStyle } from '../mui/Header.style'
 import { MinifyIcons } from './MinifyIcons'
 
 export function MinifyDialog() {

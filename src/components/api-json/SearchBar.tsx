@@ -101,7 +101,8 @@ export default function Searchbar() {
         height: '50px',
         width: 700,
         p: '0 0 0 8px',
-        background: '#0D0D0D',
+        background: theme =>
+          theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100],
         borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',

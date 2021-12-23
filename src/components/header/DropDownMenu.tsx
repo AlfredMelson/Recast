@@ -117,7 +117,7 @@ export function DropDownMenu() {
                 borderRadius: '4px',
                 minWidth: 498,
                 overflow: 'hidden',
-                borderColor: theme => (theme.palette.mode === 'dark' ? '#000000' : 'grey.200'),
+                borderColor: theme => (theme.palette.mode === 'dark' ? 'transparent' : 'grey.200'),
                 bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'background.paper'),
                 boxShadow: theme =>
                   `0px 4px 20px ${

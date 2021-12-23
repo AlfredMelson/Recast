@@ -6,7 +6,7 @@ import { SvgJsonLogo } from '../components/icons'
 import { NavBarLinks, MobileNavBarLinks, ThemeModeToggle } from '../components/header'
 import { dataDrawerOpenAtom } from '../recoil'
 import { DrawerIcons } from '../components/drawer/DrawerIcons'
-import { HeaderStyle } from './HeaderStyle'
+import { HeaderStyle } from '../components/mui/Header.style'
 
 export function AppHeader() {
   // visability of drawer containing user json
