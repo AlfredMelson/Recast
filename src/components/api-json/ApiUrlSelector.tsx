@@ -4,31 +4,31 @@ import Stack from '@mui/material/Stack'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
 
 /**
  * @name selectedApiProviderAtom
  * @description state representing the selected api provider
- * @param {String | Null}
+ * @param {String}
  * @type {Object}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
  * Hooks to manage state changes and notify components subscribing to re-render:
- * const [apiProvider, setApiProvider] = useRecoilState(selectedApiProviderAtom)
- * const setApiProvider = useSetRecoilState(selectedApiProviderAtom)
- * const apiProvider = useRecoilValue(selectedApiProviderAtom)
- * const resetApiProvider = useResetRecoilState(selectedApiProviderAtom)
+ * const [selectedApiProvider, setSelectedApiProvider] = useRecoilState(selectedApiProviderAtom)
+ * const setSelectedApiProvider = useSetRecoilState(selectedApiProviderAtom)
+ * const selectedApiProvider = useRecoilValue(selectedApiProviderAtom)
+ * const resetSelectedApiProvider = useResetRecoilState(selectedApiProviderAtom)
  */
-export const selectedApiProviderAtom = atom<string | null>({
-  key: 'apiProvider',
-  default: null,
+export const selectedApiProviderAtom = atom<string>({
+  key: 'selectedApiProvider',
+  default: '',
 })
 
 /**
  * @name selectedApiAtom
  * @description state representing the selected api provider
- * @param {String | Null}
+ * @param {String}
  * @type {Object}
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
@@ -39,22 +39,22 @@ export const selectedApiProviderAtom = atom<string | null>({
  * const selectedApi = useRecoilValue(selectedApiAtom)
  * const resetSelectedApi = useResetRecoilState(selectedApiAtom)
  */
-export const selectedApiAtom = atom<string | null>({
+export const selectedApiAtom = atom<string>({
   key: 'selectedApi',
-  default: null,
+  default: '',
 })
 
 export function Provider() {
-  const [apiProvider, setApiProvider] = useRecoilState(selectedApiProviderAtom)
+  const [selectedApiProvider, setSelectedApiProvider] = useRecoilState(selectedApiProviderAtom)
 
   const handleChange = (event: SelectChangeEvent) => {
-    setApiProvider(event.target.value as string)
+    setSelectedApiProvider(event.target.value as string)
   }
 
   return (
     <Box sx={{ minWidth: 160 }}>
       <FormControl sx={{ minWidth: 160, my: 1 }}>
-        <Select id='demo-simple-select' value={apiProvider} onChange={handleChange}>
+        <Select id='demo-simple-select' value={selectedApiProvider} onChange={handleChange}>
           <MenuItem dense value='randomDataApi'>
             Random Data API
           </MenuItem>
@@ -69,8 +69,14 @@ export function Provider() {
 
 export function ProviderApi() {
   const apiProvider = useRecoilValue(selectedApiProviderAtom)
-  const setSelectedApi = useSetRecoilState(selectedApiAtom)
-  const [providerUrl, setProviderUrl] = React.useState('')
+  // const setSelectedApi = useSetRecoilState(selectedApiAtom)
+  const [providerUrl, setProviderUrl] = React.useState<string>('')
+
+  console.log('providerUrl', providerUrl)
+
+  const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
+
+  console.log('selectedApi', selectedApi)
 
   const baseUrl = 'https://random-data-api.com/api/'
 
@@ -80,6 +86,7 @@ export function ProviderApi() {
   }
 
   const data = [
+    { index: 0, name: '', url: '' },
     { index: 1, name: 'Address', url: 'address/random_address' },
     { index: 2, name: 'Appliance', url: 'appliance/random_appliance' },
     { index: 3, name: 'App', url: 'app/random_app' },
@@ -120,7 +127,7 @@ export function ProviderApi() {
 
   return (
     <Box sx={{ minWidth: 160 }}>
-      {apiProvider !== null && (
+      {apiProvider !== '' && (
         <FormControl sx={{ minWidth: 160, my: 1 }}>
           <Select
             id='demo-simple-select'

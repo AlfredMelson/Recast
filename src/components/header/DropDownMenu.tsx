@@ -3,6 +3,7 @@ import { alpha } from '@mui/material/styles'
 import Popper from '@mui/material/Popper'
 import Paper from '@mui/material/Paper'
 import Fade from '@mui/material/Fade'
+import { Box } from '@mui/material'
 import IconImage from '../icons/IconImage'
 import { getNextIndex, MENUID } from '../action/KeyboardFunctions'
 import { SubMenu } from '../mui/SubMenu.style'
@@ -91,18 +92,19 @@ export function DropDownMenu() {
   }
 
   return (
-    <li
+    <Box
       onMouseOver={() => setSubMenuOpen(true)}
       onFocus={() => setSubMenuOpen(true)}
       onMouseOut={() => setSubMenuOpen(false)}
       onBlur={() => setSubMenuOpen(false)}>
-      <div
+      <Box
+        component='div'
         ref={productsMenuRef}
         aria-haspopup
         aria-expanded={subMenuOpen ? 'true' : 'false'}
         onKeyDown={handleKeyDown}>
         Products
-      </div>
+      </Box>
       <Popper
         style={{ zIndex: 1600 }}
         open={subMenuOpen}
@@ -115,10 +117,10 @@ export function DropDownMenu() {
               variant='outlined'
               sx={{
                 borderRadius: '4px',
-                minWidth: 498,
+                minWidth: 400,
                 overflow: 'hidden',
-                borderColor: theme => (theme.palette.mode === 'dark' ? 'transparent' : 'grey.200'),
-                bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'background.paper'),
+                borderColor: 'transparent',
+                bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'grey.300'),
                 boxShadow: theme =>
                   `0px 4px 20px ${
                     theme.palette.mode === 'dark'
@@ -182,6 +184,6 @@ export function DropDownMenu() {
           </Fade>
         )}
       </Popper>
-    </li>
+    </Box>
   )
 }

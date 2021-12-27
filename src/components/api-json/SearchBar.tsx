@@ -95,6 +95,8 @@ export default function Searchbar() {
 
   const selectedApi = useRecoilValue(selectedApiAtom)
 
+  const inputField = React.useRef<HTMLInputElement>(null)
+
   return (
     <Paper
       sx={{
@@ -109,14 +111,15 @@ export default function Searchbar() {
       }}>
       <InputBase
         autoFocus
+        ref={inputField}
         sx={{
           ml: 1,
           flex: 1,
           fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
           minHeight: '32px',
         }}
-        placeholder={selectedApi !== null ? selectedApi : 'Enter API url'}
-        value={selectedApi !== null && selectedApi}
+        placeholder={selectedApi === '' && 'Enter API url'}
+        value={selectedApi !== '' ? selectedApi : ''}
         onChange={handleTextFieldChanges}
       />
       {Object.getOwnPropertyNames(apiData).length !== 0 && (

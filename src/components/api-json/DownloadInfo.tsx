@@ -9,7 +9,7 @@ export default function DownloadInfo({
   content,
   ...props
 }: { appeared: boolean; content?: React.ReactElement } & BoxProps) {
-  const [hidden, setHidden] = React.useState(false)
+  const [hidden, setHidden] = React.useState(true)
   return (
     <Box
       {...props}
