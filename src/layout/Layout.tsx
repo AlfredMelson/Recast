@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import { Outlet, useLocation } from 'react-router-dom'
 import { EditorDrawer } from '../components/drawer/EditorDrawer'
+import { darkGrey, lightGrey } from '../style/MuiBrandingTheme'
 import { AppHeader } from './AppHeader'
 
 export function Layout() {
@@ -13,7 +14,7 @@ export function Layout() {
         height: '100vh',
         overflowY: location.pathname === '/' ? 'visible' : 'hidden',
         overflowX: 'hidden',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.950' : '#FFFFFF'),
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100]),
       }}>
       <AppHeader />
       <Outlet />

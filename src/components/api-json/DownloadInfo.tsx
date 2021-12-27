@@ -3,6 +3,8 @@ import Box, { BoxProps } from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { alpha } from '@mui/material'
+import { darkBlue } from '../../style/MuiBrandingTheme'
 
 export default function DownloadInfo({
   appeared,
@@ -23,7 +25,7 @@ export default function DownloadInfo({
         px: 2,
         pt: 1,
         pb: 2,
-        bgcolor: ({ palette }) => palette.primaryDark[700],
+        bgcolor: alpha(darkBlue[700], 0.5),
         minWidth: '200px',
         zIndex: 1,
         borderLeft: '1px solid',

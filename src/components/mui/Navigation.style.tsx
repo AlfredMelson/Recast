@@ -1,5 +1,5 @@
-import { grey } from '@mui/material/colors'
 import { styled } from '@mui/material/styles'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 
 /**
  * @name Navigation
@@ -28,9 +28,11 @@ export const Navigation = styled('nav')(({ theme }) => ({
       textDecoration: 'none',
       textTransform: 'none',
       fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-      color: theme.palette.mode === 'dark' ? grey[400] : grey[700],
+      color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
+      transitionProperty: 'all',
+      transitionDuration: '300ms',
       '&:hover, & .Mui-focused, & .Mui-selected': {
-        color: theme.palette.mode === 'dark' ? grey[50] : '#000000',
+        color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[700],
         '@media (hover: none)': {
           backgroundColor: 'initial',
         },

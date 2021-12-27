@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
 import { alpha, IconButton } from '@mui/material'
 import { selectedElementAtom } from '../../recoil/api-json/atom'
+import { darkBlue } from '../../style/MuiBrandingTheme'
 
 export default function AsideEditInfo({ ...props }: BoxProps) {
   const selectedElement = useRecoilValue(selectedElementAtom)
@@ -57,7 +58,7 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
         pt: 1,
         pb: 2,
         // bgcolor: ({ palette }) => palette.primaryDark[700],
-        bgcolor: ({ palette }) => alpha(palette.primaryDark[700], 0.5),
+        bgcolor: alpha(darkBlue[700], 0.5),
         backdropFilter: 'blur(8px)',
         minWidth: '200px',
         zIndex: 1,

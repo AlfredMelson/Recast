@@ -1,7 +1,7 @@
 import Tabs from '@mui/material/Tabs'
 import { styled } from '@mui/material'
-import { blue } from '@mui/material/colors'
 import * as React from 'react'
+import { darkBlue, darkGrey, lightBlue, lightGrey } from '../../style/MuiBrandingTheme'
 
 /**
  * @name TabsSx
@@ -9,6 +9,11 @@ import * as React from 'react'
  * @param {Tabs} mui Tabs
  * @param {styled} mui styled
  * @param {theme} MuiBrandingTheme
+ * @userActionPseudoClasses {hover}	:hover, {active}	:active, {focus}	:focus
+ * {focus visible}	:focus-visible, {focus within}	:focus-within
+ * @globalClassNames {active}	.Mui-active, {checked}	.Mui-checked, {completed}	.Mui-completed
+ * {disabled}	.Mui-disabled, {expanded}	.Mui-expanded, {focus visible}	.Mui-focusVisible
+ * {focused}	.Mui-focused. {required}	.Mui-required, {selected}	.Mui-selected
  * @return styled Tabs
  */
 
@@ -28,8 +33,11 @@ export const TabsSx = styled((props: TabsSxAlias) => (
 ))(({ theme }) => ({
   maxHeight: '40px',
   borderRadius: '4px 4px 0 0',
-  background: theme.palette.mode === 'dark' ? '#0D0D0D' : '#ffffff',
+  background: theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200],
+  '.Mui-selected': {
+    background: theme.palette.mode === 'dark' ? darkGrey[700] : lightGrey[300],
+  },
   '& .MuiTabs-indicator': {
-    background: theme.palette.mode === 'dark' ? blue[900] : blue[400],
+    background: theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400],
   },
 }))

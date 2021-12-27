@@ -2487,6 +2487,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
   integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
 
+"@primer/primitives@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.4.0.tgz#75df54a80233a432b687c0e3010e4be6bd60a82d"
+  integrity sha512-gD6yHXN7YKox/bdUNgxhoSS/WXZVaORK1r4dOAyTrdoPrLV/ucIfRInPyVcTF+Mqr0zcTFJtiMtuA5Y8CSyOEg==
+
 "@react-spring/animated@~9.3.0":
   version "9.3.2"
   resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.3.2.tgz#bda85e92e9e9b6861c259f2dacb54270a37b0f39"

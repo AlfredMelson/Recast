@@ -3,6 +3,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import _ from 'lodash'
 import { useLocation } from 'react-router-dom'
+import { alpha } from '@mui/material/styles'
 import {
   apiDataAtom,
   apiFullResponseAtom,
@@ -19,6 +20,7 @@ import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
 import { TabSx } from '../mui/Tab.style'
 import { TabsSx } from '../mui/Tabs.style'
 import { DTypescript } from '../../pages/api-json/display/DTypescript'
+import { darkBlue, lightGrey } from '../../style/MuiBrandingTheme'
 
 type TabPanelAlias = {
   index: number
@@ -84,7 +86,14 @@ export default function ApiTabs() {
     <Box>
       {userSubmittedUrl !== undefined && (
         <React.Fragment>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: theme =>
+                theme.palette.mode === 'dark'
+                  ? alpha(darkBlue[600], 0.5)
+                  : alpha(lightGrey[400], 0.5),
+            }}>
             <TabsSx
               key={local.pathname}
               aria-label='api data tabs'

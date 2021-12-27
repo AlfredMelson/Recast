@@ -1,4 +1,5 @@
-import { styled } from '@mui/material/styles'
+import { alpha, styled } from '@mui/material/styles'
+import { darkBlue, darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 
 /**
  * @REVIEW
@@ -12,9 +13,9 @@ import { styled } from '@mui/material/styles'
 export const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
   position: 'sticky',
-  background: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100],
+  background: theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200],
   boxShadow: `inset 0px -1px 1px ${
-    theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[500]
+    theme.palette.mode === 'dark' ? alpha(darkBlue[600], 0.5) : alpha(lightGrey[400], 0.5)
   }`,
   zIndex: theme.zIndex.drawer + 1,
 }))

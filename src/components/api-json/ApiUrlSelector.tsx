@@ -14,7 +14,7 @@ import { atom, useRecoilState, useRecoilValue } from 'recoil'
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
- * Hooks to manage state changes and notify components subscribing to re-render:
+ * @RecoilHooks to manage state changes and notify components subscribing to re-render
  * const [selectedApiProvider, setSelectedApiProvider] = useRecoilState(selectedApiProviderAtom)
  * const setSelectedApiProvider = useSetRecoilState(selectedApiProviderAtom)
  * const selectedApiProvider = useRecoilValue(selectedApiProviderAtom)
@@ -33,7 +33,7 @@ export const selectedApiProviderAtom = atom<string>({
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
- * Hooks to manage state changes and notify components subscribing to re-render:
+ * @RecoilHooks to manage state changes and notify components subscribing to re-render:
  * const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
  * const setSelectedApi = useSetRecoilState(selectedApiAtom)
  * const selectedApi = useRecoilValue(selectedApiAtom)

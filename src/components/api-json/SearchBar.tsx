@@ -23,6 +23,7 @@ import {
 import { TextFieldButtonSx } from '../mui'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 import { selectedApiAtom, selectedApiProviderAtom } from './ApiUrlSelector'
 
 export default function Searchbar() {
@@ -103,8 +104,7 @@ export default function Searchbar() {
         height: '50px',
         width: 700,
         p: '0 0 0 8px',
-        background: theme =>
-          theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100],
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200]),
         borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',
@@ -118,7 +118,7 @@ export default function Searchbar() {
           fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
           minHeight: '32px',
         }}
-        placeholder={selectedApi === '' && 'Enter API url'}
+        // placeholder={selectedApi === '' && 'Enter API url'}
         value={selectedApi !== '' ? selectedApi : ''}
         onChange={handleTextFieldChanges}
       />

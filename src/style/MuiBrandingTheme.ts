@@ -7,16 +7,11 @@ declare module '@mui/material/styles/createPalette' {
     200: string
     300: string
     400: string
-    main?: string
     500: string
     600: string
     700: string
     800: string
     900: string
-    950: string
-    A100?: string
-    A200?: string
-    A400?: string
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -58,86 +53,237 @@ declare module '@mui/material/Typography' {
 }
 
 const theme = createTheme()
-// const blue = {
-//   50: '#F0F7FF',
-//   100: '#C2E0FF',
-//   200: '#A5D8FF',
-//   300: '#66B2FF',
-//   400: '#3399FF',
-//   main: '#262626',
-//   500: '#007FFF',
-//   600: '#0072E5',
-//   700: '#0059B2',
-//   800: '#004C99',
-//   900: '#003A75',
-// }
-// const grey = {
-//   50: '#F3F6F9',
-//   100: '#EAEEF3',
-//   200: '#E5E8EC',
-//   300: '#D7DCE1',
-//   400: '#BFC7CF',
-//   500: '#AAB4BE',
-//   600: '#7F8E9D',
-//   700: '#46505A',
-//   800: '#2F3A45',
-//   900: '#20262D',
-//   950: '#000000',
-// }
 
-const blue = {
-  50: '#e3f2fd',
-  100: '#bbdefb',
-  200: '#90caf9',
-  300: '#64b5f6',
-  400: '#42a5f5',
-  main: '#262626',
-  500: '#2196f3',
-  600: '#1e88e5',
-  700: '#1976d2',
-  800: '#1565c0',
-  900: '#0d47a1',
-  A100: '#82b1ff',
-  A200: '#448aff',
-  A400: '#2979ff',
+export const lightPink = {
+  50: '#ffeff7',
+  100: '#ffd3eb',
+  200: '#ffadda',
+  300: '#ff80c8',
+  400: '#e85aad',
+  500: '#bf3989',
+  600: '#99286e',
+  700: '#772057',
+  800: '#611347',
+  900: '#4d0336',
 }
-const greyDark = {
-  50: '#E2EDF8',
-  100: '#CEE0F3',
-  200: '#91B9E3',
-  300: '#5090D3',
-  400: '#265D97',
-  main: '#5090D3',
-  500: '#1E4976',
-  600: '#173A5E',
-  700: '#132F4C',
-  800: '#202124',
-  850: '#141414',
-  900: '#000000',
+export const lightRed = {
+  50: '#FFEBE9',
+  100: '#ffcecb',
+  200: '#ffaba8',
+  300: '#ff8182',
+  400: '#fa4549',
+  500: '#cf222e',
+  600: '#a40e26',
+  700: '#82071e',
+  800: '#660018',
+  900: '#4c0014',
+}
+export const lightCoral = {
+  50: '#FFF0EB',
+  100: '#FFD6CC',
+  200: '#FFB4A1',
+  300: '#FD8C73',
+  400: '#EC6547',
+  500: '#C4432B',
+  600: '#9E2F1C',
+  700: '#801F0F',
+  800: '#691105',
+  900: '#510901',
+}
+export const lightOrange = {
+  50: '#fff1e5',
+  100: '#ffd8b5',
+  200: '#ffb77c',
+  300: '#fb8f44',
+  400: '#e16f24',
+  500: '#bc4c00',
+  600: '#953800',
+  700: '#762c00',
+  800: '#5c2200',
+  900: '#471700',
+}
+export const lightYellow = {
+  50: '#fff8c5',
+  100: '#fae17d',
+  200: '#eac54f',
+  300: '#d4a72c',
+  400: '#bf8700',
+  500: '#9a6700',
+  600: '#7d4e00',
+  700: '#633c01',
+  800: '#4d2d00',
+  900: '#3b2300',
+}
+export const lightGreen = {
+  50: '#dafbe1',
+  100: '#aceebb',
+  200: '#6fdd8b',
+  300: '#4ac26b',
+  400: '#2da44e',
+  500: '#1a7f37',
+  600: '#116329',
+  700: '#044f1e',
+  800: '#003d16',
+  900: '#002d11',
+}
+export const lightBlue = {
+  50: '#ddf4ff',
+  100: '#b6e3ff',
+  200: '#80ccff',
+  300: '#54aeff',
+  400: '#218bff',
+  500: '#0969da',
+  600: '#0550ae',
+  700: '#033d8b',
+  800: '#0a3069',
+  900: '#002155',
+}
+export const lightPurple = {
+  50: '#fbefff',
+  100: '#ecd8ff',
+  200: '#d8b9ff',
+  300: '#c297ff',
+  400: '#a475f9',
+  500: '#8250df',
+  600: '#6639ba',
+  700: '#512a97',
+  800: '#3e1f79',
+  900: '#2e1461',
+}
+export const lightGrey = {
+  50: '#f6f8fa',
+  100: '#eaeef2',
+  200: '#d0d7de',
+  300: '#afb8c1',
+  400: '#8c959f',
+  500: '#6e7781',
+  600: '#57606a',
+  700: '#424a53',
+  800: '#32383f',
+  900: '#24292f',
+}
+export const lightEnds = {
+  50: '#FFFFFF',
+  900: '#1b1f24',
 }
 
-const grey = {
-  50: '#fafafa',
-  100: '#f5f5f5',
-  200: '#eeeeee',
-  300: '#e0e0e0',
-  400: '#bdbdbd',
-  main: '#AAB4BE',
-  500: '#9e9e9e',
-  600: '#757575',
-  700: '#616161',
-  800: '#424242',
-  900: '#212121',
-  950: '#121212',
-  A100: '#f5f5f5',
-  A200: '#eeeeee',
-  A400: '#bdbdbd',
+export const darkPink = {
+  50: '#ffdaec',
+  100: '#ffbedd',
+  200: '#ff9bce',
+  300: '#f778ba',
+  400: '#db61a2',
+  500: '#bf4b8a',
+  600: '#9e3670',
+  700: '#7d2457',
+  800: '#5e103e',
+  900: '#42062a',
+}
+export const darkRed = {
+  50: '#ffdcd7',
+  100: '#ffc1ba',
+  200: '#ffa198',
+  300: '#ff7b72',
+  400: '#f85149',
+  500: '#da3633',
+  600: '#b62324',
+  700: '#8e1519',
+  800: '#67060c',
+  900: '#490202',
+}
+export const darkCoral = {
+  50: '#FFDDD2',
+  100: '#FFC2B2',
+  200: '#FFA28B',
+  300: '#F78166',
+  400: '#EA6045',
+  500: '#CF462D',
+  600: '#AC3220',
+  700: '#872012',
+  800: '#640D04',
+  900: '#460701',
+}
+export const darkOrange = {
+  50: '#ffdfb6',
+  100: '#ffc680',
+  200: '#ffa657',
+  300: '#f0883e',
+  400: '#db6d28',
+  500: '#bd561d',
+  600: '#9b4215',
+  700: '#762d0a',
+  800: '#5a1e02',
+  900: '#3d1300',
+}
+export const darkYellow = {
+  50: '#f8e3a1',
+  100: '#f2cc60',
+  200: '#e3b341',
+  300: '#d29922',
+  400: '#bb8009',
+  500: '#9e6a03',
+  600: '#845306',
+  700: '#693e00',
+  800: '#4b2900',
+  900: '#341a00',
+}
+export const darkGreen = {
+  50: '#aff5b4',
+  100: '#7ee787',
+  200: '#56d364',
+  300: '#3fb950',
+  400: '#2ea043',
+  500: '#238636',
+  600: '#196c2e',
+  700: '#0f5323',
+  800: '#033a16',
+  900: '#04260f',
+}
+export const darkBlue = {
+  50: '#cae8ff',
+  100: '#a5d6ff',
+  200: '#79c0ff',
+  300: '#58a6ff',
+  400: '#388bfd',
+  500: '#1f6feb',
+  600: '#1158c7',
+  700: '#0d419d',
+  800: '#0c2d6b',
+  900: '#051d4d',
+}
+export const darkPurple = {
+  50: '#fbefff',
+  100: '#ecd8ff',
+  200: '#d8b9ff',
+  300: '#c297ff',
+  400: '#a475f9',
+  500: '#8250df',
+  600: '#6639ba',
+  700: '#512a97',
+  800: '#3e1f79',
+  900: '#2e1461',
+}
+export const darkGrey = {
+  50: '#f0f6fc',
+  100: '#c9d1d9',
+  200: '#b1bac4',
+  300: '#8b949e',
+  400: '#6e7681',
+  500: '#484f58',
+  600: '#30363d',
+  700: '#21262d',
+  800: '#161b22',
+  900: '#0d1117',
+}
+export const darkEnds = {
+  50: '#f0f6fc',
+  900: '#010409',
 }
 
 export const getMetaThemeColor = (mode: 'light' | 'dark') => {
   const themeColor = {
-    light: grey[50],
-    dark: greyDark[800],
+    light: lightGrey[50],
+    dark: darkGrey[800],
   }
   return themeColor[mode]
 }
@@ -152,85 +298,71 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
     palette: {
       ...(mode === 'dark' && {
         background: {
-          default: grey[950],
-          // paper: greyDark[900],
+          default: darkGrey[950],
+        },
+      }),
+      ...(mode === 'light' && {
+        background: {
+          default: lightGrey[50],
         },
       }),
       mode,
-      divider: mode === 'dark' ? greyDark[700] : grey[200],
-      error: {
-        50: '#FFF0F1',
-        100: '#FFDBDE',
-        200: '#FFBDC2',
-        300: '#FF99A2',
-        400: '#FF7A86',
-        500: '#FF505F',
-        main: '#EB0014', // contrast 4.63:1
-        600: '#EB0014',
-        700: '#C70011',
-        800: '#94000D',
-        900: '#570007',
-      },
+      divider: mode === 'dark' ? darkGrey[700] : lightGrey[200],
       primary: {
-        ...blue,
         ...(mode === 'dark' && {
-          main: blue[400],
-        }),
-      },
-      primaryDark: greyDark,
-      success: {
-        50: '#E9FBF0',
-        100: '#C6F6D9',
-        200: '#9AEFBC',
-        300: '#6AE79C',
-        400: '#3EE07F',
-        500: '#21CC66',
-        600: '#1DB45A',
-        ...(mode === 'dark' && {
-          main: '#1DB45A',
+          main: darkBlue[500],
         }),
         ...(mode === 'light' && {
-          main: '#1AA251',
+          main: lightBlue[400],
         }),
-        700: '#1AA251',
-        800: '#178D46',
-        900: '#0F5C2E',
+      },
+      error: {
+        ...(mode === 'dark' && {
+          main: darkYellow[300],
+        }),
+        ...(mode === 'light' && {
+          main: lightYellow[300],
+        }),
+      },
+      success: {
+        ...(mode === 'dark' && {
+          main: darkGreen[600],
+        }),
+        ...(mode === 'light' && {
+          main: lightGreen[400],
+        }),
       },
       svgBg: {
-        base: mode === 'dark' ? greyDark[400] : grey[50],
-        active: mode === 'dark' ? greyDark[400] : grey[50],
+        base: mode === 'dark' ? darkGrey[400] : lightGrey[50],
+        active: mode === 'dark' ? darkGrey[400] : lightGrey[50],
       },
       svgFilled: {
-        base: mode === 'dark' ? greyDark[800] : grey[500],
-        active: mode === 'dark' ? blue[300] : blue[500],
+        base: mode === 'dark' ? darkGrey[800] : lightGrey[500],
+        active: mode === 'dark' ? darkBlue[300] : lightBlue[500],
       },
       svgStroke: {
-        base: mode === 'dark' ? greyDark[600] : '#ffffff',
-        active: mode === 'dark' ? blue[700] : '#ffffff',
+        base: mode === 'dark' ? darkGrey[600] : lightGrey[50],
+        active: mode === 'dark' ? darkGrey[800] : lightGrey[200],
       },
       ...(mode === 'light' && {
         text: {
-          primary: grey[900],
-          secondary: grey[800],
+          primary: lightGrey[900],
+          secondary: lightGrey[800],
         },
       }),
       ...(mode === 'dark' && {
         text: {
-          primary: '#FFFFFF',
-          secondary: '#F2F2F2',
+          primary: darkEnds[50],
+          secondary: darkEnds[200],
         },
       }),
       warning: {
-        50: '#FFF9EB',
-        100: '#FFF4DB',
-        200: '#FFEDC2',
-        300: '#FFE4A3',
-        400: '#FFD980',
-        500: '#FCC419',
-        600: '#FAB005',
-        700: '#F1A204',
-        800: '#DB9A00',
-        900: '#8F6400',
+        ...(mode === 'dark' && {
+          main: darkRed[700],
+        }),
+        ...(mode === 'light' && {
+          main: lightRed[500],
+        }),
       },
     },
     shape: {
@@ -245,16 +377,12 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         letterSpacing: `${round(-2 / 72)}em`,
         fontWeight: 700,
         lineHeight: 80 / 72,
-        ...(mode === 'light' && {
-          color: greyDark[900],
-        }),
       },
       h2: {
         fontSize: 'clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)',
         letterSpacing: `${round(-1.5 / 48)}em`,
         fontWeight: 700,
         lineHeight: 44 / 36,
-        color: mode === 'dark' ? grey[200] : greyDark[700],
       },
       h3: {
         fontSize: theme.typography.pxToRem(36),
@@ -275,11 +403,6 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         fontSize: theme.typography.pxToRem(20),
         letterSpacing: 0,
         lineHeight: 30 / 20,
-      },
-      button: {
-        textTransform: 'initial',
-        fontWeight: 700,
-        letterSpacing: 0,
       },
       subtitle1: {
         fontSize: theme.typography.pxToRem(18),
@@ -302,7 +425,6 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         fontSize: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
         lineHeight: 18 / 12,
         letterSpacing: 0,
-        fontWeight: 600,
       },
       code: {
         display: 'block',
@@ -336,10 +458,7 @@ export function muiThemedComponents(theme: Theme) {
           disableRipple: true,
         },
         root: {
-          background:
-            theme.palette.mode === 'dark'
-              ? theme.palette.primaryDark[900]
-              : theme.palette.grey[100],
+          background: theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100],
           borderRadius: '4px',
           boxShadow: 0,
         },
@@ -357,7 +476,7 @@ export function muiThemedComponents(theme: Theme) {
       MuiDivider: {
         styleOverrides: {
           root: {
-            color: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
+            color: theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[50],
             margin: theme.spacing(0.5, 1),
           },
         },
@@ -396,10 +515,7 @@ export function muiThemedComponents(theme: Theme) {
         },
         styleOverrides: {
           root: {
-            color:
-              theme.palette.mode === 'dark'
-                ? theme.palette.primary[400]
-                : theme.palette.primary[600],
+            color: theme.palette.mode === 'dark' ? darkBlue[400] : lightBlue[600],
             fontWeight: 600,
             display: 'inline-flex',
             alignItems: 'center',
@@ -471,10 +587,7 @@ export function muiThemedComponents(theme: Theme) {
           size: 'small',
         },
         root: {
-          background:
-            theme.palette.mode === 'dark'
-              ? theme.palette.primaryDark[900]
-              : theme.palette.grey[100],
+          background: theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100],
           borderRadius: '4px',
           boxShadow: 0,
         },
@@ -490,15 +603,13 @@ export function muiThemedComponents(theme: Theme) {
         },
         styleOverrides: {
           tooltipArrow: {
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[300],
+            backgroundColor: theme.palette.mode === 'dark' ? darkGrey[700] : lightGrey[300],
           },
           tooltip: {
             paddingTop: 4,
             paddingBottom: 4,
-            color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[300],
+            color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
+            backgroundColor: theme.palette.mode === 'dark' ? darkGrey[700] : lightGrey[300],
           },
         },
       },
@@ -532,8 +643,7 @@ export function muiThemedComponents(theme: Theme) {
           track: {
             opacity: 1,
             borderRadius: 32,
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[400],
+            backgroundColor: theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[400],
           },
           thumb: {
             flexShrink: 0,
