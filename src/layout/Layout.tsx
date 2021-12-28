@@ -14,7 +14,7 @@ export function Layout() {
         height: '100vh',
         overflowY: location.pathname === '/' ? 'visible' : 'hidden',
         overflowX: 'hidden',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100]),
+        background: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100]),
       }}>
       <AppHeader />
       <Outlet />

@@ -296,17 +296,25 @@ function round(value: number) {
 export const muiDesignTokens = (mode: 'light' | 'dark') =>
   ({
     palette: {
+      mode,
       ...(mode === 'dark' && {
         background: {
           default: darkGrey[950],
+        },
+        text: {
+          primary: darkEnds[50],
+          secondary: darkEnds[200],
         },
       }),
       ...(mode === 'light' && {
         background: {
           default: lightGrey[50],
         },
+        text: {
+          primary: lightGrey[900],
+          secondary: lightGrey[800],
+        },
       }),
-      mode,
       divider: mode === 'dark' ? darkGrey[700] : lightGrey[200],
       primary: {
         ...(mode === 'dark' && {
@@ -344,18 +352,7 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
         base: mode === 'dark' ? darkGrey[600] : lightGrey[50],
         active: mode === 'dark' ? darkGrey[800] : lightGrey[200],
       },
-      ...(mode === 'light' && {
-        text: {
-          primary: lightGrey[900],
-          secondary: lightGrey[800],
-        },
-      }),
-      ...(mode === 'dark' && {
-        text: {
-          primary: darkEnds[50],
-          secondary: darkEnds[200],
-        },
-      }),
+
       warning: {
         ...(mode === 'dark' && {
           main: darkRed[700],

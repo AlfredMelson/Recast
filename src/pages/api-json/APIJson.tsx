@@ -14,6 +14,8 @@ import {
 import Searchbar from '../../components/api-json/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
+
 // import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
 // import Alert from '@mui/material/Alert'
@@ -122,12 +124,16 @@ export function APIJson() {
         //   setSelectedElement(null)
         // }}
       >
-        <Typography variant='body2' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+        <Typography
+          variant='body2'
+          sx={{ color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]) }}>
           Select API from dropdown
         </Typography>
 
         <ApiUrlSelector />
-        <Typography variant='body2' sx={{ color: 'lightgrey', fontWeight: 300 }}>
+        <Typography
+          variant='body2'
+          sx={{ color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]) }}>
           or Enter API
         </Typography>
         <Box sx={{ my: 2 }}>

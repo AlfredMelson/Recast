@@ -1,5 +1,6 @@
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import { styled } from '@mui/material'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 
 /**
  * @name IconButtonSxColorMode
@@ -10,10 +11,10 @@ import { styled } from '@mui/material'
  * @return icon color mode style for light and dark mode
  */
 export const IconButtonSxColorMode = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
+  color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
   padding: theme.spacing(1),
   '&:hover, & .Mui-focused': {
-    color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
+    color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[700],
   },
 }))
 

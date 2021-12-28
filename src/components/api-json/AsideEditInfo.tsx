@@ -7,9 +7,9 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
-import { alpha, IconButton } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
 import { selectedElementAtom } from '../../recoil/api-json/atom'
-import { darkBlue } from '../../style/MuiBrandingTheme'
+import { darkBlue, lightBlue } from '../../style/MuiBrandingTheme'
 
 export default function AsideEditInfo({ ...props }: BoxProps) {
   const selectedElement = useRecoilValue(selectedElementAtom)
@@ -57,9 +57,7 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
         px: 2,
         pt: 1,
         pb: 2,
-        // bgcolor: ({ palette }) => palette.primaryDark[700],
-        bgcolor: alpha(darkBlue[700], 0.5),
-        backdropFilter: 'blur(8px)',
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[800] : lightBlue[300]),
         minWidth: '200px',
         zIndex: 1,
         borderLeft: '1px solid',
@@ -82,9 +80,9 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             left: 10,
             top: 0,
             mb: 2,
-            bgcolor: 'primaryDark.500',
+            bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[700] : lightBlue[200]),
             '&:hover, &.Mui-focused': {
-              bgcolor: 'primaryDark.600',
+              bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[200]),
             },
           }}>
           <Add />
@@ -101,9 +99,9 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             left: 10,
             top: 0,
             mt: 2,
-            bgcolor: 'primaryDark.500',
+            bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[700] : lightBlue[200]),
             '&:hover, &.Mui-focused': {
-              bgcolor: 'primaryDark.600',
+              bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[200]),
             },
           }}>
           <Add />

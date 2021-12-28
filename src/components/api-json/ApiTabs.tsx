@@ -85,7 +85,10 @@ export default function ApiTabs() {
   return (
     <Box>
       {userSubmittedUrl !== undefined && (
-        <React.Fragment>
+        <Box
+          sx={{
+            boxShadow: 2,
+          }}>
           <Box
             sx={{
               borderBottom: 1,
@@ -155,7 +158,7 @@ export default function ApiTabs() {
               <DTypescript data={apiData} />
             </TabPanel>
           </Box>
-        </React.Fragment>
+        </Box>
       )}
     </Box>
   )
