@@ -23,10 +23,10 @@ export function Group({ desktopColumns = 1, ...props }: { desktopColumns?: numbe
           gridRow: { xs: 1, md: 'auto' },
         },
         [theme.breakpoints.down('md')]: {
-          mx: -3,
-          px: 3,
-          mb: -1.5,
-          pb: 2,
+          mx: -30,
+          px: 30,
+          mb: -15,
+          pb: 20,
           scrollSnapType: 'inline mandatory',
           scrollPaddingLeft: 30,
           scrollPaddingRight: 30,
@@ -47,8 +47,8 @@ export function Group({ desktopColumns = 1, ...props }: { desktopColumns?: numbe
           },
         },
         [theme.breakpoints.down('sm')]: {
-          mx: -2,
-          px: 2,
+          mx: -20,
+          px: 20,
           scrollPaddingLeft: 20,
           scrollPaddingRight: 20,
           '& > *:last-child:after': {
@@ -83,7 +83,7 @@ export default function Item({
         alignItems: 'center',
         ...props.sx,
       }}>
-      <Box sx={{ mr: 2, lineHeight: 0 }}>{icon}</Box>
+      <Box sx={{ mr: 20, lineHeight: 0 }}>{icon}</Box>
       <div>
         <Typography
           component='span'
@@ -99,7 +99,7 @@ export default function Item({
             color='text.secondary'
             variant='body2'
             fontWeight='regular'
-            sx={{ mt: 0.5 }}>
+            sx={{ mt: 5 }}>
             {description}
           </Typography>
         )}

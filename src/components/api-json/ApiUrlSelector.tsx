@@ -53,7 +53,7 @@ export function Provider() {
 
   return (
     <Box sx={{ minWidth: 160 }}>
-      <FormControl sx={{ minWidth: 160, my: 1 }}>
+      <FormControl sx={{ minWidth: 160, my: 10 }}>
         <Select id='demo-simple-select' value={selectedApiProvider} onChange={handleChange}>
           <MenuItem dense value='randomDataApi'>
             Random Data API
@@ -128,7 +128,7 @@ export function ProviderApi() {
   return (
     <Box sx={{ minWidth: 160 }}>
       {apiProvider !== '' && (
-        <FormControl sx={{ minWidth: 160, my: 1 }}>
+        <FormControl sx={{ minWidth: 160, my: 10 }}>
           <Select
             id='demo-simple-select'
             value={providerUrl}
@@ -148,7 +148,7 @@ export function ProviderApi() {
 
 export default function ApiSelector() {
   return (
-    <Stack direction='row' sx={{ minWidth: 160 }} spacing={2}>
+    <Stack direction='row' sx={{ minWidth: 160 }} spacing={20}>
       <Provider />
       <ProviderApi />
     </Stack>

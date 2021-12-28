@@ -13,9 +13,9 @@ import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
  */
 const PaperSxStyle = styled(Paper)(({ theme }) => ({
   borderRadius: '0 0 4px 4px',
-  paddingTop: theme.spacing(3),
-  paddingLeft: theme.spacing(5),
-  paddingBottom: theme.spacing(4),
+  paddingTop: theme.spacing(30),
+  paddingLeft: theme.spacing(50),
+  paddingBottom: theme.spacing(40),
   background: theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200],
   maxHeight: '76vh',
   overflowX: 'hidden',
@@ -54,9 +54,9 @@ export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
  */
 const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
   borderRadius: '4px',
-  paddingTop: theme.spacing(3),
-  paddingLeft: theme.spacing(5),
-  paddingBottom: theme.spacing(4),
+  paddingTop: theme.spacing(30),
+  paddingLeft: theme.spacing(50),
+  paddingBottom: theme.spacing(40),
   bgcolor: theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200],
   maxHeight: '86vh',
   width: '100%',

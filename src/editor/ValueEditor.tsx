@@ -93,7 +93,7 @@ export function ValueEditor({ path, defaultValue, onCancel, onUpdate }: ValueEdi
   )
 
   return (
-    <Stack direction='row' spacing={1}>
+    <Stack direction='row' spacing={10}>
       {/* {onChangeType === DataType.Object && (
         // <VisualEditor parsedJson={TypeCast(type, defaultValue)} path={[]} insert={false} />
         <VisualEditor path={[]} insert={false} />

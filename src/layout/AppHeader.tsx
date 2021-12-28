@@ -20,7 +20,7 @@ export function AppHeader() {
             <SvgJsonLogo
               aria-label='Go to homepage'
               width={120}
-              sx={{ mr: 2 }}
+              sx={{ mr: 20 }}
               onClick={() => setDataDrawerOpen(false)}
             />
             <Box
@@ -63,7 +63,7 @@ export function AppHeader() {
           <Box sx={{ gridColumn: 2, placeSelf: 'center' }}>
             <SvgJsonLogo width={100} />
           </Box>
-          <Box sx={{ gridColumn: 3, alignSelf: 'center', justifySelf: 'end', pr: 3 }}>
+          <Box sx={{ gridColumn: 3, alignSelf: 'center', justifySelf: 'end', pr: 30 }}>
             <MobileNavBarLinks />
           </Box>
         </Container>

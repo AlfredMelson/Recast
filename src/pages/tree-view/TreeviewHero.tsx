@@ -59,12 +59,12 @@ export default function TreeviewHero() {
           <React.Fragment>
             <div>
               {isMdUp && (
-                <Stack spacing={4} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}>
+                <Stack spacing={40} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}>
                   {/* <Typography>isMDUp</Typography> */}
                 </Stack>
               )}
               {/* {isMdUp && (
-              <Stack spacing={4} sx={{ ml: 4, '& > .MuiPaper-root': { maxWidth: 'none' } }}>
+              <Stack spacing={40} sx={{ ml: 40, '& > .MuiPaper-root': { maxWidth: 'none' } }}>
                 <Typography>isMDUp</Typography>
               </Stack>
             )} */}

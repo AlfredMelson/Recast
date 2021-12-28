@@ -57,7 +57,7 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
         onClick={() => setCol(!col)}
         sx={{
           transform: col ? 'rotate(90deg)' : 'rotate(0deg)',
-          mr: 1,
+          mr: 10,
         }}>
         <KeyboardArrowRightIcon />
       </IconButtonSxApiIcons>
@@ -80,8 +80,8 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
             </IconButtonSxApiIcons>
             &nbsp;&#123;
           </Stack>
-          <Box sx={{ pl: 3 }}>{renderObject()}</Box>
-          <Typography variant='code' sx={{ ml: 8.4 }}>
+          <Box sx={{ pl: 30 }}>{renderObject()}</Box>
+          <Typography variant='code' sx={{ ml: 84 }}>
             &#125;
           </Typography>
         </React.Fragment>

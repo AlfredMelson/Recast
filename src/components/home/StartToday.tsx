@@ -8,12 +8,12 @@ import LoadInJsonButton from './LoadInJsonButton'
 
 export default function StartToday() {
   return (
-    <Grid container spacing={{ xs: 2, md: 4 }} alignItems='center'>
+    <Grid container spacing={{ xs: 20, md: 40 }} alignItems='center'>
       <Grid item xs={12} sm={6} md={6} sx={{ mb: { md: 4 } }}>
         <SectionHeadline
           overline='Go live!'
           title={
-            <Typography variant='h2' sx={{ maxWidth: 460, mb: 1 }}>
+            <Typography variant='h2' sx={{ maxWidth: 460, mb: 10 }}>
               Start your exploration of <GradientText>Json</GradientText> today.
             </Typography>
           }
@@ -21,7 +21,7 @@ export default function StartToday() {
         />
         <LoadInJsonButton size='medium' variant='outlined' />
       </Grid>
-      <Grid item xs={12} sm={6} md={6} container spacing={2}>
+      <Grid item xs={12} sm={6} md={6} container spacing={20}>
         <Grid item xs={12} md={6}>
           <Paper
             // component={Link}
@@ -29,10 +29,10 @@ export default function StartToday() {
             // noLinkStyle
             variant='outlined'
             sx={{ p: 2, height: '100%' }}>
-            <Typography variant='body2' fontWeight='bold' sx={{ mb: 0.5 }}>
+            <Typography variant='body2' fontWeight='bold' sx={{ mb: 5 }}>
               Json Showcase
             </Typography>
-            <Typography variant='body2' color='text.secondary' sx={{ mb: 1 }}>
+            <Typography variant='body2' color='text.secondary' sx={{ mb: 10 }}>
               See more projects and companies that rely on MUI.
             </Typography>
             <Typography
@@ -50,10 +50,10 @@ export default function StartToday() {
             // noLinkStyle
             variant='outlined'
             sx={{ p: 2, height: '100%' }}>
-            <Typography variant='body2' fontWeight='bold' sx={{ mb: 0.5 }}>
+            <Typography variant='body2' fontWeight='bold' sx={{ mb: 5 }}>
               Json News
             </Typography>
-            <Typography variant='body2' color='text.secondary' sx={{ mb: 1 }}>
+            <Typography variant='body2' color='text.secondary' sx={{ mb: 10 }}>
               Check behind the scenes and news from the company.
             </Typography>
             <Typography

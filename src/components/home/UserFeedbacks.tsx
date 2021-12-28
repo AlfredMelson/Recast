@@ -19,12 +19,12 @@ type FeedbackAlias = {
 const Feedback = ({ quote, profile }: FeedbackAlias) => {
   return (
     <Box sx={{ color: '#fff' }}>
-      <Typography variant='subtitle1' component='div' sx={{ mb: 2 }}>
+      <Typography variant='subtitle1' component='div' sx={{ mb: 20 }}>
         {quote}
       </Typography>
       <Box sx={{ display: 'flex' }}>
-        <Box sx={{ ml: 2 }}>
-          <Typography fontWeight='bold' sx={{ mb: 1 }}>
+        <Box sx={{ ml: 20 }}>
+          <Typography fontWeight='bold' sx={{ mb: 10 }}>
             {profile.name},{' '}
             <Box component='span' sx={{ color: 'grey.600', fontWeight: 'regular' }}>
               {profile.role}
@@ -40,7 +40,7 @@ export default function UserFeedbacks() {
   const [slideIndex, setSlideIndex] = React.useState(0)
   return (
     <Box sx={{ maxWidth: { md: 500 } }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 20 }}>
         <Box alignSelf='center'>
           {TESTIMONIALS.map((item, index) => (
             <ButtonBase
@@ -53,7 +53,7 @@ export default function UserFeedbacks() {
                 height: 14,
                 borderRadius: '50%',
                 p: '4px',
-                ml: index !== 0 ? '2px' : 0,
+                ml: index !== 0 ? 2 : 0,
                 '& .Mui-focused': {
                   boxShadow: theme => `0px 0px 0px 2px ${theme.palette.grey[400]}`,
                 },

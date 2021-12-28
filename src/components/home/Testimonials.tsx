@@ -8,14 +8,14 @@ import UserFeedbacks from './UserFeedbacks'
 
 export function MuiStats() {
   return (
-    <Grid item xs={12} md={6} container spacing={2}>
+    <Grid item xs={12} md={6} container spacing={20}>
       {GITHUB_DATA.map(item => (
         <Grid key={item.title} item xs={6}>
           <Box
             sx={{
               height: '100%',
-              p: 1,
-              mr: 1,
+              p: 10,
+              mr: 10,
               borderRight: '3px solid',
               borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.600' : 'primary.100'),
             }}>
@@ -44,8 +44,8 @@ const Testimonials = () => {
   })
   return (
     <Box ref={ref}>
-      <Container sx={{ py: { xs: 4, md: 8 } }}>
-        <Grid container spacing={3} alignItems='center'>
+      <Container sx={{ py: { xs: 40, md: 80 } }}>
+        <Grid container spacing={30} alignItems='center'>
           <MuiStats />
           <Grid item xs={12} md={6} sx={{ zIndex: 1, minHeight: { xs: 400, sm: 307, lg: 355 } }}>
             {inView && <UserFeedbacks />}

@@ -13,7 +13,7 @@ export function SvgTsLogoTs(props: RootSvgProps) {
       height='18'
       viewBox='0 0 128 128'
       sx={{
-        mr: 1,
+        mr: 10,
         '&:hover ': {
           fill: theme => (theme.palette.mode === 'dark' ? grey[800] : '#000000'),
         },
@@ -46,7 +46,7 @@ export function SvgTsLogoDtype(props: RootSvgProps) {
       fill='none'
       height='18'
       viewBox='0 0 128 128'
-      sx={{ mr: 1 }}
+      sx={{ mr: 10 }}
       {...props}>
       <rect
         // fill color of shape

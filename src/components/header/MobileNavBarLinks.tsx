@@ -21,8 +21,8 @@ const Anchor = styled('a')<{ component?: React.ElementType; noLinkStyle?: boolea
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(1),
-    borderRadius: theme.spacing(1),
+    padding: theme.spacing(10),
+    borderRadius: theme.shape.borderRadius,
     transition: theme.transitions.create('background'),
     '&:hover, & .Mui-focused': {
       backgroundColor:
@@ -139,9 +139,9 @@ export function MobileNavBarLinks() {
                       borderLeft: '1px solid',
                       borderColor: theme =>
                         theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100',
-                      pl: 1,
-                      pb: 1,
-                      ml: 1,
+                      pl: 10,
+                      pb: 10,
+                      ml: 10,
                     }}>
                     {PRODUCTS.map(item => (
                       <li key={item.name}>

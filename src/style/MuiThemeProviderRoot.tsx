@@ -14,12 +14,12 @@ export default function MuiThemeProviderRoot({ children }: MuiThemeProviderRootT
   // color mode value managed globally via recoil
   const appColorMode = useRecoilValue(appColorModeAtom)
   // color mode value passed as string
-  const stringMode = appColorMode === 'light' ? 'light' : 'dark'
+  const mode = appColorMode === 'light' ? 'light' : 'dark'
   // user defiend color palette (theme) object constructed based on color mode
-  const designTokens = muiDesignTokens(stringMode)
+  const designTokens = muiDesignTokens(mode)
   // missing parts added to the incomplete theme object
   const baseTheme = createTheme(designTokens)
-  // finally, deep merge the arguments with the about to be returned theme.
+  // finally, deep merge the arguments with the returned theme
   const theme = createTheme(deepmerge(baseTheme, muiThemedComponents(baseTheme)))
 
   // ThemeProvider theme={theme} provides theme prop down the React tree via context

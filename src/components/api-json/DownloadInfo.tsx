@@ -22,9 +22,9 @@ export default function DownloadInfo({
         transition: '0.3s',
         top: 0,
         right: 0,
-        px: 2,
-        pt: 1,
-        pb: 2,
+        px: 20,
+        pt: 10,
+        pb: 20,
         bgcolor: alpha(darkBlue[700], 0.5),
         minWidth: '200px',
         zIndex: 1,
@@ -56,7 +56,7 @@ export default function DownloadInfo({
           }}>
           {hidden ? <KeyboardArrowLeftIcon /> : <KeyboardArrowRightIcon />}
         </IconButton>
-        <Box sx={{ pt: 9 }}>{content}</Box>
+        <Box sx={{ pt: 90 }}>{content}</Box>
       </Box>
     </Box>
   )

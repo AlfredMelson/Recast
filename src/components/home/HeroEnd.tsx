@@ -15,7 +15,7 @@ const HeroEnd = () => {
 
   return (
     <Box ref={ref} sx={{ bgcolor: '#001E3C' }}>
-      <Container sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
+      <Container sx={{ py: { xs: 40, sm: 60, md: 80 } }}>
         {inView ? <StartToday /> : <Placeholder />}
       </Container>
     </Box>

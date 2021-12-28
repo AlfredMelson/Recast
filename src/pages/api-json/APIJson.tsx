@@ -116,7 +116,7 @@ export function APIJson() {
   return (
     <Box
       sx={{
-        pt: 1,
+        pt: 10,
       }}>
       <Container
         maxWidth='lg'
@@ -136,10 +136,10 @@ export function APIJson() {
           sx={{ color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]) }}>
           or Enter API
         </Typography>
-        <Box sx={{ my: 2 }}>
+        <Box sx={{ my: 20 }}>
           <Searchbar />
           {/* <Collapse in={showError}>
-            <Box sx={{ mt: 1, mb: 2 }}>
+            <Box sx={{ mt: 10, mb: 20 }}>
               <Alert
                 variant='outlined'
                 elevation={6}

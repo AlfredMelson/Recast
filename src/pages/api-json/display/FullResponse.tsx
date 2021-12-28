@@ -193,17 +193,17 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     if (col)
       return (
         <React.Fragment>
-          <Stack direction='row' sx={{ ml: '-16px' }}>
+          <Stack direction='row' sx={{ ml: -16 }}>
             <IconButtonSxDataIcon onClick={toggleObj}>
               <KeyboardArrowDownIcon />
             </IconButtonSxDataIcon>
             <Typography variant='code'>{dataKey}</Typography>
           </Stack>
-          <Box sx={{ ml: '32px' }}>{renderObject()}</Box>
+          <Box sx={{ ml: 32 }}>{renderObject()}</Box>
         </React.Fragment>
       )
     return (
-      <Stack direction='row' sx={{ ml: '-16px' }}>
+      <Stack direction='row' sx={{ ml: -16 }}>
         <IconButtonSxDataIcon onClick={toggleObj}>
           <KeyboardArrowRightIcon />
         </IconButtonSxDataIcon>

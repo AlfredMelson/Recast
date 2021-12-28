@@ -16,7 +16,7 @@ export const ButtonSxDataToggle = styled(Button)(({ theme }) => ({
   minWidth: '110px',
   color: theme.palette.text.secondary,
   textDecoration: 'none',
-  padding: theme.spacing(1),
+  padding: theme.spacing(10),
   borderRadius: theme.shape.borderRadius,
   '&:hover, & .Mui-focused': {
     color: '#007FFF',

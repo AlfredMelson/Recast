@@ -104,7 +104,7 @@ export default function Searchbar() {
         height: '50px',
         width: 700,
         p: '0 0 0 8px',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200]),
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
         borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',
@@ -113,7 +113,7 @@ export default function Searchbar() {
         autoFocus
         ref={inputField}
         sx={{
-          ml: 1,
+          ml: 10,
           flex: 1,
           fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
           minHeight: '32px',
@@ -124,8 +124,8 @@ export default function Searchbar() {
       />
       {Object.getOwnPropertyNames(apiData).length !== 0 && (
         <FadeDelay delay={1000}>
-          <TextFieldButtonSx aria-label='clear url' onClick={handleReset} sx={{ mr: 0.5 }}>
-            <Typography variant='body2'>Clear</Typography>
+          <TextFieldButtonSx aria-label='clear url' onClick={handleReset} sx={{ mr: 5 }}>
+            <Typography variant='button'>Clear</Typography>
           </TextFieldButtonSx>
         </FadeDelay>
       )}
@@ -135,9 +135,9 @@ export default function Searchbar() {
             aria-label='toggle password visibility'
             disabled={userTypedUrl === undefined}
             onClick={handleSubmitUrl}
-            sx={{ mr: 1 }}>
+            sx={{ mr: 10 }}>
             {!submitting && !successSubmit ? (
-              <Typography variant='body2'>
+              <Typography variant='button'>
                 {Object.getOwnPropertyNames(apiData).length === 0 ? (
                   <FadeDelay delay={400}>
                     <span>Fetch</span>

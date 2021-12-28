@@ -42,28 +42,30 @@ const ValueProposition = () => {
     <Box sx={{ bgcolor: '#001E3C' }}>
       <Container
         sx={{
-          py: { xs: 4, sm: 6, md: 8 },
+          py: { xs: 40, sm: 60, md: 80 },
         }}>
         <SectionHeadline
           overline='Developer experience'
           title={
-            <Typography variant='h2' sx={{ mt: 1, mb: { xs: 2, sm: 4 }, maxWidth: 380 }}>
+            <Typography variant='h2' sx={{ mt: 10, mb: { xs: 20, sm: 40 }, maxWidth: 380 }}>
               Tools to assist your work with <GradientText>json</GradientText> data
             </Typography>
           }
         />
-        <Grid container spacing={2}>
+        <Grid container spacing={20}>
           {content.map(({ icon, title, description }) => (
             <Grid key={title} item xs={12} sm={6} md={3}>
-              <Paper variant='outlined' sx={{ p: 2, height: '100%', borderRadius: '4px' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Paper
+                variant='outlined'
+                sx={{ p: 20, height: '100%', borderRadius: theme => theme.shape.borderRadius }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 10 }}>
                   {icon}
                   <Typography
                     fontWeight='bold'
                     component='h3'
                     color='text.primary'
                     variant='body2'
-                    sx={{ ml: 1 }}>
+                    sx={{ ml: 10 }}>
                     {title}
                   </Typography>
                 </Box>

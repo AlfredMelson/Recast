@@ -63,7 +63,7 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
       <PaperSx>
         <Typography variant='code'>
           declare module namespace&nbsp;&#123;
-          <Box sx={{ ml: 3 }}>{renderData()}</Box>
+          <Box sx={{ ml: 30 }}>{renderData()}</Box>
           &#125;
         </Typography>
         <DownloadInfo
@@ -76,7 +76,7 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
               <Typography color='grey.600' variant='body2'>
                 * .d.ts
               </Typography>
-              <Box sx={{ my: 1, textAlign: 'center' }}>
+              <Box sx={{ my: 10, textAlign: 'center' }}>
                 <TsInterfaceIcons />
               </Box>
             </React.Fragment>
@@ -237,7 +237,7 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     return (
       <Typography variant='code'>
         {dataKey}&#58;&nbsp;&#123;
-        <Box sx={{ ml: 3 }}>{renderObject()}</Box>
+        <Box sx={{ ml: 30 }}>{renderObject()}</Box>
         &#125;&#59;
       </Typography>
     )

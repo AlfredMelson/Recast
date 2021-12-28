@@ -189,7 +189,7 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     if (childView)
       return (
         <React.Fragment>
-          <Stack direction='row' sx={{ ml: '-16px' }}>
+          <Stack direction='row' sx={{ ml: -16 }}>
             <IconButtonSxDataIcon
               onClick={() => {
                 setChildView(!childView)
@@ -202,7 +202,7 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
         </React.Fragment>
       )
     return (
-      <Stack direction='row' sx={{ ml: '-16px' }}>
+      <Stack direction='row' sx={{ ml: -16 }}>
         <IconButtonSxDataIcon
           onClick={() => {
             setChildView(!childView)

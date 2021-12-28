@@ -56,7 +56,7 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
         onClick={(): void => setReveal(!reveal)}
         sx={{
           transform: reveal ? 'rotate(90deg)' : 'rotate(0deg)',
-          mr: 1,
+          mr: 10,
         }}>
         <KeyboardArrowRightIcon />
       </IconButtonSxApiIcons>
@@ -103,7 +103,7 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
 
   return (
     <FadeAnimation>
-      <PaperSx sx={{ pl: 3, pr: 7 }}>
+      <PaperSx sx={{ pl: 30, pr: 70 }}>
         {renderEditResponseContent()}
         <AsideEditInfo />
       </PaperSx>

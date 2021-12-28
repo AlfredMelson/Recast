@@ -33,7 +33,7 @@ export default function Section({
           : {
               bgcolor: theme => map[bg][theme.palette.mode],
             }),
-        py: { xs: 4, sm: 6, md: 8 },
+        py: { xs: 40, sm: 60, md: 80 },
         overflow: 'hidden',
         ...props.sx,
       }}>

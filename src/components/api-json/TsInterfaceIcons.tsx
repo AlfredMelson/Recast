@@ -86,7 +86,7 @@ export function TsInterfaceIcons() {
 
   return (
     <ButtonGroupSxTsInterface>
-      <Box sx={{ position: 'relative', pr: 0.5 }}>
+      <Box sx={{ position: 'relative', pr: 5 }}>
         <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy interface'}>
           <IconButtonSxTsInterface onClick={handleJsonCopy}>
             {!loadingCopy && !successCopy ? (
@@ -100,7 +100,7 @@ export function TsInterfaceIcons() {
         </ToolTipSx>
         {loadingCopy && <SxCircularProgress size='20px' color='blue' />}
       </Box>
-      <Box sx={{ position: 'relative', pl: 0.5 }}>
+      <Box sx={{ position: 'relative', pl: 5 }}>
         <ToolTipSx tooltipTitle={'Download interface'}>
           <IconButtonSxTsInterface onClick={handleDownload}>
             {!loadingDownload && !successDownload ? (

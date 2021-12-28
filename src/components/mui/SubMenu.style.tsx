@@ -2,6 +2,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { Link as MuiLink } from '@mui/material'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 
 type SubMenuAlias = {
   icon: React.ReactElement
@@ -20,13 +21,12 @@ export const SubMenu = React.forwardRef<HTMLAnchorElement, SubMenuAlias>(functio
       href={href}
       ref={ref}
       sx={{
+        py: 20,
         display: 'flex',
         alignItems: 'center',
-        py: 2,
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[700] : lightGrey[300]),
         '&:hover, & .Mui-focused': {
-          // backgroundColor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'grey.50'),
-          // bgcolor: theme => (theme.palette.mode === 'dark' ? '#0D0D0D' : grey[100]),
-          bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.800' : 'grey.400'),
+          bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[600] : lightGrey[400]),
           outline: 'none',
           '@media (hover: none)': {
             backgroundColor: 'initial',
@@ -35,7 +35,7 @@ export const SubMenu = React.forwardRef<HTMLAnchorElement, SubMenuAlias>(functio
         },
       }}
       {...props}>
-      <Box sx={{ px: 2 }}>{icon}</Box>
+      <Box sx={{ px: 20 }}>{icon}</Box>
       <Box>
         <Typography color='text.primary' variant='body2' fontWeight={600}>
           {name}

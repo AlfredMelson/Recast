@@ -32,12 +32,12 @@ export function AppFooter() {
         }}>
         <div>
           <SvgJsonLogo width={160} />
-          <Typography gutterBottom variant='body2' fontWeight='bold' sx={{ pt: 2 }}>
+          <Typography gutterBottom variant='body2' fontWeight='bold' sx={{ pt: 20 }}>
             edit and visualize JSON
           </Typography>
 
-          <Box sx={{ py: { xs: 2, sm: 0 } }}>
-            <Stack spacing={2} direction='row'>
+          <Box sx={{ py: { xs: 20, sm: 0 } }}>
+            <Stack spacing={20} direction='row'>
               <IconButton
                 target='_blank'
                 rel='noopener noreferrer'

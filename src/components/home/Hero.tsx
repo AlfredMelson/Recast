@@ -38,11 +38,11 @@ export default function Hero() {
     <HeroContainer
       left={
         <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-          <Typography variant='h1' sx={{ my: 2, maxWidth: 500 }}>
+          <Typography variant='h1' sx={{ my: 20, maxWidth: 500 }}>
             Visualize and recast <GradientText>JSON</GradientText>
           </Typography>
           {/* &nbsp;UI */}
-          <Typography color='text.secondary' sx={{ mb: 3, maxWidth: 436 }}>
+          <Typography color='text.secondary' sx={{ mb: 30, maxWidth: 436 }}>
             JavaScript Object Notation, a lightweight data-interchange format that is easy for
             humans to understand, for machines to parse and is programming language independent.
           </Typography>
@@ -75,7 +75,7 @@ export default function Hero() {
         <React.Fragment>
           <div>
             {isMdUp && (
-              <Stack spacing={4} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}></Stack>
+              <Stack spacing={40} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}></Stack>
             )}
           </div>
         </React.Fragment>

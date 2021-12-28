@@ -48,7 +48,7 @@ export function MinifyDialog() {
       scroll='paper'>
       <HeaderStyle>
         <Container maxWidth='xl' sx={{ display: 'flex', alignItems: 'center', minHeight: 64 }}>
-          <Box aria-label='Go to homepage' sx={{ lineHeight: 0, mr: 2, cursor: 'pointer' }}>
+          <Box aria-label='Go to homepage' sx={{ lineHeight: 0, mr: 20, cursor: 'pointer' }}>
             <MuiLink
               onClick={() => {
                 setMinifyDialogOpen(false)

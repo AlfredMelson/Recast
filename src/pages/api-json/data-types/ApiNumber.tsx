@@ -42,7 +42,7 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
   }
 
   return (
-    <Box sx={{ ml: 4.8, cursor: 'pointer' }}>
+    <Box sx={{ ml: 48, cursor: 'pointer' }}>
       <ApiEditHighlighter selected={selectedElement === index} direction='row'>
         {selectedElement === index ? (
           <Stack direction='row' justifyContent='center' alignItems='flex-end'>
@@ -64,7 +64,7 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
                       theme.palette.mode === 'dark'
                         ? theme.palette.grey[200]
                         : theme.palette.grey[900],
-                    mr: 0.5,
+                    mr: 5,
                     '&:hover': {
                       color: theme => (theme.palette.mode === 'dark' ? green[500] : green[600]),
                     },

@@ -102,7 +102,7 @@ export function MinifyIcons() {
 
   return (
     <ToggleButtonGroupSx>
-      <Box sx={{ position: 'relative', pl: 0.5 }}>
+      <Box sx={{ position: 'relative', pl: 5 }}>
         <ToolTipSx tooltipTitle={minifiedCopy ? 'Copied' : 'Copy minified json'}>
           <IconButtonSxAppBar
             id='copy-minified-to-clipboard'
@@ -133,7 +133,7 @@ export function MinifyIcons() {
         </ToolTipSx>
         {loadingDownload && <SxCircularProgress size='20px' color='green' />}
       </Box>
-      <Box sx={{ position: 'relative', pr: 0.5 }}>
+      <Box sx={{ position: 'relative', pr: 5 }}>
         <ToolTipSx tooltipTitle={'Close'}>
           <IconButtonSxAppBar
             onClick={() => {

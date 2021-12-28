@@ -24,7 +24,7 @@ export function TreeViewContainer({
         transition: '0.3s',
       }}>
       <Grid container alignItems='flex-start' wrap='nowrap' sx={{ height: '100%', mx: 'auto' }}>
-        <Grid item md={7} lg={6} sx={{ mt: 1 }}>
+        <Grid item md={7} lg={6} sx={{ mt: 10 }}>
           {left}
         </Grid>
         <Grid

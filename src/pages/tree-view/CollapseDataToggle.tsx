@@ -16,7 +16,7 @@ export function CollapseDataToggle() {
   }
 
   return (
-    <Box sx={{ mt: 1 }}>
+    <Box sx={{ mt: 10 }}>
       <ButtonSxDataToggle disabled={treeViewExpansion.length === 0} onClick={handleCollapse}>
         {treeViewExpansion.length !== 0 && 'Collapse all'}
       </ButtonSxDataToggle>

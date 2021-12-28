@@ -22,7 +22,7 @@ export default function SectionHeadline({ overline, title, description }: Sectio
         component='h2'
         fontWeight='bold'
         variant='body2'
-        sx={{ mb: 1 }}>
+        sx={{ mb: 10 }}>
         {overline}
       </Typography>
       {typeof title === 'string' ? (
@@ -33,7 +33,7 @@ export default function SectionHeadline({ overline, title, description }: Sectio
         title
       )}
       {description && (
-        <Typography color={descriptionColor} sx={{ mt: 1, mb: 2, maxWidth: 450 }}>
+        <Typography color={descriptionColor} sx={{ mt: 10, mb: 20, maxWidth: 450 }}>
           {description}
         </Typography>
       )}

@@ -28,7 +28,7 @@ export default function ArrowButton({
           borderColor: theme => (theme.palette.mode === 'dark' ? 'primary.700' : 'grey.300'),
         },
         '& + .MuiIconButton-root': {
-          ml: 2,
+          ml: 20,
         },
         ...props.sx,
       }}>

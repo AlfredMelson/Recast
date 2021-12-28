@@ -1,7 +1,7 @@
 import Tab from '@mui/material/Tab'
 import { styled } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import * as React from 'react'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 
 /**
  * @name TabSx
@@ -36,16 +36,17 @@ export const TabSx = styled(
 )(({ theme }) => ({
   ...theme.typography.body2,
   textTransform: 'none',
-  fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
   minWidth: '130px',
   height: '50px',
   minHeight: '50px',
-  paddingLeft: theme.spacing(1),
-  paddingRight: theme.spacing(1),
+  paddingLeft: theme.spacing(10),
+  paddingRight: theme.spacing(10),
   paddingBottom: theme.spacing(0),
   paddingTop: theme.spacing(0),
-  color: theme.palette.mode === 'dark' ? grey[400] : grey[700],
+  color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
+  transitionProperty: 'all',
+  transitionDuration: '300ms',
   '&:hover, &.Mui-selected': {
-    color: theme.palette.mode === 'dark' ? grey[50] : '#000000',
+    color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
   },
 }))

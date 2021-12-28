@@ -9,7 +9,7 @@ export default (function More(props: ButtonBaseProps) {
     <ButtonBase
       {...props}
       sx={{
-        p: 2,
+        p: 20,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
@@ -29,7 +29,7 @@ export default (function More(props: ButtonBaseProps) {
         },
         ...props.sx,
       }}>
-      <Box sx={{ mr: 1, px: '3px', lineHeight: 0 }}>
+      <Box sx={{ mr: 10, px: 30, lineHeight: 0 }}>
         <AddCircleOutlineRounded color='primary' />
       </Box>
       <Typography color='primary.main' variant='body2' fontWeight='bold'>

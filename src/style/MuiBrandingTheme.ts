@@ -54,6 +54,60 @@ declare module '@mui/material/Typography' {
 
 const theme = createTheme()
 
+// const theme = createTheme({
+//   palette: {
+//     light: {
+//       pink: {
+//         50: '#ffeff7',
+//         100: '#ffd3eb',
+//         200: '#ffadda',
+//         300: '#ff80c8',
+//         400: '#e85aad',
+//         500: '#bf3989',
+//         600: '#99286e',
+//         700: '#772057',
+//         800: '#611347',
+//         900: '#4d0336',
+//       },
+//     },
+//   },
+// })
+
+// const getDesignTokens = (mode: PaletteMode) => ({
+//   palette: {
+//     mode,
+//     ...(mode === 'light'
+//       ? {
+//           pink: {
+//             50: '#ffeff7',
+//             100: '#ffd3eb',
+//             200: '#ffadda',
+//             300: '#ff80c8',
+//             400: '#e85aad',
+//             500: '#bf3989',
+//             600: '#99286e',
+//             700: '#772057',
+//             800: '#611347',
+//             900: '#4d0336',
+//           },
+//         }
+//       : {
+//           pink: {
+//             50: '#ffdaec',
+//             100: '#ffbedd',
+//             200: '#ff9bce',
+//             300: '#f778ba',
+//             400: '#db61a2',
+//             500: '#bf4b8a',
+//             600: '#9e3670',
+//             700: '#7d2457',
+//             800: '#5e103e',
+//             900: '#42062a',
+//           },
+//         }),
+//   },
+// })
+
 export const lightPink = {
   50: '#ffeff7',
   100: '#ffd3eb',
@@ -305,6 +359,31 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
           primary: darkEnds[50],
           secondary: darkEnds[200],
         },
+        primary: {
+          main: darkBlue[500],
+        },
+        success: {
+          main: darkGreen[600],
+        },
+        error: {
+          main: darkYellow[300],
+        },
+        warning: {
+          main: darkRed[700],
+        },
+        divider: darkGrey[700],
+        svgBg: {
+          base: darkGrey[400],
+          active: darkGrey[400],
+        },
+        svgFilled: {
+          base: darkGrey[800],
+          active: darkBlue[300],
+        },
+        svgStroke: {
+          base: darkGrey[600],
+          active: darkGrey[800],
+        },
       }),
       ...(mode === 'light' && {
         background: {
@@ -314,59 +393,40 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
           primary: lightGrey[900],
           secondary: lightGrey[800],
         },
-      }),
-      divider: mode === 'dark' ? darkGrey[700] : lightGrey[200],
-      primary: {
-        ...(mode === 'dark' && {
-          main: darkBlue[500],
-        }),
-        ...(mode === 'light' && {
+        primary: {
           main: lightBlue[400],
-        }),
-      },
-      error: {
-        ...(mode === 'dark' && {
-          main: darkYellow[300],
-        }),
-        ...(mode === 'light' && {
-          main: lightYellow[300],
-        }),
-      },
-      success: {
-        ...(mode === 'dark' && {
-          main: darkGreen[600],
-        }),
-        ...(mode === 'light' && {
+        },
+        success: {
           main: lightGreen[400],
-        }),
-      },
-      svgBg: {
-        base: mode === 'dark' ? darkGrey[400] : lightGrey[50],
-        active: mode === 'dark' ? darkGrey[400] : lightGrey[50],
-      },
-      svgFilled: {
-        base: mode === 'dark' ? darkGrey[800] : lightGrey[500],
-        active: mode === 'dark' ? darkBlue[300] : lightBlue[500],
-      },
-      svgStroke: {
-        base: mode === 'dark' ? darkGrey[600] : lightGrey[50],
-        active: mode === 'dark' ? darkGrey[800] : lightGrey[200],
-      },
-
-      warning: {
-        ...(mode === 'dark' && {
-          main: darkRed[700],
-        }),
-        ...(mode === 'light' && {
+        },
+        error: {
+          main: lightYellow[300],
+        },
+        warning: {
           main: lightRed[500],
-        }),
-      },
+        },
+        divider: lightGrey[200],
+        svgBg: {
+          base: lightGrey[50],
+          active: lightGrey[50],
+        },
+        svgFilled: {
+          base: lightGrey[500],
+          active: lightBlue[500],
+        },
+        svgStroke: {
+          base: lightGrey[50],
+          active: lightGrey[200],
+        },
+      }),
     },
     shape: {
-      borderRadius: 1,
+      borderRadius: 3,
     },
-    spacing: 10,
+    spacing: 1,
     spacingIcons: 2,
+    transitions: '300ms',
+
     typography: {
       fontFamily: 'var(--text-font-family)',
       h1: {
@@ -414,6 +474,7 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       },
       body2: {
         fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
+        fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
         lineHeight: 21 / 14,
         letterSpacing: 0,
       },
@@ -464,8 +525,8 @@ export function muiThemedComponents(theme: Theme) {
         styleOverrides: {
           root: {
             [theme.breakpoints.up('md')]: {
-              paddingLeft: theme.spacing(2),
-              paddingRight: theme.spacing(2),
+              paddingLeft: theme.spacing(20),
+              paddingRight: theme.spacing(20),
             },
           },
         },
@@ -474,7 +535,7 @@ export function muiThemedComponents(theme: Theme) {
         styleOverrides: {
           root: {
             color: theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[50],
-            margin: theme.spacing(0.5, 1),
+            margin: theme.spacing(5, 10),
           },
         },
       },
@@ -557,7 +618,7 @@ export function muiThemedComponents(theme: Theme) {
       MuiTableCell: {
         styleOverrides: {
           root: {
-            padding: theme.spacing(1, 2),
+            padding: theme.spacing(10, 20),
             borderColor: theme.palette.divider,
           },
           head: {

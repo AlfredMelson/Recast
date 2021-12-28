@@ -63,7 +63,7 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
       <PaperSx>
         <Typography variant='code'>
           {`declare module namespace {`}
-          <Box sx={{ ml: 3 }}>{renderData()}</Box>
+          <Box sx={{ ml: 30 }}>{renderData()}</Box>
           {'}'}
         </Typography>
         {/* <DownloadInfo appeared={true} title={`${formLastSegment}Props`} /> */}
@@ -77,7 +77,7 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
               <Typography color='grey.600' variant='body2'>
                 * .d.ts
               </Typography>
-              <Box sx={{ my: 1, textAlign: 'center' }}>
+              <Box sx={{ my: 10, textAlign: 'center' }}>
                 <TsInterfaceIcons />
               </Box>
             </React.Fragment>
@@ -242,7 +242,7 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     return (
       <Typography variant='code'>
         export interface&nbsp;{dataKey}&nbsp;&#123;
-        <Box sx={{ ml: 3 }}>{renderObject()}</Box>
+        <Box sx={{ ml: 30 }}>{renderObject()}</Box>
         &#125;
       </Typography>
     )

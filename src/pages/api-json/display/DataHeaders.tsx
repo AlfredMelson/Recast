@@ -156,7 +156,7 @@ function JsonObject({ value, dataKey }: ApiObjectAlias) {
     return (
       <Typography variant='code'>
         {`${dataKey}: {`}
-        <Box sx={{ ml: 3 }}>{renderObject()}</Box>
+        <Box sx={{ ml: 30 }}>{renderObject()}</Box>
         {'};'}
       </Typography>
     )

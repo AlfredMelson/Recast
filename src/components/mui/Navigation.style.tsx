@@ -28,11 +28,11 @@ export const Navigation = styled('nav')(({ theme }) => ({
       textDecoration: 'none',
       textTransform: 'none',
       fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-      color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
+      color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
       transitionProperty: 'all',
-      transitionDuration: '300ms',
+      transitionDuration: theme.transitions,
       '&:hover, & .Mui-focused, & .Mui-selected': {
-        color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[700],
+        color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
         '@media (hover: none)': {
           backgroundColor: 'initial',
         },

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import TextField, { TextFieldProps } from '@mui/material/TextField'
 import { OutlinedInputProps } from '@mui/material/OutlinedInput'
+import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 
 /**
  * @name TextfieldfAdornmentIconSx
@@ -15,7 +16,7 @@ import { OutlinedInputProps } from '@mui/material/OutlinedInput'
  */
 export const TextfieldfAdornmentIconSx = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
-  padding: theme.spacing(0.5),
+  padding: theme.spacing(5),
   '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
   },
@@ -31,13 +32,14 @@ export const TextfieldfAdornmentIconSx = styled(IconButton)(({ theme }) => ({
  */
 
 export const TextFieldButtonSx = styled(Button)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800],
+  // color: theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800],
+  color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
   backgroundColor: 'transparent',
-  minWidth: theme.spacing(7),
-  transitionDuration: '150ms',
+  minWidth: theme.spacing(70),
   transitionProperty: 'color',
+  transitionDuration: '300ms',
   '&:hover, & .Mui-focused': {
-    color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[950],
+    color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
     backgroundColor: 'transparent',
   },
 }))

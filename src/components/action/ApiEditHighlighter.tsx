@@ -12,7 +12,7 @@ export default function ApiEditHighlighter({
     <Stack
       sx={{
         transitionProperty: 'all',
-        transitionDuration: '250ms',
+        transitionDuration: '300ms',
         ...(selected && {
           paddingBottom: '10px',
           // borderRadius: '4px',

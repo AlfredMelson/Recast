@@ -93,7 +93,7 @@ export function DrawerIcons() {
 
   return (
     <ToggleButtonGroupSx>
-      <Box sx={{ position: 'relative', pl: 0.5 }}>
+      <Box sx={{ position: 'relative', pl: 5 }}>
         <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
           <IconButtonSxAppBar
             disabled={localEditorText.length === 0 ? true : false}
@@ -147,7 +147,7 @@ export function DrawerIcons() {
           </IconButtonSxAppBar>
         </ToolTipSx>
       </Box>
-      <Box sx={{ position: 'relative', pr: 0.5 }}>
+      <Box sx={{ position: 'relative', pr: 5 }}>
         <ToolTipSx tooltipTitle={'Close'}>
           <IconButtonSxAppBar
             onClick={() => {

@@ -93,7 +93,7 @@ export default function PointerContainer({
                 bgcolor: '#0072E5',
                 borderTopLeftRadius: '2px',
                 borderTopRightRadius: '2px',
-                px: 0.5,
+                px: 5,
                 position: 'absolute',
                 top: 0,
                 transform: 'translateY(-100%)',
