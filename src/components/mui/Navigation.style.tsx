@@ -26,12 +26,13 @@ export const Navigation = styled('nav')(({ theme }) => ({
     ...theme.typography.body2,
     '& > a, & > div': {
       textDecoration: 'none',
-      textTransform: 'none',
       fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
       color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
-      transitionProperty: 'all',
-      transitionDuration: theme.transitions,
-      '&:hover, & .Mui-focused, & .Mui-selected': {
+      transition: theme.transitions.create(['color', 'transform'], {
+        duration: theme.transitions.duration.standard,
+        easing: theme.transitions.easing.easeInOut,
+      }),
+      '&:hover': {
         color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
         '@media (hover: none)': {
           backgroundColor: 'initial',

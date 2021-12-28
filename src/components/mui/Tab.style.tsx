@@ -44,8 +44,10 @@ export const TabSx = styled(
   paddingBottom: theme.spacing(0),
   paddingTop: theme.spacing(0),
   color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
-  transitionProperty: 'all',
-  transitionDuration: '300ms',
+  transition: theme.transitions.create(['color', 'transform'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '&:hover, &.Mui-selected': {
     color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
   },
