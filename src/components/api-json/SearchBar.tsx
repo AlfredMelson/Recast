@@ -101,11 +101,10 @@ export default function Searchbar() {
   return (
     <Paper
       sx={{
-        height: '50px',
+        height: 50,
         width: 700,
-        p: '0 0 0 8px',
+        p: '0 0 0 8',
         bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
-        borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',
       }}>
@@ -116,7 +115,7 @@ export default function Searchbar() {
           ml: 10,
           flex: 1,
           fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
-          minHeight: '32px',
+          minHeight: 32,
         }}
         // placeholder={selectedApi === '' && 'Enter API url'}
         value={selectedApi !== '' ? selectedApi : ''}

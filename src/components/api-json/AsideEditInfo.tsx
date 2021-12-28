@@ -16,7 +16,7 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
 
   const selectedElementCard = () => {
     return (
-      <Card sx={{ minWidth: 275, borderRadius: '4px' }}>
+      <Card sx={{ minWidth: 275 }}>
         <CardActionArea>
           <CardContent>
             <Typography variant='h6' component='div' gutterBottom>
@@ -49,20 +49,22 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
       sx={{
         position: 'absolute',
         bottom: 0,
-        transform: selectedElement === null ? 'translateX(100%)' : 'translateX(0)',
-        transition: '0.5s',
-        transitionDelay: '0.5s',
         top: 0,
         right: 0,
         px: 20,
         pt: 10,
         pb: 20,
+        transform: selectedElement === null ? 'translateX(100%)' : 'translateX(0)',
+        transition: theme =>
+          theme.transitions.create(['transform'], {
+            duration: theme.transitions.duration.standard,
+            easing: theme.transitions.easing.easeInOut,
+          }),
+        transitionDelay: '0.5s',
         bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[800] : lightBlue[300]),
-        minWidth: '200px',
-        zIndex: 1,
-        borderLeft: '1px solid',
-        borderColor: 'divider',
-        borderRadius: '0 0 4px 0',
+        minWidth: 200,
+        borderRadius: '0 0 3px 0',
+        boxShadow: 1,
         ...props.sx,
       }}>
       <Box
@@ -76,7 +78,11 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
           sx={{
             position: 'sticky',
             zIndex: 2,
-            transition: '0.3s',
+            transition: theme =>
+              theme.transitions.create(['transform'], {
+                duration: theme.transitions.duration.standard,
+                easing: theme.transitions.easing.easeInOut,
+              }),
             left: 10,
             top: 0,
             mb: 20,
@@ -95,7 +101,11 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
           sx={{
             position: 'sticky',
             zIndex: 2,
-            transition: '0.3s',
+            transition: theme =>
+              theme.transitions.create(['transform'], {
+                duration: theme.transitions.duration.standard,
+                easing: theme.transitions.easing.easeInOut,
+              }),
             left: 10,
             top: 0,
             mt: 20,

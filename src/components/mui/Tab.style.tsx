@@ -36,9 +36,9 @@ export const TabSx = styled(
 )(({ theme }) => ({
   ...theme.typography.body2,
   textTransform: 'none',
-  minWidth: '130px',
-  height: '50px',
-  minHeight: '50px',
+  minWidth: 130,
+  height: 50,
+  minHeight: 50,
   paddingLeft: theme.spacing(10),
   paddingRight: theme.spacing(10),
   paddingBottom: theme.spacing(0),

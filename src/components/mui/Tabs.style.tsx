@@ -31,8 +31,8 @@ export const TabsSx = styled((props: TabsSxAlias) => (
     {...props}
   />
 ))(({ theme }) => ({
-  maxHeight: '40px',
-  borderRadius: '4px 4px 0 0',
+  maxHeight: 40,
+  borderRadius: '3px 3px 0 0',
   background: theme.palette.mode === 'dark' ? darkGrey[800] : lightGrey[200],
   '.Mui-selected': {
     background: theme.palette.mode === 'dark' ? darkGrey[700] : lightGrey[300],

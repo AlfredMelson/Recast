@@ -13,8 +13,10 @@ import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
 export const IconButtonSxColorMode = styled(IconButton)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
   padding: theme.spacing(10),
-  transitionProperty: 'all',
-  transitionDuration: '300ms',
+  transition: theme.transitions.create(['color'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '&:hover, & .Mui-focused': {
     color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
   },
@@ -34,8 +36,10 @@ export const IconButtonSxApiIcons = styled((props: IconButtonProps) => <IconButt
     color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
     margin: theme.spacing(0, 5),
     padding: theme.spacing(0),
-    transitionProperty: 'color',
-    transitionDuration: '150ms',
+    transition: theme.transitions.create(['color'], {
+      duration: theme.transitions.duration.standard,
+      easing: theme.transitions.easing.easeInOut,
+    }),
     '&:hover, & .Mui-focused': {
       color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
     },
@@ -62,8 +66,10 @@ export const IconButtonSxApiEdit = styled(IconButton)(({ theme }) => ({
   },
   color: theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.grey[700],
   padding: theme.spacing(5),
-  transitionProperty: 'color',
-  transitionDuration: '150ms',
+  transition: theme.transitions.create(['color'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '&:hover, .Mui-focused': {
     color: theme.palette.mode === 'dark' ? theme.palette.grey[50] : theme.palette.grey[900],
   },
@@ -97,6 +103,10 @@ export const IconButtonSxTsInterface = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(10),
   backgroundColor: 'primaryDark.500',
+  transition: theme.transitions.create(['color', 'backgroundColor'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '&:hover, &.Mui-focused': {
     backgroundColor: 'primaryDark.600',
     color: '#007FFF',
@@ -114,6 +124,10 @@ export const IconButtonSxTsInterface = styled(IconButton)(({ theme }) => ({
 export const IconButtonSx = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(10),
+  transition: theme.transitions.create(['color'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '&:hover, & .Mui-focused': {
     color: '#007FFF',
   },
@@ -131,8 +145,12 @@ export const IconButtonSx = styled(IconButton)(({ theme }) => ({
  * @return icon color mode style for light and dark mode
  */
 export const IconButtonSxDataIcon = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.text.secondary,
   padding: theme.spacing(2.5),
+  color: theme.palette.text.secondary,
+  transition: theme.transitions.create(['color'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '&:hover, & .Mui-focused': {
     color: '#007FFF',
   },

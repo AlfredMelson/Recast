@@ -22,7 +22,6 @@ const Anchor = styled('a')<{ component?: React.ElementType; noLinkStyle?: boolea
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(10),
-    borderRadius: theme.shape.borderRadius,
     transition: theme.transitions.create('background'),
     '&:hover, & .Mui-focused': {
       backgroundColor:

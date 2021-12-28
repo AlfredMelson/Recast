@@ -360,16 +360,22 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
           secondary: darkEnds[200],
         },
         primary: {
-          main: darkBlue[500],
+          main: darkGrey[200],
         },
-        success: {
-          main: darkGreen[600],
+        secondary: {
+          main: darkBlue[200],
         },
         error: {
           main: darkYellow[300],
         },
         warning: {
           main: darkRed[700],
+        },
+        info: {
+          main: darkRed[700],
+        },
+        success: {
+          main: darkGreen[600],
         },
         divider: darkGrey[700],
         svgBg: {
@@ -394,16 +400,22 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
           secondary: lightGrey[800],
         },
         primary: {
-          main: lightBlue[400],
+          main: lightGrey[800],
         },
-        success: {
-          main: lightGreen[400],
+        secondary: {
+          main: lightBlue[800],
         },
         error: {
           main: lightYellow[300],
         },
         warning: {
           main: lightRed[500],
+        },
+        info: {
+          main: lightRed[400],
+        },
+        success: {
+          main: lightGreen[400],
         },
         divider: lightGrey[200],
         svgBg: {
@@ -428,29 +440,36 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
     transitions: {
       duration: {
         shortest: 150,
-        shorter: 200,
-        short: 250,
         standard: 300,
-        complex: 375,
+        complex: 500,
         // recommended when something is entering screen
         enteringScreen: 225,
         // recommended when something is leaving screen
         leavingScreen: 195,
       },
       easing: {
-        // This is the most common easing curve.
+        // most common easing curve
         easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        // Objects enter the screen at full velocity from off-screen and
-        // slowly decelerate to a resting point.
+        // enter at full velocity and slowly decelerate to a resting point
         easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
-        // Objects leave the screen at full velocity. They do not decelerate when off-screen.
+        // leave at full velocity without decelerating
         easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
-        // The sharp curve is used by objects that may return to the screen at any time.
+        // sharp curve is used by objects that may return at any time
         sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
       },
     },
     typography: {
-      fontFamily: 'var(--text-font-family)',
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
       h1: {
         fontSize: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4.5rem)',
         letterSpacing: `${round(-2 / 72)}em`,
@@ -508,10 +527,10 @@ export const muiDesignTokens = (mode: 'light' | 'dark') =>
       },
       code: {
         display: 'block',
-        fontFamily: 'var(--code-font-family)',
         fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
         lineHeight: 1.7,
         letterSpacing: 0,
+        fontFamily: ['"Fira Code"', '"monospace"'].join(','),
       },
     },
   } as ThemeOptions)
@@ -539,8 +558,6 @@ export function muiThemedComponents(theme: Theme) {
         },
         root: {
           background: theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100],
-          borderRadius: '4px',
-          boxShadow: 0,
         },
       },
       MuiContainer: {
@@ -668,8 +685,6 @@ export function muiThemedComponents(theme: Theme) {
         },
         root: {
           background: theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[100],
-          borderRadius: '4px',
-          boxShadow: 0,
         },
       },
       MuiTooltip: {

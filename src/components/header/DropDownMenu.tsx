@@ -116,7 +116,6 @@ export function DropDownMenu() {
             <Paper
               variant='outlined'
               sx={{
-                borderRadius: '4px',
                 minWidth: 400,
                 overflow: 'hidden',
                 borderColor: 'transparent',

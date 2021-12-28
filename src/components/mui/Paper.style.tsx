@@ -12,7 +12,7 @@ import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
  * @return styled API Tab Panel
  */
 const PaperSxStyle = styled(Paper)(({ theme }) => ({
-  borderRadius: '0 0 4px 4px',
+  borderRadius: '0 0 3px 3px',
   paddingTop: theme.spacing(30),
   paddingLeft: theme.spacing(50),
   paddingBottom: theme.spacing(40),
@@ -53,7 +53,6 @@ export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
  * @return styled Treeview
  */
 const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
-  borderRadius: '4px',
   paddingTop: theme.spacing(30),
   paddingLeft: theme.spacing(50),
   paddingBottom: theme.spacing(40),

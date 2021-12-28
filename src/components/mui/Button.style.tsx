@@ -13,11 +13,10 @@ export const ButtonSxDataToggle = styled(Button)(({ theme }) => ({
   ...theme.typography.body2,
   textTransform: 'none',
   fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-  minWidth: '110px',
+  minWidth: 110,
   color: theme.palette.text.secondary,
   textDecoration: 'none',
   padding: theme.spacing(10),
-  borderRadius: theme.shape.borderRadius,
   '&:hover, & .Mui-focused': {
     color: '#007FFF',
     backgroundColor: 'transparent',
@@ -43,6 +42,6 @@ export const ButtonSxApiItem = styled((props: ButtonProps) => <Button size='smal
       paddingBottom: 0,
     },
     fontWeight: 400,
-    '&:hover': { borderRadius: '4px', backgroundColor: '#000000' },
+    '&:hover': { backgroundColor: '#000000' },
   })
 )

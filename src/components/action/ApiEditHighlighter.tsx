@@ -15,7 +15,6 @@ export default function ApiEditHighlighter({
         transitionDuration: '300ms',
         ...(selected && {
           paddingBottom: '10px',
-          // borderRadius: '4px',
           // bgcolor: theme => (theme.palette.mode === 'dark' ? '#000000' : '#ffffff'),
         }),
         ...(!selected &&
