@@ -110,8 +110,7 @@ tbody[data-level='20'] tr {
 }
 
 .string-type {
-  color: var(--text-color-string);
-  font-size: var(--text-size-md);
+  color: #144ddb;
   padding-left: 1em;
 }
 .string-type img {
@@ -122,14 +121,13 @@ tbody[data-level='20'] tr {
   word-break: break-word;
 }
 .undefined {
-  color: var(--text-color-undefined);
+  color: #888888;
   padding-left: 1em;
 }
 .null {
-  color: var(--text-color-null);
+  color: #333333;
   font-style: italic;
-  font-weight: var(--text-weight-bold);
-  padding-left: var(--space);
+  font-weight: 600;
 }
 
 /* value-editor */

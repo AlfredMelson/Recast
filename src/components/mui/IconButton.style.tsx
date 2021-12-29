@@ -84,10 +84,14 @@ export const IconButtonSxApiEdit = styled(IconButton)(({ theme }) => ({
  * @return icon color mode style for light and dark mode
  */
 export const IconButtonSxAppBar = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.text.secondary,
   padding: theme.spacing(10),
-  '&:hover, & .Mui-focused': {
-    color: '#007FFF',
+  color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
+  transition: theme.transitions.create(['color'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
+  '&:hover': {
+    color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
   },
 }))
 

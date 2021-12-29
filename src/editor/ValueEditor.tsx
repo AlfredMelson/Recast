@@ -138,10 +138,8 @@ export function ValueEditor({ path, defaultValue, onCancel, onUpdate }: ValueEdi
           <Typography
             variant='body1'
             sx={{
-              paddingLeft: 'var(--space)',
-              color: 'var(--text-color-null)',
-              fontWeight: 'var(--text-weight-bold)',
-              fontStyle: 'italic',
+              paddingLeft: 1,
+              color: '#888888',
             }}>
             null
           </Typography>
@@ -156,10 +154,10 @@ export function ValueEditor({ path, defaultValue, onCancel, onUpdate }: ValueEdi
         <MenuItem value={DataType.Null}>Null</MenuItem>
       </Select>
       <ButtonGroup disableElevation={true} variant='outlined'>
-        <Button onClick={onOkClicked} sx={{ color: 'var(--c-icon-color-success)' }}>
+        <Button onClick={onOkClicked}>
           <CheckCircleIcon />
         </Button>
-        <Button onClick={onCancelClicked} sx={{ color: 'var(--c-icon-color-danger)' }}>
+        <Button onClick={onCancelClicked}>
           <CancelIcon />
         </Button>
       </ButtonGroup>

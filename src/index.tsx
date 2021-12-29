@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { RecoilRoot } from 'recoil'
+import CssBaseline from '@mui/material/CssBaseline'
 import App from './app'
 import MuiThemeProviderRoot from './style/MuiThemeProviderRoot'
 
@@ -13,6 +14,7 @@ const root = ReactDOM.createRoot(rootElement)
 // initial render
 root.render(
   <React.StrictMode>
+    <CssBaseline />
     <RecoilRoot>
       <MuiThemeProviderRoot>
         <App />
