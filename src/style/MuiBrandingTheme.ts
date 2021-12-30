@@ -275,7 +275,9 @@ export function muiThemedComponents(theme: Theme) {
         defaultProps: {
           disableElevation: true,
         },
-        styleOverrides: {},
+        text: {
+          textTransform: 'none',
+        },
       },
       MuiButtonBase: {
         defaultProps: {
@@ -332,6 +334,16 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
           },
+          input: {
+            '&:focus': {
+              backgroundColor: 'transparent',
+            },
+          },
+        },
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          root: {},
         },
       },
       MuiInputLabel: {

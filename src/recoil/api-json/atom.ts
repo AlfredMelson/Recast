@@ -55,9 +55,9 @@ export const userQuerySelector = selector({
  * const userTypedUrl  = useRecoilValue(userTypedUrlAtom)
  * const resetUserTypedUrl = useResetRecoilState(userTypedUrlAtom)
  */
-export const userTypedUrlAtom = atom<string | undefined>({
+export const userTypedUrlAtom = atom<string>({
   key: 'userTypedUrl',
-  default: undefined,
+  default: '',
 })
 
 /**

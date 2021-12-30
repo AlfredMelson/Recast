@@ -23,7 +23,7 @@ import {
 import { TextFieldButtonSx } from '../mui'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
-import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
+import { darkBlue, darkGrey, lightBlue, lightGrey } from '../../style/MuiBrandingTheme'
 import { selectedApiAtom, selectedApiProviderAtom } from './ApiUrlSelector'
 
 export default function Searchbar() {
@@ -32,8 +32,8 @@ export default function Searchbar() {
   // state when user submits user entered url
   const setUserSubmittedUrl = useSetRecoilState(userSubmittedUrlAtom)
   // user entered url is set on enter or submit
-  const handleTextFieldChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserTypedUrl(event.target.value)
+  const handleTextFieldChanges = event => {
+    setUserTypedUrl(event.target.value), setSelectedApi(event.target.value)
   }
   // reset textfield value to recoil stored default
   const resetUserTypedUrl = useResetRecoilState(userTypedUrlAtom)
@@ -45,15 +45,17 @@ export default function Searchbar() {
   const resetApiFullResponse = useResetRecoilState(apiFullResponseAtom)
 
   const resetApiProvider = useResetRecoilState(selectedApiProviderAtom)
+
+  const resetSelectedApi = useResetRecoilState(selectedApiAtom)
   // user requested url reset
 
-  const handleReset = () => {
-    resetUserTypedUrl()
-    resetUserSubmittedUrl()
-    resetApiData()
-    resetApiFullResponse()
-    resetApiProvider()
-  }
+  // const handleReset = () => {
+  //   resetUserTypedUrl()
+  //   resetUserSubmittedUrl()
+  //   resetApiData()
+  //   resetApiFullResponse()
+  //   resetApiProvider()
+  // }
   // useRef to avoid re-renders during button handler
   const interactionTimer = React.useRef<number>()
   // useEffect to handle side effect proceeding button handler
@@ -94,44 +96,69 @@ export default function Searchbar() {
   // value of data fetch
   const apiData = useRecoilValue(apiDataAtom)
 
-  const selectedApi = useRecoilValue(selectedApiAtom)
+  const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
+  console.log('selectedApi', selectedApi)
 
-  const inputField = React.useRef<HTMLInputElement>(null)
+  // const inputField = React.useRef<HTMLInputElement>(null)
+  // ref = { inputField }
 
   return (
     <Paper
       sx={{
         height: 50,
         width: 700,
-        p: '0 0 0 8',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
         display: 'flex',
         alignItems: 'center',
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        border: '1px solid',
+        borderColor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        transition: theme =>
+          theme.transitions.create(['all'], {
+            duration: theme.transitions.duration.standard,
+            easing: theme.transitions.easing.easeInOut,
+          }),
+        '&:hover ': {
+          border: '1px solid',
+          borderColor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400]),
+        },
       }}>
       <InputBase
         autoFocus
-        ref={inputField}
+        autoComplete='off'
         sx={{
           ml: 10,
           flex: 1,
           fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
           minHeight: 32,
         }}
-        // placeholder={selectedApi === '' && 'Enter API url'}
-        value={selectedApi !== '' ? selectedApi : ''}
+        placeholder='Enter API url'
+        value={selectedApi !== '' ? selectedApi : userTypedUrl}
+        // onChange={event => {
+        //   setUserTypedUrl(event.target.value), setSelectedApi(event.target.value)
+        // }}
         onChange={handleTextFieldChanges}
       />
-      {Object.getOwnPropertyNames(apiData).length !== 0 && (
-        <FadeDelay delay={1000}>
-          <TextFieldButtonSx aria-label='clear url' onClick={handleReset} sx={{ mr: 5 }}>
-            <Typography variant='button'>Clear</Typography>
-          </TextFieldButtonSx>
-        </FadeDelay>
-      )}
+      <FadeDelay delay={1000}>
+        <TextFieldButtonSx
+          aria-label='clear url'
+          onClick={event => {
+            event.preventDefault()
+            resetUserTypedUrl()
+            resetUserSubmittedUrl()
+            resetApiData()
+            resetApiFullResponse()
+            resetApiProvider()
+            resetSelectedApi()
+          }}
+          sx={{ mr: 5 }}
+          disabled={userTypedUrl.length === 0}>
+          <Typography variant='button'>Clear</Typography>
+        </TextFieldButtonSx>
+      </FadeDelay>
       <Box sx={{ position: 'relative' }}>
         <FadeDelay delay={400}>
           <TextFieldButtonSx
-            aria-label='toggle password visibility'
+            aria-label='fetch api'
             disabled={userTypedUrl === undefined}
             onClick={handleSubmitUrl}
             sx={{ mr: 10 }}>

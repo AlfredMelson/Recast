@@ -18,21 +18,14 @@ export function MinifyDialog() {
   const localEditorText = useRecoilValue(localEditorTextAtom)
   //store minified json in recoil
   const [minifiedText, setMinifiedText] = useRecoilState(minifiedTextAtom)
-
   //minify json - move to recoil
   React.useEffect(() => {
-    function Minify(text): string {
-      if (typeof JSON === 'undefined' || null) {
-        return text
-      } else {
-        try {
-          // const results = JSON.stringify(JSON.parse(text), null, 0)
-          const jsonObject = JSON.parse(text)
-          const results = JSON.stringify(jsonObject, null, 0)
-          setMinifiedText(results)
-        } catch (error) {
-          console.error('MinifyDialog Error', error)
-        }
+    function Minify(json: string) {
+      try {
+        const results = JSON.stringify(JSON.parse(json), null, 2)
+        setMinifiedText(results)
+      } catch (error) {
+        console.error('Minify Error', error)
       }
     }
     Minify(localEditorText)

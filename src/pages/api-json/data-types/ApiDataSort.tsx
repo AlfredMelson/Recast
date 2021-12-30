@@ -11,7 +11,7 @@ import { ApiNumber, ApiString, ApiBoolean, ApiArray, ApiFunction, ApiObject } fr
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
- * Hooks to manage state changes and notify components subscribing to re-render:
+ * @RecoilHooks to manage state changes and notify components subscribing to re-render:
  * const [currentData, setCurrentData] = useRecoilState(currentDataAtom)
  * const setCurrentData = useSetRecoilState(currentDataAtom)
  * const currentData = useRecoilValue(currentDataAtom)
@@ -30,7 +30,7 @@ export const currentDataAtom = atom<EditResponseAlias['data']>({
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
- * Hooks to manage state changes and notify components subscribing to re-render:
+ * @RecoilHooks  to manage state changes and notify components subscribing to re-render:
  * const [elementState, setElementState] = useRecoilState(elementState)
  * const setElementState = useSetRecoilState(elementState)
  * const elementState = useRecoilValue(elementState)

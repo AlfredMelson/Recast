@@ -40,6 +40,7 @@ export const ButtonSxApiItem = styled((props: ButtonProps) => <Button size='smal
       paddingRight: 0,
       paddingTop: 0,
       paddingBottom: 0,
+      textTransform: 'none',
     },
     fontWeight: 400,
     '&:hover': { backgroundColor: '#000000' },

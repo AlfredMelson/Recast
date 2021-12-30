@@ -1,10 +1,13 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import Paper from '@mui/material/Paper'
+import Box from '@mui/material/Box'
+import { RandomData } from '../../cms/verbiage'
+import { darkGrey, lightGrey, darkBlue, lightBlue } from '../../style/MuiBrandingTheme'
 
 /**
  * @name selectedApiProviderAtom
@@ -52,9 +55,32 @@ export function Provider() {
   }
 
   return (
-    <Box sx={{ minWidth: 160 }}>
+    <Paper
+      sx={{
+        height: 50,
+        px: 10,
+        display: 'flex',
+        alignItems: 'center',
+        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        border: '1px solid',
+        borderColor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        transition: theme =>
+          theme.transitions.create(['all'], {
+            duration: theme.transitions.duration.standard,
+            easing: theme.transitions.easing.easeInOut,
+          }),
+        '&:hover ': {
+          border: '1px solid',
+          borderColor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400]),
+        },
+      }}>
       <FormControl sx={{ minWidth: 160, my: 10 }}>
-        <Select id='demo-simple-select' value={selectedApiProvider} onChange={handleChange}>
+        <Select
+          autoWidth
+          disableUnderline={true}
+          id='provider-selector'
+          value={selectedApiProvider}
+          onChange={handleChange}>
           <MenuItem dense value='randomDataApi'>
             Random Data API
           </MenuItem>
@@ -63,7 +89,7 @@ export function Provider() {
           </MenuItem>
         </Select>
       </FormControl>
-    </Box>
+    </Paper>
   )
 }
 
@@ -72,11 +98,7 @@ export function ProviderApi() {
   // const setSelectedApi = useSetRecoilState(selectedApiAtom)
   const [providerUrl, setProviderUrl] = React.useState<string>('')
 
-  console.log('providerUrl', providerUrl)
-
-  const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
-
-  console.log('selectedApi', selectedApi)
+  const setSelectedApi = useSetRecoilState(selectedApiAtom)
 
   const baseUrl = 'https://random-data-api.com/api/'
 
@@ -85,62 +107,44 @@ export function ProviderApi() {
     setSelectedApi(`${baseUrl}${event.target.value}`)
   }
 
-  const data = [
-    { index: 0, name: '', url: '' },
-    { index: 1, name: 'Address', url: 'address/random_address' },
-    { index: 2, name: 'Appliance', url: 'appliance/random_appliance' },
-    { index: 3, name: 'App', url: 'app/random_app' },
-    { index: 4, name: 'Bank', url: 'bank/random_bank' },
-    { index: 5, name: 'Beer', url: 'beer/random_beer' },
-    { index: 6, name: 'Blood', url: 'blood/random_blood' },
-    { index: 7, name: 'Business Credit Card', url: 'business_credit_card/random_card' },
-    { index: 8, name: 'Cannabis', url: 'cannabis/random_cannabis' },
-    { index: 9, name: 'Code', url: 'code/random_code' },
-    { index: 10, name: 'Coffee', url: 'coffee/random_coffee' },
-    { index: 11, name: 'Commerce', url: 'commerce/random_commerce' },
-    { index: 12, name: 'Company', url: 'company/random_company' },
-    { index: 13, name: 'Computer', url: 'computer/random_computer' },
-    { index: 14, name: 'Crypto', url: 'crypto/random_crypto' },
-    { index: 15, name: 'CryptoCoin', url: 'crypto_coin/random_crypto_coin' },
-    { index: 16, name: 'Color', url: 'color/random_color' },
-    { index: 17, name: 'Dessert', url: 'dessert/random_dessert' },
-    { index: 18, name: 'Device', url: 'device/random_device' },
-    { index: 19, name: 'Food', url: 'food/random_food' },
-    { index: 20, name: 'Name', url: 'name/random_name' },
-    { index: 21, name: 'Hipster', url: 'hipster/random_hipster_stuff' },
-    { index: 22, name: 'Invoice', url: 'invoice/random_invoice' },
-    { index: 23, name: 'Users', url: 'users/random_user' },
-    { index: 24, name: 'Stripe', url: 'stripe/random_stripe' },
-    { index: 25, name: 'Subscrpiption', url: 'subscription/random_subscription' },
-    { index: 26, name: 'Vehicle', url: 'vehicle/random_vehicle' },
-    { index: 27, name: 'ID Number ', url: 'id_number/random_id_number' },
-    { index: 28, name: 'Internet Stuff', url: 'internet_stuff/random_internet_stuff' },
-    { index: 29, name: 'Lorem Ipsum ', url: 'lorem_ipsum/random_lorem_ipsum' },
-    { index: 30, name: 'Lorem Flickr ', url: 'lorem_flickr/random_lorem_flickr' },
-    { index: 31, name: 'Lorem Pixel ', url: 'lorem_pixel/random_lorem_pixel' },
-    { index: 32, name: 'Nation', url: 'nation/random_nation' },
-    { index: 33, name: 'Number', url: 'number/random_number' },
-    { index: 34, name: 'Phone Number ', url: 'phone_number/random_phone_number' },
-    { index: 35, name: 'Placeholdit', url: 'placeholdit/random_placeholdit' },
-    { index: 36, name: 'Restaurant', url: 'restaurant/random_restaurant' },
-  ]
-
   return (
-    <Box sx={{ minWidth: 160 }}>
+    <Box component='div'>
       {apiProvider !== '' && (
-        <FormControl sx={{ minWidth: 160, my: 10 }}>
-          <Select
-            id='demo-simple-select'
-            value={providerUrl}
-            onChange={handleChange}
-            sx={{ '& .Mui-Paper': { maxHeight: '240px' } }}>
-            {data.map(({ index, name, url }) => (
-              <MenuItem key={index} dense value={url}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <Paper
+          sx={{
+            height: 50,
+            px: 10,
+            display: 'flex',
+            alignItems: 'center',
+            bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+            border: '1px solid',
+            borderColor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+            transition: theme =>
+              theme.transitions.create(['all'], {
+                duration: theme.transitions.duration.standard,
+                easing: theme.transitions.easing.easeInOut,
+              }),
+            '&:hover ': {
+              border: '1px solid',
+              borderColor: theme =>
+                theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400],
+            },
+          }}>
+          <FormControl sx={{ minWidth: 160 }}>
+            <Select
+              autoWidth
+              disableUnderline={true}
+              id='provider-url-selector'
+              value={providerUrl}
+              onChange={handleChange}>
+              {RandomData.map(item => (
+                <MenuItem dense key={item.index} value={item.url}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Paper>
       )}
     </Box>
   )
@@ -148,7 +152,7 @@ export function ProviderApi() {
 
 export default function ApiSelector() {
   return (
-    <Stack direction='row' sx={{ minWidth: 160 }} spacing={20}>
+    <Stack direction='row' spacing={20}>
       <Provider />
       <ProviderApi />
     </Stack>

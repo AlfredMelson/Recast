@@ -10,7 +10,7 @@ export function MuiStats() {
   return (
     <Grid item xs={12} md={6} container spacing={20}>
       {GITHUB_DATA.map(item => (
-        <Grid key={item.title} item xs={6}>
+        <Grid key={item.quantity} item xs={6}>
           <Box
             sx={{
               height: '100%',
@@ -24,7 +24,7 @@ export function MuiStats() {
               variant='h3'
               color={theme => (theme.palette.mode === 'dark' ? 'primary.200' : 'primary.main')}
               fontWeight='bold'>
-              {item.title}
+              {item.quantity}
             </Typography>
             <Typography color={theme => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800')}>
               {item.metadata}

@@ -4,7 +4,7 @@ import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import ArrowButton from '../action/ArrowButton'
-import { TESTIMONIALS } from '../../cms/verbiage'
+import { TESTIMONIAL } from '../../cms/verbiage'
 
 type ProfileAlias = {
   name: string
@@ -42,18 +42,18 @@ export default function UserFeedbacks() {
     <Box sx={{ maxWidth: { md: 500 } }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 20 }}>
         <Box alignSelf='center'>
-          {TESTIMONIALS.map((item, index) => (
+          {TESTIMONIAL.map(item => (
             <ButtonBase
-              key={index}
+              key={item.index}
               aria-label={`Testimonial from ${item.profile.name}`}
-              onClick={() => setSlideIndex(index)}
+              onClick={() => setSlideIndex(item.index)}
               sx={{
                 display: 'inline-block',
                 width: 14,
                 height: 14,
                 borderRadius: '50%',
                 p: '4px',
-                ml: index !== 0 ? 2 : 0,
+                ml: item.index !== 0 ? 2 : 0,
                 '& .Mui-focused': {
                   boxShadow: theme => `0px 0px 0px 2px ${theme.palette.grey[400]}`,
                 },
@@ -63,7 +63,7 @@ export default function UserFeedbacks() {
                   height: '100%',
                   borderRadius: 1,
                   bgcolor: 'grey.500',
-                  ...(index === slideIndex && {
+                  ...(item.index === slideIndex && {
                     bgcolor: 'grey.300',
                   }),
                 }}
@@ -79,12 +79,12 @@ export default function UserFeedbacks() {
         />
         <ArrowButton
           direction='right'
-          disabled={slideIndex === TESTIMONIALS.length - 1}
+          disabled={slideIndex === TESTIMONIAL.length - 1}
           onClick={() => setSlideIndex(i => i + 1)}
         />
       </Box>
       <SwipeableViews index={slideIndex} onChangeIndex={index => setSlideIndex(index)}>
-        {TESTIMONIALS.map(item => (
+        {TESTIMONIAL.map(item => (
           <Feedback key={item.profile.name} {...item} />
         ))}
       </SwipeableViews>

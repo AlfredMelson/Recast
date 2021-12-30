@@ -1,6 +1,5 @@
 import * as React from 'react'
 import axios from 'axios'
-import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Typography from '@mui/material/Typography'
@@ -34,14 +33,15 @@ export function APIJson() {
   const setApiResponseHeaders = useSetRecoilState(apiResponseHeadersAtom)
   // api request
   React.useEffect(() => {
-    const apiDataFetch = async () => {
-      const response = await axios.get(userSubmittedUrl)
-      // console.log('AXIOS response', response)
-      setApiResponseHeaders(response.headers)
-    }
-    // test for url before invoking apiDataFetch
+    // test for url before invoking axiosFetch
     if (userSubmittedUrl !== undefined) {
-      apiDataFetch()
+      const axiosFetch = async url => {
+        const response = await axios.get(url)
+        setApiFullResponse(response)
+        setApiResponseHeaders(response.headers)
+        return
+      }
+      axiosFetch(userSubmittedUrl)
     }
   }, [userSubmittedUrl, setApiData, setApiFullResponse, setApiResponseHeaders])
 
@@ -114,31 +114,36 @@ export function APIJson() {
   // }
 
   return (
-    <Box
-      sx={{
-        pt: 10,
-      }}>
-      <Container
-        maxWidth='lg'
-        // onClick={(): void => {
-        //   setSelectedElement(null)
-        // }}
-      >
-        <Typography
-          variant='body2'
-          sx={{ color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]) }}>
-          Select API from dropdown
-        </Typography>
+    <Container
+      maxWidth='lg'
+      // onClick={(): void => {
+      //   setSelectedElement(null)
+      // }}
+    >
+      <Typography
+        variant='body2'
+        sx={{
+          fontStyle: 'italic',
+          color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]),
+          mt: 20,
+          mb: 14,
+        }}>
+        Select API from dropdown
+      </Typography>
 
-        <ApiUrlSelector />
-        <Typography
-          variant='body2'
-          sx={{ color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]) }}>
-          or Enter API
-        </Typography>
-        <Box sx={{ my: 20 }}>
-          <Searchbar />
-          {/* <Collapse in={showError}>
+      <ApiUrlSelector />
+      <Typography
+        variant='body2'
+        sx={{
+          fontStyle: 'italic',
+          color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]),
+          mt: 20,
+          mb: 14,
+        }}>
+        or Enter API
+      </Typography>
+      <Searchbar />
+      {/* <Collapse in={showError}>
             <Box sx={{ mt: 10, mb: 20 }}>
               <Alert
                 variant='outlined'
@@ -150,9 +155,7 @@ export function APIJson() {
               </Alert>
             </Box>
           </Collapse> */}
-        </Box>
-        <ApiTabs />
-      </Container>
-    </Box>
+      <ApiTabs />
+    </Container>
   )
 }

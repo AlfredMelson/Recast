@@ -11,15 +11,15 @@ import {
   userSubmittedUrlAtom,
   userToggledApiAtom,
 } from '../../recoil/api-json/atom'
-import DataResponse from '../../pages/api-json/display/DataResponse'
-import EditResponse from '../../pages/api-json/display/EditResponse'
-import FullResponse from '../../pages/api-json/display/FullResponse'
-import DataHeaders from '../../pages/api-json/display/DataHeaders'
-import { TsInterface } from '../../pages/api-json/display/TsInterface'
+import DataResponse from '../../pages/api-json/tab/DataResponse'
+import EditResponse from '../../pages/api-json/tab/EditResponse'
+import FullResponse from '../../pages/api-json/tab/FullResponse'
+import DataHeaders from '../../pages/api-json/tab/DataHeaders'
+import { TsInterface } from '../../pages/api-json/tab/TsInterface'
 import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
 import { TabSx } from '../mui/Tab.style'
 import { TabsSx } from '../mui/Tabs.style'
-import { DTypescript } from '../../pages/api-json/display/DTypescript'
+import { DTypescript } from '../../pages/api-json/tab/DTypescript'
 import { darkBlue, lightGrey } from '../../style/MuiBrandingTheme'
 
 type TabPanelAlias = {
@@ -83,7 +83,7 @@ export default function ApiTabs() {
   const local = useLocation()
 
   return (
-    <Box>
+    <Box sx={{ mt: 40 }}>
       {userSubmittedUrl !== undefined && (
         <Box
           sx={{

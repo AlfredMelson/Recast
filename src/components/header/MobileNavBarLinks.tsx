@@ -40,24 +40,35 @@ const UList = styled('ul')({
   margin: 0,
 })
 
-const PRODUCTS = [
+type ProductAlias = {
+  index: number
+  title: string
+  description: string
+  href: string
+}
+
+const PRODUCTS: ProductAlias[] = [
   {
-    name: 'Treeview',
+    index: 0,
+    title: 'Treeview',
     description: 'Expand and collapse the JSON tree.',
     href: '/tree-view',
   },
   {
-    name: 'Json Tree',
+    index: 1,
+    title: 'Json Tree',
     description: 'Expand and collapse the JSON tree.',
     href: '/api-json',
   },
   {
-    name: 'Deep Dive',
+    index: 2,
+    title: 'Deep Dive',
     description: 'Expand and collapse the JSON tree.',
     href: '/deep-dive',
   },
   {
-    name: 'Development',
+    index: 3,
+    title: 'Development',
     description: 'Expand and collapse the JSON tree.',
     href: '/development',
   },
@@ -143,13 +154,13 @@ export function MobileNavBarLinks() {
                       ml: 10,
                     }}>
                     {PRODUCTS.map(item => (
-                      <li key={item.name}>
+                      <li key={item.index}>
                         <Anchor
                           // href={item.href}
                           // as={Link}
                           // noLinkStyle
                           sx={{ flexDirection: 'column', alignItems: 'initial' }}>
-                          <div>{item.name}</div>
+                          <div>{item.title}</div>
                           <Typography variant='body2' color='text.secondary'>
                             {item.description}
                           </Typography>
