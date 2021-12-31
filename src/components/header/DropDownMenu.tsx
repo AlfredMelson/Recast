@@ -143,7 +143,7 @@ export function DropDownMenu() {
                     id={MENUID[0]}
                     href='/tree-view'
                     icon={<IconImage name='visual-b' />}
-                    name='Treeview'
+                    name='User Loaded Json Treeview'
                     description='Expand and collapse the JSON tree.'
                     onKeyDown={handleKeyDown}
                   />
@@ -158,7 +158,7 @@ export function DropDownMenu() {
                     onKeyDown={handleKeyDown}
                   />
                 </li>
-                <li>
+                {/* <li>
                   <SubMenu
                     id={MENUID[2]}
                     href='/deep-dive'
@@ -177,7 +177,7 @@ export function DropDownMenu() {
                     description='Expand and collapse the JSON tree.'
                     onKeyDown={handleKeyDown}
                   />
-                </li>
+                </li> */}
               </ul>
             </Paper>
           </Fade>

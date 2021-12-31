@@ -3,7 +3,7 @@ import Box, { BoxProps } from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import { BrandColors } from '../../style/BrandColors'
+import { BrandColor } from '../../style/BrandColor'
 
 export default function DownloadInfo({
   appeared,
@@ -30,7 +30,7 @@ export default function DownloadInfo({
             easing: theme.transitions.easing.easeInOut,
           }),
         bgcolor: theme =>
-          theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[700] : BrandColors.Light.Pink[500],
+          theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[700] : BrandColor.Light.Pink[500],
         minWidth: 200,
         borderRadius: '0 0 3px 0',
         boxShadow: 1,
@@ -56,9 +56,9 @@ export default function DownloadInfo({
                 duration: theme.transitions.duration.standard,
                 easing: theme.transitions.easing.easeInOut,
               }),
-            bgcolor: BrandColors.Dark.Grey[900],
+            bgcolor: BrandColor.Dark.Grey[900],
             '&:hover, &.Mui-focused': {
-              bgcolor: BrandColors.Dark.Grey[800],
+              bgcolor: BrandColor.Dark.Grey[800],
             },
           }}>
           {hidden ? <KeyboardArrowLeftIcon /> : <KeyboardArrowRightIcon />}

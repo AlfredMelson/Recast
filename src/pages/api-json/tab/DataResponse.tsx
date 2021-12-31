@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { green, blue, red, grey } from '@mui/material/colors'
+import { blue, grey } from '@mui/material/colors'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { motion } from 'framer-motion'
@@ -19,6 +19,7 @@ import {
 } from '../data-types/typeAliases'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
+import { BrandColor } from '../../../style/BrandColor'
 
 type DataResponseAlias = {
   data?: { [key: string]: any } | undefined
@@ -140,7 +141,9 @@ export function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code' sx={{ color: blue[400] }}>
       &#34;{dataKey}&#34;&#58;&nbsp;
-      <span style={{ color: value ? green[400] : red[400] }}>{value}</span>
+      <span style={{ color: value ? BrandColor.Dark.Green[300] : BrandColor.Dark.Red[300] }}>
+        {value}
+      </span>
     </Typography>
   )
 }
@@ -232,7 +235,7 @@ function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
     <Typography variant='code'>
       &#34;{dataKey}&#34;&#58;&nbsp;
-      <span style={{ color: green[400] }}>&#34;{value}&#34;</span>
+      <span style={{ color: BrandColor.Dark.Green[300] }}>&#34;{value}&#34;</span>
     </Typography>
   )
 }

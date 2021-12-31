@@ -2,8 +2,8 @@ import * as React from 'react'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { grey } from '@mui/material/colors'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import { Box } from '@mui/material'
 import { IconButtonSxApiIcons } from '../../../components/mui/IconButton.style'
 import ApiDataSort, { currentDataAtom } from '../data-types/ApiDataSort'
 import { EditResponseAlias, getType } from '../data-types/typeAliases'
@@ -11,6 +11,7 @@ import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import AsideEditInfo from '../../../components/api-json/AsideEditInfo'
 import { elementStateAtom, selectedElementProperties } from '../../../recoil/api-json/atom'
+import { BrandColor } from '../../../style/BrandColor'
 
 export default function EditResponse({ data, onDelete, onEdit }: EditResponseAlias) {
   const element = useRecoilValue(selectedElementProperties)
@@ -88,11 +89,18 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
             ) : (
               <React.Fragment>
                 data&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
-                <span style={{ color: grey[500] }}>
+                <Box
+                  component='span'
+                  sx={{
+                    color: theme =>
+                      theme.palette.mode === 'dark'
+                        ? BrandColor.Dark.Grey[200]
+                        : BrandColor.Light.Grey[900],
+                  }}>
                   &#47;&#47;&nbsp;
                   {elementState.length}&nbsp;
                   {elementState.length === 1 ? 'item' : 'items'}
-                </span>
+                </Box>
               </React.Fragment>
             )}
           </Typography>

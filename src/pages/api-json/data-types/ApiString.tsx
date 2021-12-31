@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { green, grey } from '@mui/material/colors'
 import { useRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import { ButtonGroup } from '@mui/material'
@@ -13,6 +12,7 @@ import { ApiApplyIcon } from '../../../components/icons/ApiApplyIcon'
 import { selectedElementAtom } from '../../../recoil/api-json/atom'
 import InputSxEditApi from '../../../components/mui/Input.style'
 import { ButtonSxApiItem } from '../../../components/mui'
+import { BrandColor } from '../../../style/BrandColor'
 import { ApiStringAlias } from './typeAliases'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 
@@ -61,11 +61,11 @@ export function ApiString({ index, value, dataKey, dataType, onEdit, onDelete }:
                   sx={{
                     color: theme =>
                       theme.palette.mode === 'dark'
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[900],
+                        ? BrandColor.Dark.Grey[50]
+                        : BrandColor.Light.Grey[900],
                     mr: 5,
                     '&:hover ': {
-                      color: theme => (theme.palette.mode === 'dark' ? green[500] : green[600]),
+                      color: BrandColor.Dark.Green[300],
                     },
                   }}
                 />
@@ -82,13 +82,16 @@ export function ApiString({ index, value, dataKey, dataType, onEdit, onDelete }:
           <ButtonSxApiItem onClick={() => setSelectedElement(index)}>
             <Typography
               sx={{
-                color: theme => (theme.palette.mode === 'dark' ? grey[50] : '#000000'),
+                color: theme =>
+                  theme.palette.mode === 'dark'
+                    ? BrandColor.Dark.Grey[50]
+                    : BrandColor.Light.Grey[900],
               }}
               variant='code'>
               &#34;{dataKey}&#34;&#58;&nbsp;
             </Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
-            <Typography variant='code' sx={{ color: green[400] }}>
+            <Typography variant='code' sx={{ color: BrandColor.Dark.Green[300] }}>
               &#34;{currentValue}&#34;
             </Typography>
           </ButtonSxApiItem>

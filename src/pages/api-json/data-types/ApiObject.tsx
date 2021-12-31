@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { grey } from '@mui/material/colors'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { Box } from '@mui/system'
 import { IconButtonSxApiIcons } from '../../../components/mui'
 import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
+import { BrandColor } from '../../../style/BrandColor'
 import ApiDataSort from './ApiDataSort'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { getType, ApiObjectAlias } from './typeAliases'
@@ -97,11 +97,18 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
             ) : (
               <React.Fragment>
                 &#34;{dataKey}&#34;&#58;&nbsp;&#123;&#46;&#46;&#46;&#125;&nbsp;
-                <span style={{ color: grey[500] }}>
+                <Box
+                  component='span'
+                  sx={{
+                    color: theme =>
+                      theme.palette.mode === 'dark'
+                        ? BrandColor.Dark.Grey[200]
+                        : BrandColor.Light.Grey[900],
+                  }}>
                   &#47;&#47;&nbsp;
                   {keys.length}&nbsp;
                   {keys.length === 1 ? 'item' : 'items'}
-                </span>
+                </Box>
               </React.Fragment>
             )}
           </Typography>

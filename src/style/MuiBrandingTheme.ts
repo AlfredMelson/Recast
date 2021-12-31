@@ -1,5 +1,5 @@
 import { createTheme, ThemeOptions, Theme } from '@mui/material/styles'
-import { BrandColors } from './BrandColors'
+import { BrandColor } from './BrandColor'
 
 declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
@@ -57,8 +57,8 @@ const theme = createTheme()
 
 export const getMetaThemeColor = (mode: 'dark' | 'light') => {
   const themeColor = {
-    dark: BrandColors.Dark.Grey[800],
-    light: BrandColors.Light.Grey[50],
+    dark: BrandColor.Dark.Grey[800],
+    light: BrandColor.Light.Grey[50],
   }
   return themeColor[mode]
 }
@@ -74,82 +74,82 @@ export const muiDesignTokens = (mode: 'dark' | 'light') =>
       mode,
       ...(mode === 'dark' && {
         background: {
-          default: BrandColors.Dark.Grey[500],
+          default: BrandColor.Dark.Grey[500],
         },
         text: {
-          primary: BrandColors.Dark.Grey[50],
-          secondary: BrandColors.Dark.Grey[100],
+          primary: BrandColor.Dark.Grey[50],
+          secondary: BrandColor.Dark.Grey[100],
         },
         primary: {
-          main: BrandColors.Dark.Grey[900],
+          main: BrandColor.Dark.Grey[900],
         },
         secondary: {
-          main: BrandColors.Dark.Blue[200],
+          main: BrandColor.Dark.Blue[200],
         },
         error: {
-          main: BrandColors.Dark.Yellow[300],
+          main: BrandColor.Dark.Yellow[300],
         },
         warning: {
-          main: BrandColors.Dark.Red[700],
+          main: BrandColor.Dark.Red[700],
         },
         info: {
-          main: BrandColors.Dark.Red[700],
+          main: BrandColor.Dark.Red[700],
         },
         success: {
-          main: BrandColors.Dark.Green[600],
+          main: BrandColor.Dark.Green[600],
         },
-        divider: BrandColors.Dark.Grey[700],
+        divider: BrandColor.Dark.Grey[700],
         svgBg: {
-          base: BrandColors.Dark.Grey[400],
-          active: BrandColors.Dark.Grey[500],
+          base: BrandColor.Dark.Grey[400],
+          active: BrandColor.Dark.Grey[500],
         },
         svgFilled: {
-          base: BrandColors.Dark.Grey[800],
-          active: BrandColors.Dark.Blue[300],
+          base: BrandColor.Dark.Grey[800],
+          active: BrandColor.Dark.Blue[300],
         },
         svgStroke: {
-          base: BrandColors.Dark.Grey[600],
-          active: BrandColors.Dark.Grey[800],
+          base: BrandColor.Dark.Grey[600],
+          active: BrandColor.Dark.Grey[800],
         },
       }),
       ...(mode === 'light' && {
         background: {
-          default: BrandColors.Light.Grey[50],
+          default: BrandColor.Light.Grey[50],
         },
         text: {
-          primary: BrandColors.Light.Grey[900],
-          secondary: BrandColors.Light.Grey[800],
+          primary: BrandColor.Light.Grey[900],
+          secondary: BrandColor.Light.Grey[800],
         },
         primary: {
-          main: BrandColors.Light.Grey[800],
+          main: BrandColor.Light.Grey[800],
         },
         secondary: {
-          main: BrandColors.Light.Blue[800],
+          main: BrandColor.Light.Blue[800],
         },
         error: {
-          main: BrandColors.Light.Yellow[300],
+          main: BrandColor.Light.Yellow[300],
         },
         warning: {
-          main: BrandColors.Light.Red[500],
+          main: BrandColor.Light.Red[500],
         },
         info: {
-          main: BrandColors.Light.Red[400],
+          main: BrandColor.Light.Red[400],
         },
         success: {
-          main: BrandColors.Light.Green[400],
+          main: BrandColor.Light.Green[400],
         },
-        divider: BrandColors.Light.Grey[200],
+        divider: BrandColor.Light.Grey[200],
         svgBg: {
-          base: BrandColors.Light.Grey[50],
-          active: BrandColors.Light.Grey[50],
+          base: BrandColor.Light.Grey[50],
+          active: BrandColor.Light.Grey[50],
         },
         svgFilled: {
-          base: BrandColors.Light.Grey[500],
-          active: BrandColors.Light.Blue[500],
+          base: BrandColor.Light.Grey[500],
+          active: BrandColor.Light.Blue[500],
         },
         svgStroke: {
-          base: BrandColors.Light.Grey[50],
-          active: BrandColors.Light.Grey[200],
+          base: BrandColor.Light.Grey[50],
+          active: BrandColor.Light.Grey[200],
         },
       }),
     },
@@ -294,9 +294,7 @@ export function muiThemedComponents(theme: Theme) {
         },
         root: {
           background:
-            theme.palette.mode === 'dark'
-              ? BrandColors.Dark.Grey[900]
-              : BrandColors.Light.Grey[100],
+            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[100],
         },
       },
       MuiContainer: {
@@ -314,8 +312,8 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             color:
               theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Grey[900]
-                : BrandColors.Light.Grey[100],
+                ? BrandColor.Dark.Grey[900]
+                : BrandColor.Light.Grey[100],
             margin: theme.spacing(5, 10),
           },
         },
@@ -366,8 +364,8 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             color:
               theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Black[50]
-                : BrandColors.Light.Blue[600],
+                ? BrandColor.Dark.Black[50]
+                : BrandColor.Light.Blue[600],
             fontWeight: 600,
             display: 'inline-flex',
             alignItems: 'center',
@@ -402,6 +400,41 @@ export function muiThemedComponents(theme: Theme) {
       MuiSvgIcon: {
         defaultProps: {
           fontSize: 'small',
+        },
+      },
+      MuiSwitch: {
+        styleOverrides: {
+          root: {
+            width: 32,
+            height: 20,
+            padding: 0,
+          },
+          switchBase: {
+            height: 20,
+            width: 20,
+            padding: 0,
+            color: '#fff',
+            '&.Mui-checked + .MuiSwitch-track': {
+              opacity: 1,
+            },
+            '&.Mui-checked': {
+              transform: 'translateX(11px)',
+              color: '#fff',
+            },
+          },
+          track: {
+            opacity: 1,
+            borderRadius: 32,
+            backgroundColor:
+              theme.palette.mode === 'dark'
+                ? BrandColor.Dark.Grey[800]
+                : BrandColor.Light.Grey[400],
+          },
+          thumb: {
+            flexShrink: 0,
+            width: '14px',
+            height: '14px',
+          },
         },
       },
       MuiTab: {
@@ -440,9 +473,7 @@ export function muiThemedComponents(theme: Theme) {
         },
         root: {
           background:
-            theme.palette.mode === 'dark'
-              ? BrandColors.Dark.Grey[900]
-              : BrandColors.Light.Grey[100],
+            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[100],
         },
       },
       MuiTooltip: {
@@ -456,22 +487,21 @@ export function muiThemedComponents(theme: Theme) {
         },
         styleOverrides: {
           tooltipArrow: {
+            borderRadius: theme.shape.borderRadius,
             backgroundColor:
               theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Grey[700]
-                : BrandColors.Light.Grey[300],
+                ? BrandColor.Dark.Grey[800]
+                : BrandColor.Light.Grey[300],
           },
           tooltip: {
             paddingTop: 4,
             paddingBottom: 4,
             color:
-              theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Grey[50]
-                : BrandColors.Light.Grey[900],
+              theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
             backgroundColor:
               theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Grey[700]
-                : BrandColors.Light.Grey[300],
+                ? BrandColor.Dark.Grey[700]
+                : BrandColor.Light.Grey[300],
           },
         },
       },
@@ -479,41 +509,6 @@ export function muiThemedComponents(theme: Theme) {
         styleOverrides: {
           label: {
             fontSize: theme.typography.body2,
-          },
-        },
-      },
-      MuiSwitch: {
-        styleOverrides: {
-          root: {
-            width: 32,
-            height: 20,
-            padding: 0,
-          },
-          switchBase: {
-            height: 20,
-            width: 20,
-            padding: 0,
-            color: '#fff',
-            '&.Mui-checked + .MuiSwitch-track': {
-              opacity: 1,
-            },
-            '&.Mui-checked': {
-              transform: 'translateX(11px)',
-              color: '#fff',
-            },
-          },
-          track: {
-            opacity: 1,
-            borderRadius: 32,
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Grey[800]
-                : BrandColors.Light.Grey[400],
-          },
-          thumb: {
-            flexShrink: 0,
-            width: '14px',
-            height: '14px',
           },
         },
       },

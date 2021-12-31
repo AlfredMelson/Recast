@@ -13,7 +13,7 @@ import {
 import Searchbar from '../../components/api-json/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
-import { BrandColors } from '../../style/BrandColors'
+import { BrandColor } from '../../style/BrandColor'
 
 // import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
@@ -125,7 +125,7 @@ export function APIJson() {
         sx={{
           fontStyle: 'italic',
           color: theme =>
-            theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
+            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
           mt: 20,
           mb: 14,
         }}>
@@ -138,7 +138,7 @@ export function APIJson() {
         sx={{
           fontStyle: 'italic',
           color: theme =>
-            theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
+            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
           mt: 20,
           mb: 14,
         }}>

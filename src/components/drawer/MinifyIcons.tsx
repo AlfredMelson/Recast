@@ -5,14 +5,12 @@ import CheckIcon from '@mui/icons-material/Check'
 import DownloadIcon from '@mui/icons-material/Download'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { green } from '@mui/material/colors'
 import ClipboardJS from 'clipboard'
 import { saveAs } from 'file-saver'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
-import { IconButtonSxAppBar } from '../mui/IconButton.style'
-import { ToolTipSx } from '../mui/ToolTip.style'
-import { ToggleButtonGroupSx } from '../mui/ToggleButtonGroup.style'
+import { IconButtonSxAppBar, ToolTipSx, ButtonGroupSx } from '../mui'
+import { BrandColor } from '../../style/BrandColor'
 
 export function MinifyIcons() {
   //set dialog with minified json visability
@@ -101,7 +99,7 @@ export function MinifyIcons() {
   }
 
   return (
-    <ToggleButtonGroupSx>
+    <ButtonGroupSx>
       <Box sx={{ position: 'relative', pl: 5 }}>
         <ToolTipSx tooltipTitle={minifiedCopy ? 'Copied' : 'Copy minified json'}>
           <IconButtonSxAppBar
@@ -113,7 +111,7 @@ export function MinifyIcons() {
             ) : !successCopy ? (
               <ContentCopyIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: green[500] }} />
+              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -127,7 +125,7 @@ export function MinifyIcons() {
             ) : !successDownload ? (
               <DownloadIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: green[500] }} />
+              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -143,6 +141,6 @@ export function MinifyIcons() {
           </IconButtonSxAppBar>
         </ToolTipSx>
       </Box>
-    </ToggleButtonGroupSx>
+    </ButtonGroupSx>
   )
 }

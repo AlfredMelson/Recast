@@ -2,7 +2,6 @@ import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import { green } from '@mui/material/colors'
 import { motion } from 'framer-motion'
 import {
   ApiDataSortAlias,
@@ -16,6 +15,7 @@ import {
 } from '../data-types/typeAliases'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
+import { BrandColor } from '../../../style/BrandColor'
 
 type DataHeadersAlias = {
   data?: { [key: string]: any } | undefined
@@ -106,7 +106,7 @@ function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: green[400] }}>{`${value}`}</span>
+      <span style={{ color: BrandColor.Dark.Green[300] }}>{`${value}`}</span>
     </Typography>
   )
 }
@@ -126,7 +126,7 @@ function JsonNumber({ value, dataKey }: ApiNumberAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: green[400] }}>{`${value}`}</span>
+      <span style={{ color: BrandColor.Dark.Green[300] }}>{`${value}`}</span>
     </Typography>
   )
 }
@@ -168,7 +168,7 @@ function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: green[400] }}>{`"${value}"`}</span>
+      <span style={{ color: BrandColor.Dark.Green[300] }}>{`"${value}"`}</span>
     </Typography>
   )
 }

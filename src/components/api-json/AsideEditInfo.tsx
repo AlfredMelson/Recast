@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
 import IconButton from '@mui/material/IconButton'
 import { selectedElementAtom } from '../../recoil/api-json/atom'
-import { BrandColors } from '../../style/BrandColors'
+import { BrandColor } from '../../style/BrandColor'
 
 export default function AsideEditInfo({ ...props }: BoxProps) {
   const selectedElement = useRecoilValue(selectedElementAtom)
@@ -62,7 +62,7 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
           }),
         transitionDelay: '0.5s',
         bgcolor: theme =>
-          theme.palette.mode === 'dark' ? BrandColors.Dark.Blue[800] : BrandColors.Light.Blue[300],
+          theme.palette.mode === 'dark' ? BrandColor.Dark.Blue[800] : BrandColor.Light.Blue[300],
         minWidth: 200,
         borderRadius: '0 0 3px 0',
         boxShadow: 1,
@@ -89,13 +89,13 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             mb: 20,
             bgcolor: theme =>
               theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Blue[700]
-                : BrandColors.Light.Blue[200],
+                ? BrandColor.Dark.Blue[700]
+                : BrandColor.Light.Blue[200],
             '&:hover, &.Mui-focused': {
               bgcolor: theme =>
                 theme.palette.mode === 'dark'
-                  ? BrandColors.Dark.Blue[600]
-                  : BrandColors.Light.Blue[200],
+                  ? BrandColor.Dark.Blue[600]
+                  : BrandColor.Light.Blue[200],
             },
           }}>
           <Add />
@@ -118,13 +118,13 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             mt: 20,
             bgcolor: theme =>
               theme.palette.mode === 'dark'
-                ? BrandColors.Dark.Blue[700]
-                : BrandColors.Light.Blue[200],
+                ? BrandColor.Dark.Blue[700]
+                : BrandColor.Light.Blue[200],
             '&:hover, &.Mui-focused': {
               bgcolor: theme =>
                 theme.palette.mode === 'dark'
-                  ? BrandColors.Dark.Blue[600]
-                  : BrandColors.Light.Blue[200],
+                  ? BrandColor.Dark.Blue[600]
+                  : BrandColor.Light.Blue[200],
             },
           }}>
           <Add />

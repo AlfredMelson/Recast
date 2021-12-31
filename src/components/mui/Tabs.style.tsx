@@ -1,7 +1,7 @@
 import Tabs from '@mui/material/Tabs'
 import { styled } from '@mui/material'
 import * as React from 'react'
-import { BrandColors } from '../../style/BrandColors'
+import { BrandColor } from '../../style/BrandColor'
 
 /**
  * @name TabsSx
@@ -32,16 +32,19 @@ export const TabsSx = styled((props: TabsSxAlias) => (
   />
 ))(({ theme }) => ({
   maxHeight: 40,
-  borderRadius: '3px 3px 0 0',
   background:
-    theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[800] : BrandColors.Light.Grey[200],
+    theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[800] : BrandColor.Light.Grey[200],
+  transition: theme.transitions.create(['background'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
   '.Mui-selected': {
     borderRadius: '3px 3px 0 0',
     background:
-      theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[700] : BrandColors.Light.Grey[300],
+      theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[700] : BrandColor.Light.Grey[300],
   },
   '& .MuiTabs-indicator': {
     background:
-      theme.palette.mode === 'dark' ? BrandColors.Dark.Blue[600] : BrandColors.Light.Blue[400],
+      theme.palette.mode === 'dark' ? BrandColor.Dark.Blue[600] : BrandColor.Light.Blue[400],
   },
 }))

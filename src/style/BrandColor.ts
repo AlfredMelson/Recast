@@ -23,13 +23,17 @@
 //     800: string
 //     900: string
 //   }
-// export type BrandColorsAlias = {
+// export type BrandColor.sAlias = {
 //   mode: ColorModeAlias
 //   color: ColorNameAlias
 //   range: ColorRangeAlias
 // }
 
-export const BrandColors = {
+// type BrandColor.Alias = {
+//   data?: { [key: string]: any } | undefined
+// }
+
+export const BrandColor = {
   Light: {
     Pink: {
       50: '#ffeff7',

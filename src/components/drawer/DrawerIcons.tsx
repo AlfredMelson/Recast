@@ -6,16 +6,14 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
 import ClipboardJS from 'clipboard'
 import CheckIcon from '@mui/icons-material/Check'
-import { green } from '@mui/material/colors'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import saveAs from 'file-saver'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import CloseIcon from '@mui/icons-material/Close'
 import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
-import { IconButtonSxAppBar } from '../mui/IconButton.style'
-import { ToolTipSx } from '../mui/ToolTip.style'
-import { ToggleButtonGroupSx } from '../mui/ToggleButtonGroup.style'
+import { IconButtonSxAppBar, ToolTipSx, ButtonGroupSx } from '../mui'
+import { BrandColor } from '../../style/BrandColor'
 
 export function DrawerIcons() {
   // retrieve localStorage value
@@ -92,7 +90,7 @@ export function DrawerIcons() {
   const setDataDrawerOpen = useSetRecoilState(dataDrawerOpenAtom)
 
   return (
-    <ToggleButtonGroupSx>
+    <ButtonGroupSx>
       <Box sx={{ position: 'relative', pl: 5 }}>
         <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
           <IconButtonSxAppBar
@@ -103,7 +101,7 @@ export function DrawerIcons() {
             ) : !successCopy ? (
               <ContentCopyIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: green[500] }} />
+              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -119,7 +117,7 @@ export function DrawerIcons() {
             ) : !successDownload ? (
               <DownloadIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: green[500] }} />
+              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -157,6 +155,6 @@ export function DrawerIcons() {
           </IconButtonSxAppBar>
         </ToolTipSx>
       </Box>
-    </ToggleButtonGroupSx>
+    </ButtonGroupSx>
   )
 }
