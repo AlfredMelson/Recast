@@ -1,10 +1,9 @@
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
-// import { alpha } from '@mui/material/styles'
 import { styled } from '@mui/material/styles'
 import TextField, { TextFieldProps } from '@mui/material/TextField'
 import { OutlinedInputProps } from '@mui/material/OutlinedInput'
-import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
+import { BrandColors } from '../../style/BrandColors'
 
 /**
  * @name TextfieldfAdornmentIconSx
@@ -32,14 +31,13 @@ export const TextfieldfAdornmentIconSx = styled(IconButton)(({ theme }) => ({
  */
 
 export const TextFieldButtonSx = styled(Button)(({ theme }) => ({
-  // color: theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800],
-  color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
+  color: theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[100] : BrandColors.Light.Grey[800],
   backgroundColor: 'transparent',
   minWidth: theme.spacing(70),
   transitionProperty: 'color',
   transitionDuration: '300ms',
   '&:hover, & .Mui-focused': {
-    color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
+    color: theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
     backgroundColor: 'transparent',
   },
 }))

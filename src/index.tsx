@@ -14,10 +14,11 @@ const root = ReactDOM.createRoot(rootElement)
 // initial render
 root.render(
   <React.StrictMode>
-    <CssBaseline />
     <RecoilRoot>
       <MuiThemeProviderRoot>
-        <App />
+        <CssBaseline>
+          <App />
+        </CssBaseline>
       </MuiThemeProviderRoot>
     </RecoilRoot>
   </React.StrictMode>

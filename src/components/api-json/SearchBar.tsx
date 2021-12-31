@@ -23,7 +23,7 @@ import {
 import { TextFieldButtonSx } from '../mui'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
-import { darkBlue, darkGrey, lightBlue, lightGrey } from '../../style/MuiBrandingTheme'
+import { BrandColors } from '../../style/BrandColors'
 import { selectedApiAtom, selectedApiProviderAtom } from './ApiUrlSelector'
 
 export default function Searchbar() {
@@ -109,9 +109,11 @@ export default function Searchbar() {
         width: 700,
         display: 'flex',
         alignItems: 'center',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        bgcolor: theme =>
+          theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[900] : BrandColors.Light.Grey[200],
         border: '1px solid',
-        borderColor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        borderColor: theme =>
+          theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[900] : BrandColors.Light.Grey[200],
         transition: theme =>
           theme.transitions.create(['all'], {
             duration: theme.transitions.duration.standard,
@@ -119,7 +121,10 @@ export default function Searchbar() {
           }),
         '&:hover ': {
           border: '1px solid',
-          borderColor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400]),
+          borderColor: theme =>
+            theme.palette.mode === 'dark'
+              ? BrandColors.Dark.Blue[600]
+              : BrandColors.Light.Blue[400],
         },
       }}>
       <InputBase

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
 import IconButton from '@mui/material/IconButton'
 import { selectedElementAtom } from '../../recoil/api-json/atom'
-import { darkBlue, lightBlue } from '../../style/MuiBrandingTheme'
+import { BrandColors } from '../../style/BrandColors'
 
 export default function AsideEditInfo({ ...props }: BoxProps) {
   const selectedElement = useRecoilValue(selectedElementAtom)
@@ -61,7 +61,8 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             easing: theme.transitions.easing.easeInOut,
           }),
         transitionDelay: '0.5s',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[800] : lightBlue[300]),
+        bgcolor: theme =>
+          theme.palette.mode === 'dark' ? BrandColors.Dark.Blue[800] : BrandColors.Light.Blue[300],
         minWidth: 200,
         borderRadius: '0 0 3px 0',
         boxShadow: 1,
@@ -86,9 +87,15 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             left: 10,
             top: 0,
             mb: 20,
-            bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[700] : lightBlue[200]),
+            bgcolor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandColors.Dark.Blue[700]
+                : BrandColors.Light.Blue[200],
             '&:hover, &.Mui-focused': {
-              bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[200]),
+              bgcolor: theme =>
+                theme.palette.mode === 'dark'
+                  ? BrandColors.Dark.Blue[600]
+                  : BrandColors.Light.Blue[200],
             },
           }}>
           <Add />
@@ -109,9 +116,15 @@ export default function AsideEditInfo({ ...props }: BoxProps) {
             left: 10,
             top: 0,
             mt: 20,
-            bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[700] : lightBlue[200]),
+            bgcolor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandColors.Dark.Blue[700]
+                : BrandColors.Light.Blue[200],
             '&:hover, &.Mui-focused': {
-              bgcolor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[200]),
+              bgcolor: theme =>
+                theme.palette.mode === 'dark'
+                  ? BrandColors.Dark.Blue[600]
+                  : BrandColors.Light.Blue[200],
             },
           }}>
           <Add />

@@ -7,7 +7,7 @@ import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import { RandomData } from '../../cms/verbiage'
-import { darkGrey, lightGrey, darkBlue, lightBlue } from '../../style/MuiBrandingTheme'
+import { BrandColors } from '../../style/BrandColors'
 
 /**
  * @name selectedApiProviderAtom
@@ -61,9 +61,11 @@ export function Provider() {
         px: 10,
         display: 'flex',
         alignItems: 'center',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        bgcolor: theme =>
+          theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[900] : BrandColors.Light.Grey[200],
         border: '1px solid',
-        borderColor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+        borderColor: theme =>
+          theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[900] : BrandColors.Light.Grey[200],
         transition: theme =>
           theme.transitions.create(['all'], {
             duration: theme.transitions.duration.standard,
@@ -71,7 +73,10 @@ export function Provider() {
           }),
         '&:hover ': {
           border: '1px solid',
-          borderColor: theme => (theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400]),
+          borderColor: theme =>
+            theme.palette.mode === 'dark'
+              ? BrandColors.Dark.Blue[600]
+              : BrandColors.Light.Blue[400],
         },
       }}>
       <FormControl sx={{ minWidth: 160, my: 10 }}>
@@ -116,9 +121,15 @@ export function ProviderApi() {
             px: 10,
             display: 'flex',
             alignItems: 'center',
-            bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+            bgcolor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandColors.Dark.Grey[900]
+                : BrandColors.Light.Grey[200],
             border: '1px solid',
-            borderColor: theme => (theme.palette.mode === 'dark' ? darkGrey[900] : lightGrey[200]),
+            borderColor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandColors.Dark.Grey[900]
+                : BrandColors.Light.Grey[200],
             transition: theme =>
               theme.transitions.create(['all'], {
                 duration: theme.transitions.duration.standard,
@@ -127,7 +138,9 @@ export function ProviderApi() {
             '&:hover ': {
               border: '1px solid',
               borderColor: theme =>
-                theme.palette.mode === 'dark' ? darkBlue[600] : lightBlue[400],
+                theme.palette.mode === 'dark'
+                  ? BrandColors.Dark.Blue[600]
+                  : BrandColors.Light.Blue[400],
             },
           }}>
           <FormControl sx={{ minWidth: 160 }}>

@@ -1,6 +1,6 @@
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import { styled } from '@mui/material'
-import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
+import { BrandColors } from '../../style/BrandColors'
 
 /**
  * @name IconButtonSxColorMode
@@ -11,14 +11,14 @@ import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
  * @return icon color mode style for light and dark mode
  */
 export const IconButtonSxColorMode = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
+  color: theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[100] : BrandColors.Light.Grey[800],
   padding: theme.spacing(10),
   transition: theme.transitions.create(['color'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover, & .Mui-focused': {
-    color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
+    color: theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
   },
 }))
 
@@ -85,13 +85,13 @@ export const IconButtonSxApiEdit = styled(IconButton)(({ theme }) => ({
  */
 export const IconButtonSxAppBar = styled(IconButton)(({ theme }) => ({
   padding: theme.spacing(10),
-  color: theme.palette.mode === 'dark' ? darkGrey[100] : lightGrey[800],
+  color: theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[100] : BrandColors.Light.Grey[800],
   transition: theme.transitions.create(['color'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover': {
-    color: theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900],
+    color: theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
   },
 }))
 
@@ -106,13 +106,13 @@ export const IconButtonSxAppBar = styled(IconButton)(({ theme }) => ({
 export const IconButtonSxTsInterface = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(10),
-  backgroundColor: 'primaryDark.500',
+  backgroundColor: BrandColors.Dark.Grey[900],
   transition: theme.transitions.create(['color', 'backgroundColor'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover, &.Mui-focused': {
-    backgroundColor: 'primaryDark.600',
+    backgroundColor: BrandColors.Dark.Grey[800],
     color: '#007FFF',
   },
 }))

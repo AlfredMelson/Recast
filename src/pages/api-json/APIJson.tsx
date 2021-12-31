@@ -13,7 +13,7 @@ import {
 import Searchbar from '../../components/api-json/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
-import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
+import { BrandColors } from '../../style/BrandColors'
 
 // import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
@@ -124,7 +124,8 @@ export function APIJson() {
         variant='body2'
         sx={{
           fontStyle: 'italic',
-          color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]),
+          color: theme =>
+            theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
           mt: 20,
           mb: 14,
         }}>
@@ -136,7 +137,8 @@ export function APIJson() {
         variant='body2'
         sx={{
           fontStyle: 'italic',
-          color: theme => (theme.palette.mode === 'dark' ? darkGrey[50] : lightGrey[900]),
+          color: theme =>
+            theme.palette.mode === 'dark' ? BrandColors.Dark.Grey[50] : BrandColors.Light.Grey[900],
           mt: 20,
           mb: 14,
         }}>

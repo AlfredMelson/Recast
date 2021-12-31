@@ -1,8 +1,9 @@
+import { Stack } from '@mui/material'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
-import { Link as MuiLink } from '@mui/material'
-import { darkGrey, lightGrey } from '../../style/MuiBrandingTheme'
+import { Link } from 'react-router-dom'
+import { BrandColors } from '../../style/BrandColors'
 
 type SubMenuAlias = {
   icon: React.ReactElement
@@ -12,38 +13,48 @@ type SubMenuAlias = {
 } & Omit<JSX.IntrinsicElements['a'], 'ref'>
 
 export const SubMenu = React.forwardRef<HTMLAnchorElement, SubMenuAlias>(function VisualSubMenu(
-  { icon, name, description, href, ...props },
+  { icon, name, description, href },
   ref
 ) {
   return (
-    <Box
-      component={MuiLink}
-      href={href}
-      ref={ref}
-      sx={{
-        py: 20,
-        display: 'flex',
-        alignItems: 'center',
-        bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[700] : lightGrey[300]),
-        '&:hover, & .Mui-focused': {
-          bgcolor: theme => (theme.palette.mode === 'dark' ? darkGrey[600] : lightGrey[400]),
-          outline: 'none',
-          '@media (hover: none)': {
-            backgroundColor: 'initial',
-            outline: 'initial',
-          },
-        },
-      }}
-      {...props}>
-      <Box sx={{ px: 20 }}>{icon}</Box>
-      <Box>
-        <Typography color='text.primary' variant='body2' fontWeight={600}>
-          {name}
-        </Typography>
-        <Typography color='text.secondary' variant='body2'>
-          {description}
-        </Typography>
-      </Box>
-    </Box>
+    <React.Fragment>
+      <Link to={href}>
+        <Box
+          component='div'
+          ref={ref}
+          sx={{
+            py: 20,
+            display: 'flex',
+            alignItems: 'center',
+            bgcolor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandColors.Dark.Grey[700]
+                : BrandColors.Light.Grey[300],
+            '&:hover, & .Mui-focused': {
+              bgcolor: theme =>
+                theme.palette.mode === 'dark'
+                  ? BrandColors.Dark.Grey[600]
+                  : BrandColors.Light.Grey[400],
+              outline: 'none',
+              '@media (hover: none)': {
+                backgroundColor: 'initial',
+                outline: 'initial',
+              },
+            },
+          }}>
+          <Box component='div' sx={{ px: 20 }}>
+            {icon}
+          </Box>
+          <Stack direction='column'>
+            <Typography color='text.primary' variant='body2' fontWeight={600}>
+              {name}
+            </Typography>
+            <Typography color='orange.400' variant='body2'>
+              {description}
+            </Typography>
+          </Stack>
+        </Box>
+      </Link>
+    </React.Fragment>
   )
 })
