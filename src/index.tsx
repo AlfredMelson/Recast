@@ -4,6 +4,8 @@ import { RecoilRoot } from 'recoil'
 import CssBaseline from '@mui/material/CssBaseline'
 import App from './app'
 import MuiThemeProviderRoot from './style/MuiThemeProviderRoot'
+import './style/BrandGlobal.css'
+import './style/BrandGlobal.scss'
 
 // create entry point using unique id from Document
 const rootElement = document.getElementById('app')

@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useRecoilValue } from 'recoil'
 import { deepmerge } from '@mui/utils'
 import { appColorModeAtom } from '../recoil'
-import { muiDesignTokens, muiThemedComponents } from './MuiBrandingTheme'
+import { DesignTokens, ThemedComponents } from './BrandTheme'
 
 type MuiThemeProviderRootAlias = {
   children?: React.ReactNode
@@ -15,11 +15,11 @@ export default function MuiThemeProviderRoot({ children }: MuiThemeProviderRootA
   // color mode value passed as string
   const mode = appColorMode === 'light' ? 'light' : 'dark'
   // user defiend color palette (theme) object constructed based on color mode
-  const designTokens = muiDesignTokens(mode)
+  const designTokens = DesignTokens(mode)
   // create a predefined theme object; components set as {}
   const appTheme = createTheme(designTokens)
   // merge predefined mui components into appTheme
-  const theme = createTheme(deepmerge(appTheme, muiThemedComponents(appTheme)))
+  const theme = createTheme(deepmerge(appTheme, ThemedComponents(appTheme)))
 
   // note: ThemeProvider provides theme prop down the React tree via context
   // note: CssBaseline is a css reset component similar to normalize.css

@@ -1,10 +1,11 @@
 import IconButton from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
+import * as React from 'react'
 
 type CIconButtonTypes = {
   size: any
   onClick: any
-  children: any
+  children: React.ReactNode
   dataValue?: any
   style?: any
   tooltiptitle?: string

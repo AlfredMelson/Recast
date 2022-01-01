@@ -20,7 +20,7 @@ import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
 import { TabSx } from '../mui/Tab.style'
 import { TabsSx } from '../mui/Tabs.style'
 import { DTypescript } from '../../pages/api-json/tab/DTypescript'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 type TabPanelAlias = {
   index: number
@@ -94,8 +94,8 @@ export default function ApiTabs() {
               borderBottom: 1,
               borderColor: theme =>
                 theme.palette.mode === 'dark'
-                  ? alpha(BrandColor.Dark.Blue[600], 0.5)
-                  : alpha(BrandColor.Light.Grey[400], 0.5),
+                  ? alpha(BrandSwatch.Dark.Blue[600], 0.5)
+                  : alpha(BrandSwatch.Light.Grey[400], 0.5),
             }}>
             <TabsSx
               key={local.pathname}

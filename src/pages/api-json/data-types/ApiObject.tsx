@@ -5,7 +5,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { Box } from '@mui/system'
 import { IconButtonSxApiIcons } from '../../../components/mui'
 import { ApiDeleteIcon } from '../../../components/icons/ApiDeleteIcon'
-import { BrandColor } from '../../../style/BrandColor'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 import ApiDataSort from './ApiDataSort'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { getType, ApiObjectAlias } from './typeAliases'
@@ -102,8 +102,8 @@ export function ApiObject({ value, dataKey, dataType, onDelete }: ApiObjectAlias
                   sx={{
                     color: theme =>
                       theme.palette.mode === 'dark'
-                        ? BrandColor.Dark.Grey[200]
-                        : BrandColor.Light.Grey[900],
+                        ? BrandSwatch.Dark.Grey[200]
+                        : BrandSwatch.Light.Grey[900],
                   }}>
                   &#47;&#47;&nbsp;
                   {keys.length}&nbsp;

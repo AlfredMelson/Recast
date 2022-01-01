@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 type SubMenuAlias = {
   icon: React.ReactElement
@@ -28,13 +28,13 @@ export const SubMenu = React.forwardRef<HTMLAnchorElement, SubMenuAlias>(functio
             alignItems: 'center',
             bgcolor: theme =>
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[700]
-                : BrandColor.Light.Grey[300],
+                ? BrandSwatch.Dark.Grey[700]
+                : BrandSwatch.Light.Grey[300],
             '&:hover, & .Mui-focused': {
               bgcolor: theme =>
                 theme.palette.mode === 'dark'
-                  ? BrandColor.Dark.Grey[600]
-                  : BrandColor.Light.Grey[400],
+                  ? BrandSwatch.Dark.Grey[600]
+                  : BrandSwatch.Light.Grey[400],
               outline: 'none',
               '@media (hover: none)': {
                 backgroundColor: 'initial',

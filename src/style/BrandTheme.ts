@@ -1,5 +1,5 @@
 import { createTheme, ThemeOptions, Theme } from '@mui/material/styles'
-import { BrandColor } from './BrandColor'
+import { BrandSwatch } from './BrandSwatch'
 
 declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
@@ -57,8 +57,8 @@ const theme = createTheme()
 
 export const getMetaThemeColor = (mode: 'dark' | 'light') => {
   const themeColor = {
-    dark: BrandColor.Dark.Grey[800],
-    light: BrandColor.Light.Grey[50],
+    dark: BrandSwatch.Dark.Grey[800],
+    light: BrandSwatch.Light.Grey[50],
   }
   return themeColor[mode]
 }
@@ -68,88 +68,88 @@ function round(value: number) {
   return Math.round(value * 1e5) / 1e5
 }
 
-export const muiDesignTokens = (mode: 'dark' | 'light') =>
+export const DesignTokens = (mode: 'dark' | 'light') =>
   ({
     palette: {
       mode,
       ...(mode === 'dark' && {
         background: {
-          default: BrandColor.Dark.Grey[500],
+          default: BrandSwatch.Dark.Grey[500],
         },
         text: {
-          primary: BrandColor.Dark.Grey[50],
-          secondary: BrandColor.Dark.Grey[100],
+          primary: BrandSwatch.Dark.Grey[50],
+          secondary: BrandSwatch.Dark.Grey[100],
         },
         primary: {
-          main: BrandColor.Dark.Grey[900],
+          main: BrandSwatch.Dark.Grey[900],
         },
         secondary: {
-          main: BrandColor.Dark.Blue[200],
+          main: BrandSwatch.Dark.Blue[200],
         },
         error: {
-          main: BrandColor.Dark.Yellow[300],
+          main: BrandSwatch.Dark.Yellow[300],
         },
         warning: {
-          main: BrandColor.Dark.Red[700],
+          main: BrandSwatch.Dark.Red[700],
         },
         info: {
-          main: BrandColor.Dark.Red[700],
+          main: BrandSwatch.Dark.Red[700],
         },
         success: {
-          main: BrandColor.Dark.Green[600],
+          main: BrandSwatch.Dark.Green[600],
         },
-        divider: BrandColor.Dark.Grey[700],
+        divider: BrandSwatch.Dark.Grey[700],
         svgBg: {
-          base: BrandColor.Dark.Grey[400],
-          active: BrandColor.Dark.Grey[500],
+          base: BrandSwatch.Dark.Grey[400],
+          active: BrandSwatch.Dark.Grey[500],
         },
         svgFilled: {
-          base: BrandColor.Dark.Grey[800],
-          active: BrandColor.Dark.Blue[300],
+          base: BrandSwatch.Dark.Grey[800],
+          active: BrandSwatch.Dark.Blue[300],
         },
         svgStroke: {
-          base: BrandColor.Dark.Grey[600],
-          active: BrandColor.Dark.Grey[800],
+          base: BrandSwatch.Dark.Grey[600],
+          active: BrandSwatch.Dark.Grey[800],
         },
       }),
       ...(mode === 'light' && {
         background: {
-          default: BrandColor.Light.Grey[50],
+          default: BrandSwatch.Light.Grey[50],
         },
         text: {
-          primary: BrandColor.Light.Grey[900],
-          secondary: BrandColor.Light.Grey[800],
+          primary: BrandSwatch.Light.Grey[900],
+          secondary: BrandSwatch.Light.Grey[800],
         },
         primary: {
-          main: BrandColor.Light.Grey[800],
+          main: BrandSwatch.Light.Grey[800],
         },
         secondary: {
-          main: BrandColor.Light.Blue[800],
+          main: BrandSwatch.Light.Blue[800],
         },
         error: {
-          main: BrandColor.Light.Yellow[300],
+          main: BrandSwatch.Light.Yellow[300],
         },
         warning: {
-          main: BrandColor.Light.Red[500],
+          main: BrandSwatch.Light.Red[500],
         },
         info: {
-          main: BrandColor.Light.Red[400],
+          main: BrandSwatch.Light.Red[400],
         },
         success: {
-          main: BrandColor.Light.Green[400],
+          main: BrandSwatch.Light.Green[400],
         },
-        divider: BrandColor.Light.Grey[200],
+        divider: BrandSwatch.Light.Grey[200],
         svgBg: {
-          base: BrandColor.Light.Grey[50],
-          active: BrandColor.Light.Grey[50],
+          base: BrandSwatch.Light.Grey[50],
+          active: BrandSwatch.Light.Grey[50],
         },
         svgFilled: {
-          base: BrandColor.Light.Grey[500],
-          active: BrandColor.Light.Blue[500],
+          base: BrandSwatch.Light.Grey[500],
+          active: BrandSwatch.Light.Blue[500],
         },
         svgStroke: {
-          base: BrandColor.Light.Grey[50],
-          active: BrandColor.Light.Grey[200],
+          base: BrandSwatch.Light.Grey[50],
+          active: BrandSwatch.Light.Grey[200],
         },
       }),
     },
@@ -238,38 +238,38 @@ export const muiDesignTokens = (mode: 'dark' | 'light') =>
       },
       subtitle1: {
         fontSize: theme.typography.pxToRem(18),
-        lineHeight: 24 / 18,
         letterSpacing: 0,
+        lineHeight: 24 / 18,
         fontWeight: 500,
       },
       body1: {
         fontSize: 'clamp(1.09rem, 1rem + 0.47vw, 1.33rem)',
-        lineHeight: 24 / 16,
         letterSpacing: 0,
+        lineHeight: 24 / 16,
       },
       body2: {
         fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
-        fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-        lineHeight: 21 / 14,
         letterSpacing: 0,
+        lineHeight: 21 / 14,
+        fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
       },
       caption: {
         display: 'inline-block',
-        fontSize: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
-        lineHeight: 18 / 12,
         letterSpacing: 0,
+        lineHeight: 18 / 12,
+        fontSize: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
       },
       code: {
         display: 'block',
-        fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
-        lineHeight: 1.7,
         letterSpacing: 0,
+        lineHeight: 1.7,
+        fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
         fontFamily: ['"Fira Code"', '"monospace"'].join(','),
       },
     },
   } as ThemeOptions)
 
-export function muiThemedComponents(theme: Theme) {
+export function ThemedComponents(theme: Theme) {
   return {
     components: {
       MuiButton: {
@@ -294,7 +294,9 @@ export function muiThemedComponents(theme: Theme) {
         },
         root: {
           background:
-            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[100],
+            theme.palette.mode === 'dark'
+              ? BrandSwatch.Dark.Grey[900]
+              : BrandSwatch.Light.Grey[100],
         },
       },
       MuiContainer: {
@@ -312,8 +314,8 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             color:
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[900]
-                : BrandColor.Light.Grey[100],
+                ? BrandSwatch.Dark.Grey[900]
+                : BrandSwatch.Light.Grey[100],
             margin: theme.spacing(5, 10),
           },
         },
@@ -364,8 +366,8 @@ export function muiThemedComponents(theme: Theme) {
           root: {
             color:
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Black[50]
-                : BrandColor.Light.Blue[600],
+                ? BrandSwatch.Dark.Black[50]
+                : BrandSwatch.Light.Blue[600],
             fontWeight: 600,
             display: 'inline-flex',
             alignItems: 'center',
@@ -427,8 +429,8 @@ export function muiThemedComponents(theme: Theme) {
             borderRadius: 32,
             backgroundColor:
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[800]
-                : BrandColor.Light.Grey[400],
+                ? BrandSwatch.Dark.Grey[800]
+                : BrandSwatch.Light.Grey[400],
           },
           thumb: {
             flexShrink: 0,
@@ -473,7 +475,9 @@ export function muiThemedComponents(theme: Theme) {
         },
         root: {
           background:
-            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[100],
+            theme.palette.mode === 'dark'
+              ? BrandSwatch.Dark.Grey[900]
+              : BrandSwatch.Light.Grey[100],
         },
       },
       MuiTooltip: {
@@ -490,18 +494,20 @@ export function muiThemedComponents(theme: Theme) {
             borderRadius: theme.shape.borderRadius,
             backgroundColor:
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[800]
-                : BrandColor.Light.Grey[300],
+                ? BrandSwatch.Dark.Grey[800]
+                : BrandSwatch.Light.Grey[300],
           },
           tooltip: {
             paddingTop: 4,
             paddingBottom: 4,
             color:
-              theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[50]
+                : BrandSwatch.Light.Grey[900],
             backgroundColor:
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[700]
-                : BrandColor.Light.Grey[300],
+                ? BrandSwatch.Dark.Grey[700]
+                : BrandSwatch.Light.Grey[300],
           },
         },
       },

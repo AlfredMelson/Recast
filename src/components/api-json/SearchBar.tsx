@@ -22,7 +22,7 @@ import {
 import { TextFieldButtonSx } from '../mui'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import FadeDelay from '../animation/FadeDelay'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 import { selectedApiAtom, selectedApiProviderAtom } from './ApiUrlSelector'
 
 export default function Searchbar() {
@@ -109,10 +109,10 @@ export default function Searchbar() {
         display: 'flex',
         alignItems: 'center',
         bgcolor: theme =>
-          theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[200],
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
         border: '1px solid',
         borderColor: theme =>
-          theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[200],
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
         transition: theme =>
           theme.transitions.create(['all'], {
             duration: theme.transitions.duration.standard,
@@ -121,7 +121,9 @@ export default function Searchbar() {
         '&:hover ': {
           border: '1px solid',
           borderColor: theme =>
-            theme.palette.mode === 'dark' ? BrandColor.Dark.Blue[600] : BrandColor.Light.Blue[400],
+            theme.palette.mode === 'dark'
+              ? BrandSwatch.Dark.Blue[600]
+              : BrandSwatch.Light.Blue[400],
         },
       }}>
       <InputBase
@@ -177,7 +179,7 @@ export default function Searchbar() {
                 )}
               </Typography>
             ) : (
-              successSubmit && <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
+              successSubmit && <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
             )}
           </TextFieldButtonSx>
         </FadeDelay>

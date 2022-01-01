@@ -8,31 +8,9 @@ body.loading * {
 }
 
 /**
- * Remove scrollbar
- * 
-body::-webkit-scrollbar {
-  width: 0;
-} */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0d0d0d;
-  box-shadow: nset 0 0 6px grey;
-}
-::-webkit-scrollbar-thumb {
-  background: #424242;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #616161;
-  max-height: 10px;
-}
-
-/**
  * VisualEditor Component
  */
+
 [hidden] {
   display: none;
 }

@@ -15,7 +15,7 @@ import {
 } from '../data-types/typeAliases'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
-import { BrandColor } from '../../../style/BrandColor'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 
 type DataHeadersAlias = {
   data?: { [key: string]: any } | undefined
@@ -106,7 +106,7 @@ function JsonBoolean({ value, dataKey }: ApiBooleanAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: BrandColor.Dark.Green[300] }}>{`${value}`}</span>
+      <span style={{ color: BrandSwatch.Dark.Green[300] }}>{`${value}`}</span>
     </Typography>
   )
 }
@@ -126,7 +126,7 @@ function JsonNumber({ value, dataKey }: ApiNumberAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: BrandColor.Dark.Green[300] }}>{`${value}`}</span>
+      <span style={{ color: BrandSwatch.Dark.Green[300] }}>{`${value}`}</span>
     </Typography>
   )
 }
@@ -168,7 +168,7 @@ function JsonString({ value, dataKey }: ApiStringAlias) {
   return (
     <Typography variant='code'>
       {`"${dataKey}"`}&#58;&nbsp;
-      <span style={{ color: BrandColor.Dark.Green[300] }}>{`"${value}"`}</span>
+      <span style={{ color: BrandSwatch.Dark.Green[300] }}>{`"${value}"`}</span>
     </Typography>
   )
 }

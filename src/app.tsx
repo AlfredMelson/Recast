@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './style/global.css'
 import { Layout } from './layout'
 import { APIJson, DeepDive, Development, HomePage } from './pages'
 import { NoMatch } from './pages/no-match/NoMatch'

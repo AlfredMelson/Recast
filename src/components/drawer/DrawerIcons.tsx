@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import { IconButtonSxAppBar, ToolTipSx, ButtonGroupSx } from '../mui'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 export function DrawerIcons() {
   // retrieve localStorage value
@@ -101,7 +101,7 @@ export function DrawerIcons() {
             ) : !successCopy ? (
               <ContentCopyIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
+              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -117,7 +117,7 @@ export function DrawerIcons() {
             ) : !successDownload ? (
               <DownloadIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
+              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>

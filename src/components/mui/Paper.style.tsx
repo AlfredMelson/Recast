@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper'
 import { styled, SxProps } from '@mui/material'
 import * as React from 'react'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 /**
  * @name PaperSxStyle
@@ -13,12 +13,12 @@ import { BrandColor } from '../../style/BrandColor'
  */
 const PaperSxStyle = styled(Paper)(({ theme }) => ({
   borderRadius: '0 0 3px 3px',
-  paddingTop: theme.spacing(30),
-  paddingLeft: theme.spacing(50),
-  paddingBottom: theme.spacing(40),
+  paddingTop: 30,
+  paddingLeft: 50,
+  paddingBottom: 40,
   background:
-    theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[800] : BrandColor.Light.Grey[200],
-  maxHeight: '76vh',
+    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
+  maxHeight: '64vh',
   overflowX: 'hidden',
   overflowY: 'scroll',
 }))
@@ -57,7 +57,7 @@ const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
   paddingTop: theme.spacing(30),
   paddingLeft: theme.spacing(50),
   paddingBottom: theme.spacing(40),
-  bgcolor: theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[800] : BrandColor.Light.Grey[200],
+  bgcolor: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
   maxHeight: '86vh',
   width: '100%',
   overflowX: 'hidden',

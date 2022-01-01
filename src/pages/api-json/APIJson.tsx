@@ -13,7 +13,8 @@ import {
 import Searchbar from '../../components/api-json/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
+import { HeroStyle } from '../../components/mui/Hero.style'
 
 // import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
@@ -120,31 +121,37 @@ export function APIJson() {
       //   setSelectedElement(null)
       // }}
     >
-      <Typography
-        variant='body2'
-        sx={{
-          fontStyle: 'italic',
-          color: theme =>
-            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
-          mt: 20,
-          mb: 14,
-        }}>
-        Select API from dropdown
-      </Typography>
+      <HeroStyle>
+        <Typography
+          variant='body2'
+          sx={{
+            fontStyle: 'italic',
+            color: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[100]
+                : BrandSwatch.Light.Grey[800],
+            mt: 20,
+            mb: 14,
+          }}>
+          Select API from dropdown
+        </Typography>
 
-      <ApiUrlSelector />
-      <Typography
-        variant='body2'
-        sx={{
-          fontStyle: 'italic',
-          color: theme =>
-            theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
-          mt: 20,
-          mb: 14,
-        }}>
-        or Enter API
-      </Typography>
-      <Searchbar />
+        <ApiUrlSelector />
+        <Typography
+          variant='body2'
+          sx={{
+            fontStyle: 'italic',
+            color: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[100]
+                : BrandSwatch.Light.Grey[800],
+            mt: 20,
+            mb: 14,
+          }}>
+          or Enter API
+        </Typography>
+        <Searchbar />
+      </HeroStyle>
       {/* <Collapse in={showError}>
             <Box sx={{ mt: 10, mb: 20 }}>
               <Alert

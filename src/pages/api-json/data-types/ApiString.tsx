@@ -12,7 +12,7 @@ import { ApiApplyIcon } from '../../../components/icons/ApiApplyIcon'
 import { selectedElementAtom } from '../../../recoil/api-json/atom'
 import InputSxEditApi from '../../../components/mui/Input.style'
 import { ButtonSxApiItem } from '../../../components/mui'
-import { BrandColor } from '../../../style/BrandColor'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 import { ApiStringAlias } from './typeAliases'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 
@@ -61,11 +61,11 @@ export function ApiString({ index, value, dataKey, dataType, onEdit, onDelete }:
                   sx={{
                     color: theme =>
                       theme.palette.mode === 'dark'
-                        ? BrandColor.Dark.Grey[50]
-                        : BrandColor.Light.Grey[900],
+                        ? BrandSwatch.Dark.Grey[50]
+                        : BrandSwatch.Light.Grey[900],
                     mr: 5,
                     '&:hover ': {
-                      color: BrandColor.Dark.Green[300],
+                      color: BrandSwatch.Dark.Green[300],
                     },
                   }}
                 />
@@ -84,14 +84,14 @@ export function ApiString({ index, value, dataKey, dataType, onEdit, onDelete }:
               sx={{
                 color: theme =>
                   theme.palette.mode === 'dark'
-                    ? BrandColor.Dark.Grey[50]
-                    : BrandColor.Light.Grey[900],
+                    ? BrandSwatch.Dark.Grey[50]
+                    : BrandSwatch.Light.Grey[900],
               }}
               variant='code'>
               &#34;{dataKey}&#34;&#58;&nbsp;
             </Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
-            <Typography variant='code' sx={{ color: BrandColor.Dark.Green[300] }}>
+            <Typography variant='code' sx={{ color: BrandSwatch.Dark.Green[300] }}>
               &#34;{currentValue}&#34;
             </Typography>
           </ButtonSxApiItem>

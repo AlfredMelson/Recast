@@ -7,7 +7,7 @@ import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import { RandomData } from '../../cms/verbiage'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 /**
  * @name selectedApiProviderAtom
@@ -62,10 +62,10 @@ export function Provider() {
         display: 'flex',
         alignItems: 'center',
         bgcolor: theme =>
-          theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[200],
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
         border: '1px solid',
         borderColor: theme =>
-          theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[900] : BrandColor.Light.Grey[200],
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
         transition: theme =>
           theme.transitions.create(['all'], {
             duration: theme.transitions.duration.standard,
@@ -74,7 +74,9 @@ export function Provider() {
         '&:hover ': {
           border: '1px solid',
           borderColor: theme =>
-            theme.palette.mode === 'dark' ? BrandColor.Dark.Blue[600] : BrandColor.Light.Blue[400],
+            theme.palette.mode === 'dark'
+              ? BrandSwatch.Dark.Blue[600]
+              : BrandSwatch.Light.Blue[400],
         },
       }}>
       <FormControl sx={{ minWidth: 160, my: 10 }}>
@@ -121,13 +123,13 @@ export function ProviderApi() {
             alignItems: 'center',
             bgcolor: theme =>
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[900]
-                : BrandColor.Light.Grey[200],
+                ? BrandSwatch.Dark.Grey[900]
+                : BrandSwatch.Light.Grey[200],
             border: '1px solid',
             borderColor: theme =>
               theme.palette.mode === 'dark'
-                ? BrandColor.Dark.Grey[900]
-                : BrandColor.Light.Grey[200],
+                ? BrandSwatch.Dark.Grey[900]
+                : BrandSwatch.Light.Grey[200],
             transition: theme =>
               theme.transitions.create(['all'], {
                 duration: theme.transitions.duration.standard,
@@ -137,8 +139,8 @@ export function ProviderApi() {
               border: '1px solid',
               borderColor: theme =>
                 theme.palette.mode === 'dark'
-                  ? BrandColor.Dark.Blue[600]
-                  : BrandColor.Light.Blue[400],
+                  ? BrandSwatch.Dark.Blue[600]
+                  : BrandSwatch.Light.Blue[400],
             },
           }}>
           <FormControl sx={{ minWidth: 160 }}>

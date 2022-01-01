@@ -11,7 +11,7 @@ import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import AsideEditInfo from '../../../components/api-json/AsideEditInfo'
 import { elementStateAtom, selectedElementProperties } from '../../../recoil/api-json/atom'
-import { BrandColor } from '../../../style/BrandColor'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 
 export default function EditResponse({ data, onDelete, onEdit }: EditResponseAlias) {
   const element = useRecoilValue(selectedElementProperties)
@@ -94,8 +94,8 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
                   sx={{
                     color: theme =>
                       theme.palette.mode === 'dark'
-                        ? BrandColor.Dark.Grey[200]
-                        : BrandColor.Light.Grey[900],
+                        ? BrandSwatch.Dark.Grey[200]
+                        : BrandSwatch.Light.Grey[900],
                   }}>
                   &#47;&#47;&nbsp;
                   {elementState.length}&nbsp;

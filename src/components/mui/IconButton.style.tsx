@@ -1,6 +1,6 @@
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import { styled } from '@mui/material'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 /**
  * @name IconButtonSxColorMode
@@ -11,14 +11,14 @@ import { BrandColor } from '../../style/BrandColor'
  * @return icon color mode style for light and dark mode
  */
 export const IconButtonSxColorMode = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[100] : BrandColor.Light.Grey[800],
+  color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
   padding: theme.spacing(10),
   transition: theme.transitions.create(['color'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover, & .Mui-focused': {
-    color: theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
+    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
   },
 }))
 
@@ -85,13 +85,13 @@ export const IconButtonSxApiEdit = styled(IconButton)(({ theme }) => ({
  */
 export const IconButtonSxAppBar = styled(IconButton)(({ theme }) => ({
   padding: theme.spacing(10),
-  color: theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[100] : BrandColor.Light.Grey[800],
+  color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
   transition: theme.transitions.create(['color'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover': {
-    color: theme.palette.mode === 'dark' ? BrandColor.Dark.Grey[50] : BrandColor.Light.Grey[900],
+    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
   },
 }))
 
@@ -106,13 +106,13 @@ export const IconButtonSxAppBar = styled(IconButton)(({ theme }) => ({
 export const IconButtonSxTsInterface = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(10),
-  backgroundColor: BrandColor.Dark.Grey[900],
+  backgroundColor: BrandSwatch.Dark.Grey[900],
   transition: theme.transitions.create(['color', 'backgroundColor'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover, &.Mui-focused': {
-    backgroundColor: BrandColor.Dark.Grey[800],
+    backgroundColor: BrandSwatch.Dark.Grey[800],
     color: '#007FFF',
   },
 }))

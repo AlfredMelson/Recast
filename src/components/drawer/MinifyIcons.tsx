@@ -10,7 +10,7 @@ import { saveAs } from 'file-saver'
 import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import { IconButtonSxAppBar, ToolTipSx, ButtonGroupSx } from '../mui'
-import { BrandColor } from '../../style/BrandColor'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 export function MinifyIcons() {
   //set dialog with minified json visability
@@ -111,7 +111,7 @@ export function MinifyIcons() {
             ) : !successCopy ? (
               <ContentCopyIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
+              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -125,7 +125,7 @@ export function MinifyIcons() {
             ) : !successDownload ? (
               <DownloadIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: BrandColor.Dark.Green[300] }} />
+              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
