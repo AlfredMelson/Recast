@@ -3,9 +3,9 @@ import * as ReactDOM from 'react-dom'
 import { RecoilRoot } from 'recoil'
 import CssBaseline from '@mui/material/CssBaseline'
 import App from './app'
-import MuiThemeProviderRoot from './style/MuiThemeProviderRoot'
 import './style/BrandGlobal.css'
 import './style/BrandGlobal.scss'
+import BrandThemeProvider from './style/BrandThemeProvider'
 
 // create entry point using unique id from Document
 const rootElement = document.getElementById('app')
@@ -17,11 +17,11 @@ const root = ReactDOM.createRoot(rootElement)
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <MuiThemeProviderRoot>
+      <BrandThemeProvider>
         <CssBaseline>
           <App />
         </CssBaseline>
-      </MuiThemeProviderRoot>
+      </BrandThemeProvider>
     </RecoilRoot>
   </React.StrictMode>
 )

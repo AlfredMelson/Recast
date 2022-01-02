@@ -76,13 +76,24 @@ export const GITHUB_DATA: GithubDataAlias[] = [
   { index: 3, quantity: '99', metadata: 'Followers on Twitter' },
 ]
 
-type DataAlias = {
+type BaseUrlDataAlias = {
+  index: string
+  base: string
+}
+
+export const BaseUrlData: BaseUrlDataAlias[] = [
+  { index: '', base: '' },
+  { index: 'randomDataApi', base: 'https://random-data-api.com/api/' },
+  { index: 'jsonPlaceholderApi', base: 'https://jsonplaceholder.typicode.com/' },
+]
+
+type RandomDataAlias = {
   index: number
   name: string
   url: string
 }
 
-export const RandomData: DataAlias[] = [
+export const RandomData: RandomDataAlias[] = [
   { index: 0, name: '', url: '' },
   { index: 1, name: 'Address', url: 'address/random_address' },
   { index: 2, name: 'Appliance', url: 'appliance/random_appliance' },
@@ -120,4 +131,33 @@ export const RandomData: DataAlias[] = [
   { index: 34, name: 'Phone Number ', url: 'phone_number/random_phone_number' },
   { index: 35, name: 'Placeholdit', url: 'placeholdit/random_placeholdit' },
   { index: 36, name: 'Restaurant', url: 'restaurant/random_restaurant' },
+]
+
+type JsonPlaceholderDataAlias = {
+  index: number
+  name: string
+  url: string
+}
+
+export const JsonPlaceholderData: JsonPlaceholderDataAlias[] = [
+  { index: 0, name: '', url: '' },
+  { index: 1, name: 'Posts', url: 'posts/' },
+  { index: 2, name: 'Comments', url: 'comments/' },
+  { index: 3, name: 'Albums', url: 'albums/' },
+  { index: 4, name: 'Photos', url: 'photos/' },
+  { index: 5, name: 'Todos', url: 'todos/' },
+  { index: 5, name: 'Users', url: 'users/' },
+]
+
+type VolumeSelectorAlias = {
+  index: number
+  name: string
+  value: string
+}
+
+export const VolumeSelector: VolumeSelectorAlias[] = [
+  { index: 0, name: 'one', value: '1' },
+  { index: 1, name: 'two', value: '2' },
+  { index: 2, name: 'five', value: '5' },
+  { index: 3, name: 'ten', value: '10' },
 ]

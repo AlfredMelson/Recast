@@ -10,7 +10,7 @@ import {
   userQuerySelector,
   apiResponseHeadersAtom,
 } from '../../recoil/api-json/atom'
-import Searchbar from '../../components/api-json/SearchBar'
+import Searchbar from '../../components/api-json/selectors/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
 import { BrandSwatch } from '../../style/BrandSwatch'
@@ -49,7 +49,7 @@ export function APIJson() {
   // state of query
   const userQuery = useRecoilValue(userQuerySelector)
   // api request
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const apiDataFetch = async () => {
       const response = await userQuery
       // console.log('RECOIL response', response)

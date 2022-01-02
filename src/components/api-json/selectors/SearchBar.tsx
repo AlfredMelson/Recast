@@ -9,7 +9,6 @@ import {
 // import InputAdornment from '@mui/material/InputAdornment'
 import Box from '@mui/material/Box'
 import CheckIcon from '@mui/icons-material/Check'
-import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import InputBase from '@mui/material/InputBase'
 import {
@@ -18,12 +17,12 @@ import {
   userQuerySelector,
   apiDataAtom,
   apiFullResponseAtom,
-} from '../../recoil/api-json/atom'
-import { TextFieldButtonSx } from '../mui'
-import { SxCircularProgress } from '../action/SxCircularProgress'
-import FadeDelay from '../animation/FadeDelay'
-import { BrandSwatch } from '../../style/BrandSwatch'
-import { selectedApiAtom, selectedApiProviderAtom } from './ApiUrlSelector'
+} from '../../../recoil/api-json/atom'
+import { PaperSxApiSelectorWrapper, TextFieldButtonSx } from '../../mui'
+import { SxCircularProgress } from '../../action/SxCircularProgress'
+import FadeDelay from '../../animation/FadeDelay'
+import { BrandSwatch } from '../../../style/BrandSwatch'
+import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 
 export default function Searchbar() {
   // user entered api url stored in recoil
@@ -96,36 +95,12 @@ export default function Searchbar() {
   const apiData = useRecoilValue(apiDataAtom)
 
   const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
-  console.log('selectedApi', selectedApi)
 
   // const inputField = React.useRef<HTMLInputElement>(null)
   // ref = { inputField }
 
   return (
-    <Paper
-      sx={{
-        height: 50,
-        width: 700,
-        display: 'flex',
-        alignItems: 'center',
-        bgcolor: theme =>
-          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-        border: '1px solid',
-        borderColor: theme =>
-          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-        transition: theme =>
-          theme.transitions.create(['all'], {
-            duration: theme.transitions.duration.standard,
-            easing: theme.transitions.easing.easeInOut,
-          }),
-        '&:hover ': {
-          border: '1px solid',
-          borderColor: theme =>
-            theme.palette.mode === 'dark'
-              ? BrandSwatch.Dark.Blue[600]
-              : BrandSwatch.Light.Blue[400],
-        },
-      }}>
+    <PaperSxApiSelectorWrapper>
       <InputBase
         autoFocus
         autoComplete='off'
@@ -137,9 +112,6 @@ export default function Searchbar() {
         }}
         placeholder='Enter API url'
         value={selectedApi !== '' ? selectedApi : userTypedUrl}
-        // onChange={event => {
-        //   setUserTypedUrl(event.target.value), setSelectedApi(event.target.value)
-        // }}
         onChange={handleTextFieldChanges}
       />
       <FadeDelay delay={1000}>
@@ -185,6 +157,6 @@ export default function Searchbar() {
         </FadeDelay>
         {submitting && <SxCircularProgress size='16px' color='green' />}
       </Box>
-    </Paper>
+    </PaperSxApiSelectorWrapper>
   )
 }

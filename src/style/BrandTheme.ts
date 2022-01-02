@@ -1,51 +1,25 @@
-import { createTheme, ThemeOptions, Theme } from '@mui/material/styles'
+import { createTheme, ThemeOptions } from '@mui/material/styles'
 import { BrandSwatch } from './BrandSwatch'
 
-declare module '@mui/material/styles/createPalette' {
-  interface ColorRange {
-    50: string
-    100: string
-    200: string
-    300: string
-    400: string
-    500: string
-    600: string
-    700: string
-    800: string
-    900: string
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface PaletteColor extends ColorRange {}
-
-  interface Palette {
-    //   darkPink: PaletteColor
-    svgBg: {
-      base: string
-      active: string
-    }
-    svgFilled: {
-      base: string
-      active: string
-    }
-    svgStroke: {
-      base: string
-      active: string
-    }
-  }
-}
-
+/**
+ * @module {@mui/material/styles}
+ * @purpose typography variant 'code'
+ * @description Adding & disabling variants
+ * In addition to using the default typography variants, you can add custom ones, or disable any you don't need. Here is what you need to do:
+ * @step1 Update the theme's typography object
+ * @step2 Update the necessary typings
+ * Make sure that the typings for the theme's typography variants and the Typography's variant prop reflects the new set of variants.
+ * @url https://mui.com/customization/typography/#adding-amp-disabling-variants
+ */
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     code: React.CSSProperties
   }
-
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     code: React.CSSProperties
   }
 }
-
 // Update the Typography's variant prop options
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
@@ -55,20 +29,12 @@ declare module '@mui/material/Typography' {
 
 const theme = createTheme()
 
-export const getMetaThemeColor = (mode: 'dark' | 'light') => {
-  const themeColor = {
-    dark: BrandSwatch.Dark.Grey[800],
-    light: BrandSwatch.Light.Grey[50],
-  }
-  return themeColor[mode]
-}
-
 // optically-consistent adjustment to space between letters
 function round(value: number) {
   return Math.round(value * 1e5) / 1e5
 }
 
-export const DesignTokens = (mode: 'dark' | 'light') =>
+export const BrandDesignTokens = (mode: 'dark' | 'light') =>
   ({
     palette: {
       mode,
@@ -104,12 +70,12 @@ export const DesignTokens = (mode: 'dark' | 'light') =>
           active: BrandSwatch.Dark.Grey[500],
         },
         svgFilled: {
-          base: BrandSwatch.Dark.Grey[800],
-          active: BrandSwatch.Dark.Blue[300],
+          base: BrandSwatch.Dark.Green[800],
+          active: BrandSwatch.Dark.Green[300],
         },
         svgStroke: {
-          base: BrandSwatch.Dark.Grey[600],
-          active: BrandSwatch.Dark.Grey[800],
+          base: BrandSwatch.Dark.Blue[600],
+          active: BrandSwatch.Dark.Blue[800],
         },
       }),
       ...(mode === 'light' && {
@@ -268,256 +234,3 @@ export const DesignTokens = (mode: 'dark' | 'light') =>
       },
     },
   } as ThemeOptions)
-
-export function ThemedComponents(theme: Theme) {
-  return {
-    components: {
-      MuiButton: {
-        defaultProps: {
-          disableElevation: true,
-        },
-        text: {
-          textTransform: 'none',
-        },
-      },
-      MuiButtonBase: {
-        defaultProps: {
-          disableTouchRipple: true,
-        },
-      },
-      MuiButtonGroup: {
-        defaultProps: {
-          variant: 'outlined',
-          disableElevation: true,
-          disableFocusRipple: true,
-          disableRipple: true,
-        },
-        root: {
-          background:
-            theme.palette.mode === 'dark'
-              ? BrandSwatch.Dark.Grey[900]
-              : BrandSwatch.Light.Grey[100],
-        },
-      },
-      MuiContainer: {
-        styleOverrides: {
-          root: {
-            [theme.breakpoints.up('md')]: {
-              paddingLeft: theme.spacing(20),
-              paddingRight: theme.spacing(20),
-            },
-          },
-        },
-      },
-      MuiDivider: {
-        styleOverrides: {
-          root: {
-            color:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[900]
-                : BrandSwatch.Light.Grey[100],
-            margin: theme.spacing(5, 10),
-          },
-        },
-      },
-      MuiIcon: {
-        defaultProps: {
-          fontSize: 'small',
-        },
-      },
-      MuiIconButton: {
-        styleOverrides: {
-          root: {
-            textDecoration: 'none',
-            backgroundColor: 'transparent',
-            '&:hover, & .Mui-focused': {
-              backgroundColor: 'transparent',
-            },
-          },
-        },
-      },
-      MuiInput: {
-        styleOverrides: {
-          root: {
-            fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
-          },
-          input: {
-            '&:focus': {
-              backgroundColor: 'transparent',
-            },
-          },
-        },
-      },
-      MuiInputBase: {
-        styleOverrides: {
-          root: {},
-        },
-      },
-      MuiInputLabel: {
-        styleOverrides: {
-          root: {},
-        },
-      },
-      MuiLink: {
-        defaultProps: {
-          underline: 'none',
-        },
-        styleOverrides: {
-          root: {
-            color:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Black[50]
-                : BrandSwatch.Light.Blue[600],
-            fontWeight: 600,
-            display: 'inline-flex',
-            alignItems: 'center',
-            '&.MuiTypography-body1 > svg': {
-              marginTop: 2,
-            },
-            '& svg:last-child': {
-              marginLeft: 2,
-            },
-          },
-        },
-      },
-      MuiOutlinedInput: {
-        input: {
-          '&:-webkit-autofill': {
-            webkitBoxShadow: '0 0 0 100px #1f2428 inset',
-            borderRadius: 'none',
-          },
-        },
-      },
-      MuiPaper: {
-        defaultProps: {
-          elevation: 1,
-        },
-        styleOverrides: {},
-      },
-      MuiSelect: {
-        defaultProps: {
-          variant: 'standard',
-        },
-      },
-      MuiSvgIcon: {
-        defaultProps: {
-          fontSize: 'small',
-        },
-      },
-      MuiSwitch: {
-        styleOverrides: {
-          root: {
-            width: 32,
-            height: 20,
-            padding: 0,
-          },
-          switchBase: {
-            height: 20,
-            width: 20,
-            padding: 0,
-            color: '#fff',
-            '&.Mui-checked + .MuiSwitch-track': {
-              opacity: 1,
-            },
-            '&.Mui-checked': {
-              transform: 'translateX(11px)',
-              color: '#fff',
-            },
-          },
-          track: {
-            opacity: 1,
-            borderRadius: 32,
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[800]
-                : BrandSwatch.Light.Grey[400],
-          },
-          thumb: {
-            flexShrink: 0,
-            width: '14px',
-            height: '14px',
-          },
-        },
-      },
-      MuiTab: {
-        defaultProps: {
-          disableTouchRipple: true,
-        },
-      },
-      MuiTableCell: {
-        styleOverrides: {
-          root: {
-            padding: theme.spacing(10, 20),
-            borderColor: theme.palette.divider,
-          },
-          head: {
-            color: theme.palette.text.primary,
-            fontWeight: 600,
-          },
-          body: {
-            color: theme.palette.text.secondary,
-          },
-        },
-      },
-      MuiTextField: {
-        defaultProps: {
-          variant: 'outlined',
-          size: 'small',
-          fontSize: '14px',
-        },
-        root: {
-          fontSize: '14px',
-        },
-      },
-      MuiToggleButtonGroup: {
-        defaultProps: {
-          size: 'small',
-        },
-        root: {
-          background:
-            theme.palette.mode === 'dark'
-              ? BrandSwatch.Dark.Grey[900]
-              : BrandSwatch.Light.Grey[100],
-        },
-      },
-      MuiTooltip: {
-        defaultProps: {
-          arrow: true,
-          enterDelay: 400,
-          enterNextDelay: 50,
-          enterTouchDelay: 800,
-          leaveDelay: 50,
-          leaveTouchDelay: 1000,
-        },
-        styleOverrides: {
-          tooltipArrow: {
-            borderRadius: theme.shape.borderRadius,
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[800]
-                : BrandSwatch.Light.Grey[300],
-          },
-          tooltip: {
-            paddingTop: 4,
-            paddingBottom: 4,
-            color:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[50]
-                : BrandSwatch.Light.Grey[900],
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[700]
-                : BrandSwatch.Light.Grey[300],
-          },
-        },
-      },
-      MuiTreeItem: {
-        styleOverrides: {
-          label: {
-            fontSize: theme.typography.body2,
-          },
-        },
-      },
-    },
-  }
-}
