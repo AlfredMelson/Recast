@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import { GITHUB_DATA } from '../../cms/verbiage'
+import { GITHUB_DATA } from '../../cms'
 import UserFeedbacks from './UserFeedbacks'
 
 export function MuiStats() {

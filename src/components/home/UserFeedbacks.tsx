@@ -4,7 +4,7 @@ import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import ArrowButton from '../action/ArrowButton'
-import { TESTIMONIAL } from '../../cms/verbiage'
+import { TESTIMONIAL } from '../../cms'
 
 type ProfileAlias = {
   name: string

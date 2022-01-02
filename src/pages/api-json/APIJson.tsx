@@ -10,11 +10,11 @@ import {
   userQuerySelector,
   apiResponseHeadersAtom,
 } from '../../recoil/api-json/atom'
-import Searchbar from '../../components/api-json/selectors/SearchBar'
 import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
 import { BrandSwatch } from '../../style/BrandSwatch'
 import { HeroStyle } from '../../components/mui/Hero.style'
+import { SearchBar } from '../../components/api-json/selectors'
 
 // import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
@@ -150,7 +150,7 @@ export function APIJson() {
           }}>
           or Enter API
         </Typography>
-        <Searchbar />
+        <SearchBar />
       </HeroStyle>
       {/* <Collapse in={showError}>
             <Box sx={{ mt: 10, mb: 20 }}>

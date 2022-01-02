@@ -4,9 +4,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
-import { BaseUrlData, RandomData, JsonPlaceholderData } from '../../../cms/verbiage'
 import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 import { PaperSxApiSelectorWrapper } from '../../mui'
+import { BaseUrlData, JsonPlaceholderData, RandomData } from '../../../cms'
 
 export default function DataCategorySelector() {
   const apiProvider = useRecoilValue(selectedApiProviderAtom)

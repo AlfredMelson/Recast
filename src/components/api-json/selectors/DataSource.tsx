@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil'
 import FormControl from '@mui/material/FormControl'
 import { selectedApiProviderAtom } from '../ApiUrlSelector'
 import { PaperSxApiSelectorWrapper } from '../../mui'
+import { SourceSelector } from '../../../cms/api-selector-verbiage'
 
 export default function DataSourceSelector() {
   const [selectedApiProvider, setSelectedApiProvider] = useRecoilState(selectedApiProviderAtom)
@@ -21,15 +22,17 @@ export default function DataSourceSelector() {
           id='provider-selector'
           value={selectedApiProvider}
           onChange={handleChange}>
-          <MenuItem dense value='randomDataApi'>
+          {/* <MenuItem dense value='randomDataApi'>
             Random Data API
           </MenuItem>
           <MenuItem dense value='jsonPlaceholderApi'>
             Json Placeholder API
-          </MenuItem>
-          <MenuItem dense disabled value='other'>
-            Other
-          </MenuItem>
+          </MenuItem> */}
+          {SourceSelector.map(item => (
+            <MenuItem dense key={item.index} value={item.value}>
+              {item.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </PaperSxApiSelectorWrapper>

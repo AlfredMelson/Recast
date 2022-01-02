@@ -5,7 +5,7 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
-import { VolumeSelector } from '../../../cms/verbiage'
+import { VolumeSelector } from '../../../cms'
 import { apiRequestQuantityAtom, selectedApiAtom } from '../ApiUrlSelector'
 import { PaperSxApiSelectorWrapper } from '../../mui'
 
