@@ -1,5 +1,5 @@
 import Paper, { PaperProps } from '@mui/material/Paper'
-import { styled, SxProps } from '@mui/material'
+import { alpha, styled, SxProps } from '@mui/material'
 import * as React from 'react'
 import { BrandSwatch } from '../../style/BrandSwatch'
 
@@ -127,6 +127,8 @@ const PaperSxApiSelectorStyle = styled((props: PaperProps) => <Paper {...props} 
  * @param {children} React.ReactNode
  * @param {paddingLeft} mui theme.spacing()
  * @return styled API Tab Panel background motion
+ *
+ * @MUIPaperAPI https://mui.com/api/paper/
  */
 type PaperSxApiSelectorWrapperAlias = {
   children: React.ReactNode
@@ -134,4 +136,63 @@ type PaperSxApiSelectorWrapperAlias = {
 
 export const PaperSxApiSelectorWrapper = ({ children }: PaperSxApiSelectorWrapperAlias) => {
   return <PaperSxApiSelectorStyle>{children}</PaperSxApiSelectorStyle>
+}
+
+/**
+ * @name PaperSxDropdownStyle
+ * @description styles API url selectors
+ * @param {Tabs} mui Tabs
+ * @param {styled} mui styled
+ * @param {theme} MuiBrandingTheme
+ * @return styled API url selectors
+ */
+
+export const PaperSxDropdownStyle = styled((props: PaperProps) => <Paper {...props} />)(
+  ({ theme }) => ({
+    minWidth: theme.spacing(400),
+    overflow: 'hidden',
+    borderColor: 'transparent',
+    bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'grey.300',
+    boxShadow: `0px 4px 20px ${
+      theme.palette.mode === 'dark'
+        ? alpha(theme.palette.background.paper, 1)
+        : 'rgba(170, 180, 190, 0.3)'
+    }`,
+    '& ul': {
+      margin: theme.spacing(0),
+      padding: theme.spacing(0),
+      listStyle: 'none',
+    },
+    '& li:not(:last-of-type)': {
+      borderBottom: '1px solid',
+      borderColor: theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100',
+    },
+    // '& a': { textDecoration: 'none' },
+    // transition: theme.transitions.create(['all'], {
+    //   duration: theme.transitions.duration.standard,
+    //   easing: theme.transitions.easing.easeInOut,
+    // }),
+    // '&:hover ': {
+    //   borderWidth: 1,
+    //   borderStyle: 'solid',
+    //   borderColor:
+    //     theme.palette.mode === 'dark' ? BrandSwatch.Dark.Blue[600] : BrandSwatch.Light.Blue[400],
+    // },
+  })
+)
+
+/**
+ * @name PaperSxDropdownWrapper
+ * @description styles API Tab Panel background motion
+ * @param {motion} framer-motion motion
+ * @param {children} React.ReactNode
+ * @param {paddingLeft} mui theme.spacing()
+ * @return styled API Tab Panel background motion
+ */
+type PaperSxDropdownWrapperAlias = {
+  children: React.ReactNode
+}
+
+export const PaperSxDropdownWrapper = ({ children }: PaperSxDropdownWrapperAlias) => {
+  return <PaperSxDropdownStyle>{children}</PaperSxDropdownStyle>
 }

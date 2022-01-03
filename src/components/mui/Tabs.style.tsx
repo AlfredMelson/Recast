@@ -32,7 +32,8 @@ export const TabsSx = styled((props: TabsSxAlias) => (
   />
 ))(({ theme }) => ({
   maxHeight: 40,
-  background:
+  borderRadius: '3px 3px 0 0',
+  backgroundColor:
     theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
   transition: theme.transitions.create(['background'], {
     duration: theme.transitions.duration.standard,
@@ -40,11 +41,11 @@ export const TabsSx = styled((props: TabsSxAlias) => (
   }),
   '.Mui-selected': {
     borderRadius: '3px 3px 0 0',
-    background:
+    backgroundColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[300],
   },
   '& .MuiTabs-indicator': {
-    background:
+    backgroundColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Blue[600] : BrandSwatch.Light.Blue[400],
   },
 }))

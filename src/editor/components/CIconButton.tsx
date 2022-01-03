@@ -2,13 +2,13 @@ import IconButton from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import * as React from 'react'
 
-type CIconButtonTypes = {
+type CIconButtonAlias = {
   size: any
   onClick: any
   children: React.ReactNode
+  tooltiptitle?: string
   dataValue?: any
   style?: any
-  tooltiptitle?: string
   toolplacement?: any
 }
 
@@ -20,9 +20,9 @@ export function CIconButton({
   dataValue,
   tooltiptitle,
   toolplacement,
-}: CIconButtonTypes) {
+}: CIconButtonAlias) {
   return (
-    <Tooltip title={tooltiptitle} placement={toolplacement}>
+    <Tooltip title={`${tooltiptitle}`} placement={toolplacement}>
       <IconButton size={size} onClick={onClick} sx={style} data-value={dataValue}>
         {children}
       </IconButton>

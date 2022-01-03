@@ -9,7 +9,7 @@ type ToolTipSxAlias = {
 export function ToolTipSx({ tooltipTitle, children, disabled }: ToolTipSxAlias) {
   return (
     <Tooltip
-      title={tooltipTitle}
+      title={`${tooltipTitle}`}
       disableFocusListener={disabled}
       disableHoverListener={disabled}
       disableInteractive={disabled}

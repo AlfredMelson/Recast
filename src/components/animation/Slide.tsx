@@ -1,10 +1,11 @@
 import Box, { BoxProps } from '@mui/material/Box'
 
-export default function Slide({
-  animationName,
-  keyframes,
-  ...props
-}: BoxProps & { animationName; keyframes }) {
+type SlideAlias = {
+  animationName: any
+  keyframes: any
+}
+
+export default function Slide({ animationName, keyframes, ...props }: BoxProps & SlideAlias) {
   return (
     <Box
       {...props}

@@ -49,7 +49,15 @@ export const SubMenu = React.forwardRef<HTMLAnchorElement, SubMenuAlias>(functio
             <Typography color='text.primary' variant='body2' fontWeight={600}>
               {name}
             </Typography>
-            <Typography color='orange.400' variant='body2'>
+            <Typography
+              variant='caption'
+              sx={{
+                color: theme =>
+                  theme.palette.mode === 'dark'
+                    ? BrandSwatch.Dark.Grey[100]
+                    : BrandSwatch.Light.Grey[800],
+                fontWeight: theme => theme.palette.mode === 'light' && 600,
+              }}>
               {description}
             </Typography>
           </Stack>

@@ -3,8 +3,7 @@ import * as React from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import Link from '@mui/material/Link'
 import { Typography } from '@mui/material'
-import isURL from '../../lib/validator/functions/isURL'
-// import validator from '../../lib/validator'
+import isURL from '../../lib/validate/isURL'
 
 type TypeStringTypes = {
   data: string

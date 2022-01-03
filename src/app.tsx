@@ -6,8 +6,6 @@ import { NoMatch } from './pages/no-match/NoMatch'
 import TreeviewHero from './pages/tree-view/TreeviewHero'
 import LoadingTest from './components/loading/LoadingTest'
 
-// Route path='*' element={<NoMatch />} handles all unaccounted routes
-
 const App: React.FC = () => {
   return (
     <React.Suspense fallback={<>...</>}>

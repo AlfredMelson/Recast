@@ -35,8 +35,7 @@ export function BrandThemedComponents(theme: Theme) {
         styleOverrides: {
           root: {
             [theme.breakpoints.up('md')]: {
-              paddingLeft: theme.spacing(20),
-              paddingRight: theme.spacing(20),
+              padding: theme.spacing(0, 20),
             },
           },
         },
@@ -54,7 +53,9 @@ export function BrandThemedComponents(theme: Theme) {
       },
       MuiFormControlLabel: {
         styleOverrides: {
-          label: theme.typography.body2,
+          label: {
+            fontSize: theme.typography.body2,
+          },
         },
       },
       MuiIcon: {
@@ -76,7 +77,7 @@ export function BrandThemedComponents(theme: Theme) {
       MuiInput: {
         styleOverrides: {
           root: {
-            fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
+            fontSize: theme.typography.body2,
           },
           input: {
             '&:focus': {
@@ -128,8 +129,14 @@ export function BrandThemedComponents(theme: Theme) {
       MuiPaper: {
         defaultProps: {
           elevation: 1,
+          variant: 'elevation',
         },
-        styleOverrides: {},
+        styleOverrides: {
+          root: {}, // Styles applied to the root element
+          rounded: {}, // Styles applied to the root element unless square={true}
+          outlined: {}, // Styles applied to the root element if variant="outlined"
+          elevation: {}, // Styles applied to the root element if variant="elevation"
+        },
       },
       MuiRadio: {
         defaultProps: {
@@ -154,14 +161,14 @@ export function BrandThemedComponents(theme: Theme) {
       MuiSwitch: {
         styleOverrides: {
           root: {
-            width: 32,
-            height: 20,
-            padding: 0,
+            width: theme.spacing(32),
+            height: theme.spacing(20),
+            padding: theme.spacing(0),
           },
           switchBase: {
-            height: 20,
-            width: 20,
-            padding: 0,
+            height: theme.spacing(20),
+            width: theme.spacing(20),
+            padding: theme.spacing(0),
             color: '#fff',
             '&.Mui-checked + .MuiSwitch-track': {
               opacity: 1,
@@ -173,7 +180,7 @@ export function BrandThemedComponents(theme: Theme) {
           },
           track: {
             opacity: 1,
-            borderRadius: 32,
+            borderRadius: theme.spacing(32),
             backgroundColor:
               theme.palette.mode === 'dark'
                 ? BrandSwatch.Dark.Grey[800]
@@ -190,6 +197,18 @@ export function BrandThemedComponents(theme: Theme) {
         defaultProps: {
           disableTouchRipple: true,
         },
+        styleOverrides: {
+          root: {
+            backgroundColor:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[700]
+                : BrandSwatch.Light.Grey[200],
+          },
+        },
+      },
+      MuiTabs: {
+        defaultProps: {},
+        styleOverrides: {},
       },
       MuiTableCell: {
         styleOverrides: {
@@ -210,10 +229,9 @@ export function BrandThemedComponents(theme: Theme) {
         defaultProps: {
           variant: 'outlined',
           size: 'small',
-          fontSize: '14px',
         },
         root: {
-          fontSize: '14px',
+          fontSize: theme.typography.body2,
         },
       },
       MuiToggleButtonGroup: {
@@ -245,8 +263,7 @@ export function BrandThemedComponents(theme: Theme) {
                 : BrandSwatch.Light.Grey[300],
           },
           tooltip: {
-            paddingTop: 4,
-            paddingBottom: 4,
+            padding: theme.spacing(4, 0),
             color:
               theme.palette.mode === 'dark'
                 ? BrandSwatch.Dark.Grey[50]
