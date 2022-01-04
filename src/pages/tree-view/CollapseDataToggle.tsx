@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { ButtonSxDataToggle } from '../../components/mui'
+import { ButtonSxUserJsonDataToggle } from '../../components/mui'
 import { processedDataIdsAtom, treeViewExpansionAtom } from '../../recoil/tree-view/atom'
 
 export function CollapseDataToggle() {
@@ -17,10 +17,12 @@ export function CollapseDataToggle() {
 
   return (
     <Box sx={{ mt: 10 }}>
-      <ButtonSxDataToggle disabled={treeViewExpansion.length === 0} onClick={handleCollapse}>
+      <ButtonSxUserJsonDataToggle
+        disabled={treeViewExpansion.length === 0}
+        onClick={handleCollapse}>
         {treeViewExpansion.length !== 0 && 'Collapse all'}
-      </ButtonSxDataToggle>
-      <ButtonSxDataToggle onClick={handleExpand}>{'Expand all'}</ButtonSxDataToggle>
+      </ButtonSxUserJsonDataToggle>
+      <ButtonSxUserJsonDataToggle onClick={handleExpand}>{'Expand all'}</ButtonSxUserJsonDataToggle>
     </Box>
   )
 }

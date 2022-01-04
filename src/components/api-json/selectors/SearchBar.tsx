@@ -107,7 +107,7 @@ export default function Searchbar() {
         sx={{
           ml: 10,
           flex: 1,
-          fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
+          fontSize: 16,
           minHeight: 32,
         }}
         placeholder='Enter API url'

@@ -21,7 +21,8 @@ export default function DataSourceSelector() {
           disableUnderline={true}
           id='provider-selector'
           value={selectedApiProvider}
-          onChange={handleChange}>
+          onChange={handleChange}
+          sx={{ fontSize: 16 }}>
           {/* <MenuItem dense value='randomDataApi'>
             Random Data API
           </MenuItem>

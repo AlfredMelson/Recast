@@ -9,7 +9,7 @@ import { BrandSwatch } from '../../style/BrandSwatch'
  * @param {Tabs} mui Tabs
  * @param {styled} mui styled
  * @param {theme} MuiBrandingTheme
- * @return styled API Tab Panel
+ * @return
  */
 const PaperSxStyle = styled(Paper)(({ theme }) => ({
   borderRadius: '0 0 3px 3px',
@@ -28,8 +28,8 @@ const PaperSxStyle = styled(Paper)(({ theme }) => ({
  * @description styles API Tab Panel background motion
  * @param {motion} framer-motion motion
  * @param {children} React.ReactNode
- * @param {paddingLeft} mui theme.spacing()
- * @return styled API Tab Panel background motion
+ * @param {paddingLeft} mui )
+ * @return
  */
 type PaperSxAlias = {
   children: React.ReactNode
@@ -51,12 +51,12 @@ export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
  * @param {Tabs} mui Tabs
  * @param {styled} mui styled
  * @param {theme} MuiBrandingTheme
- * @return styled Treeview
+ * @return
  */
 const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
-  paddingTop: theme.spacing(30),
-  paddingLeft: theme.spacing(50),
-  paddingBottom: theme.spacing(40),
+  paddingTop: 30,
+  paddingLeft: 50,
+  paddingBottom: 40,
   bgcolor: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
   maxHeight: '86vh',
   width: '100%',
@@ -69,8 +69,8 @@ const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
  * @description styles API Tab Panel background motion
  * @param {motion} framer-motion motion
  * @param {children} React.ReactNode
- * @param {paddingLeft} mui theme.spacing()
- * @return styled API Tab Panel background motion
+ * @param {paddingLeft} mui
+ * @return
  */
 type PaperSxTreeviewAlias = {
   children: React.ReactNode
@@ -122,11 +122,11 @@ const PaperSxApiSelectorStyle = styled((props: PaperProps) => <Paper {...props} 
 
 /**
  * @name PaperSxApiSelectorWrapper
- * @description styles API Tab Panel background motion
+ * @description styles
  * @param {motion} framer-motion motion
  * @param {children} React.ReactNode
- * @param {paddingLeft} mui theme.spacing()
- * @return styled API Tab Panel background motion
+ * @param {paddingLeft} mui )
+ * @return
  *
  * @MUIPaperAPI https://mui.com/api/paper/
  */
@@ -149,23 +149,26 @@ export const PaperSxApiSelectorWrapper = ({ children }: PaperSxApiSelectorWrappe
 
 export const PaperSxDropdownStyle = styled((props: PaperProps) => <Paper {...props} />)(
   ({ theme }) => ({
-    minWidth: theme.spacing(400),
+    minWidth: 400,
     overflow: 'hidden',
     borderColor: 'transparent',
-    bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'grey.300',
+    bgcolor:
+      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
     boxShadow: `0px 4px 20px ${
       theme.palette.mode === 'dark'
         ? alpha(theme.palette.background.paper, 1)
         : 'rgba(170, 180, 190, 0.3)'
     }`,
     '& ul': {
-      margin: theme.spacing(0),
-      padding: theme.spacing(0),
+      margin: 0,
+      padding: 0,
       listStyle: 'none',
     },
     '& li:not(:last-of-type)': {
-      borderBottom: '1px solid',
-      borderColor: theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100',
+      borderBottom: 1,
+      borderStyle: 'solid',
+      borderColor:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
     },
     // '& a': { textDecoration: 'none' },
     // transition: theme.transitions.create(['all'], {
@@ -186,7 +189,7 @@ export const PaperSxDropdownStyle = styled((props: PaperProps) => <Paper {...pro
  * @description styles API Tab Panel background motion
  * @param {motion} framer-motion motion
  * @param {children} React.ReactNode
- * @param {paddingLeft} mui theme.spacing()
+ * @param {paddingLeft} mui )
  * @return styled API Tab Panel background motion
  */
 type PaperSxDropdownWrapperAlias = {

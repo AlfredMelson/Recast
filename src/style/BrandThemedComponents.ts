@@ -4,34 +4,50 @@ import { BrandSwatch } from './BrandSwatch'
 export function BrandThemedComponents(theme: Theme) {
   return {
     components: {
+      // https://mui.com/api/button/
       MuiButton: {
-        defaultProps: {
-          disableElevation: true,
-        },
-        text: {
+        defaultProps: {},
+      },
+      styleOverrides: {
+        root: {}, // Styles applied to the root element
+        text: { fontWeight: theme.palette.mode === 'dark' ? 400 : 600 }, // Styles applied to the root element if variant="text"
+        outlined: {
+          fontWeight: theme.palette.mode === 'dark' ? 400 : 600,
+          backgroundColor:
+            theme.palette.mode === 'dark'
+              ? BrandSwatch.Dark.Blue[800]
+              : BrandSwatch.Light.Blue[400],
+        }, // Styles applied to the root element if variant="outlined"
+        contained: {
           textTransform: 'none',
-        },
+        }, // Styles applied to the root element if variant="contained"
+        disabled: {
+          textTransform: 'none',
+        }, // State class applied to the root element if disabled={true}
+        sizeMedium: {
+          textTransform: 'none',
+        }, // State class applied to the root element if disabled={true}
       },
       MuiButtonBase: {
         defaultProps: {
           disableTouchRipple: true,
         },
+        styleOverrides: {
+          root: {}, // Styles applied to the root element
+        },
       },
       MuiButtonGroup: {
         defaultProps: {
           variant: 'outlined',
-          disableElevation: true,
           disableFocusRipple: true,
           disableRipple: true,
         },
-        root: {
-          background:
-            theme.palette.mode === 'dark'
-              ? BrandSwatch.Dark.Grey[900]
-              : BrandSwatch.Light.Grey[100],
+        styleOverrides: {
+          root: {}, // Styles applied to the root element
         },
       },
       MuiContainer: {
+        defaultProps: {},
         styleOverrides: {
           root: {
             [theme.breakpoints.up('md')]: {
@@ -41,6 +57,7 @@ export function BrandThemedComponents(theme: Theme) {
         },
       },
       MuiDivider: {
+        defaultProps: {},
         styleOverrides: {
           root: {
             color:
@@ -51,19 +68,25 @@ export function BrandThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiFormControl: {
+        defaultProps: {},
+        styleOverrides: {},
+      },
       MuiFormControlLabel: {
+        defaultProps: {},
         styleOverrides: {
-          label: {
-            fontSize: theme.typography.body2,
-          },
+          label: {},
+          root: {},
         },
       },
       MuiIcon: {
         defaultProps: {
           fontSize: 'small',
         },
+        styleOverrides: {},
       },
       MuiIconButton: {
+        defaultProps: {},
         styleOverrides: {
           root: {
             textDecoration: 'none',
@@ -75,10 +98,9 @@ export function BrandThemedComponents(theme: Theme) {
         },
       },
       MuiInput: {
+        defaultProps: {},
         styleOverrides: {
-          root: {
-            fontSize: theme.typography.body2,
-          },
+          root: {},
           input: {
             '&:focus': {
               backgroundColor: 'transparent',
@@ -87,11 +109,11 @@ export function BrandThemedComponents(theme: Theme) {
         },
       },
       MuiInputBase: {
-        styleOverrides: {
-          root: {},
-        },
+        defaultProps: {},
+        styleOverrides: {},
       },
       MuiInputLabel: {
+        defaultProps: {},
         styleOverrides: {
           root: {},
         },
@@ -104,7 +126,7 @@ export function BrandThemedComponents(theme: Theme) {
           root: {
             color:
               theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Black[50]
+                ? BrandSwatch.Dark.Blue[500]
                 : BrandSwatch.Light.Blue[600],
             fontWeight: 600,
             display: 'inline-flex',
@@ -118,11 +140,22 @@ export function BrandThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiMenuItem: {
+        defaultProps: {},
+        styleOverrides: {
+          root: {
+            backgroundColor: '#000000',
+          },
+        },
+      },
       MuiOutlinedInput: {
-        input: {
-          '&:-webkit-autofill': {
-            webkitBoxShadow: '0 0 0 100px #1f2428 inset',
-            borderRadius: 'none',
+        defaultProps: {},
+        styleOverrides: {
+          input: {
+            '&:-webkit-autofill': {
+              webkitBoxShadow: '0 0 0 100px #1f2428 inset',
+              borderRadius: 'none',
+            },
           },
         },
       },
@@ -143,22 +176,28 @@ export function BrandThemedComponents(theme: Theme) {
           size: 'small',
         },
         styleOverrides: {
-          root: {
-            fontSize: theme.typography.body2,
-          },
+          root: {},
         },
       },
       MuiSelect: {
         defaultProps: {
           variant: 'standard',
         },
+        styleOverrides: {
+          select: {
+            fontSize: 16,
+          }, // Styles applied to the select component `select` class
+          icon: {}, // Styles applied to the icon component
+        },
       },
       MuiSvgIcon: {
         defaultProps: {
           fontSize: 'small',
         },
+        styleOverrides: {},
       },
       MuiSwitch: {
+        defaultProps: {},
         styleOverrides: {
           root: {
             width: theme.spacing(32),
@@ -211,6 +250,7 @@ export function BrandThemedComponents(theme: Theme) {
         styleOverrides: {},
       },
       MuiTableCell: {
+        defaultProps: {},
         styleOverrides: {
           root: {
             padding: theme.spacing(10, 20),
@@ -230,19 +270,23 @@ export function BrandThemedComponents(theme: Theme) {
           variant: 'outlined',
           size: 'small',
         },
-        root: {
-          fontSize: theme.typography.body2,
+        styleOverrides: {
+          root: {
+            fontSize: theme.typography.body2,
+          },
         },
       },
       MuiToggleButtonGroup: {
         defaultProps: {
           size: 'small',
         },
-        root: {
-          background:
-            theme.palette.mode === 'dark'
-              ? BrandSwatch.Dark.Grey[900]
-              : BrandSwatch.Light.Grey[100],
+        styleOverrides: {
+          root: {
+            background:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[900]
+                : BrandSwatch.Light.Grey[100],
+          },
         },
       },
       MuiTooltip: {
@@ -276,6 +320,7 @@ export function BrandThemedComponents(theme: Theme) {
         },
       },
       MuiTreeItem: {
+        defaultProps: {},
         styleOverrides: {
           label: {
             fontSize: theme.typography.body2,

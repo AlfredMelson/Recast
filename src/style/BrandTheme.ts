@@ -157,9 +157,8 @@ export const BrandDesignTokens = (mode: 'dark' | 'light'): ThemeOptions =>
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
       ].join(','),
-
-      //  Dec 29, 2021 ()
-      // update the font sizes using the clamp function
+      fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
+      // Dec 29, 2021 font sizes using the clamp function
       // developer.mozilla.org/en-US/docs/Web/CSS/clamp()
       // 300: clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem);
       // 400: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
@@ -209,28 +208,31 @@ export const BrandDesignTokens = (mode: 'dark' | 'light'): ThemeOptions =>
         fontWeight: 500,
       },
       body1: {
+        // fontSize: theme.typography.pxToRem(16),
         fontSize: 'clamp(1.09rem, 1rem + 0.47vw, 1.33rem)',
         letterSpacing: 0,
         lineHeight: 24 / 16,
       },
       body2: {
+        // fontSize: theme.typography.pxToRem(14),
         fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
         letterSpacing: 0,
         lineHeight: 21 / 14,
-        fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
       },
       caption: {
         display: 'inline-block',
+        // fontSize: theme.typography.pxToRem(12),
+        fontSize: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
         letterSpacing: 0,
         lineHeight: 18 / 12,
-        fontSize: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
       },
       code: {
         display: 'block',
-        letterSpacing: 0,
-        lineHeight: 1.7,
+        // fontSize: theme.typography.pxToRem(14),
         fontSize: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
         fontFamily: ['"Fira Code"', '"monospace"'].join(','),
+        letterSpacing: 0,
+        lineHeight: 1.7,
       },
     },
   } as ThemeOptions)

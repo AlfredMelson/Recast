@@ -11,7 +11,7 @@ import { ApiCloseIcon } from '../../../components/icons/ApiCloseIcon'
 import { ApiApplyIcon } from '../../../components/icons/ApiApplyIcon'
 import { selectedElementAtom } from '../../../recoil/api-json/atom'
 import InputSxEditApi from '../../../components/mui/Input.style'
-import { ButtonSxApiItem } from '../../../components/mui'
+import { ButtonSxApiJsonEditItem } from '../../../components/mui'
 import { BrandSwatch } from '../../../style/BrandSwatch'
 import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { ApiNumberAlias } from './typeAliases'
@@ -80,7 +80,7 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
             </ButtonGroup>
           </Stack>
         ) : (
-          <ButtonSxApiItem onClick={() => setSelectedElement(index)}>
+          <ButtonSxApiJsonEditItem onClick={() => setSelectedElement(index)}>
             <Typography
               sx={{
                 color: theme =>
@@ -92,10 +92,17 @@ export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }:
               &#34;{dataKey}&#34;&#58;&nbsp;
             </Typography>
             <ApiDataTypeLabel type={dataType} variant='edit' />
-            <Typography variant='code' sx={{ color: BrandSwatch.Dark.Purple[500] }}>
+            <Typography
+              variant='code'
+              sx={{
+                color: theme =>
+                  theme.palette.mode === 'dark'
+                    ? BrandSwatch.Dark.Purple[500]
+                    : BrandSwatch.Light.Purple[600],
+              }}>
               {currentValue}
             </Typography>
-          </ButtonSxApiItem>
+          </ButtonSxApiJsonEditItem>
         )}
       </ApiEditHighlighter>
     </Box>

@@ -153,7 +153,7 @@ export function ValueEditor({ path, defaultValue, onCancel, onUpdate }: ValueEdi
         <MenuItem value={DataType.Boolean}>Boolean</MenuItem>
         <MenuItem value={DataType.Null}>Null</MenuItem>
       </Select>
-      <ButtonGroup disableElevation={true} variant='outlined'>
+      <ButtonGroup variant='outlined'>
         <Button onClick={onOkClicked}>
           <CheckCircleIcon />
         </Button>

@@ -21,6 +21,7 @@ export const Navigation = styled('nav')(({ theme }) => ({
     listStyle: 'none',
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: 14,
   },
   '& li': {
     ...theme.typography.body2,

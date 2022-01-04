@@ -41,8 +41,7 @@ export default function Hero() {
           <Typography variant='h1' sx={{ my: 20, maxWidth: 500 }}>
             Visualize and recast <GradientText>JSON</GradientText>
           </Typography>
-          {/* &nbsp;UI */}
-          <Typography color='text.secondary' sx={{ mb: 30, maxWidth: 436 }}>
+          <Typography variant='h6' color='text.secondary' sx={{ mb: 30, maxWidth: 436 }}>
             JavaScript Object Notation, a lightweight data-interchange format that is easy for
             humans to understand, for machines to parse and is programming language independent.
           </Typography>
