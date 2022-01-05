@@ -6,30 +6,33 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { Link as MuiLink } from '@mui/material'
-import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
+import { userGeneratedJsonAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SvgJsonLogo } from '../icons'
 import { HeaderStyle } from '../mui/Header.style'
+import { BrandSwatch } from '../../style/BrandSwatch'
 import { MinifyIcons } from './MinifyIcons'
 
 export function MinifyDialog() {
   //set dialog with minified json visability
   const [minifyDialogOpen, setMinifyDialogOpen] = useRecoilState(minifyDialogOpenAtom)
   //retrieve localStorage value
-  const localEditorText = useRecoilValue(localEditorTextAtom)
+  const userGeneratedJson = useRecoilValue(userGeneratedJsonAtom)
   //store minified json in recoil
   const [minifiedText, setMinifiedText] = useRecoilState(minifiedTextAtom)
-  //minify json - move to recoil
+  // handle minification of json & move to recoil
   React.useEffect(() => {
-    function Minify(json: string) {
-      try {
-        const results = JSON.stringify(JSON.parse(json), null, 2)
+    async function Minify(json: string) {
+      const typeJson = typeof JSON === 'undefined' || null
+      if (typeJson) {
+        return json
+      } else {
+        const results = json.length > 0 && JSON.stringify(JSON.parse(json), null, 0)
         setMinifiedText(results)
-      } catch (error) {
-        console.error('Minify Error', error)
+        return
       }
     }
-    Minify(localEditorText)
-  }, [localEditorText, setMinifiedText])
+    Minify(userGeneratedJson)
+  }, [userGeneratedJson, setMinifiedText])
 
   return (
     <Dialog
@@ -64,14 +67,38 @@ export function MinifyDialog() {
       <DialogContent
         dividers={true}
         sx={{
-          background: '#002240',
+          background: theme =>
+            theme.palette.mode === 'dark'
+              ? BrandSwatch.Dark.Grey[700]
+              : BrandSwatch.Light.Grey[100],
           overflowWrap: 'break-word',
           overflowX: 'scroll',
           '&::-webkit-scrollbar': {
             width: 0,
           },
         }}>
-        <Typography paragraph variant='body2' id='minified-json-data' sx={{ color: '#9CDCFE' }}>
+        <Typography
+          variant='code'
+          id='minified-json-data'
+          sx={{
+            fontSize: 14,
+            fontWeight: theme => (theme.palette.mode === 'dark' ? 400 : 500),
+            color: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[100]
+                : BrandSwatch.Light.Grey[700],
+            transition: theme =>
+              theme.transitions.create(['all'], {
+                duration: theme.transitions.duration.standard,
+                easing: theme.transitions.easing.easeInOut,
+              }),
+            '&:hover': {
+              color: theme =>
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Grey[50]
+                  : BrandSwatch.Light.Grey[900],
+            },
+          }}>
           <span id='back-to-top-anchor' />
           {minifiedText}
         </Typography>

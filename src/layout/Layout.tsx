@@ -7,7 +7,7 @@ import { AppHeader } from './AppHeader'
 export function Layout() {
   // identify HomePage and enable scroll
   const location = useLocation()
-  console.log('location', location)
+  console.log('location from Layout.tsx', location)
 
   return (
     <Box

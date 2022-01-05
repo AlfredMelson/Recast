@@ -291,32 +291,50 @@ export function BrandThemedComponents(theme: Theme) {
       },
       MuiTooltip: {
         defaultProps: {
-          arrow: true,
-          enterDelay: 400,
-          enterNextDelay: 50,
-          enterTouchDelay: 800,
-          leaveDelay: 50,
-          leaveTouchDelay: 1000,
+          arrow: true, // If true, adds an arrow to the tooltip
+          enterDelay: 400, // ms to wait before showing the tooltip
+          enterNextDelay: 50, // ms to wait before showing the tooltip when one was already recently opened
+          enterTouchDelay: 800, // ms a user must touch the element before showing the tooltip
+          leaveDelay: 50, // ms to wait before hiding the tooltip
+          leaveTouchDelay: 1000, // ms after the user stops touching an element before hiding the tooltip
+          placement: 'bottom', // position the tooltip will appear, 'bottom' is default
         },
         styleOverrides: {
-          tooltipArrow: {
-            borderRadius: theme.shape.borderRadius,
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[800]
-                : BrandSwatch.Light.Grey[300],
-          },
+          popper: {
+            // color:
+            //   theme.palette.mode === 'dark'
+            //     ? BrandSwatch.Dark.Grey[50]
+            //     : BrandSwatch.Light.Grey[900],
+          }, // Styles applied to the Popper component.
+          popperInteractive: {}, // Styles applied to the Popper component unless disableInteractive={true}
+          popperArrow: {}, // Styles applied to the Popper component if arrow={true}
+          popperClose: {}, // Styles applied to the Popper component unless the tooltip is open
           tooltip: {
-            padding: theme.spacing(4, 0),
+            boxShadow: '0px 0px 4px 0px rgba(0,0,0,0.25)',
+            margin: theme.spacing(4, 10),
+            fontWeight: theme.palette.mode === 'dark' ? 400 : 600,
+            fontSize: 13,
             color:
               theme.palette.mode === 'dark'
                 ? BrandSwatch.Dark.Grey[50]
                 : BrandSwatch.Light.Grey[900],
             backgroundColor:
               theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[700]
+                ? BrandSwatch.Dark.Grey[600]
                 : BrandSwatch.Light.Grey[300],
-          },
+          }, // Styles applied to the tooltip (label wrapper) element
+          tooltipArrow: {}, // Styles applied to the tooltip (label wrapper) element if arrow={true}
+          arrow: {
+            color:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[600]
+                : BrandSwatch.Light.Grey[300],
+          }, // Styles applied to the arrow element
+          touch: {}, // Styles applied to the tooltip (label wrapper) element if the tooltip is opened by touch
+          tooltipPlacementLeft: {}, // Styles applied to the tooltip (label wrapper) element if placement contains "left"
+          tooltipPlacementRight: {}, // Styles applied to the tooltip (label wrapper) element if placement contains "right"
+          tooltipPlacementTop: {}, // Styles applied to the tooltip (label wrapper) element if placement contains "top"
+          tooltipPlacementBottom: {}, // Styles applied to the tooltip (label wrapper) element if placement contains "bottom"
         },
       },
       MuiTreeItem: {

@@ -34,7 +34,7 @@ function round(value: number) {
   return Math.round(value * 1e5) / 1e5
 }
 
-export const BrandDesignTokens = (mode: 'dark' | 'light'): ThemeOptions =>
+export const BrandDesignTokens = (mode: 'dark' | 'light') =>
   ({
     palette: {
       mode,
@@ -236,5 +236,3 @@ export const BrandDesignTokens = (mode: 'dark' | 'light'): ThemeOptions =>
       },
     },
   } as ThemeOptions)
-
-console.log(' ThemeOptions', BrandDesignTokens('light'))

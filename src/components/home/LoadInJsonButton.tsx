@@ -31,22 +31,22 @@ export default function LoadInJsonButton({
           size={size}
           variant={variant}
           sx={{
-            borderWidth: theme => (theme.palette.mode === 'dark' ? 1 : 2),
+            borderWidth: 2,
             borderColor: theme =>
               theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Blue[800]
-                : BrandSwatch.Light.Blue[500],
+                ? BrandSwatch.Dark.Blue[500]
+                : BrandSwatch.Light.Blue[400],
             color: theme =>
               theme.palette.mode === 'dark'
                 ? BrandSwatch.Dark.Blue[300]
                 : BrandSwatch.Light.Blue[600],
             '&:hover': {
               borderColor: 'transparent',
-              borderWidth: theme => (theme.palette.mode === 'dark' ? 1 : 2),
+              borderWidth: 2,
               backgroundColor: theme =>
                 theme.palette.mode === 'dark'
-                  ? BrandSwatch.Dark.Blue[700]
-                  : BrandSwatch.Light.Blue[500],
+                  ? BrandSwatch.Dark.Blue[500]
+                  : BrandSwatch.Light.Blue[400],
               color: theme =>
                 theme.palette.mode === 'dark'
                   ? BrandSwatch.Dark.Grey[50]

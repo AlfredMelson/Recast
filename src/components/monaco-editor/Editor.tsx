@@ -3,27 +3,27 @@ import { useRecoilValue, useRecoilState } from 'recoil'
 import * as React from 'react'
 import { debounce } from 'lodash'
 import Box from '@mui/system/Box'
-import { localEditorTextAtom, monacoThemeAtom } from '../../recoil'
+import { userGeneratedJsonAtom, monacoThemeAtom } from '../../recoil'
 
 export function Editor() {
   //retrieve editor theme value
   const monacoTheme = useRecoilValue(monacoThemeAtom)
   //retrieve localStorage value
-  const [localEditorText, setLocalEditorText] = useRecoilState(localEditorTextAtom)
+  const [userGeneratedJson, setUserGeneratedJson] = useRecoilState(userGeneratedJsonAtom)
   // load from local storage
   React.useEffect(() => {
-    const localStorageJson = localStorage.getItem('localJsonText')
+    const localStorageJson = localStorage.getItem('userGeneratedJson')
     if (localStorageJson) {
-      setLocalEditorText(localStorageJson)
+      setUserGeneratedJson(localStorageJson)
     }
-  }, [setLocalEditorText])
+  }, [setUserGeneratedJson])
   //lodash debounced() delays updating local text file for 750ms after user edit
   const onChange = debounce(
     React.useCallback(
       newValue => {
-        setLocalEditorText(newValue)
+        setUserGeneratedJson(newValue)
       },
-      [setLocalEditorText]
+      [setUserGeneratedJson]
     ),
     750
   )
@@ -32,7 +32,7 @@ export function Editor() {
     <Box sx={{ overflow: 'hidden' }}>
       <MonacoEditor
         height='100vh'
-        value={localEditorText}
+        value={userGeneratedJson}
         language='json'
         theme={monacoTheme}
         onChange={onChange}

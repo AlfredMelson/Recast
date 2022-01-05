@@ -7,7 +7,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import ClipboardJS from 'clipboard'
 import { saveAs } from 'file-saver'
-import { localEditorTextAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
+import { userGeneratedJsonAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import { IconButtonSxAppBar, ToolTipSx, ButtonGroupSx } from '../mui'
 import { BrandSwatch } from '../../style/BrandSwatch'
@@ -16,7 +16,7 @@ export function MinifyIcons() {
   //set dialog with minified json visability
   const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
   //retrieve localStorage value
-  const localEditorText = useRecoilValue(localEditorTextAtom)
+  const userGeneratedJson = useRecoilValue(userGeneratedJsonAtom)
   //store minified json in recoil
   const [minifiedText, setMinifiedText] = useRecoilState(minifiedTextAtom)
   // minify json
@@ -30,8 +30,8 @@ export function MinifyIcons() {
         return
       }
     }
-    Minify(localEditorText)
-  }, [localEditorText, setMinifiedText])
+    Minify(userGeneratedJson)
+  }, [userGeneratedJson, setMinifiedText])
 
   //useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
@@ -111,7 +111,14 @@ export function MinifyIcons() {
             ) : !successCopy ? (
               <ContentCopyIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
+              <CheckIcon
+                sx={{
+                  color: theme =>
+                    theme.palette.mode === 'dark'
+                      ? BrandSwatch.Dark.Green[300]
+                      : BrandSwatch.Light.Green[500],
+                }}
+              />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>
@@ -125,7 +132,14 @@ export function MinifyIcons() {
             ) : !successDownload ? (
               <DownloadIcon sx={{ color: 'transparent' }} />
             ) : (
-              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
+              <CheckIcon
+                sx={{
+                  color: theme =>
+                    theme.palette.mode === 'dark'
+                      ? BrandSwatch.Dark.Green[300]
+                      : BrandSwatch.Light.Green[500],
+                }}
+              />
             )}
           </IconButtonSxAppBar>
         </ToolTipSx>

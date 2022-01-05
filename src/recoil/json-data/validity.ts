@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { localEditorTextAtom } from './atom'
+import { userGeneratedJsonAtom } from './atom'
 
 export enum ValidityType {
   Valid = 'valid',
@@ -10,10 +10,10 @@ export enum ValidityType {
 export const textAreaDataSelector = selector<ValidityType>({
   key: 'textareaData',
   get: ({ get }) => {
-    const localEditorText = get(localEditorTextAtom)
-    if (localEditorText === null) {
+    const userGeneratedJson = get(userGeneratedJsonAtom)
+    if (userGeneratedJson === null) {
       try {
-        JSON.parse(localEditorText)
+        JSON.parse(userGeneratedJson)
         return ValidityType.Valid
       } catch (e) {
         return ValidityType.Invalid

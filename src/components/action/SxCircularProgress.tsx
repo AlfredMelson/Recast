@@ -1,5 +1,5 @@
 import CircularProgress from '@mui/material/CircularProgress'
-import { blue, green } from '@mui/material/colors'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
 interface SxCircularProgressProps {
   size: '16px' | '20px'
@@ -11,7 +11,16 @@ export function SxCircularProgress({ size, color }: SxCircularProgressProps) {
     <CircularProgress
       size={size}
       sx={{
-        color: color === 'green' ? green[500] : blue[500],
+        color:
+          color === 'green'
+            ? theme =>
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Green[300]
+                  : BrandSwatch.Light.Green[500]
+            : theme =>
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Blue[400]
+                  : BrandSwatch.Light.Blue[500],
         position: 'absolute',
         top: '50%',
         left: '50%',

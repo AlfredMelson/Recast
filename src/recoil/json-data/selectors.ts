@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { atom, atomFamily } from 'recoil'
 // import { isArray } from '../../components/editor/objects/types'
-// import { localEditorTextAtom } from './atom'
+// import { userGeneratedJsonAtom } from './atom'
 
 export const selectedObjectAtom = atom<string | null>({
   key: 'selectedObject',
@@ -59,19 +59,19 @@ export const getParentPathAndName = (path: Path): [Path, string] => {
 // export const deleteTextPathSelector = selector({
 //   key: 'deleteTextPath',
 //   get: ({ get }) => {
-//     const localEditorText = get(localEditorTextAtom)
+//     const userGeneratedJson = get(userGeneratedJsonAtom)
 
-//     const path = localEditorText // How to get exact path ?
+//     const path = userGeneratedJson // How to get exact path ?
 //     const [parentPath, name] = getParentPathAndName(path)
-//     const data = localEditorText
+//     const data = userGeneratedJson
 //     if (parentPath.length === 0) {
 //       // the traget is root object
 //       if (isArray(data)) {
 //         // Array
-//         localEditorText = data.filter((_: any, index: any) => `${index}` !== name)
+//         userGeneratedJson = data.filter((_: any, index: any) => `${index}` !== name)
 //       } else {
 //         // Object
-//         _.unset(localEditorText, path)
+//         _.unset(userGeneratedJson, path)
 //       }
 //     } else {
 //       // the traget is not root object
@@ -79,13 +79,13 @@ export const getParentPathAndName = (path: Path): [Path, string] => {
 //       if (isArray(targetData)) {
 //         // Array
 //         _.set(
-//           localEditorText,
+//           userGeneratedJson,
 //           parentPath,
 //           targetData.filter((_: any, index: number) => index !== parseInt(name))
 //         )
 //       } else {
 //         // Object
-//         _.unset(localEditorText, path)
+//         _.unset(userGeneratedJson, path)
 //       }
 //     }
 //   },

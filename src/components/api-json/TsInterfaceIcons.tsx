@@ -7,7 +7,7 @@ import ClipboardJS from 'clipboard'
 import CheckIcon from '@mui/icons-material/Check'
 import { blue } from '@mui/material/colors'
 import saveAs from 'file-saver'
-import { localEditorTextAtom } from '../../recoil'
+import { userGeneratedJsonAtom } from '../../recoil'
 import { IconButtonSxTsInterface } from '../mui/IconButton.style'
 import { ToolTipSx } from '../mui/ToolTip.style'
 import { SxCircularProgress } from '../action/SxCircularProgress'
@@ -15,10 +15,10 @@ import { ButtonGroupSxTsInterface } from '../mui/ButtonGroup.style'
 
 export function TsInterfaceIcons() {
   // retrieve localStorage value
-  const localEditorText = useRecoilValue(localEditorTextAtom)
+  const userGeneratedJson = useRecoilValue(userGeneratedJsonAtom)
   //
   // reset localStorage value to recoil stored default
-  // const resetLocalEditorText = useResetRecoilState(localEditorTextAtom)
+  // const resetUserGeneratedJson = useResetRecoilState(userGeneratedJsonAtom)
   //
   // useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
@@ -35,7 +35,7 @@ export function TsInterfaceIcons() {
   const [successCopy, setSuccessCopy] = React.useState(false)
   // handle copy of json to clipboard
   const handleJsonCopy = () => {
-    const clipboard = new ClipboardJS(localEditorText)
+    const clipboard = new ClipboardJS(userGeneratedJson)
     if (!loadingCopy) {
       setSuccessCopy(false)
       setLoadingCopy(true)
@@ -71,7 +71,7 @@ export function TsInterfaceIcons() {
           this.emit('error', 'download', 'Downloading not supported on this browser.')
         }
       }
-      downloadJson(localEditorText)
+      downloadJson(userGeneratedJson)
       //set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(true)

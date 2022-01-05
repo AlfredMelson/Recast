@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { alpha } from '@mui/material/styles'
 import Popper from '@mui/material/Popper'
 import Paper from '@mui/material/Paper'
 import Fade from '@mui/material/Fade'
@@ -106,7 +105,7 @@ export function DropDownMenu() {
         Products
       </Box>
       <Popper
-        style={{ zIndex: 1600 }}
+        style={{ zIndex: 1600, boxShadow: '0px 0px 8px 0px rgba(0,0,0,0.25)' }}
         open={subMenuOpen}
         anchorEl={productsMenuRef.current}
         transition
@@ -120,12 +119,12 @@ export function DropDownMenu() {
                 overflow: 'hidden',
                 borderColor: 'transparent',
                 bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'grey.300'),
-                boxShadow: theme =>
-                  `0px 4px 20px ${
-                    theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.background.paper, 1)
-                      : 'rgba(170, 180, 190, 0.3)'
-                  }`,
+                // boxShadow: theme =>
+                //   `0px 4px 20px ${
+                //     theme.palette.mode === 'dark'
+                //       ? alpha(theme.palette.background.paper, 1)
+                //       : 'rgba(170, 180, 190, 0.3)'
+                //   }`,
                 '& ul': {
                   margin: 0,
                   padding: 0,

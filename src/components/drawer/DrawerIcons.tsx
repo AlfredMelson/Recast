@@ -10,16 +10,16 @@ import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import saveAs from 'file-saver'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import CloseIcon from '@mui/icons-material/Close'
-import { dataDrawerOpenAtom, localEditorTextAtom, minifyDialogOpenAtom } from '../../recoil'
+import { dataDrawerOpenAtom, userGeneratedJsonAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
 import { IconButtonSxAppBar, ToolTipSx, ButtonGroupSx } from '../mui'
 import { BrandSwatch } from '../../style/BrandSwatch'
 
 export function DrawerIcons() {
   // retrieve localStorage value
-  const localEditorText = useRecoilValue(localEditorTextAtom)
+  const userGeneratedJson = useRecoilValue(userGeneratedJsonAtom)
   // reset localStorage value to recoil stored default
-  const resetLocalEditorText = useResetRecoilState(localEditorTextAtom)
+  const resetUserGeneratedJson = useResetRecoilState(userGeneratedJsonAtom)
   // set dialog with minified json visability
   const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
   // useRef to avoid re-renders during button interactions
@@ -37,7 +37,7 @@ export function DrawerIcons() {
   const [successCopy, setSuccessCopy] = React.useState(false)
   // handle copy of json to clipboard
   const handleJsonCopy = () => {
-    const clipboard = new ClipboardJS(localEditorText)
+    const clipboard = new ClipboardJS(userGeneratedJson)
     if (!loadingCopy) {
       setSuccessCopy(false)
       setLoadingCopy(true)
@@ -73,7 +73,7 @@ export function DrawerIcons() {
           this.emit('error', 'download', 'Downloading not supported on this browser.')
         }
       }
-      downloadJson(localEditorText)
+      downloadJson(userGeneratedJson)
       // set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessDownload(true)
@@ -92,58 +92,90 @@ export function DrawerIcons() {
   return (
     <ButtonGroupSx>
       <Box sx={{ position: 'relative', pl: 5 }}>
-        <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
-          <IconButtonSxAppBar
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={handleJsonCopy}>
-            {!loadingCopy && !successCopy ? (
-              <ContentCopyIcon />
-            ) : !successCopy ? (
-              <ContentCopyIcon sx={{ color: 'transparent' }} />
-            ) : (
-              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
-            )}
+        {userGeneratedJson.length === 0 ? (
+          <IconButtonSxAppBar disabled={true}>
+            <ContentCopyIcon />
           </IconButtonSxAppBar>
-        </ToolTipSx>
+        ) : (
+          <ToolTipSx tooltipTitle={jsonCopy ? 'Copied' : 'Copy json'}>
+            <IconButtonSxAppBar onClick={handleJsonCopy}>
+              {!loadingCopy && !successCopy ? (
+                <ContentCopyIcon />
+              ) : !successCopy ? (
+                <ContentCopyIcon sx={{ color: 'transparent' }} />
+              ) : (
+                <CheckIcon
+                  sx={{
+                    color: theme =>
+                      theme.palette.mode === 'dark'
+                        ? BrandSwatch.Dark.Green[300]
+                        : BrandSwatch.Light.Green[500],
+                  }}
+                />
+              )}
+            </IconButtonSxAppBar>
+          </ToolTipSx>
+        )}
         {loadingCopy && <SxCircularProgress size='20px' color='green' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <ToolTipSx tooltipTitle={'Download json'}>
-          <IconButtonSxAppBar
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={handleDownload}>
-            {!loadingDownload && !successDownload ? (
-              <DownloadIcon />
-            ) : !successDownload ? (
-              <DownloadIcon sx={{ color: 'transparent' }} />
-            ) : (
-              <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
-            )}
+        {userGeneratedJson.length === 0 ? (
+          <IconButtonSxAppBar disabled={true}>
+            <DownloadIcon />
           </IconButtonSxAppBar>
-        </ToolTipSx>
+        ) : (
+          <ToolTipSx tooltipTitle={'Download json'}>
+            <IconButtonSxAppBar onClick={handleDownload}>
+              {!loadingDownload && !successDownload ? (
+                <DownloadIcon />
+              ) : !successDownload ? (
+                <DownloadIcon sx={{ color: 'transparent' }} />
+              ) : (
+                <CheckIcon
+                  sx={{
+                    color: theme =>
+                      theme.palette.mode === 'dark'
+                        ? BrandSwatch.Dark.Green[300]
+                        : BrandSwatch.Light.Green[500],
+                  }}
+                />
+              )}
+            </IconButtonSxAppBar>
+          </ToolTipSx>
+        )}
         {loadingDownload && <SxCircularProgress size='20px' color='green' />}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <ToolTipSx tooltipTitle={'Delete json'}>
-          <IconButtonSxAppBar
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={() => {
-              resetLocalEditorText()
-            }}>
-            {localEditorText.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
+        {userGeneratedJson.length === 0 ? (
+          <IconButtonSxAppBar disabled={true}>
+            <DeleteOutlineIcon />
           </IconButtonSxAppBar>
-        </ToolTipSx>
+        ) : (
+          <ToolTipSx tooltipTitle={'Delete json'}>
+            <IconButtonSxAppBar
+              onClick={() => {
+                resetUserGeneratedJson()
+              }}>
+              {userGeneratedJson.length > 0 ? <DeleteIcon /> : <DeleteOutlineIcon />}
+            </IconButtonSxAppBar>
+          </ToolTipSx>
+        )}
       </Box>
       <Box sx={{ position: 'relative' }}>
-        <ToolTipSx tooltipTitle={'Minify json'}>
-          <IconButtonSxAppBar
-            disabled={localEditorText.length === 0 ? true : false}
-            onClick={() => {
-              setMinifyDialogOpen(true)
-            }}>
+        {userGeneratedJson.length === 0 ? (
+          <IconButtonSxAppBar disabled={true}>
             <UnfoldLessIcon />
           </IconButtonSxAppBar>
-        </ToolTipSx>
+        ) : (
+          <ToolTipSx tooltipTitle={'Minify json'}>
+            <IconButtonSxAppBar
+              onClick={() => {
+                setMinifyDialogOpen(true)
+              }}>
+              <UnfoldLessIcon />
+            </IconButtonSxAppBar>
+          </ToolTipSx>
+        )}
       </Box>
       <Box sx={{ position: 'relative', pr: 5 }}>
         <ToolTipSx tooltipTitle={'Close'}>
