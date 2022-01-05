@@ -1,12 +1,11 @@
 import { styled } from '@mui/material/styles'
+import { BrandSwatch } from '../../style/BrandSwatch'
 
-const GradientText = styled('span')<{
-  color?: 'primary' | 'error' | 'success' | 'warning'
-}>(({ theme, color = 'primary' }) => ({
+const GradientText = styled('span')(({ theme }) => ({
   background:
     theme.palette.mode === 'dark'
-      ? theme.palette.primary.main
-      : `linear-gradient(to right, ${theme.palette[color].main}, ${theme.palette[color][700]})`,
+      ? `linear-gradient(to top, ${BrandSwatch.Dark.Blue[400]}, ${BrandSwatch.Dark.Blue[700]})`
+      : `linear-gradient(to bottom, ${BrandSwatch.Light.Blue[400]}, ${BrandSwatch.Light.Blue[700]})`,
   backgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
 }))

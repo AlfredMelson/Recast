@@ -75,7 +75,7 @@ export function BrandThemedComponents(theme: Theme) {
       MuiFormControlLabel: {
         defaultProps: {},
         styleOverrides: {
-          label: {},
+          label: { fontSize: 16 },
           root: {},
         },
       },
@@ -140,12 +140,40 @@ export function BrandThemedComponents(theme: Theme) {
           },
         },
       },
-      MuiMenuItem: {
+      MuiMenu: {
         defaultProps: {},
         styleOverrides: {
+          root: {}, // 	Styles applied to the root element
+          paper: {}, // Styles applied to the Paper component
+          list: {
+            paddingTop: 0,
+            paddingBottom: 0,
+          }, // Styles applied to the List component via `MenuList`
+        },
+      },
+      MuiMenuItem: {
+        defaultProps: {
+          dense: true,
+        },
+        styleOverrides: {
           root: {
-            backgroundColor: '#000000',
-          },
+            backgroundColor:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[800]
+                : BrandSwatch.Light.Grey[100],
+            '&:hover': {
+              backgroundColor:
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Grey[900]
+                  : BrandSwatch.Light.Grey[200],
+            },
+          }, // 	Styles applied to the root element
+          focusVisible: {}, // State class applied to the root element if keyboard focused
+          dense: {}, // Styles applied to the root element if dense
+          disabled: {}, // State class applied to the root element if disabled={true}
+          divider: {}, // Styles applied to the root element if divider={true}
+          gutters: {}, // Styles applied to the inner `component` element unless disableGutters={true}
+          selected: {}, // State class applied to the root element if selected={true}
         },
       },
       MuiOutlinedInput: {
@@ -161,8 +189,8 @@ export function BrandThemedComponents(theme: Theme) {
       },
       MuiPaper: {
         defaultProps: {
-          elevation: 1,
-          variant: 'elevation',
+          elevation: 0,
+          // variant: 'elevation',
         },
         styleOverrides: {
           root: {}, // Styles applied to the root element
@@ -171,12 +199,34 @@ export function BrandThemedComponents(theme: Theme) {
           elevation: {}, // Styles applied to the root element if variant="elevation"
         },
       },
+      MuiPopover: {
+        defaultProps: {},
+        styleOverrides: {
+          root: {}, // Styles applied to the root element
+          paper: {}, // Styles applied to the root element unless square={true}
+        },
+      },
       MuiRadio: {
         defaultProps: {
-          size: 'small',
+          size: 'small', // small is equivalent to the dense radio styling
         },
         styleOverrides: {
-          root: {},
+          root: {
+            fontSize: 14,
+            textDecoration: 'none',
+            backgroundColor: 'transparent',
+            '&:hover, & .Mui-focused': {
+              backgroundColor: 'transparent',
+            },
+            '&.Mui-checked': {
+              color:
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Grey[50]
+                  : BrandSwatch.Light.Grey[900],
+            },
+          }, // Styles applied to the root element
+          checked: {}, // State class applied to the root element if checked={true}
+          disabled: {}, // State class applied to the root element if disabled={true}
         },
       },
       MuiSelect: {

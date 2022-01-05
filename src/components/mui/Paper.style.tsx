@@ -16,8 +16,8 @@ const PaperSxStyle = styled(Paper)(({ theme }) => ({
   paddingTop: 30,
   paddingLeft: 50,
   paddingBottom: 40,
-  background:
-    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
+  backgroundColor:
+    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
   maxHeight: '64vh',
   overflowX: 'hidden',
   overflowY: 'scroll',
@@ -123,9 +123,9 @@ const PaperSxApiSelectorStyle = styled((props: PaperProps) => <Paper {...props} 
 /**
  * @name PaperSxApiSelectorWrapper
  * @description styles
- * @param {motion} framer-motion motion
+ * @param {PaperSxApiSelectorStyle}
  * @param {children} React.ReactNode
- * @param {paddingLeft} mui )
+ * @param {paddingLeft} mui
  * @return
  *
  * @MUIPaperAPI https://mui.com/api/paper/

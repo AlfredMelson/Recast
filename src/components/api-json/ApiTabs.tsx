@@ -3,7 +3,6 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import _ from 'lodash'
 import { useLocation } from 'react-router-dom'
-import { alpha } from '@mui/material/styles'
 import {
   apiDataAtom,
   apiFullResponseAtom,
@@ -20,7 +19,7 @@ import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
 import { TabSx } from '../mui/Tab.style'
 import { TabsSx } from '../mui/Tabs.style'
 import { DTypescript } from '../../pages/api-json/tab/DTypescript'
-import { BrandSwatch } from '../../style/BrandSwatch'
+import { PanelStyle } from '../mui/Panel.style'
 
 type TabPanelAlias = {
   index: number
@@ -85,18 +84,8 @@ export default function ApiTabs() {
   return (
     <Box sx={{ mt: 40 }}>
       {userSubmittedUrl !== undefined && (
-        <Box
-          sx={{
-            boxShadow: 2,
-          }}>
-          <Box
-            sx={{
-              borderBottom: 1,
-              borderColor: theme =>
-                theme.palette.mode === 'dark'
-                  ? alpha(BrandSwatch.Dark.Blue[600], 0.5)
-                  : alpha(BrandSwatch.Light.Grey[400], 0.5),
-            }}>
+        <Box>
+          <Box>
             <TabsSx
               key={local.pathname}
               aria-label='api data tabs'
@@ -138,7 +127,7 @@ export default function ApiTabs() {
               />
             </TabsSx>
           </Box>
-          <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+          <PanelStyle>
             <TabPanel value={value} index={0}>
               <DataResponse data={apiData} />
             </TabPanel>
@@ -157,7 +146,7 @@ export default function ApiTabs() {
             <TabPanel value={value} index={5}>
               <DTypescript data={apiData} />
             </TabPanel>
-          </Box>
+          </PanelStyle>
         </Box>
       )}
     </Box>

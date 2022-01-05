@@ -29,7 +29,7 @@ export const Navigation = styled('nav')(({ theme }) => ({
       textDecoration: 'none',
       fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
       color:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[700],
       transition: theme.transitions.create(['color', 'transform'], {
         duration: theme.transitions.duration.standard,
         easing: theme.transitions.easing.easeInOut,

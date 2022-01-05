@@ -15,7 +15,7 @@ export default function DataSourceSelector() {
 
   return (
     <PaperSxApiSelectorWrapper>
-      <FormControl sx={{ minWidth: 160, m: 10 }}>
+      <FormControl sx={{ minWidth: 200, m: 10 }}>
         <Select
           autoWidth
           disableUnderline={true}
@@ -30,7 +30,7 @@ export default function DataSourceSelector() {
             Json Placeholder API
           </MenuItem> */}
           {SourceSelector.map(item => (
-            <MenuItem dense key={item.index} value={item.value}>
+            <MenuItem key={item.index} value={item.value}>
               {item.name}
             </MenuItem>
           ))}

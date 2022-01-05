@@ -10,6 +10,7 @@ import { userGeneratedJsonAtom, minifiedTextAtom, minifyDialogOpenAtom } from '.
 import { SvgJsonLogo } from '../icons'
 import { HeaderStyle } from '../mui/Header.style'
 import { BrandSwatch } from '../../style/BrandSwatch'
+import { Navigation } from '../mui'
 import { MinifyIcons } from './MinifyIcons'
 
 export function MinifyDialog() {
@@ -53,12 +54,21 @@ export function MinifyDialog() {
               <SvgJsonLogo width={120} />
             </MuiLink>
           </Box>
-          <Typography variant='body2'>Minified</Typography>
+          {/* <Stack direction='row' sx={{ gridColumn: 1, placeSelf: 'center start' }}> */}
+          <Navigation aria-label='Main'>
+            <ul>
+              <li>Minified</li>
+            </ul>
+          </Navigation>
+          {/* </Stack> */}
+          {/* <Typography variant='body2' sx={{ marginTop: 8 }}>
+            Minified
+          </Typography> */}
           <Box
             sx={{
               ml: { xs: 'auto' },
               mx: { md: 'auto' },
-              pr: { xs: 0, md: '127px' },
+              pr: { xs: 0, md: 240 },
             }}>
             <MinifyIcons />
           </Box>

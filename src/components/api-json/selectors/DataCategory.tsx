@@ -31,7 +31,7 @@ export default function DataCategorySelector() {
     <Box component='div'>
       {apiProvider !== '' && (
         <PaperSxApiSelectorWrapper>
-          <FormControl sx={{ minWidth: 160, m: 10 }}>
+          <FormControl sx={{ minWidth: 200, m: 10 }}>
             <Select
               autoWidth
               disableUnderline={true}
@@ -39,7 +39,7 @@ export default function DataCategorySelector() {
               value={providerUrl}
               onChange={handleChange}>
               {providerUrls.map(item => (
-                <MenuItem dense key={item.index} value={item.url}>
+                <MenuItem key={item.index} value={item.url}>
                   {item.name}
                 </MenuItem>
               ))}

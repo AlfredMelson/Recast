@@ -17,7 +17,7 @@ const HeroWrapper = styled('div')(({ theme }) => ({
   border: '2px solid',
   borderColor:
     theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
-  borderRadius: 6,
+  borderRadius: 3,
 }))
 
 type HeroStyleAlias = {
