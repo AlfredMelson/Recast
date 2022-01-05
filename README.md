@@ -27,6 +27,6 @@ updated 05 Jan 2022
 - [ ] testing with Jest
 <br />
 
-### [Weekly Project Development](./src/cms/md/DEVELOPMENT)
+### [Weekly Project Development](/tree/main/src/cms/md/DEVELOPMENT)
 
-### [Markdown Links](./src/cms/md/LINKS)
+### [Markdown Links](./tree/main/src/cms/md/LINKS)
