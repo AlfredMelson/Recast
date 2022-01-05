@@ -390,9 +390,24 @@ export function BrandThemedComponents(theme: Theme) {
       MuiTreeItem: {
         defaultProps: {},
         styleOverrides: {
+          root: {}, // Styles applied to the root element
+          group: {}, // Styles applied to the transition component
+          content: {}, // Styles applied to the content element
+          expanded: {}, // State class applied to the content element when expanded
+          selected: {}, // State class applied to the content element when selected
+          focused: {}, // State class applied to the content element when focused
+          disabled: {}, // State class applied to the element when disabled
+          iconContainer: {}, // Styles applied to the tree node icon
           label: {
-            fontSize: theme.typography.body2,
-          },
+            fontSize: 16,
+          }, // Styles applied to the label element
+        },
+      },
+      MuiTreeView: {
+        // https://mui.com/api/tree-view/
+        defaultProps: {},
+        styleOverrides: {
+          root: {}, // Styles applied to the root element
         },
       },
     },

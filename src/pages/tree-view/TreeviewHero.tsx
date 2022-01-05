@@ -1,11 +1,10 @@
 import * as React from 'react'
 import { useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { Container, Stack } from '@mui/material'
-import { TreeViewContainer } from './TreeViewContainer'
+import Container from '@mui/material/Container'
 import { CollapseDataToggle } from './CollapseDataToggle'
 import { JsonTreeView } from './JsonTreeView'
+// import { TreeViewContainer } from './TreeViewContainer'
 
 export default function TreeviewHero() {
   const frame = React.useRef<null | HTMLDivElement>(null)
@@ -36,7 +35,8 @@ export default function TreeviewHero() {
   return (
     <Container maxWidth='xl'>
       <CollapseDataToggle />
-      <TreeViewContainer
+      <JsonTreeView />
+      {/* <TreeViewContainer
         left={
           <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
             <JsonTreeView />
@@ -60,18 +60,18 @@ export default function TreeviewHero() {
             <div>
               {isMdUp && (
                 <Stack spacing={40} sx={{ '& > .MuiPaper-root': { maxWidth: 'none' } }}>
-                  {/* <Typography>isMDUp</Typography> */}
+                  <Typography>isMDUp</Typography>
                 </Stack>
               )}
-              {/* {isMdUp && (
+             {isMdUp && (
               <Stack spacing={40} sx={{ ml: 40, '& > .MuiPaper-root': { maxWidth: 'none' } }}>
                 <Typography>isMDUp</Typography>
               </Stack>
-            )} */}
+            )}
             </div>
           </React.Fragment>
         }
-      />
+      /> */}
     </Container>
   )
 }
