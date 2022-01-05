@@ -1,8 +1,23 @@
-import { atom } from 'recoil'
+import { atom, AtomEffect, DefaultValue } from 'recoil'
 // import { getCookie } from '../../style/getCookie'
 
+export const themePersist: AtomEffect<any> = ({ onSet, setSelf, node }) => {
+  const storedJsonData = localStorage.getItem(node.key)
+  if (storedJsonData === 'themeColor') {
+    setSelf(storedJsonData)
+  }
+
+  onSet(newItems => {
+    if (newItems instanceof DefaultValue) {
+      localStorage.removeItem(node.key)
+    } else {
+      localStorage.setItem(node.key, newItems)
+    }
+  })
+}
+
 /**
- * @name appColorModeAtom
+ * @name themeColorAtom
  * @description state representing the color mode value
  * @param {String}
  * @type {Object}
@@ -10,13 +25,14 @@ import { atom } from 'recoil'
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
  * @RecoilHooks to manage state changes and notify components subscribing to re-render
- * const [appColorMode, setAppColorMode] = useRecoilState(appColorModeAtom)
- * const setAppColorMode  = useSetRecoilState(appColorModeAtom)
- * const appColorMode  = useRecoilValue(appColorModeAtom)
+ * const [themeColor, setThemeColor] = useRecoilState(themeColorAtom)
+ * const setThemeColor  = useSetRecoilState(themeColorAtom)
+ * const themeColor  = useRecoilValue(themeColorAtom)
  */
-export const appColorModeAtom = atom<string>({
-  key: 'appColorMode',
-  default: '',
+export const themeColorAtom = atom<string>({
+  key: 'themeColor',
+  default: 'light',
+  effects_UNSTABLE: [themePersist],
 })
 
 /**

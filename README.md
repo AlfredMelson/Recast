@@ -1,5 +1,4 @@
 # recast
-<!-- ![](https://github.com/alfredmelson/ts-json-visualizer/workflows/test.yml/badge.svg) -->
 
 Typed JavaScript application to recast, type, and visualize JSON that is built on React incorporating Recoil for state management, MUI v5 for UI/UX, Monaco-editor as an IDE and other libraries. Methods, models, and inspiration were derived in part from refactoring [ jsonrepair ](https://github.com/josdejong/jsonrepair), [ jsoneditor ](https://github.com/josdejong/jsoneditor), [ json-source-map ](https://github.com/epoberezkin/json-source-map), [ javascript-natural-sort ](https://github.com/Bill4Time/javascript-natural-sort) code bases, some of which are no longer maintained.
 
@@ -15,24 +14,19 @@ Library            | Description
 
 Release branch. Merge stable codes from only `develop` branch. After merging via a pull request from `develop`, automatically deploy to [GitHub](https://alfredmelson.github.io/ts-json-visualizer/).
 
-### `develop`
-
-Develop branch. Topic branches are merged into the branch via pull request or directory pushed.
-
 ## License
 
 Copyright (c) 2021 - 2026 Alfred Melson & Licensed under the [MIT License](./LICENSE).
+<br />
 
-## ToDo
+## Issues and features to be implemented 
+updated 05 Jan 2022
 
-### issues and features to be implemented 
-(updated 18 Dec 2021)
+- [ ] user preferred color mode (ThemeModeToggle).
+- [ ] keyboard navigation (folder: action).
+- [ ] testing with Jest
+<br />
 
-- [ ] keyboard navigation.
-- [ ] Insert version number.
+### [Weekly Project Development](./src/cms/md/DEVELOPMENT)
 
-### for version 2.0.0
-
-- [ ] E2E test
-
-# recast
+### [Markdown Links](./src/cms/md/LINKS)

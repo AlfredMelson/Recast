@@ -2,7 +2,7 @@ import * as React from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useRecoilValue } from 'recoil'
 import { deepmerge } from '@mui/utils'
-import { appColorModeAtom } from '../recoil'
+import { themeColorAtom } from '../recoil'
 import { BrandDesignTokens } from './BrandTheme'
 import { BrandThemedComponents } from './BrandThemedComponents'
 
@@ -12,9 +12,9 @@ type BrandThemeProviderAlias = {
 
 export default function BrandThemeProvider({ children }: BrandThemeProviderAlias) {
   // color mode value managed globally via recoil
-  const appColorMode = useRecoilValue(appColorModeAtom)
+  const themeColor = useRecoilValue(themeColorAtom)
   // color mode value passed as string
-  const mode = appColorMode === 'light' ? 'light' : 'dark'
+  const mode = themeColor === 'light' ? 'light' : 'dark'
   // user defiend color palette (theme) object constructed based on color mode
   const designTokens = BrandDesignTokens(mode)
   // create a predefined theme object; components set as {}

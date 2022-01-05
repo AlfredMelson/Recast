@@ -1,4 +1,4 @@
-export * from './color-mode/atom'
+export * from './themeColor/atom'
 export * from './drawer/atom'
 export * from './json-data/atom'
 export * from './json-data/selectors'
