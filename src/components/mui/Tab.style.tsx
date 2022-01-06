@@ -1,7 +1,6 @@
 import Tab from '@mui/material/Tab'
 import { styled } from '@mui/material'
 import * as React from 'react'
-import { BrandSwatch } from '../../style/BrandSwatch'
 
 /**
  * @name TabSx
@@ -43,12 +42,4 @@ export const TabSx = styled(
   paddingRight: theme.spacing(10),
   paddingBottom: theme.spacing(0),
   paddingTop: theme.spacing(0),
-  color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
-  transition: theme.transitions.create(['color', 'transform'], {
-    duration: theme.transitions.duration.standard,
-    easing: theme.transitions.easing.easeInOut,
-  }),
-  '&:hover, &.Mui-selected': {
-    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
-  },
 }))

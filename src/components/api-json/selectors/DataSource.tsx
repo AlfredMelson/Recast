@@ -1,10 +1,13 @@
 import MenuItem from '@mui/material/MenuItem'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { SelectChangeEvent } from '@mui/material/Select'
 import { useRecoilState } from 'recoil'
 import FormControl from '@mui/material/FormControl'
 import { selectedApiProviderAtom } from '../ApiUrlSelector'
-import { PaperSxApiSelectorWrapper } from '../../mui'
 import { SourceSelector } from '../../../cms/api-selector-verbiage'
+import { SelectSx } from '../../mui/Select.style'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 
 export default function DataSourceSelector() {
   const [selectedApiProvider, setSelectedApiProvider] = useRecoilState(selectedApiProviderAtom)
@@ -14,15 +17,25 @@ export default function DataSourceSelector() {
   }
 
   return (
-    <PaperSxApiSelectorWrapper>
-      <FormControl sx={{ minWidth: 200, m: 10 }}>
-        <Select
-          autoWidth
-          disableUnderline={true}
-          id='provider-selector'
-          value={selectedApiProvider}
-          onChange={handleChange}
-          sx={{ fontSize: 16 }}>
+    <Stack
+      direction='column'
+      sx={{
+        border: '1px solid',
+        borderRadius: 1,
+        borderColor: 'transparent',
+        color: theme =>
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
+        backgroundColor: theme =>
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[50],
+      }}>
+      <Typography
+        gutterBottom
+        variant='body2'
+        sx={{ margin: theme => theme.spacing(10, 0, 0, 20) }}>
+        Source
+      </Typography>
+      <FormControl>
+        <SelectSx id='provider-selector' value={selectedApiProvider} onChange={handleChange}>
           {/* <MenuItem dense value='randomDataApi'>
             Random Data API
           </MenuItem>
@@ -34,8 +47,8 @@ export default function DataSourceSelector() {
               {item.name}
             </MenuItem>
           ))}
-        </Select>
+        </SelectSx>
       </FormControl>
-    </PaperSxApiSelectorWrapper>
+    </Stack>
   )
 }

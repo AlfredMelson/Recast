@@ -17,7 +17,7 @@ const PaperSxStyle = styled(Paper)(({ theme }) => ({
   paddingLeft: 50,
   paddingBottom: 40,
   backgroundColor:
-    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
+    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
   maxHeight: '64vh',
   overflowX: 'hidden',
   overflowY: 'scroll',
@@ -57,7 +57,8 @@ const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
   paddingTop: 30,
   paddingLeft: 50,
   paddingBottom: 40,
-  bgcolor: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
+  backgroundColor:
+    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
   maxHeight: '86vh',
   width: '100%',
   overflowX: 'hidden',
@@ -102,20 +103,26 @@ const PaperSxApiSelectorStyle = styled((props: PaperProps) => <Paper {...props} 
     display: 'flex',
     alignItems: 'center',
     backgroundColor:
-      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-    borderWidth: 1,
-    borderStyle: 'solid',
+      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
+    border: '1px solid',
     borderColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
+    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
     transition: theme.transitions.create(['all'], {
       duration: theme.transitions.duration.standard,
       easing: theme.transitions.easing.easeInOut,
     }),
     '&:hover ': {
-      borderWidth: 1,
-      borderStyle: 'solid',
-      borderColor:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Blue[600] : BrandSwatch.Light.Blue[400],
+      color:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+      backgroundColor:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
+    },
+    '&.Mui-selected': {
+      color:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+      backgroundColor:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
     },
   })
 )
@@ -152,7 +159,7 @@ export const PaperSxDropdownStyle = styled((props: PaperProps) => <Paper {...pro
     minWidth: 400,
     overflow: 'hidden',
     borderColor: 'transparent',
-    bgcolor:
+    backgroundColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
     boxShadow: `0px 4px 20px ${
       theme.palette.mode === 'dark'

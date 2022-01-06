@@ -24,7 +24,7 @@ import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 type TsInterfaceAlias = {
   data?: { [key: string]: any } | undefined
 }
-export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAlias) => {
+const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAlias) => {
   const [keys, setKeys] = React.useState<string[]>([])
 
   const [currentData, setCurrentData] = React.useState<TsInterfaceAlias['data']>({})
@@ -87,6 +87,8 @@ export const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAli
     </FadeAnimation>
   )
 }
+
+export default TsInterface
 
 function ApiDataSort({ index, dataKey, dataType, dataValue }: ApiDataSortAlias) {
   const renderValue = () => {

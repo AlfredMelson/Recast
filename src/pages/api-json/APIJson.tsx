@@ -16,7 +16,6 @@ import { BrandSwatch } from '../../style/BrandSwatch'
 import { HeroStyle } from '../../components/mui/Hero.style'
 import { SearchBar } from '../../components/api-json/selectors'
 
-// import { selectedElementAtom } from './display/EditResponse'
 // import ApiFallback from '../../components/action/ApiFallback'
 // import Alert from '@mui/material/Alert'
 // import Collapse from '@mui/material/Collapse'

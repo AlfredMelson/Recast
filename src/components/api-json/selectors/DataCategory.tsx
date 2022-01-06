@@ -1,12 +1,15 @@
 import * as React from 'react'
 import MenuItem from '@mui/material/MenuItem'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import { SelectChangeEvent } from '@mui/material/Select'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
-import { PaperSxApiSelectorWrapper } from '../../mui'
 import { BaseUrlData, JsonPlaceholderData, RandomData } from '../../../cms'
+import { SelectSx } from '../../mui'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 
 export default function DataCategorySelector() {
   const apiProvider = useRecoilValue(selectedApiProviderAtom)
@@ -30,22 +33,37 @@ export default function DataCategorySelector() {
   return (
     <Box component='div'>
       {apiProvider !== '' && (
-        <PaperSxApiSelectorWrapper>
-          <FormControl sx={{ minWidth: 200, m: 10 }}>
-            <Select
-              autoWidth
-              disableUnderline={true}
-              id='provider-url-selector'
-              value={providerUrl}
-              onChange={handleChange}>
+        <Stack
+          direction='column'
+          sx={{
+            border: '1px solid',
+            borderRadius: 1,
+            borderColor: 'transparent',
+            color: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[200]
+                : BrandSwatch.Light.Grey[700],
+            backgroundColor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[900]
+                : BrandSwatch.Light.Grey[50],
+          }}>
+          <Typography
+            gutterBottom
+            variant='body2'
+            sx={{ margin: theme => theme.spacing(10, 0, 0, 20) }}>
+            Data
+          </Typography>
+          <FormControl>
+            <SelectSx id='provider-url-selector' value={providerUrl} onChange={handleChange}>
               {providerUrls.map(item => (
                 <MenuItem key={item.index} value={item.url}>
                   {item.name}
                 </MenuItem>
               ))}
-            </Select>
+            </SelectSx>
           </FormControl>
-        </PaperSxApiSelectorWrapper>
+        </Stack>
       )}
     </Box>
   )

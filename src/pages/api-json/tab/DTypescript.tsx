@@ -24,7 +24,7 @@ import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 type DTypescriptAlias = {
   data?: { [key: string]: any } | undefined
 }
-export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAlias) => {
+const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAlias) => {
   const [keys, setKeys] = React.useState<string[]>([])
 
   const [currentData, setCurrentData] = React.useState<DTypescriptAlias['data']>({})
@@ -86,6 +86,8 @@ export const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAli
     </FadeAnimation>
   )
 }
+
+export default DTypescript
 
 function ApiDataSort({ index, dataKey, dataType, dataValue }: ApiDataSortAlias) {
   const renderValue = () => {

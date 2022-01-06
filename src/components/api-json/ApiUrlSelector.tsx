@@ -80,7 +80,7 @@ export const apiRequestQuantityAtom = atom<string>({
 
 export default function ApiSelector() {
   return (
-    <Stack direction='row' spacing={20}>
+    <Stack direction='row' justifyContent='flex-start' alignItems='center' spacing={20}>
       <DataSourceSelector />
       <DataCategorySelector />
       <DataQuantitySelector />

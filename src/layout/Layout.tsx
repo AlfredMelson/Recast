@@ -13,11 +13,9 @@ export function Layout() {
     <Box
       sx={{
         height: '100vh',
-        // overflowY: location.pathname === '/' ? 'visible' : 'hidden',
-        // overflowX: 'hidden',
         overflow: 'hidden',
         background: theme =>
-          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[100],
+          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[50],
       }}>
       <AppHeader />
       <Outlet />

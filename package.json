@@ -31,7 +31,7 @@
     "@emotion/styled": "^11.6.0",
     "@monaco-editor/react": "^4.3.1",
     "@mui/icons-material": "^5.2.5",
-    "@mui/lab": "5.0.0-alpha.62",
+    "@mui/lab": "5.0.0-alpha.63",
     "@mui/material": "^5.2.7",
     "@primer/primitives": "^7.4.0",
     "@testing-library/jest-dom": "^5.16.1",
@@ -50,7 +50,7 @@
     "react-spring": "^9.4.0",
     "react-swipeable-views": "^0.14.0",
     "recoil": "^0.5.2",
-    "sass": "^1.45.2"
+    "sass": "^1.46.0"
   },
   "scripts": {
     "test": "jest",
@@ -102,7 +102,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.4.6",
+    "jest": "^27.4.7",
     "lerna": "^4.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",

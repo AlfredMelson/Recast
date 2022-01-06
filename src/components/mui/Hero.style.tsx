@@ -14,10 +14,10 @@ import { BrandSwatch } from '../../style/BrandSwatch'
  */
 
 const HeroWrapper = styled('div')(({ theme }) => ({
-  border: '2px solid',
-  borderColor:
-    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
+  border: '1px solid transparent',
   borderRadius: 3,
+  backgroundColor:
+    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
 }))
 
 type HeroStyleAlias = {
@@ -26,10 +26,8 @@ type HeroStyleAlias = {
 
 export function HeroStyle({ children }: HeroStyleAlias) {
   return (
-    <Box>
-      <HeroWrapper sx={{ my: 20 }}>
-        <Box sx={{ m: 20 }}>{children}</Box>
-      </HeroWrapper>
-    </Box>
+    <HeroWrapper sx={{ margin: theme => theme.spacing(30, 0, 0) }}>
+      <Box sx={{ m: 20 }}>{children}</Box>
+    </HeroWrapper>
   )
 }

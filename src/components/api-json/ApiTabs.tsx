@@ -10,15 +10,16 @@ import {
   userSubmittedUrlAtom,
   userToggledApiAtom,
 } from '../../recoil/api-json/atom'
-import DataResponse from '../../pages/api-json/tab/DataResponse'
-import EditResponse from '../../pages/api-json/tab/EditResponse'
-import FullResponse from '../../pages/api-json/tab/FullResponse'
-import DataHeaders from '../../pages/api-json/tab/DataHeaders'
-import { TsInterface } from '../../pages/api-json/tab/TsInterface'
 import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
-import { TabSx } from '../mui/Tab.style'
-import { TabsSx } from '../mui/Tabs.style'
-import { DTypescript } from '../../pages/api-json/tab/DTypescript'
+import { TabSx, TabWrapperSx } from '../mui'
+import {
+  DataResponse,
+  EditResponse,
+  FullResponse,
+  DataHeaders,
+  TsInterface,
+  DTypescript,
+} from '../../pages/api-json/tab'
 import { PanelStyle } from '../mui/Panel.style'
 
 type TabPanelAlias = {
@@ -86,7 +87,7 @@ export default function ApiTabs() {
       {userSubmittedUrl !== undefined && (
         <Box>
           <Box>
-            <TabsSx
+            <TabWrapperSx
               key={local.pathname}
               aria-label='api data tabs'
               onChange={handleDataTabs}
@@ -125,7 +126,7 @@ export default function ApiTabs() {
                 {...a11yProps(5)}
                 onClick={() => setUserToggledApi('dtype')}
               />
-            </TabsSx>
+            </TabWrapperSx>
           </Box>
           <PanelStyle>
             <TabPanel value={value} index={0}>

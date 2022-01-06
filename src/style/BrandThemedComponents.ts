@@ -18,15 +18,9 @@ export function BrandThemedComponents(theme: Theme) {
               ? BrandSwatch.Dark.Blue[800]
               : BrandSwatch.Light.Blue[400],
         }, // Styles applied to the root element if variant="outlined"
-        contained: {
-          textTransform: 'none',
-        }, // Styles applied to the root element if variant="contained"
-        disabled: {
-          textTransform: 'none',
-        }, // State class applied to the root element if disabled={true}
-        sizeMedium: {
-          textTransform: 'none',
-        }, // State class applied to the root element if disabled={true}
+        contained: {}, // Styles applied to the root element if variant="contained"
+        disabled: {}, // State class applied to the root element if disabled={true}
+        sizeMedium: {}, // State class applied to the root element if disabled={true}
       },
       MuiButtonBase: {
         defaultProps: {
@@ -69,14 +63,39 @@ export function BrandThemedComponents(theme: Theme) {
         },
       },
       MuiFormControl: {
-        defaultProps: {},
-        styleOverrides: {},
-      },
-      MuiFormControlLabel: {
+        // https://mui.com/api/form-control/
         defaultProps: {},
         styleOverrides: {
-          label: { fontSize: 16 },
-          root: {},
+          root: { minWidth: 240 }, // Styles applied to the root element
+          fullWidth: {}, // Styles applied to the root element if fullWidth={true}
+        },
+      },
+      MuiFormControlLabel: {
+        // https://mui.com/api/form-control-label/
+        defaultProps: {},
+        styleOverrides: {
+          root: {
+            fontSize: 14,
+            textDecoration: 'none',
+            backgroundColor: 'transparent',
+            color:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[200]
+                : BrandSwatch.Light.Grey[700],
+            transition: theme.transitions.create(['all'], {
+              duration: theme.transitions.duration.standard,
+              easing: theme.transitions.easing.easeInOut,
+            }),
+            '&:hover, &.Mui-focused': {
+              color:
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Grey[50]
+                  : BrandSwatch.Light.Grey[900],
+              backgroundColor: 'transparent',
+            },
+          }, // Styles applied to the root element
+          disabled: {}, // State class applied to the root element if disabled={true}
+          label: { fontSize: 16 }, // Styles applied to the label's Typography component
         },
       },
       MuiIcon: {
@@ -215,7 +234,19 @@ export function BrandThemedComponents(theme: Theme) {
             fontSize: 14,
             textDecoration: 'none',
             backgroundColor: 'transparent',
-            '&:hover, & .Mui-focused': {
+            color:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[200]
+                : BrandSwatch.Light.Grey[500],
+            transition: theme.transitions.create(['all'], {
+              duration: theme.transitions.duration.standard,
+              easing: theme.transitions.easing.easeInOut,
+            }),
+            '&:hover, &.Mui-focused': {
+              color:
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Grey[50]
+                  : BrandSwatch.Light.Grey[900],
               backgroundColor: 'transparent',
             },
             '&.Mui-checked': {
@@ -223,6 +254,7 @@ export function BrandThemedComponents(theme: Theme) {
                 theme.palette.mode === 'dark'
                   ? BrandSwatch.Dark.Grey[50]
                   : BrandSwatch.Light.Grey[900],
+              backgroundColor: 'transparent',
             },
           }, // Styles applied to the root element
           checked: {}, // State class applied to the root element if checked={true}
@@ -236,15 +268,40 @@ export function BrandThemedComponents(theme: Theme) {
         styleOverrides: {
           select: {
             fontSize: 16,
+            borderRadius: 3,
           }, // Styles applied to the select component `select` class
-          icon: {}, // Styles applied to the icon component
+          icon: {
+            margin: theme.spacing(0, 10),
+            color:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[200]
+                : BrandSwatch.Light.Grey[700],
+            transition: theme.transitions.create(['all'], {
+              duration: theme.transitions.duration.standard,
+              easing: theme.transitions.easing.easeInOut,
+            }),
+            '&:hover': {
+              color:
+                theme.palette.mode === 'dark'
+                  ? BrandSwatch.Dark.Grey[50]
+                  : BrandSwatch.Light.Grey[900],
+            },
+          }, // Styles applied to the icon component
+          iconOpen: {
+            color:
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[50]
+                : BrandSwatch.Light.Grey[900],
+          }, // Styles applied to the icon component if the popup is open
         },
       },
       MuiSvgIcon: {
         defaultProps: {
           fontSize: 'small',
         },
-        styleOverrides: {},
+        styleOverrides: {
+          root: {}, // Styles applied to the root element
+        },
       },
       MuiSwitch: {
         defaultProps: {},
@@ -284,15 +341,19 @@ export function BrandThemedComponents(theme: Theme) {
       },
       MuiTab: {
         defaultProps: {
-          disableTouchRipple: true,
+          disableFocusRipple: true,
+          disableRipple: true,
         },
         styleOverrides: {
           root: {
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[700]
-                : BrandSwatch.Light.Grey[200],
-          },
+            borderRadius: theme.spacing(3, 3, 0, 0),
+          }, // Styles applied to the root element
+          labelIcon: {}, // Styles applied to the root element if both icon and label are provided
+          selected: {}, // State class applied to the root element if selected={true} (controlled by the Tabs component)
+          disabled: {}, // State class applied to the root element if disabled={true} (controlled by the Tabs component)
+          fullWidth: {}, // Styles applied to the root element if fullWidth={true} (controlled by the Tabs component)
+          wrapped: {}, // Styles applied to the root element if wrapped={true}
+          iconWrapper: {}, // Styles applied to the wrapper element of `icon` if icon is provided
         },
       },
       MuiTabs: {

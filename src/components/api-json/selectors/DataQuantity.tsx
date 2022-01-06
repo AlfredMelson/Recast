@@ -5,9 +5,11 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import { VolumeSelector } from '../../../cms'
 import { apiRequestQuantityAtom, selectedApiAtom } from '../ApiUrlSelector'
-import { PaperSxApiSelectorWrapper } from '../../mui'
+import { BrandSwatch } from '../../../style/BrandSwatch'
 
 export default function DataQuantitySelector() {
   const setSelectedApi = useRecoilValue(selectedApiAtom)
@@ -40,19 +42,43 @@ export default function DataQuantitySelector() {
   return (
     <Box component='div'>
       {setSelectedApi !== '' && (
-        <PaperSxApiSelectorWrapper>
-          <FormControl component='fieldset' sx={{ m: 10 }}>
+        <Stack
+          direction='column'
+          justifyContent='space-around'
+          alignItems='flex-start'
+          sx={{
+            minHeight: 104,
+            border: '1px solid',
+            borderRadius: 1,
+            borderColor: 'transparent',
+            color: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[200]
+                : BrandSwatch.Light.Grey[700],
+            backgroundColor: theme =>
+              theme.palette.mode === 'dark'
+                ? BrandSwatch.Dark.Grey[900]
+                : BrandSwatch.Light.Grey[50],
+          }}>
+          <Typography
+            gutterBottom
+            variant='body2'
+            sx={{ margin: theme => theme.spacing(10, 0, 0, 20) }}>
+            Volume
+          </Typography>
+          <FormControl component='fieldset'>
             <RadioGroup
               row
               id='provider-url-selector'
-              aria-label='volume'
-              name='row-radio-buttons-group'
+              aria-label='api request volume'
+              name='api request volume'
               value={value}
-              onChange={handleChange}>
+              onChange={handleChange}
+              sx={{ padding: theme => theme.spacing(0, 10) }}>
               {VolumeSelector.map(item => (
                 <FormControlLabel
                   key={item.index}
-                  sx={{ px: 6 }}
+                  sx={{ padding: theme => theme.spacing(0, 5) }}
                   value={item.value}
                   control={<Radio />}
                   label={item.name}
@@ -60,7 +86,7 @@ export default function DataQuantitySelector() {
               ))}
             </RadioGroup>
           </FormControl>
-        </PaperSxApiSelectorWrapper>
+        </Stack>
       )}
     </Box>
   )

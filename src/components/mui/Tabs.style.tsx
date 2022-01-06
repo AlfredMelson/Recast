@@ -1,10 +1,10 @@
 import Tabs from '@mui/material/Tabs'
-import { styled } from '@mui/material'
+import { alpha, styled } from '@mui/material'
 import * as React from 'react'
 import { BrandSwatch } from '../../style/BrandSwatch'
 
 /**
- * @name TabsSx
+ * @name TabWrapperSx
  * @description styles API Tabs
  * @param {Tabs} mui Tabs
  * @param {styled} mui styled
@@ -17,13 +17,13 @@ import { BrandSwatch } from '../../style/BrandSwatch'
  * @return styled Tabs
  */
 
-type TabsSxAlias = {
+type TabWrapperSxAlias = {
   value?: number
   onChange?: (event: React.SyntheticEvent, newValue: number) => void
   children?: React.ReactNode
 }
 
-export const TabsSx = styled((props: TabsSxAlias) => (
+export const TabWrapperSx = styled((props: TabWrapperSxAlias) => (
   <Tabs
     allowScrollButtonsMobile
     selectionFollowsFocus
@@ -31,21 +31,44 @@ export const TabsSx = styled((props: TabsSxAlias) => (
     {...props}
   />
 ))(({ theme }) => ({
-  maxHeight: 40,
-  borderRadius: '3px 3px 0 0',
-  backgroundColor:
-    theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
-  transition: theme.transitions.create(['background'], {
-    duration: theme.transitions.duration.standard,
-    easing: theme.transitions.easing.easeInOut,
-  }),
-  '.Mui-selected': {
+  '.MuiButtonBase-root, .MuiTab-root': {
     borderRadius: '3px 3px 0 0',
+    margin: theme.spacing(0, 2, 0, 0),
     backgroundColor:
-      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[300],
+      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
+    borderWidth: theme.spacing(1, 1, 0),
+    borderStyle: 'solid',
+    borderColor:
+      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
+    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
+
+    transition: theme.transitions.create(['all'], {
+      duration: theme.transitions.duration.standard,
+      easing: theme.transitions.easing.easeInOut,
+    }),
+    ':hover': {
+      borderRadius: '3px 3px 0 0',
+      borderColor: 'transparent',
+      backgroundColor:
+        theme.palette.mode === 'dark'
+          ? alpha(BrandSwatch.Dark.Grey[700], 0.7)
+          : alpha(BrandSwatch.Light.Grey[200], 0.7),
+      color:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
+    },
+    '&.Mui-selected': {
+      borderRadius: '3px 3px 0 0',
+      borderColor: 'transparent',
+      backgroundColor:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
+      color:
+        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+    },
   },
+
   '& .MuiTabs-indicator': {
-    backgroundColor:
-      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Blue[600] : BrandSwatch.Light.Blue[400],
+    // backgroundColor:
+    //   theme.palette.mode === 'dark' ? BrandSwatch.Dark.Blue[600] : BrandSwatch.Light.Blue[400],
+    backgroundColor: 'transparent',
   },
 }))
