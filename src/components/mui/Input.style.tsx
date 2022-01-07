@@ -29,7 +29,7 @@ type InputSxEditApiAlias = {
   // onChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
 }
 
-const InputSxEditApi = ({
+export const InputSxEditApi = ({
   currentValue,
   dataKey,
   onEdit,
@@ -82,4 +82,3 @@ const InputSxEditApi = ({
     />
   )
 }
-export default InputSxEditApi

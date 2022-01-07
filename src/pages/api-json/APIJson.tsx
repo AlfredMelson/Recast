@@ -3,6 +3,7 @@ import axios from 'axios'
 import Container from '@mui/material/Container'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Typography from '@mui/material/Typography'
+import { Stack } from '@mui/material'
 import {
   apiDataAtom,
   userSubmittedUrlAtom,
@@ -14,7 +15,7 @@ import ApiTabs from '../../components/api-json/ApiTabs'
 import ApiUrlSelector from '../../components/api-json/ApiUrlSelector'
 import { BrandSwatch } from '../../style/BrandSwatch'
 import { HeroStyle } from '../../components/mui/Hero.style'
-import { SearchBar } from '../../components/api-json/selectors'
+import { DataFetch, DataSearchBar } from '../../components/api-json/selectors'
 
 // import ApiFallback from '../../components/action/ApiFallback'
 // import Alert from '@mui/material/Alert'
@@ -149,7 +150,10 @@ export function APIJson() {
           }}>
           or Enter API
         </Typography>
-        <SearchBar />
+        <Stack direction='row' spacing={20} justifyContent='space-between' alignItems='flex-start'>
+          <DataSearchBar />
+          <DataFetch />
+        </Stack>
       </HeroStyle>
       {/* <Collapse in={showError}>
             <Box sx={{ mt: 10, mb: 20 }}>

@@ -16,15 +16,14 @@ const SelectSxStyle = styled((props?: SelectProps) => (
   <Select autoWidth disableUnderline={true} {...props} />
 ))(({ theme }) => ({
   fontSize: 16,
-
   height: 50,
   paddingLeft: 20,
   display: 'flex',
   alignItems: 'center',
   backgroundColor:
     theme.palette.mode === 'dark'
-      ? alpha(BrandSwatch.Dark.Grey[700], 0.4)
-      : alpha(BrandSwatch.Light.Grey[200], 0.4),
+      ? alpha(BrandSwatch.Dark.Grey[700], 0.2)
+      : alpha(BrandSwatch.Light.Grey[200], 0.2),
   border: '1px solid',
   borderRadius: 3,
   // borderColor:

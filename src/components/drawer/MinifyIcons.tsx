@@ -5,7 +5,6 @@ import CheckIcon from '@mui/icons-material/Check'
 import DownloadIcon from '@mui/icons-material/Download'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import ClipboardJS from 'clipboard'
 import { saveAs } from 'file-saver'
 import { userGeneratedJsonAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SxCircularProgress } from '../action/SxCircularProgress'
@@ -15,10 +14,13 @@ import { BrandSwatch } from '../../style/BrandSwatch'
 export function MinifyIcons() {
   //set dialog with minified json visability
   const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
+
   //retrieve localStorage value
   const userGeneratedJson = useRecoilValue(userGeneratedJsonAtom)
+
   //store minified json in recoil
   const [minifiedText, setMinifiedText] = useRecoilState(minifiedTextAtom)
+
   // minify json
   React.useEffect(() => {
     async function Minify(text) {
@@ -35,6 +37,7 @@ export function MinifyIcons() {
 
   //useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
+
   //useEffect to handle side effect proceeding button interactions
   React.useEffect(() => {
     return () => {
@@ -48,15 +51,13 @@ export function MinifyIcons() {
   const [loadingCopy, setLoadingCopy] = React.useState(false)
   const [successCopy, setSuccessCopy] = React.useState(false)
 
-  const handleMinifyCopy = () => {
-    const clipboard = new ClipboardJS('#copy-minified-to-clipboard')
+  // handle copy of minified json to clipboard
+  async function handleMinifyCopy() {
     if (!loadingCopy) {
       setSuccessCopy(false)
       setLoadingCopy(true)
-      clipboard.on('success', function (e) {
-        setMinifiedCopy(true)
-        e.clearSelection()
-      })
+      await navigator.clipboard.writeText(minifiedText)
+      setMinifiedCopy(true)
       //set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(true)

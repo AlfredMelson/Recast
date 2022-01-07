@@ -4,12 +4,9 @@ import { SelectChangeEvent } from '@mui/material/Select'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 import { BaseUrlData, JsonPlaceholderData, RandomData } from '../../../cms'
-import { SelectSx } from '../../mui'
-import { BrandSwatch } from '../../../style/BrandSwatch'
+import { SelectSx, ApiDropdownWrapper } from '../../mui'
 
 export default function DataCategorySelector() {
   const apiProvider = useRecoilValue(selectedApiProviderAtom)
@@ -33,27 +30,7 @@ export default function DataCategorySelector() {
   return (
     <Box component='div'>
       {apiProvider !== '' && (
-        <Stack
-          direction='column'
-          sx={{
-            border: '1px solid',
-            borderRadius: 1,
-            borderColor: 'transparent',
-            color: theme =>
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[200]
-                : BrandSwatch.Light.Grey[700],
-            backgroundColor: theme =>
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[900]
-                : BrandSwatch.Light.Grey[50],
-          }}>
-          <Typography
-            gutterBottom
-            variant='body2'
-            sx={{ margin: theme => theme.spacing(10, 0, 0, 20) }}>
-            Data
-          </Typography>
+        <ApiDropdownWrapper title='Data' sx={{ mt: 10, ml: 20, mb: 0 }}>
           <FormControl>
             <SelectSx id='provider-url-selector' value={providerUrl} onChange={handleChange}>
               {providerUrls.map(item => (
@@ -63,7 +40,7 @@ export default function DataCategorySelector() {
               ))}
             </SelectSx>
           </FormControl>
-        </Stack>
+        </ApiDropdownWrapper>
       )}
     </Box>
   )

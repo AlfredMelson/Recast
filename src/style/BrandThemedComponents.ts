@@ -129,7 +129,16 @@ export function BrandThemedComponents(theme: Theme) {
       },
       MuiInputBase: {
         defaultProps: {},
-        styleOverrides: {},
+        styleOverrides: {
+          root: {}, // 	Styles applied to the root element
+          formControl: {}, // Styles applied to the root element if the component is a descendant of FormControl
+          focused: {}, // Styles applied to the root element if the component is focused
+          disabled: {}, // Styles applied to the root element if disabled={true}
+          error: {}, // State class applied to the root element if error={true}
+          fullWidth: {}, // Styles applied to the root element if fullWidth={true}
+          input: {}, // Styles applied to the input element
+          inputSizeSmall: {}, // Styles applied to the input element if size="small"
+        },
       },
       MuiInputLabel: {
         defaultProps: {},

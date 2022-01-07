@@ -4,7 +4,6 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DownloadIcon from '@mui/icons-material/Download'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
-import ClipboardJS from 'clipboard'
 import CheckIcon from '@mui/icons-material/Check'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import saveAs from 'file-saver'
@@ -18,12 +17,16 @@ import { BrandSwatch } from '../../style/BrandSwatch'
 export function DrawerIcons() {
   // retrieve localStorage value
   const userGeneratedJson = useRecoilValue(userGeneratedJsonAtom)
+
   // reset localStorage value to recoil stored default
   const resetUserGeneratedJson = useResetRecoilState(userGeneratedJsonAtom)
+
   // set dialog with minified json visability
   const setMinifyDialogOpen = useSetRecoilState(minifyDialogOpenAtom)
+
   // useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
+
   // useEffect to handle side effect proceeding button interactions
   React.useEffect(() => {
     return () => {
@@ -31,20 +34,19 @@ export function DrawerIcons() {
       clearTimeout(interactionTimer.current)
     }
   }, [])
+
   // useState hooks to handle button transitions during copy
   const [jsonCopy, setJsonCopy] = React.useState(false)
   const [loadingCopy, setLoadingCopy] = React.useState(false)
   const [successCopy, setSuccessCopy] = React.useState(false)
-  // handle copy of json to clipboard
-  const handleJsonCopy = () => {
-    const clipboard = new ClipboardJS(userGeneratedJson)
+
+  // handle copy of json to clipboard asynchronously
+  async function handleJsonCopy() {
     if (!loadingCopy) {
       setSuccessCopy(false)
       setLoadingCopy(true)
-      clipboard.on('success', function (event) {
-        setJsonCopy(true)
-        event.clearSelection()
-      })
+      await navigator.clipboard.writeText(userGeneratedJson)
+      setJsonCopy(true)
       // set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(true)
@@ -53,10 +55,11 @@ export function DrawerIcons() {
       // restore state to pre-interaction
       interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(false)
-      }, 4000)
+      }, 3000)
       return
     }
   }
+
   // useState hooks to handle button transitions during download interaction
   const [loadingDownload, setLoadingDownload] = React.useState(false)
   const [successDownload, setSuccessDownload] = React.useState(false)

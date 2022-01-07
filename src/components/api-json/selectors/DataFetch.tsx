@@ -1,68 +1,54 @@
-import * as React from 'react'
 import {
   useRecoilRefresher_UNSTABLE,
-  useRecoilState,
   useRecoilValue,
   useResetRecoilState,
   useSetRecoilState,
 } from 'recoil'
-// import InputAdornment from '@mui/material/InputAdornment'
 import Box from '@mui/material/Box'
 import CheckIcon from '@mui/icons-material/Check'
 import Typography from '@mui/material/Typography'
-import InputBase from '@mui/material/InputBase'
+import * as React from 'react'
+import { Stack } from '@mui/material'
+import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 import {
   userSubmittedUrlAtom,
   userTypedUrlAtom,
-  userQuerySelector,
   apiDataAtom,
   apiFullResponseAtom,
+  userQuerySelector,
 } from '../../../recoil/api-json/atom'
-import { PaperSxApiSelectorWrapper, TextFieldButtonSx } from '../../mui'
+import { ButtonSxStyle, ApiDropdownWrapper } from '../../mui'
 import { SxCircularProgress } from '../../action/SxCircularProgress'
-import FadeDelay from '../../animation/FadeDelay'
 import { BrandSwatch } from '../../../style/BrandSwatch'
-import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 
-export default function Searchbar() {
+export default function DataFetch() {
   // user entered api url stored in recoil
-  const [userTypedUrl, setUserTypedUrl] = useRecoilState(userTypedUrlAtom)
-  // state when user submits user entered url
-  const setUserSubmittedUrl = useSetRecoilState(userSubmittedUrlAtom)
-  // user entered url is set on enter or submit
-  const handleTextFieldChanges = event => {
-    setUserTypedUrl(event.target.value), setSelectedApi(event.target.value)
-  }
+  const userTypedUrl = useRecoilValue(userTypedUrlAtom)
+
   // reset textfield value to recoil stored default
   const resetUserTypedUrl = useResetRecoilState(userTypedUrlAtom)
+
   // reset textfield value to recoil stored default
   const resetUserSubmittedUrl = useResetRecoilState(userSubmittedUrlAtom)
+
   // reset response.data value to recoil stored default
   const resetApiData = useResetRecoilState(apiDataAtom)
+
   // reset full response value to recoil stored default
   const resetApiFullResponse = useResetRecoilState(apiFullResponseAtom)
 
   const resetApiProvider = useResetRecoilState(selectedApiProviderAtom)
 
   const resetSelectedApi = useResetRecoilState(selectedApiAtom)
-  // user requested url reset
 
-  // const handleReset = () => {
-  //   resetUserTypedUrl()
-  //   resetUserSubmittedUrl()
-  //   resetApiData()
-  //   resetApiFullResponse()
-  //   resetApiProvider()
-  // }
+  const setUserSubmittedUrl = useSetRecoilState(userSubmittedUrlAtom)
+
   // useRef to avoid re-renders during button handler
   const interactionTimer = React.useRef<number>()
-  // useEffect to handle side effect proceeding button handler
-  React.useEffect(() => {
-    return () => {
-      // cancel the timeout established by setTimeout()
-      clearTimeout(interactionTimer.current)
-    }
-  }, [])
+
+  // value of data fetch
+  const apiData = useRecoilValue(apiDataAtom)
+
   // return a callback to clear cache
   const refresh = useRecoilRefresher_UNSTABLE(userQuerySelector)
   // useState hooks to handle submit button transitions
@@ -91,31 +77,19 @@ export default function Searchbar() {
       return
     }
   }
-  // value of data fetch
-  const apiData = useRecoilValue(apiDataAtom)
 
-  const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
-
-  // const inputField = React.useRef<HTMLInputElement>(null)
-  // ref = { inputField }
+  // useEffect to handle side effect proceeding button handler
+  React.useEffect(() => {
+    return () => {
+      // cancel the timeout established by setTimeout()
+      clearTimeout(interactionTimer.current)
+    }
+  }, [])
 
   return (
-    <PaperSxApiSelectorWrapper>
-      <InputBase
-        autoFocus
-        autoComplete='off'
-        sx={{
-          ml: 10,
-          flex: 1,
-          fontSize: 16,
-          minHeight: 32,
-        }}
-        placeholder='Enter API url'
-        value={selectedApi !== '' ? selectedApi : userTypedUrl}
-        onChange={handleTextFieldChanges}
-      />
-      <FadeDelay delay={1000}>
-        <TextFieldButtonSx
+    <ApiDropdownWrapper title='Controls' sx={{ mt: 10, ml: 20, mb: 0 }}>
+      <Stack direction='row' spacing={20}>
+        <ButtonSxStyle
           aria-label='clear url'
           onClick={event => {
             event.preventDefault()
@@ -129,11 +103,9 @@ export default function Searchbar() {
           sx={{ mr: 5 }}
           disabled={userTypedUrl.length === 0}>
           <Typography variant='button'>Clear</Typography>
-        </TextFieldButtonSx>
-      </FadeDelay>
-      <Box sx={{ position: 'relative' }}>
-        <FadeDelay delay={400}>
-          <TextFieldButtonSx
+        </ButtonSxStyle>
+        <Box sx={{ position: 'relative' }}>
+          <ButtonSxStyle
             aria-label='fetch api'
             disabled={userTypedUrl === undefined}
             onClick={handleSubmitUrl}
@@ -141,22 +113,18 @@ export default function Searchbar() {
             {!submitting && !successSubmit ? (
               <Typography variant='button'>
                 {Object.getOwnPropertyNames(apiData).length === 0 ? (
-                  <FadeDelay delay={400}>
-                    <span>Fetch</span>
-                  </FadeDelay>
+                  <span>Fetch</span>
                 ) : (
-                  <FadeDelay delay={400}>
-                    <span>Refetch</span>
-                  </FadeDelay>
+                  <span>Refetch</span>
                 )}
               </Typography>
             ) : (
               successSubmit && <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
             )}
-          </TextFieldButtonSx>
-        </FadeDelay>
-        {submitting && <SxCircularProgress size='16px' color='green' />}
-      </Box>
-    </PaperSxApiSelectorWrapper>
+          </ButtonSxStyle>
+          {submitting && <SxCircularProgress size='16px' color='green' />}
+        </Box>
+      </Stack>
+    </ApiDropdownWrapper>
   )
 }

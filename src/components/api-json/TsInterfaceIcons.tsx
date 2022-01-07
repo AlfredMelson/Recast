@@ -3,7 +3,6 @@ import Box from '@mui/material/Box'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DownloadIcon from '@mui/icons-material/Download'
 import { useRecoilValue } from 'recoil'
-import ClipboardJS from 'clipboard'
 import CheckIcon from '@mui/icons-material/Check'
 import { blue } from '@mui/material/colors'
 import saveAs from 'file-saver'
@@ -22,6 +21,7 @@ export function TsInterfaceIcons() {
   //
   // useRef to avoid re-renders during button interactions
   const interactionTimer = React.useRef<number>()
+
   // useEffect to handle side effect proceeding button interactions
   React.useEffect(() => {
     return () => {
@@ -29,20 +29,18 @@ export function TsInterfaceIcons() {
       clearTimeout(interactionTimer.current)
     }
   }, [])
+
   // useState hooks to handle button transitions during copy
   const [jsonCopy, setJsonCopy] = React.useState(false)
   const [loadingCopy, setLoadingCopy] = React.useState(false)
   const [successCopy, setSuccessCopy] = React.useState(false)
   // handle copy of json to clipboard
-  const handleJsonCopy = () => {
-    const clipboard = new ClipboardJS(userGeneratedJson)
+  async function handleJsonCopy() {
     if (!loadingCopy) {
       setSuccessCopy(false)
       setLoadingCopy(true)
-      clipboard.on('success', function (event) {
-        setJsonCopy(true)
-        event.clearSelection()
-      })
+      await navigator.clipboard.writeText(userGeneratedJson)
+      setJsonCopy(true)
       // set state to success
       interactionTimer.current = window.setTimeout(() => {
         setSuccessCopy(true)
@@ -55,6 +53,7 @@ export function TsInterfaceIcons() {
       return
     }
   }
+
   // useState hooks to handle button transitions during download interaction
   const [loadingDownload, setLoadingDownload] = React.useState(false)
   const [successDownload, setSuccessDownload] = React.useState(false)

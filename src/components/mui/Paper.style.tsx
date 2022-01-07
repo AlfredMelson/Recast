@@ -1,5 +1,6 @@
 import Paper, { PaperProps } from '@mui/material/Paper'
-import { alpha, styled, SxProps } from '@mui/material'
+import { alpha, styled } from '@mui/material'
+import { SxProps } from '@mui/system'
 import * as React from 'react'
 import { BrandSwatch } from '../../style/BrandSwatch'
 
@@ -87,63 +88,64 @@ export const PaperSxTreeview = ({ children, onClick, ...props }: PaperSxTreeview
   )
 }
 
-/**
- * @name PaperSxApiSelectorStyle
- * @description styles API url selectors
- * @param {Tabs} mui Tabs
- * @param {styled} mui styled
- * @param {theme} MuiBrandingTheme
- * @return
- */
+// /**
+//  * @name PaperSxApiSelectorStyle
+//  * @description styles API url selectors
+//  * @param {Tabs} mui Tabs
+//  * @param {styled} mui styled
+//  * @param {theme} MuiBrandingTheme
+//  * @return
+//  */
 
-const PaperSxApiSelectorStyle = styled((props: PaperProps) => <Paper {...props} />)(
-  ({ theme }) => ({
-    height: 50,
-    px: 10,
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor:
-      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
-    border: '1px solid',
-    borderColor:
-      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
-    transition: theme.transitions.create(['all'], {
-      duration: theme.transitions.duration.standard,
-      easing: theme.transitions.easing.easeInOut,
-    }),
-    '&:hover ': {
-      color:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
-      backgroundColor:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-    },
-    '&.Mui-selected': {
-      color:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
-      backgroundColor:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-    },
-  })
-)
+// const PaperSxApiSelectorStyle = styled((props: PaperProps) => <Paper {...props} />)(
+//   ({ theme }) => ({
+//     display: 'flex',
+//     height: 50,
+//     width: '100%',
+//     px: 10,
+//     alignItems: 'center',
+//     backgroundColor:
+//       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
+//     border: '1px solid',
+//     borderColor:
+//       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
+//     color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
+//     transition: theme.transitions.create(['all'], {
+//       duration: theme.transitions.duration.standard,
+//       easing: theme.transitions.easing.easeInOut,
+//     }),
+//     '&:hover ': {
+//       color:
+//         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+//       backgroundColor:
+//         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
+//     },
+//     '&.Mui-selected': {
+//       color:
+//         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+//       backgroundColor:
+//         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
+//     },
+//   })
+// )
 
-/**
- * @name PaperSxApiSelectorWrapper
- * @description styles
- * @param {PaperSxApiSelectorStyle}
- * @param {children} React.ReactNode
- * @param {paddingLeft} mui
- * @return
- *
- * @MUIPaperAPI https://mui.com/api/paper/
- */
-type PaperSxApiSelectorWrapperAlias = {
-  children: React.ReactNode
-}
+// /**
+//  * @name PaperSxApiSelectorWrapper
+//  * @description styles
+//  * @param {PaperSxApiSelectorStyle}
+//  * @param {children} React.ReactNode
+//  * @param {paddingLeft} mui
+//  * @return
+//  *
+//  * @MUIPaperAPI https://mui.com/api/paper/
+//  */
+// type PaperSxApiSelectorWrapperAlias = {
+//   children: React.ReactNode
+// }
 
-export const PaperSxApiSelectorWrapper = ({ children }: PaperSxApiSelectorWrapperAlias) => {
-  return <PaperSxApiSelectorStyle>{children}</PaperSxApiSelectorStyle>
-}
+// export const PaperSxApiSelectorWrapper = ({ children }: PaperSxApiSelectorWrapperAlias) => {
+//   return <PaperSxApiSelectorStyle>{children}</PaperSxApiSelectorStyle>
+// }
 
 /**
  * @name PaperSxDropdownStyle
