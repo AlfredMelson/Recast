@@ -27,43 +27,32 @@ declare module '@mui/material/Typography' {
   }
 }
 
-const theme = createTheme()
-
 // optically-consistent adjustment to space between letters
 function round(value: number) {
   return Math.round(value * 1e5) / 1e5
 }
 
+const theme = createTheme()
 export const BrandDesignTokens = (mode: 'dark' | 'light') =>
   ({
+    breakpoints: {},
     palette: {
       mode,
       ...(mode === 'dark' && {
         background: {
-          default: BrandSwatch.Dark.Grey[500],
+          default: BrandSwatch.Dark.Grey[900],
         },
         text: {
           primary: BrandSwatch.Dark.Grey[50],
           secondary: BrandSwatch.Dark.Grey[100],
+          disabled: BrandSwatch.Dark.Grey[500],
         },
-        primary: {
-          main: BrandSwatch.Dark.Grey[900],
-        },
-        secondary: {
-          main: BrandSwatch.Dark.Blue[200],
-        },
-        error: {
-          main: BrandSwatch.Dark.Yellow[300],
-        },
-        warning: {
-          main: BrandSwatch.Dark.Red[700],
-        },
-        info: {
-          main: BrandSwatch.Dark.Red[700],
-        },
-        success: {
-          main: BrandSwatch.Dark.Green[600],
-        },
+        // primary: {},
+        // secondary: {},
+        // error: {},
+        // warning: {},
+        // info: {},
+        // success: {},
         divider: BrandSwatch.Dark.Grey[700],
         svgBg: {
           base: BrandSwatch.Dark.Grey[400],
@@ -84,26 +73,15 @@ export const BrandDesignTokens = (mode: 'dark' | 'light') =>
         },
         text: {
           primary: BrandSwatch.Light.Grey[900],
-          secondary: BrandSwatch.Light.Grey[800],
+          secondary: BrandSwatch.Light.Grey[700],
+          disabled: BrandSwatch.Light.Grey[500],
         },
-        primary: {
-          main: BrandSwatch.Light.Grey[800],
-        },
-        secondary: {
-          main: BrandSwatch.Light.Blue[800],
-        },
-        error: {
-          main: BrandSwatch.Light.Yellow[300],
-        },
-        warning: {
-          main: BrandSwatch.Light.Red[500],
-        },
-        info: {
-          main: BrandSwatch.Light.Red[400],
-        },
-        success: {
-          main: BrandSwatch.Light.Green[400],
-        },
+        // primary: {},
+        // secondary: {},
+        // error: {},
+        // warning: {},
+        // info: {},
+        // success: {},
         divider: BrandSwatch.Light.Grey[200],
         svgBg: {
           base: BrandSwatch.Light.Grey[50],
@@ -119,32 +97,17 @@ export const BrandDesignTokens = (mode: 'dark' | 'light') =>
         },
       }),
     },
+    spacing: 1,
     shape: {
       borderRadius: 3,
     },
-    spacing: 1,
-    spacingIcons: 1,
-    transitions: {
-      duration: {
-        shortest: 150,
-        standard: 300,
-        complex: 500,
-        // recommended when something is entering screen
-        enteringScreen: 225,
-        // recommended when something is leaving screen
-        leavingScreen: 195,
-      },
-      easing: {
-        // most common easing curve
-        easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        // enter at full velocity and slowly decelerate to a resting point
-        easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
-        // leave at full velocity without decelerating
-        easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
-        // sharp curve is used by objects that may return at any time
-        sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
+    mixins: {
+      toolbar: {
+        '@media (min-width:0px) and (orientation: landscape)': {},
+        '@media (min-width:600px)': {},
       },
     },
+    spacingIcons: 1,
     typography: {
       fontFamily: [
         '-apple-system',
@@ -157,7 +120,18 @@ export const BrandDesignTokens = (mode: 'dark' | 'light') =>
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
       ].join(','),
-      fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
+      ...(mode === 'dark' && {
+        fontWeightLightregular: 300,
+        fontWeightRegular: 400,
+        fontWeightMedium: 500,
+        fontWeightBold: 600,
+      }),
+      ...(mode === 'light' && {
+        fontWeightLightregular: 400,
+        fontWeightRegular: 500,
+        fontWeightMedium: 600,
+        fontWeightBold: 700,
+      }),
       // Dec 29, 2021 font sizes using the clamp function
       // developer.mozilla.org/en-US/docs/Web/CSS/clamp()
       // 300: clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem);
@@ -235,4 +209,26 @@ export const BrandDesignTokens = (mode: 'dark' | 'light') =>
         lineHeight: 1.7,
       },
     },
+    transitions: {
+      duration: {
+        shortest: 150,
+        standard: 300,
+        complex: 500,
+        // recommended when something is entering screen
+        enteringScreen: 225,
+        // recommended when something is leaving screen
+        leavingScreen: 195,
+      },
+      easing: {
+        // most common easing curve
+        easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        // enter at full velocity and slowly decelerate to a resting point
+        easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
+        // leave at full velocity without decelerating
+        easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
+        // sharp curve is used by objects that may return at any time
+        sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
+      },
+    },
+    zIndex: {},
   } as ThemeOptions)

@@ -7,7 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import { VolumeSelector } from '../../../cms'
 import { apiRequestQuantityAtom, selectedApiAtom } from '../ApiUrlSelector'
-import { ApiDropdownWrapper } from '../../mui'
+import { ApiUIWrapper } from '../../mui'
 
 export default function DataQuantitySelector() {
   const setSelectedApi = useRecoilValue(selectedApiAtom)
@@ -40,7 +40,7 @@ export default function DataQuantitySelector() {
   return (
     <Box component='div'>
       {setSelectedApi !== '' && (
-        <ApiDropdownWrapper title='Volume' sx={{ ml: 20, pt: 8 }}>
+        <ApiUIWrapper title='Volume' sx={{ ml: 20, pt: 8 }}>
           <FormControl component='fieldset' sx={{ pb: 12 }}>
             <RadioGroup
               row
@@ -61,7 +61,7 @@ export default function DataQuantitySelector() {
               ))}
             </RadioGroup>
           </FormControl>
-        </ApiDropdownWrapper>
+        </ApiUIWrapper>
       )}
     </Box>
   )

@@ -3,15 +3,10 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import _ from 'lodash'
 import { useLocation } from 'react-router-dom'
-import {
-  apiDataAtom,
-  apiFullResponseAtom,
-  apiResponseHeadersAtom,
-  userSubmittedUrlAtom,
-  userToggledApiAtom,
-} from '../../recoil/api-json/atom'
-import { SvgTsLogoTs, SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
-import { TabSx, TabWrapperSx } from '../mui'
+import { AnimatePresence, motion } from 'framer-motion'
+import { userSubmittedUrlAtom, userToggledApiAtom } from '../../recoil/api-json/atom'
+import { SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
+import { apiTabSelectedAtom, TabSx, TabWrapperSx } from '../mui'
 import {
   DataResponse,
   EditResponse,
@@ -21,6 +16,8 @@ import {
   DTypescript,
 } from '../../pages/api-json/tab'
 import { PanelStyle } from '../mui/Panel.style'
+import { axiosDataAtom, axiosResponseAtom, axiosHeadersAtom } from '../../recoil/api-json/axios'
+import { ApiTabData } from '../../cms/api-selector-verbiage'
 
 type TabPanelAlias = {
   index: number
@@ -53,14 +50,15 @@ export default function ApiTabs() {
   const userSubmittedUrl = useRecoilValue(userSubmittedUrlAtom)
   // state of user toggled api response
   const setUserToggledApi = useSetRecoilState(userToggledApiAtom)
-  // state of response.data returned from the api call
-  const [apiData, setApiData] = useRecoilState(apiDataAtom)
   // state of full response returned from Axios api call
-  const apiFullResponse = useRecoilValue(apiFullResponseAtom)
+  const [axiosResponse, setAxiosResponse] = useRecoilState(axiosResponseAtom)
   // state of response.headers returned from fetch api call
-  const apiResponseHeaders = useRecoilValue(apiResponseHeadersAtom)
+  const axiosHeaders = useRecoilValue(axiosHeadersAtom)
   // dispatch tab panel
   const [value, setValue] = React.useState<number>(0)
+  //
+  //
+  const axiosData = useRecoilValue(axiosDataAtom)
 
   const handleDataTabs = (_event: React.SyntheticEvent, newResponse: number) => {
     setValue(newResponse)
@@ -68,13 +66,13 @@ export default function ApiTabs() {
 
   // edit a property of the object
   const EditObj = (newValue, key) => {
-    const newObj = apiData
+    const newObj = axiosResponse
     newObj[key] = newValue
-    setApiData(apiData)
+    setAxiosResponse(axiosResponse)
   }
   // delete a property of the object
   const DeleteObj = key => {
-    setApiData(_.omit(apiData, key))
+    setAxiosResponse(_.omit(axiosResponse, key))
   }
   // split and pop to isolate d.ts file name
   // const lastSegment = userSubmittedUrl !== undefined && userSubmittedUrl.split('/').pop()
@@ -82,73 +80,56 @@ export default function ApiTabs() {
   // AnimatePresense
   const local = useLocation()
 
+  const apiTabSelected = useRecoilValue(apiTabSelectedAtom)
+
   return (
-    <Box sx={{ mt: 40 }}>
+    <Box sx={{ mt: 30 }}>
       {userSubmittedUrl !== undefined && (
-        <Box>
-          <Box>
-            <TabWrapperSx
-              key={local.pathname}
-              aria-label='api data tabs'
-              onChange={handleDataTabs}
-              value={value}>
+        <>
+          <TabWrapperSx
+            key={local.pathname}
+            aria-label='api data tabs'
+            onChange={handleDataTabs}
+            value={value}>
+            {ApiTabData.map(({ index, num, label, isIcon, value }) => (
               <TabSx
-                label='Data response'
-                {...a11yProps(0)}
-                onClick={() => setUserToggledApi('data')}
-              />
-              <TabSx
-                label='Edit response'
-                {...a11yProps(1)}
-                onClick={() => setUserToggledApi('edit')}
-              />
-              <TabSx
-                label='Full response'
-                {...a11yProps(2)}
-                onClick={() => setUserToggledApi('full')}
-              />
-              <TabSx
-                label='Api Headers'
-                {...a11yProps(3)}
-                onClick={() => setUserToggledApi('headers')}
-              />
-              <TabSx
-                icon={<SvgTsLogoTs />}
+                key={num}
+                index={index}
+                label={label}
+                icon={isIcon && <SvgTsLogoDtype />}
                 iconPosition='start'
-                label=' interface'
-                {...a11yProps(4)}
-                onClick={() => setUserToggledApi('ts')}
+                {...a11yProps(num)}
+                onClick={() => setUserToggledApi(value)}
               />
-              <TabSx
-                icon={<SvgTsLogoDtype />}
-                iconPosition='start'
-                label=' * .d.ts'
-                {...a11yProps(5)}
-                onClick={() => setUserToggledApi('dtype')}
-              />
-            </TabWrapperSx>
-          </Box>
+            ))}
+          </TabWrapperSx>
           <PanelStyle>
-            <TabPanel value={value} index={0}>
-              <DataResponse data={apiData} />
-            </TabPanel>
+            <AnimatePresence>
+              {apiTabSelected && (
+                <motion.div layoutId={apiTabSelected}>
+                  <TabPanel value={value} index={0}>
+                    <DataResponse data={axiosData} />
+                  </TabPanel>
+                </motion.div>
+              )}
+            </AnimatePresence>
             <TabPanel value={value} index={1}>
-              <EditResponse data={apiData} onDelete={DeleteObj} onEdit={EditObj} />
+              <EditResponse data={axiosData} onDelete={DeleteObj} onEdit={EditObj} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-              <FullResponse data={apiFullResponse} />
+              <FullResponse data={axiosResponse} />
             </TabPanel>
             <TabPanel value={value} index={3}>
-              <DataHeaders data={apiResponseHeaders} />
+              <DataHeaders data={axiosHeaders} />
             </TabPanel>
             <TabPanel value={value} index={4}>
-              <TsInterface data={apiData} />
+              <TsInterface data={axiosData} />
             </TabPanel>
             <TabPanel value={value} index={5}>
-              <DTypescript data={apiData} />
+              <DTypescript data={axiosData} />
             </TabPanel>
           </PanelStyle>
-        </Box>
+        </>
       )}
     </Box>
   )

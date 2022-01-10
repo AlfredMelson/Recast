@@ -6,14 +6,12 @@ import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 import { BaseUrlData, JsonPlaceholderData, RandomData } from '../../../cms'
-import { SelectSx, ApiDropdownWrapper } from '../../mui'
+import { SelectSx, ApiUIWrapper } from '../../mui'
 
 export default function DataCategorySelector() {
   const apiProvider = useRecoilValue(selectedApiProviderAtom)
-  console.log('apiProvider', apiProvider)
 
   const [providerUrl, setProviderUrl] = React.useState<string>('')
-  console.log('providerUrl', providerUrl)
 
   const setSelectedApi = useSetRecoilState(selectedApiAtom)
 
@@ -30,7 +28,7 @@ export default function DataCategorySelector() {
   return (
     <Box component='div'>
       {apiProvider !== '' && (
-        <ApiDropdownWrapper title='Data' sx={{ mt: 10, ml: 20, mb: 0 }}>
+        <ApiUIWrapper title='Data' sx={{ mt: 10, ml: 20, mb: 0 }}>
           <FormControl>
             <SelectSx id='provider-url-selector' value={providerUrl} onChange={handleChange}>
               {providerUrls.map(item => (
@@ -40,7 +38,7 @@ export default function DataCategorySelector() {
               ))}
             </SelectSx>
           </FormControl>
-        </ApiDropdownWrapper>
+        </ApiUIWrapper>
       )}
     </Box>
   )

@@ -1,5 +1,4 @@
 import { styled } from '@mui/material/styles'
-import { BrandSwatch } from '../../style/BrandSwatch'
 
 /**
  * @name Navigation
@@ -28,15 +27,13 @@ export const Navigation = styled('nav')(({ theme }) => ({
     '& > a, & > div': {
       textDecoration: 'none',
       fontWeight: theme.palette.mode === 'dark' ? 400 : 500,
-      color:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[700],
+      color: theme.palette.text.secondary,
       transition: theme.transitions.create(['color', 'transform'], {
         duration: theme.transitions.duration.standard,
         easing: theme.transitions.easing.easeInOut,
       }),
       '&:hover': {
-        color:
-          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+        color: theme.palette.text.primary,
         '@media (hover: none)': {
           backgroundColor: 'initial',
         },

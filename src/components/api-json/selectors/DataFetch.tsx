@@ -13,13 +13,12 @@ import { selectedApiAtom, selectedApiProviderAtom } from '../ApiUrlSelector'
 import {
   userSubmittedUrlAtom,
   userTypedUrlAtom,
-  apiDataAtom,
-  apiFullResponseAtom,
   userQuerySelector,
 } from '../../../recoil/api-json/atom'
-import { ButtonSxStyle, ApiDropdownWrapper } from '../../mui'
+import { ButtonSxStyle, ApiUIWrapper } from '../../mui'
 import { SxCircularProgress } from '../../action/SxCircularProgress'
 import { BrandSwatch } from '../../../style/BrandSwatch'
+import { axiosResponseAtom } from '../../../recoil/api-json/axios'
 
 export default function DataFetch() {
   // user entered api url stored in recoil
@@ -32,10 +31,10 @@ export default function DataFetch() {
   const resetUserSubmittedUrl = useResetRecoilState(userSubmittedUrlAtom)
 
   // reset response.data value to recoil stored default
-  const resetApiData = useResetRecoilState(apiDataAtom)
+  const resetAxiosResponse = useResetRecoilState(axiosResponseAtom)
 
   // reset full response value to recoil stored default
-  const resetApiFullResponse = useResetRecoilState(apiFullResponseAtom)
+  const resetApiFullResponse = useResetRecoilState(axiosResponseAtom)
 
   const resetApiProvider = useResetRecoilState(selectedApiProviderAtom)
 
@@ -47,7 +46,7 @@ export default function DataFetch() {
   const interactionTimer = React.useRef<number>()
 
   // value of data fetch
-  const apiData = useRecoilValue(apiDataAtom)
+  const axiosResponse = useRecoilValue(axiosResponseAtom)
 
   // return a callback to clear cache
   const refresh = useRecoilRefresher_UNSTABLE(userQuerySelector)
@@ -55,7 +54,7 @@ export default function DataFetch() {
   const [submitting, setSubmitting] = React.useState(false)
   const [successSubmit, setSuccessfulSubmit] = React.useState(false)
   // handle submission of user typed url
-  const handleSubmitUrl = () => {
+  const handleDataFetching = () => {
     if (!submitting) {
       setSuccessfulSubmit(false)
       setSubmitting(true)
@@ -64,7 +63,7 @@ export default function DataFetch() {
         setSuccessfulSubmit(true)
         setSubmitting(false)
         // switch between initial call and refresh
-        if (Object.getOwnPropertyNames(apiData).length === 0) {
+        if (Object.getOwnPropertyNames(axiosResponse).length === 0) {
           setUserSubmittedUrl(userTypedUrl)
         } else {
           refresh()
@@ -87,20 +86,24 @@ export default function DataFetch() {
   }, [])
 
   return (
-    <ApiDropdownWrapper title='Controls' sx={{ mt: 10, ml: 20, mb: 0 }}>
-      <Stack direction='row' spacing={20}>
+    <ApiUIWrapper title='Controls' sx={{ mt: 10, ml: 20, mb: 0 }}>
+      <Stack
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+        spacing={20}
+        sx={{ m: 10 }}>
         <ButtonSxStyle
           aria-label='clear url'
           onClick={event => {
             event.preventDefault()
             resetUserTypedUrl()
             resetUserSubmittedUrl()
-            resetApiData()
+            resetAxiosResponse()
             resetApiFullResponse()
             resetApiProvider()
             resetSelectedApi()
           }}
-          sx={{ mr: 5 }}
           disabled={userTypedUrl.length === 0}>
           <Typography variant='button'>Clear</Typography>
         </ButtonSxStyle>
@@ -108,23 +111,22 @@ export default function DataFetch() {
           <ButtonSxStyle
             aria-label='fetch api'
             disabled={userTypedUrl === undefined}
-            onClick={handleSubmitUrl}
-            sx={{ mr: 10 }}>
+            onClick={handleDataFetching}>
             {!submitting && !successSubmit ? (
               <Typography variant='button'>
-                {Object.getOwnPropertyNames(apiData).length === 0 ? (
+                {Object.getOwnPropertyNames(axiosResponse).length === 0 ? (
                   <span>Fetch</span>
                 ) : (
                   <span>Refetch</span>
                 )}
               </Typography>
             ) : (
-              successSubmit && <CheckIcon sx={{ color: BrandSwatch.Dark.Green[300] }} />
+              successSubmit && <CheckIcon sx={{ color: BrandSwatch.Light.Blue[400] }} />
             )}
           </ButtonSxStyle>
-          {submitting && <SxCircularProgress size='16px' color='green' />}
+          {submitting && <SxCircularProgress size='20px' color='blue' />}
         </Box>
       </Stack>
-    </ApiDropdownWrapper>
+    </ApiUIWrapper>
   )
 }

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { atom, selector } from 'recoil'
 
 /**
@@ -26,9 +27,11 @@ export const userQuerySelector = selector({
     if (userSubmittedUrl === undefined) {
       return
     } else {
-      const urlData = await fetch(userSubmittedUrl).then(response => response.json())
+      const response = axios.get(userSubmittedUrl)
+      console.log('response', response)
+      // const urlData = await fetch(userSubmittedUrl).then(response => response.json())
       // console.log('urlData: ', urlData)
-      return urlData
+      return response
     }
   },
   // set: ({ set }, newValue) => {
@@ -82,63 +85,6 @@ export const userTypedUrlAtom = atom<string>({
 export const userSubmittedUrlAtom = atom<string | undefined>({
   key: 'userSubmittedUrl',
   default: undefined,
-})
-
-/**
- * @name apiDataAtom
- * @description state representing response.data returned from the fetch api call
- * @param {Record<string, unknown>}
- * @type {Object}
- * @return {Object} a writeable RecoilState object
- * @bug Objects stored in atoms will freeze in development mode when bugs are detected
- *
- * Hooks to manage state changes and notify components subscribing to re-render:
- * const [apiData, setApiData] = useRecoilState(apiDataAtom)
- * const setApiData  = useSetRecoilState(apiDataAtom)
- * const apiData  = useRecoilValue(apiDataAtom)
- * const resetApiData = useResetRecoilState(apiDataAtom)
- */
-export const apiDataAtom = atom<Record<string, unknown>>({
-  key: 'apiData',
-  default: {},
-})
-
-/**
- * @name apiFullResponseAtom
- * @description state representing the full response returned from Axios api call
- * @param {Record<string, unknown>}
- * @type {Object}
- * @return {Object} a writeable RecoilState object
- * @bug Objects stored in atoms will freeze in development mode when bugs are detected
- *
- * Hooks to manage state changes and notify components subscribing to re-render:
- * const [apiFullResponse, setApiFullResponse] = useRecoilState(apiFullResponseAtom)
- * const setApiFullResponse  = useSetRecoilState(apiFullResponseAtom)
- * const apiFullResponse  = useRecoilValue(apiFullResponseAtom)
- * const resetApiFullResponse = useResetRecoilState(apiFullResponseAtom)
- */
-export const apiFullResponseAtom = atom({
-  key: 'apiFullResponse',
-  default: {},
-})
-
-/**
- * @name apiResponseHeadersAtom
- * @description state representing response.headers returned from the api call
- * @param {Record<string, unknown>}
- * @type {Object}
- * @return {Object} a writeable RecoilState object
- * @bug Objects stored in atoms will freeze in development mode when bugs are detected
- *
- * Hooks to manage state changes and notify components subscribing to re-render:
- * const [apiResponseHeaders, setApiResponseHeaders] = useRecoilState(apiResponseHeadersAtom)
- * const setApiResponseHeaders  = useSetRecoilState(apiResponseHeadersAtom)
- * const apiResponseHeaders  = useRecoilValue(apiResponseHeadersAtom)
- * const resetApiResponseHeaders = useResetRecoilState(apiResponseHeadersAtom)
- */
-export const apiResponseHeadersAtom = atom({
-  key: 'apiResponseHeaders',
-  default: {},
 })
 
 /**

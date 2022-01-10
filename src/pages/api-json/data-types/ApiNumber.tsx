@@ -17,7 +17,7 @@ import ApiDataTypeLabel from './ApiDataTypeLabel'
 import { ApiNumberAlias } from './typeAliases'
 
 export function ApiNumber({ index, value, dataKey, dataType, onEdit, onDelete }: ApiNumberAlias) {
-  console.log('ApiNumber : index', index)
+  // console.log('ApiNumber : index', index)
 
   const [selectedElement, setSelectedElement] = useRecoilState(selectedElementAtom)
 

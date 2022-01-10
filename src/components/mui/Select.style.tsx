@@ -16,7 +16,7 @@ const SelectSxStyle = styled((props?: SelectProps) => (
   <Select autoWidth disableUnderline={true} {...props} />
 ))(({ theme }) => ({
   fontSize: 16,
-  height: 50,
+  height: 40,
   paddingLeft: 20,
   display: 'flex',
   alignItems: 'center',
@@ -24,27 +24,20 @@ const SelectSxStyle = styled((props?: SelectProps) => (
     theme.palette.mode === 'dark'
       ? alpha(BrandSwatch.Dark.Grey[700], 0.2)
       : alpha(BrandSwatch.Light.Grey[200], 0.2),
-  border: '1px solid',
-  borderRadius: 3,
-  // borderColor:
-  //   theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
-  borderColor: 'transparent',
-  color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
+  color: theme.palette.text.secondary,
   transition: theme.transitions.create(['all'], {
     duration: theme.transitions.duration.standard,
     easing: theme.transitions.easing.easeInOut,
   }),
   '&:hover, &.Mui-focused ': {
-    color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+    color: theme.palette.text.primary,
     backgroundColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
-    border: '1px solid transparent',
     borderRadius: 3,
   },
   '&.Mui-selected': {
     color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
-    backgroundColor:
-      theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[200],
+    backgroundColor: theme.palette.background.default,
   },
 }))
 

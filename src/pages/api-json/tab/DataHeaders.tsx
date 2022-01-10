@@ -16,6 +16,7 @@ import {
 import { PaperSx } from '../../../components/mui/Paper.style'
 import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { BrandSwatch } from '../../../style/BrandSwatch'
+import { ErrorBoundary } from '../../../lib/ErrorBoundary'
 
 type DataHeadersAlias = {
   data?: { [key: string]: any } | undefined
@@ -47,7 +48,9 @@ export default function DataHeaders({ data }: DataHeadersAlias) {
 
   return (
     <FadeAnimation>
-      <PaperSx>{renderData()}</PaperSx>
+      <PaperSx>
+        <ErrorBoundary>{renderData()}</ErrorBoundary>
+      </PaperSx>
     </FadeAnimation>
   )
 }

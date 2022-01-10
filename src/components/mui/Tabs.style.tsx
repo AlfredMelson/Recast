@@ -36,8 +36,8 @@ export const TabWrapperSx = styled((props: TabWrapperSxAlias) => (
     margin: theme.spacing(0, 2, 0, 0),
     backgroundColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
-    borderWidth: theme.spacing(1, 1, 0),
     borderStyle: 'solid',
+    borderWidth: theme.spacing(1, 1, 0),
     borderColor:
       theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[100],
     color: theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[200] : BrandSwatch.Light.Grey[700],
@@ -57,8 +57,8 @@ export const TabWrapperSx = styled((props: TabWrapperSxAlias) => (
         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
     },
     '&.Mui-selected': {
-      borderRadius: '3px 3px 0 0',
-      borderColor: 'transparent',
+      // borderRadius: '3px 3px 0 0',
+      // borderBottom: '1px solid transparent',
       backgroundColor:
         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
       color:
@@ -67,8 +67,6 @@ export const TabWrapperSx = styled((props: TabWrapperSxAlias) => (
   },
 
   '& .MuiTabs-indicator': {
-    // backgroundColor:
-    //   theme.palette.mode === 'dark' ? BrandSwatch.Dark.Blue[600] : BrandSwatch.Light.Blue[400],
     backgroundColor: 'transparent',
   },
 }))

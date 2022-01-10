@@ -1,5 +1,5 @@
 import ButtonGroup, { ButtonGroupProps } from '@mui/material/ButtonGroup'
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { blue } from '@mui/material/colors'
 
 /**

@@ -2,10 +2,29 @@ import * as React from 'react'
 import Popper from '@mui/material/Popper'
 import Paper from '@mui/material/Paper'
 import Fade from '@mui/material/Fade'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
+import { styled } from '@mui/material/styles'
 import IconImage from '../icons/IconImage'
 import { getNextIndex, MENUID } from '../action/KeyboardFunctions'
-import { SubMenu } from '../mui/SubMenu.style'
+import { SubMenu } from '../mui'
+
+const SubmenuWrapper = styled(Paper)(({ theme }) => ({
+  minWidth: 400,
+  overflow: 'hidden',
+  border: 0,
+  backgroundColor: theme.palette.background.default,
+  boxShadow: `0px 4px 20px ${theme.palette.background.default}`,
+  '& ul': {
+    margin: 0,
+    padding: 0,
+    listStyle: 'none',
+  },
+  '& li:not(:last-of-type)': {
+    borderBottom: '1px solid',
+    borderColor: theme.palette.background.default,
+  },
+  '& a': { textDecoration: 'none' },
+}))
 
 export function DropDownMenu() {
   const [subMenuOpen, setSubMenuOpen] = React.useState(false)
@@ -112,30 +131,7 @@ export function DropDownMenu() {
         placement='bottom-start'>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps}>
-            <Paper
-              variant='outlined'
-              sx={{
-                minWidth: 400,
-                overflow: 'hidden',
-                borderColor: 'transparent',
-                bgcolor: theme => (theme.palette.mode === 'dark' ? 'grey.900' : 'grey.300'),
-                // boxShadow: theme =>
-                //   `0px 4px 20px ${
-                //     theme.palette.mode === 'dark'
-                //       ? alpha(theme.palette.background.paper, 1)
-                //       : 'rgba(170, 180, 190, 0.3)'
-                //   }`,
-                '& ul': {
-                  margin: 0,
-                  padding: 0,
-                  listStyle: 'none',
-                },
-                '& li:not(:last-of-type)': {
-                  borderBottom: '1px solid',
-                  borderColor: theme => (theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100'),
-                },
-                '& a': { textDecoration: 'none' },
-              }}>
+            <SubmenuWrapper variant='outlined'>
               <ul>
                 <li>
                   <SubMenu
@@ -178,7 +174,7 @@ export function DropDownMenu() {
                   />
                 </li> */}
               </ul>
-            </Paper>
+            </SubmenuWrapper>
           </Fade>
         )}
       </Popper>

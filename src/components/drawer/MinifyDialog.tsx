@@ -6,12 +6,26 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { Link as MuiLink } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { userGeneratedJsonAtom, minifiedTextAtom, minifyDialogOpenAtom } from '../../recoil'
 import { SvgJsonLogo } from '../icons'
 import { HeaderStyle } from '../mui/Header.style'
 import { BrandSwatch } from '../../style/BrandSwatch'
 import { Navigation } from '../mui'
 import { MinifyIcons } from './MinifyIcons'
+
+const TypographyRoot = styled(Typography)(({ theme }) => ({
+  ...theme.typography.code,
+  fontWeight: theme.typography.fontWeightRegular,
+  color: theme.palette.text.secondary,
+  transition: theme.transitions.create(['all'], {
+    duration: theme.transitions.duration.standard,
+    easing: theme.transitions.easing.easeInOut,
+  }),
+  '&:hover': {
+    color: theme.palette.text.primary,
+  },
+}))
 
 export function MinifyDialog() {
   //set dialog with minified json visability
@@ -54,16 +68,11 @@ export function MinifyDialog() {
               <SvgJsonLogo width={120} />
             </MuiLink>
           </Box>
-          {/* <Stack direction='row' sx={{ gridColumn: 1, placeSelf: 'center start' }}> */}
           <Navigation aria-label='Main'>
             <ul>
               <li>Minified</li>
             </ul>
           </Navigation>
-          {/* </Stack> */}
-          {/* <Typography variant='body2' sx={{ marginTop: 8 }}>
-            Minified
-          </Typography> */}
           <Box
             sx={{
               ml: { xs: 'auto' },
@@ -75,7 +84,6 @@ export function MinifyDialog() {
         </Container>
       </HeaderStyle>
       <DialogContent
-        dividers={true}
         sx={{
           background: theme =>
             theme.palette.mode === 'dark'
@@ -87,71 +95,10 @@ export function MinifyDialog() {
             width: 0,
           },
         }}>
-        <Typography
-          variant='code'
-          id='minified-json-data'
-          sx={{
-            fontSize: 14,
-            fontWeight: theme => (theme.palette.mode === 'dark' ? 400 : 500),
-            color: theme =>
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[100]
-                : BrandSwatch.Light.Grey[700],
-            transition: theme =>
-              theme.transitions.create(['all'], {
-                duration: theme.transitions.duration.standard,
-                easing: theme.transitions.easing.easeInOut,
-              }),
-            '&:hover': {
-              color: theme =>
-                theme.palette.mode === 'dark'
-                  ? BrandSwatch.Dark.Grey[50]
-                  : BrandSwatch.Light.Grey[900],
-            },
-          }}>
-          <span id='back-to-top-anchor' />
+        <TypographyRoot variant='code' id='minified-json-data'>
           {minifiedText}
-        </Typography>
+        </TypographyRoot>
       </DialogContent>
     </Dialog>
   )
 }
-
-// interface Props {
-//   children: React.ReactElement
-// }
-
-// function ScrollTop(props: Props) {
-//   const { children } = props
-//   // Note that you normally won't need to set the window ref as useScrollTrigger
-//   // will default to window.
-//   // This is only being set here because the demo is in an iframe.
-//   const trigger = useScrollTrigger({
-//     disableHysteresis: true,
-//     threshold: 100,
-//   })
-
-//   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-//     const anchor = ((event.target as HTMLDivElement).ownerDocument || document).querySelector(
-//       '#back-to-top-anchor'
-//     )
-
-//     if (anchor) {
-//       anchor.scrollIntoView({
-//         behavior: 'smooth',
-//         block: 'center',
-//       })
-//     }
-//   }
-
-//   return (
-//     <Zoom in={trigger}>
-//       <Box
-//         onClick={handleClick}
-//         role='presentation'
-//         sx={{ position: 'fixed', bottom: 16, right: 16 }}>
-//         {children}
-//       </Box>
-//     </Zoom>
-//   )
-// }

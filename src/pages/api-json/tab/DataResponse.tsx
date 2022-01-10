@@ -18,8 +18,9 @@ import {
   ApiStringAlias,
 } from '../data-types/typeAliases'
 import { PaperSx } from '../../../components/mui/Paper.style'
-import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
+// import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { BrandSwatch } from '../../../style/BrandSwatch'
+import { ErrorBoundary } from '../../../lib/ErrorBoundary'
 
 type DataResponseAlias = {
   data?: { [key: string]: any } | undefined
@@ -49,9 +50,11 @@ export default function DataResponse({ data }: DataResponseAlias) {
   }
 
   return (
-    <FadeAnimation>
-      <PaperSx>{renderData()}</PaperSx>
-    </FadeAnimation>
+    // <FadeAnimation>
+    <PaperSx>
+      <ErrorBoundary>{renderData()}</ErrorBoundary>
+    </PaperSx>
+    // </FadeAnimation>
   )
 }
 

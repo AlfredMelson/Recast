@@ -1,25 +1,26 @@
 import { Box } from '@mui/material'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import { styled } from '@mui/material/styles'
 import { EditorDrawer } from '../components/drawer/EditorDrawer'
-import { BrandSwatch } from '../style/BrandSwatch'
 import { AppHeader } from './AppHeader'
+// import { useLocation } from 'react-router-dom'
+
+const LayoutWrapper = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  height: '100vh',
+  overflow: 'hidden',
+}))
 
 export function Layout() {
-  // identify HomePage and enable scroll
-  const location = useLocation()
-  console.log('location from Layout.tsx', location)
+  // useLocation to identify HomePage and enable scroll
+  // const location = useLocation()
+  // console.log('location from Layout.tsx', location)
 
   return (
-    <Box
-      sx={{
-        height: '100vh',
-        overflow: 'hidden',
-        background: theme =>
-          theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[900] : BrandSwatch.Light.Grey[50],
-      }}>
+    <LayoutWrapper>
       <AppHeader />
       <Outlet />
       <EditorDrawer />
-    </Box>
+    </LayoutWrapper>
   )
 }

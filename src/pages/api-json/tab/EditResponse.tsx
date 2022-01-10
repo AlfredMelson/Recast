@@ -2,7 +2,7 @@ import * as React from 'react'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { Box } from '@mui/material'
 import { IconButtonSxApiIcons } from '../../../components/mui/IconButton.style'
 import ApiDataSort, { currentDataAtom } from '../data-types/ApiDataSort'
@@ -10,12 +10,13 @@ import { EditResponseAlias, getType } from '../data-types/typeAliases'
 import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import AsideEditInfo from '../../../components/api-json/AsideEditInfo'
-import { elementStateAtom, selectedElementProperties } from '../../../recoil/api-json/atom'
+import { elementStateAtom } from '../../../recoil/api-json/atom'
 import { BrandSwatch } from '../../../style/BrandSwatch'
+import { ErrorBoundary } from '../../../lib/ErrorBoundary'
 
 export default function EditResponse({ data, onDelete, onEdit }: EditResponseAlias) {
-  const element = useRecoilValue(selectedElementProperties)
-  console.log('element', element)
+  // const element = useRecoilValue(selectedElementProperties)
+  // console.log('element', element)
   // state representing an array of element ids
   const [elementState, setElementState] = useRecoilState(elementStateAtom)
   // state representing...
@@ -29,7 +30,7 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
 
   React.useEffect(() => {
     const newkeys: string[] | undefined = Object.getOwnPropertyNames(data)
-    console.log('newkeys', newkeys)
+    // console.log('newkeys', newkeys)
 
     setElementState(newkeys)
     setCurrentData(data)
@@ -112,8 +113,10 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
   return (
     <FadeAnimation>
       <PaperSx sx={{ pl: 30, pr: 70 }}>
-        {renderEditResponseContent()}
-        <AsideEditInfo />
+        <ErrorBoundary>
+          {renderEditResponseContent()}
+          <AsideEditInfo />
+        </ErrorBoundary>
       </PaperSx>
     </FadeAnimation>
   )

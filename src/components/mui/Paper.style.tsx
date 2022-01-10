@@ -13,13 +13,12 @@ import { BrandSwatch } from '../../style/BrandSwatch'
  * @return
  */
 const PaperSxStyle = styled(Paper)(({ theme }) => ({
-  borderRadius: '0 0 3px 3px',
   paddingTop: 30,
   paddingLeft: 50,
   paddingBottom: 40,
   backgroundColor:
     theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
-  maxHeight: '64vh',
+  maxHeight: 'calc(100vh - 539px )',
   overflowX: 'hidden',
   overflowY: 'scroll',
 }))

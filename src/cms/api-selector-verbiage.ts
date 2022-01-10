@@ -1,3 +1,5 @@
+import { UserToggledApiAtomOptions } from '../recoil/api-json/atom'
+
 type SourceSelectorAlias = {
   index: number
   name: string
@@ -80,7 +82,7 @@ export const JsonPlaceholderData: JsonPlaceholderDataAlias[] = [
   { index: 3, name: 'Albums', url: 'albums/' },
   { index: 4, name: 'Photos', url: 'photos/' },
   { index: 5, name: 'Todos', url: 'todos/' },
-  { index: 5, name: 'Users', url: 'users/' },
+  { index: 6, name: 'Users', url: 'users/' },
 ]
 
 type VolumeSelectorAlias = {
@@ -94,4 +96,21 @@ export const VolumeSelector: VolumeSelectorAlias[] = [
   { index: 1, name: 'two', value: '2' },
   { index: 2, name: 'five', value: '5' },
   { index: 3, name: 'ten', value: '10' },
+]
+
+type ApiTabDataAlias = {
+  index: string
+  num: number
+  label: string
+  isIcon: boolean
+  value: UserToggledApiAtomOptions
+}
+
+export const ApiTabData: ApiTabDataAlias[] = [
+  { index: '0', num: 0, label: 'Data response', isIcon: false, value: 'data' },
+  { index: '1', num: 1, label: 'Edit response', isIcon: false, value: 'edit' },
+  { index: '2', num: 2, label: 'Full response', isIcon: false, value: 'full' },
+  { index: '3', num: 3, label: ' interface', isIcon: false, value: 'headers' },
+  { index: '4', num: 4, label: ' * .d.ts', isIcon: true, value: 'ts' },
+  { index: '5', num: 5, label: 'Users', isIcon: true, value: 'dtype' },
 ]

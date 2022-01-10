@@ -9,8 +9,12 @@ export function BrandThemedComponents(theme: Theme) {
         defaultProps: {},
       },
       styleOverrides: {
-        root: {}, // Styles applied to the root element
-        text: { fontWeight: theme.palette.mode === 'dark' ? 400 : 600 }, // Styles applied to the root element if variant="text"
+        root: {
+          '&:hover': { backgroundColor: 'transparent' },
+        }, // Styles applied to the root element
+        text: {
+          fontWeight: theme.palette.mode === 'dark' ? 400 : 600,
+        }, // Styles applied to the root element if variant="text"
         outlined: {
           fontWeight: theme.palette.mode === 'dark' ? 400 : 600,
           backgroundColor:
@@ -23,11 +27,14 @@ export function BrandThemedComponents(theme: Theme) {
         sizeMedium: {}, // State class applied to the root element if disabled={true}
       },
       MuiButtonBase: {
+        // https://mui.com/api/button-base/
         defaultProps: {
           disableTouchRipple: true,
         },
         styleOverrides: {
-          root: {}, // Styles applied to the root element
+          root: { fontSize: theme.typography.body1 }, // Styles applied to the root element
+          disabled: {}, // State class applied to the root element if disabled={true}
+          focusVisible: {}, // State class applied to the root element if keyboard focused
         },
       },
       MuiButtonGroup: {
@@ -44,9 +51,9 @@ export function BrandThemedComponents(theme: Theme) {
         defaultProps: {},
         styleOverrides: {
           root: {
-            [theme.breakpoints.up('md')]: {
-              padding: theme.spacing(0, 20),
-            },
+            // [theme.breakpoints.up('md')]: {
+            //   padding: theme.spacing(0, 20),
+            // },
           },
         },
       },
@@ -54,10 +61,6 @@ export function BrandThemedComponents(theme: Theme) {
         defaultProps: {},
         styleOverrides: {
           root: {
-            color:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[900]
-                : BrandSwatch.Light.Grey[100],
             margin: theme.spacing(5, 10),
           },
         },
@@ -192,7 +195,7 @@ export function BrandThemedComponents(theme: Theme) {
             '&:hover': {
               backgroundColor:
                 theme.palette.mode === 'dark'
-                  ? BrandSwatch.Dark.Grey[900]
+                  ? BrandSwatch.Dark.Grey[700]
                   : BrandSwatch.Light.Grey[200],
             },
           }, // 	Styles applied to the root element
@@ -397,16 +400,17 @@ export function BrandThemedComponents(theme: Theme) {
         },
       },
       MuiToggleButtonGroup: {
+        // https://mui.com/api/toggle-button-group/
         defaultProps: {
           size: 'small',
         },
         styleOverrides: {
-          root: {
-            background:
-              theme.palette.mode === 'dark'
-                ? BrandSwatch.Dark.Grey[900]
-                : BrandSwatch.Light.Grey[100],
-          },
+          root: {}, // Styles applied to the root element
+          vertical: {}, // Styles applied to the root element if orientation="vertical"
+          disabled: {}, // State class applied to the root element if disabled={true}
+          grouped: {}, // Styles applied to the children
+          groupedHorizontal: {}, // Styles applied to the children if orientation="horizontal"
+          groupedVertical: {}, // Styles applied to the children if orientation="vertical"
         },
       },
       MuiTooltip: {
@@ -478,6 +482,29 @@ export function BrandThemedComponents(theme: Theme) {
         defaultProps: {},
         styleOverrides: {
           root: {}, // Styles applied to the root element
+        },
+      },
+      MuiTypography: {
+        // https://mui.com/api/typography/
+        defaultProps: {},
+        styleOverrides: {
+          root: {}, // Styles applied to the root element if variant="root"
+          body1: {}, // Styles applied to the root element if variant="body1"
+          body2: {}, // Styles applied to the root element if variant="body2"
+          caption: {}, // Styles applied to the root element if variant="caption"
+          button: { textTransform: 'capitalize', ...theme.typography.body2 }, // Styles applied to the root element if variant="button"
+          h1: {}, // Styles applied to the root element if variant="h1"
+          h2: {}, // Styles applied to the root element if variant="h2"
+          h3: {}, // Styles applied to the root element if variant="h3"
+          h4: {}, // Styles applied to the root element if variant="h4"
+          h5: {}, // Styles applied to the root element if variant="h5"
+          h6: {}, // Styles applied to the root element if variant="h6"
+          subtitle1: {}, // Styles applied to the root element if variant="subtitle1"
+          subtitle2: {}, // Styles applied to the root element if variant="subtitle2"
+          overline: {}, // Styles applied to the root element if variant="overline"
+          noWrap: {}, // Styles applied to the root element if variant="noWrap"
+          gutterBottom: {}, // Styles applied to the root element if variant="gutterBottom"
+          paragraph: {}, // Styles applied to the root element if variant="paragraph"
         },
       },
     },

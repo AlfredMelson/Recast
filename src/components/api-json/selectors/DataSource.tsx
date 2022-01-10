@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil'
 import FormControl from '@mui/material/FormControl'
 import { selectedApiProviderAtom } from '../ApiUrlSelector'
 import { SourceSelector } from '../../../cms/api-selector-verbiage'
-import { SelectSx, ApiDropdownWrapper } from '../../mui/'
+import { SelectSx, ApiUIWrapper } from '../../mui/'
 
 export default function DataSourceSelector() {
   const [selectedApiProvider, setSelectedApiProvider] = useRecoilState(selectedApiProviderAtom)
@@ -14,7 +14,7 @@ export default function DataSourceSelector() {
   }
 
   return (
-    <ApiDropdownWrapper title='Source' sx={{ mt: 10, ml: 20, mb: 0 }}>
+    <ApiUIWrapper title='Source' sx={{ mt: 10, ml: 20, mb: 0 }}>
       <FormControl>
         <SelectSx id='provider-selector' value={selectedApiProvider} onChange={handleChange}>
           {/* <MenuItem dense value='randomDataApi'>
@@ -30,6 +30,6 @@ export default function DataSourceSelector() {
           ))}
         </SelectSx>
       </FormControl>
-    </ApiDropdownWrapper>
+    </ApiUIWrapper>
   )
 }

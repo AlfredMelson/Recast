@@ -10,13 +10,9 @@ import * as React from 'react'
  * @return
  */
 
-const PanelWrapper = styled('div')(({ theme }) => ({
+const PanelWrapper = styled('div')(() => ({
   position: 'relative',
   overflow: 'hidden',
-  // border: '1px solid',
-  // borderColor:
-  //   theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
-  borderRadius: theme.spacing(0, 3, 3, 3),
 }))
 
 type PanelStyleAlias = {

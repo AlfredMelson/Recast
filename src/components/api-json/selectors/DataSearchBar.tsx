@@ -1,7 +1,8 @@
 import { useRecoilState } from 'recoil'
 import { Box } from '@mui/material'
+import * as React from 'react'
 import { userTypedUrlAtom } from '../../../recoil/api-json/atom'
-import { ApiDropdownWrapper } from '../../mui'
+import { ApiUIWrapper } from '../../mui'
 import { selectedApiAtom } from '../ApiUrlSelector'
 import { InputBaseSx } from '../../mui/InputBase.style'
 
@@ -10,8 +11,8 @@ export default function DataSearchBar() {
   const [userTypedUrl, setUserTypedUrl] = useRecoilState(userTypedUrlAtom)
 
   // user entered url is set on enter or submit
-  const handleTextFieldChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserTypedUrl(event.target.value), setSelectedApi(event.target.value)
+  const handleTextFieldChanges = (event: React.FormEvent<HTMLInputElement>) => {
+    setUserTypedUrl(event.currentTarget.value), setSelectedApi(event.currentTarget.value)
   }
 
   const [selectedApi, setSelectedApi] = useRecoilState(selectedApiAtom)
@@ -21,20 +22,20 @@ export default function DataSearchBar() {
 
   return (
     <Box sx={{ flex: 1 }}>
-      <ApiDropdownWrapper title='Api Url' sx={{ mt: 10, ml: 20, mb: 0 }}>
+      <ApiUIWrapper title='Api Url' sx={{ mt: 10, ml: 20, mb: 0 }}>
         <InputBaseSx
           sx={{
             m: 10,
             pl: 20,
             width: 'calc(100% - 20px)',
             fontSize: 16,
-            minHeight: 32,
+            height: 40,
           }}
           placeholder='Enter url ...'
           value={selectedApi !== '' ? selectedApi : userTypedUrl}
           onChange={handleTextFieldChanges}
         />
-      </ApiDropdownWrapper>
+      </ApiUIWrapper>
     </Box>
   )
 }

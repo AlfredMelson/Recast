@@ -4,13 +4,13 @@ import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/system'
 import { BrandSwatch } from '../../style/BrandSwatch'
 
-type ApiDropdownWrapperAlias = {
+type ApiUIWrapperAlias = {
   children: React.ReactNode
   title?: string
   sx?: SxProps
 }
 
-export const ApiDropdownWrapper = ({ title, sx, children }: ApiDropdownWrapperAlias) => {
+export const ApiUIWrapper = ({ title, sx, children }: ApiUIWrapperAlias) => {
   return (
     <Stack
       direction='column'
