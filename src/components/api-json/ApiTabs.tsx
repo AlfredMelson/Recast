@@ -3,10 +3,9 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Box from '@mui/material/Box'
 import _ from 'lodash'
 import { useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
 import { userSubmittedUrlAtom, userToggledApiAtom } from '../../recoil/api-json/atom'
 import { SvgTsLogoDtype } from '../icons/SvgTsLogoTs'
-import { apiTabSelectedAtom, TabSx, TabWrapperSx } from '../mui'
+import { TabSx, TabWrapperSx } from '../mui'
 import {
   DataResponse,
   EditResponse,
@@ -18,6 +17,7 @@ import {
 import { PanelStyle } from '../mui/Panel.style'
 import { axiosDataAtom, axiosResponseAtom, axiosHeadersAtom } from '../../recoil/api-json/axios'
 import { ApiTabData } from '../../cms/api-selector-verbiage'
+import { apiTabSelectedAtom } from '../../recoil/api-json/tab'
 
 type TabPanelAlias = {
   index: number
@@ -80,7 +80,7 @@ export default function ApiTabs() {
   // AnimatePresense
   const local = useLocation()
 
-  const apiTabSelected = useRecoilValue(apiTabSelectedAtom)
+  const [apiTabSelected, setApiTabSelected] = useRecoilState(apiTabSelectedAtom)
 
   return (
     <Box sx={{ mt: 30 }}>
@@ -99,32 +99,34 @@ export default function ApiTabs() {
                 icon={isIcon && <SvgTsLogoDtype />}
                 iconPosition='start'
                 {...a11yProps(num)}
-                onClick={() => setUserToggledApi(value)}
+                onClick={() => {
+                  setUserToggledApi(value), setApiTabSelected(index)
+                }}
               />
             ))}
+            <TabSx label={`id: ${apiTabSelected}`} />
           </TabWrapperSx>
           <PanelStyle>
-            <AnimatePresence>
-              {apiTabSelected && (
-                <motion.div layoutId={apiTabSelected}>
-                  <TabPanel value={value} index={0}>
-                    <DataResponse data={axiosData} />
-                  </TabPanel>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <TabPanel value={value} index={0}>
+              <DataResponse data={axiosData} />
+            </TabPanel>
+
             <TabPanel value={value} index={1}>
               <EditResponse data={axiosData} onDelete={DeleteObj} onEdit={EditObj} />
             </TabPanel>
+
             <TabPanel value={value} index={2}>
               <FullResponse data={axiosResponse} />
             </TabPanel>
+
             <TabPanel value={value} index={3}>
               <DataHeaders data={axiosHeaders} />
             </TabPanel>
+
             <TabPanel value={value} index={4}>
               <TsInterface data={axiosData} />
             </TabPanel>
+
             <TabPanel value={value} index={5}>
               <DTypescript data={axiosData} />
             </TabPanel>

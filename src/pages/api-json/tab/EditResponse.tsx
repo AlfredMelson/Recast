@@ -7,7 +7,6 @@ import { Box } from '@mui/material'
 import { IconButtonSxApiIcons } from '../../../components/mui/IconButton.style'
 import ApiDataSort, { currentDataAtom } from '../data-types/ApiDataSort'
 import { EditResponseAlias, getType } from '../data-types/typeAliases'
-import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import AsideEditInfo from '../../../components/api-json/AsideEditInfo'
 import { elementStateAtom } from '../../../recoil/api-json/atom'
@@ -111,13 +110,11 @@ export default function EditResponse({ data, onDelete, onEdit }: EditResponseAli
   }
 
   return (
-    <FadeAnimation>
-      <PaperSx sx={{ pl: 30, pr: 70 }}>
-        <ErrorBoundary>
-          {renderEditResponseContent()}
-          <AsideEditInfo />
-        </ErrorBoundary>
-      </PaperSx>
-    </FadeAnimation>
+    <PaperSx sx={{ pl: 30, pr: 70 }}>
+      <ErrorBoundary>
+        {renderEditResponseContent()}
+        <AsideEditInfo />
+      </ErrorBoundary>
+    </PaperSx>
   )
 }

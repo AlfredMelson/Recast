@@ -15,33 +15,33 @@ import * as React from 'react'
 
 type FadeAnimationAlias = {
   children: React.ReactNode
-  enabled?: boolean
+  layoutId?: string
 }
 
-export const FadeAnimation = ({ children, enabled = true }: FadeAnimationAlias) => {
+export const FadeAnimation = ({ children, layoutId }: FadeAnimationAlias) => {
   const animations = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
   }
 
-  const transitions = {
-    ease: 'easeInOut',
-    duration: 1,
-  }
+  // const transitions = {
+  //   ease: 'easeInOut',
+  //   duration: 0.3,
+  // }
 
   return (
     <AnimatePresence exitBeforeEnter>
-      {enabled && (
-        <motion.div
-          variants={animations}
-          initial='initial'
-          animate='animate'
-          exit='exit'
-          transition={transitions}>
-          {children}
-        </motion.div>
-      )}
+      <motion.div
+        layoutId={layoutId}
+        variants={animations}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        // transition={transitions}
+      >
+        {children}
+      </motion.div>
     </AnimatePresence>
   )
 }

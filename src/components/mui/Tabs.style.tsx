@@ -46,23 +46,20 @@ export const TabWrapperSx = styled((props: TabWrapperSxAlias) => (
       duration: theme.transitions.duration.standard,
       easing: theme.transitions.easing.easeInOut,
     }),
-    ':hover': {
-      borderRadius: '3px 3px 0 0',
+    '&:hover': {
       borderColor: 'transparent',
       backgroundColor:
         theme.palette.mode === 'dark'
           ? alpha(BrandSwatch.Dark.Grey[700], 0.7)
           : alpha(BrandSwatch.Light.Grey[200], 0.7),
-      color:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[100] : BrandSwatch.Light.Grey[800],
+      color: theme.palette.text.secondary,
     },
     '&.Mui-selected': {
-      // borderRadius: '3px 3px 0 0',
-      // borderBottom: '1px solid transparent',
+      borderColor: 'transparent',
       backgroundColor:
         theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
-      color:
-        theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[50] : BrandSwatch.Light.Grey[900],
+      color: theme.palette.text.primary,
+      transform: 'translateY(1px)',
     },
   },
 

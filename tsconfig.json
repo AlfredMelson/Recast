@@ -21,7 +21,7 @@
     "strict": false,
     "strictNullChecks": false,
     "target": "esnext",
-    "types": ["react/next", "react-dom/next", "jest"]
+    "types": ["react/next", "react-dom/next"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "src/state"]

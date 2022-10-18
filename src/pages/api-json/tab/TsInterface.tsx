@@ -17,7 +17,6 @@ import {
 } from '../data-types/typeAliases'
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
-import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 import { ErrorBoundary } from '../../../lib/ErrorBoundary'
@@ -60,34 +59,32 @@ const TsInterface: React.FC<TsInterfaceAlias> = ({ data }: TsInterfaceAlias) => 
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <FadeAnimation>
-      <PaperSx>
-        <ErrorBoundary>
-          <Typography variant='code'>
-            {`declare module namespace {`}
-            <Box sx={{ ml: 30 }}>{renderData()}</Box>
-            {'}'}
-          </Typography>
-          {/* <DownloadInfo appeared={true} title={`${formLastSegment}Props`} /> */}
-          <DownloadInfo
-            appeared={true}
-            content={
-              <React.Fragment>
-                <Typography fontWeight='bold' color='grey.300' variant='body2'>
-                  {`${formLastSegment}Props`}
-                </Typography>
-                <Typography color='grey.600' variant='body2'>
-                  * .d.ts
-                </Typography>
-                <Box sx={{ my: 10, textAlign: 'center' }}>
-                  <TsInterfaceIcons />
-                </Box>
-              </React.Fragment>
-            }
-          />
-        </ErrorBoundary>
-      </PaperSx>
-    </FadeAnimation>
+    <PaperSx>
+      <ErrorBoundary>
+        <Typography variant='code'>
+          {`declare module namespace {`}
+          <Box sx={{ ml: 30 }}>{renderData()}</Box>
+          {'}'}
+        </Typography>
+        {/* <DownloadInfo appeared={true} title={`${formLastSegment}Props`} /> */}
+        <DownloadInfo
+          appeared={true}
+          content={
+            <React.Fragment>
+              <Typography fontWeight='bold' color='grey.300' variant='body2'>
+                {`${formLastSegment}Props`}
+              </Typography>
+              <Typography color='grey.600' variant='body2'>
+                * .d.ts
+              </Typography>
+              <Box sx={{ my: 10, textAlign: 'center' }}>
+                <TsInterfaceIcons />
+              </Box>
+            </React.Fragment>
+          }
+        />
+      </ErrorBoundary>
+    </PaperSx>
   )
 }
 

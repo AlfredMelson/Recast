@@ -18,7 +18,6 @@ import {
   ApiStringAlias,
 } from '../data-types/typeAliases'
 import { PaperSx } from '../../../components/mui/Paper.style'
-// import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { BrandSwatch } from '../../../style/BrandSwatch'
 import { ErrorBoundary } from '../../../lib/ErrorBoundary'
 
@@ -50,11 +49,9 @@ export default function DataResponse({ data }: DataResponseAlias) {
   }
 
   return (
-    // <FadeAnimation>
     <PaperSx>
       <ErrorBoundary>{renderData()}</ErrorBoundary>
     </PaperSx>
-    // </FadeAnimation>
   )
 }
 

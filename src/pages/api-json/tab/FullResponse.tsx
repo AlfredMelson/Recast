@@ -17,7 +17,6 @@ import {
   ApiStringAlias,
   getType,
 } from '../data-types/typeAliases'
-import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { PaperSx } from '../../../components/mui/Paper.style'
 import { ErrorBoundary } from '../../../lib/ErrorBoundary'
 
@@ -48,12 +47,11 @@ const FullResponse: React.FC<FullResponseAlias> = ({ data }: FullResponseAlias) 
       )
     })
   }
+
   return (
-    <FadeAnimation>
-      <PaperSx>
-        <ErrorBoundary>{renderData()}</ErrorBoundary>
-      </PaperSx>
-    </FadeAnimation>
+    <PaperSx>
+      <ErrorBoundary>{renderData()}</ErrorBoundary>
+    </PaperSx>
   )
 }
 export default FullResponse

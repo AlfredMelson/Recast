@@ -2,7 +2,10 @@ import Paper, { PaperProps } from '@mui/material/Paper'
 import { alpha, styled } from '@mui/material'
 import { SxProps } from '@mui/system'
 import * as React from 'react'
+import { useRecoilValue } from 'recoil'
 import { BrandSwatch } from '../../style/BrandSwatch'
+import { apiTabSelectedAtom } from '../../recoil/api-json/tab'
+import { FadeAnimation } from '../framer-motion'
 
 /**
  * @name PaperSxStyle
@@ -13,9 +16,7 @@ import { BrandSwatch } from '../../style/BrandSwatch'
  * @return
  */
 const PaperSxStyle = styled(Paper)(({ theme }) => ({
-  paddingTop: 30,
-  paddingLeft: 50,
-  paddingBottom: 40,
+  padding: theme.spacing(30, 0, 30, 50),
   backgroundColor:
     theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[700] : BrandSwatch.Light.Grey[200],
   maxHeight: 'calc(100vh - 539px )',
@@ -38,10 +39,13 @@ type PaperSxAlias = {
 }
 
 export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
+  const apiTabSelected = useRecoilValue(apiTabSelectedAtom)
   return (
-    <PaperSxStyle onClick={onClick} {...props}>
-      {children}
-    </PaperSxStyle>
+    <FadeAnimation layoutId={apiTabSelected}>
+      <PaperSxStyle onClick={onClick} {...props}>
+        {children}
+      </PaperSxStyle>
+    </FadeAnimation>
   )
 }
 
@@ -54,9 +58,7 @@ export const PaperSx = ({ children, onClick, ...props }: PaperSxAlias) => {
  * @return
  */
 const PaperSxTreeviewStyle = styled(Paper)(({ theme }) => ({
-  paddingTop: 30,
-  paddingLeft: 50,
-  paddingBottom: 40,
+  padding: theme.spacing(30, 0, 30, 50),
   backgroundColor:
     theme.palette.mode === 'dark' ? BrandSwatch.Dark.Grey[800] : BrandSwatch.Light.Grey[200],
   maxHeight: '86vh',

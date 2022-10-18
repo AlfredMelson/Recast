@@ -503,3 +503,39 @@ tbody[data-level='20'] tr {
     opacity: 1;
   }
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+  cursor: pointer !important;
+  background-color: transparent;
+  transition-property: border-color;
+  transition-duration: 4s;
+  transition-delay: 2s;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-top: 2px;
+  border-bottom: 2px;
+  border-left: 3px;
+  border-right: 3px;
+  border-style: solid;
+  border-color: transparent;
+  background-clip: content-box;
+  min-width: 20px;
+  min-height: 40px;
+  background-color: #30363d;
+}
+::-webkit-scrollbar-thumb:hover {
+  border-color: #30363d;
+  background-color: #30363d;
+}
+::-webkit-scrollbar-thumb:active {
+  border-color: #484f58;
+  background-color: #484f58;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background-color: transparent;
+}

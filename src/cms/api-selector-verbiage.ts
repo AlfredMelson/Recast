@@ -110,7 +110,7 @@ export const ApiTabData: ApiTabDataAlias[] = [
   { index: '0', num: 0, label: 'Data response', isIcon: false, value: 'data' },
   { index: '1', num: 1, label: 'Edit response', isIcon: false, value: 'edit' },
   { index: '2', num: 2, label: 'Full response', isIcon: false, value: 'full' },
-  { index: '3', num: 3, label: ' interface', isIcon: false, value: 'headers' },
-  { index: '4', num: 4, label: ' * .d.ts', isIcon: true, value: 'ts' },
-  { index: '5', num: 5, label: 'Users', isIcon: true, value: 'dtype' },
+  { index: '3', num: 3, label: 'Headers', isIcon: false, value: 'headers' },
+  { index: '4', num: 4, label: ' interface', isIcon: true, value: 'ts' },
+  { index: '5', num: 5, label: ' * .d.ts', isIcon: true, value: 'dtype' },
 ]

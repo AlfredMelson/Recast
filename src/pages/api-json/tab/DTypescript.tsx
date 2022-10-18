@@ -18,7 +18,6 @@ import {
 import { userSubmittedUrlAtom } from '../../../recoil/api-json/atom'
 import ApiDataTypeLabel from '../data-types/ApiDataTypeLabel'
 import { PaperSx } from '../../../components/mui/Paper.style'
-import { FadeAnimation } from '../../../components/framer-motion/Fade.animation'
 import { TsInterfaceIcons } from '../../../components/api-json/TsInterfaceIcons'
 import { ErrorBoundary } from '../../../lib/ErrorBoundary'
 
@@ -60,33 +59,31 @@ const DTypescript: React.FC<DTypescriptAlias> = ({ data }: DTypescriptAlias) => 
   // const lastSegmentVerified = apiUrl.substring(apiUrl.lastIndexOf('/') + 1)
 
   return (
-    <FadeAnimation>
-      <PaperSx>
-        <ErrorBoundary>
-          <Typography variant='code'>
-            declare module namespace&nbsp;&#123;
-            <Box sx={{ ml: 30 }}>{renderData()}</Box>
-            &#125;
-          </Typography>
-          <DownloadInfo
-            appeared={true}
-            content={
-              <React.Fragment>
-                <Typography fontWeight='bold' color='grey.300' variant='body2'>
-                  {cleanLastSegment}
-                </Typography>
-                <Typography color='grey.600' variant='body2'>
-                  * .d.ts
-                </Typography>
-                <Box sx={{ my: 10, textAlign: 'center' }}>
-                  <TsInterfaceIcons />
-                </Box>
-              </React.Fragment>
-            }
-          />
-        </ErrorBoundary>
-      </PaperSx>
-    </FadeAnimation>
+    <PaperSx>
+      <ErrorBoundary>
+        <Typography variant='code'>
+          declare module namespace&nbsp;&#123;
+          <Box sx={{ ml: 30 }}>{renderData()}</Box>
+          &#125;
+        </Typography>
+        <DownloadInfo
+          appeared={true}
+          content={
+            <React.Fragment>
+              <Typography fontWeight='bold' color='grey.300' variant='body2'>
+                {cleanLastSegment}
+              </Typography>
+              <Typography color='grey.600' variant='body2'>
+                * .d.ts
+              </Typography>
+              <Box sx={{ my: 10, textAlign: 'center' }}>
+                <TsInterfaceIcons />
+              </Box>
+            </React.Fragment>
+          }
+        />
+      </ErrorBoundary>
+    </PaperSx>
   )
 }
 

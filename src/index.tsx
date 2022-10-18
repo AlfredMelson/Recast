@@ -1,10 +1,9 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 import CssBaseline from '@mui/material/CssBaseline'
 import App from './app'
 import './style/BrandGlobal.css'
-import './style/BrandGlobal.scss'
 import BrandThemeProvider from './style/BrandThemeProvider'
 
 // create entry point using unique id from Document
